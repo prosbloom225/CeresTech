@@ -1,0 +1,17 @@
+{
+  "block.gtceu.nuclear_reactor": "Nuclear Reactor",
+  "gtceu.nuclear_reactor": "Nuclear Reactor",
+
+  "block.gtceu.tree_farm": "Tree Farm",
+  "gtceu.tree_farm": "Tree Farm",
+
+  "tagprefix.depleted_rod": "Depleted %s Rod",
+  "tagprefix.depleted_oxide_rod": "%s Depleted Fuel Oxide Rod",
+  "tagprefix.depleted_fuel_nitrate_solution": "%s Depleted Fuel Nitrate Solution",
+  "tagprefix.depleted_fuel_nitride": "%s Depleted Fuel Nitride",
+  "tagprefix.waste": "%s Waste",
+  "material.uranium_238_fuel_nitrate": "Uranium 238 Fuel Nitrate",
+
+  "item.gtceu.waste_nuclear": "Nuclear Waste"
+
+}

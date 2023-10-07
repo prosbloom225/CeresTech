@@ -20,7 +20,7 @@ public class MixinHelpers {
 
         // Register recipes & unification data again
         long startTime = System.currentTimeMillis();
-        CTRecipes.recipeAddition(GTDynamicDataPack::addRecipe);
+        //CTRecipes.recipeAddition(GTDynamicDataPack::addRecipe);
         GTCEu.LOGGER.info("CeresTech loading took {}ms", System.currentTimeMillis() - startTime);
 
         // Load the data

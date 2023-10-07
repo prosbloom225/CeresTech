@@ -1,0 +1,32 @@
+package com.prosbloom.cerestech.data;
+
+import com.gregtechceu.gtceu.api.GTValues;
+import com.gregtechceu.gtceu.api.capability.recipe.IO;
+import com.gregtechceu.gtceu.api.gui.GuiTextures;
+import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
+import com.gregtechceu.gtceu.common.data.GTSoundEntries;
+
+import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.MULTIBLOCK;
+import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.register;
+import static com.lowdragmc.lowdraglib.gui.texture.ProgressTexture.FillDirection.LEFT_TO_RIGHT;
+
+public class CTRecipeTypes {
+    public static void init() {
+    }
+
+    public final static GTRecipeType TREE_FARM_RECIPES = register("tree_farm", MULTIBLOCK).setMaxIOSize(1, 1, 2, 1)
+            .setEUIO(IO.IN)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
+            .prepareBuilder(recipeBuilder -> recipeBuilder.EUt(GTValues.VA[GTValues.MV]))
+            .setSound(GTSoundEntries.COOLING);
+
+    public final static GTRecipeType NUCLEAR_REACTOR_RECIPES = register("nuclear_reactor", MULTIBLOCK).setMaxIOSize(3, 2, 0, 0)
+            .setEUIO(IO.IN)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
+            .setSlotOverlay(false, false, false, GuiTextures.ATOMIC_OVERLAY_1)
+            .setSlotOverlay(false, false, true, GuiTextures.ATOMIC_OVERLAY_1)
+            .setSlotOverlay(true, false, false, GuiTextures.ATOMIC_OVERLAY_1)
+            .setSlotOverlay(true, false, true, GuiTextures.ATOMIC_OVERLAY_1)
+            .prepareBuilder(recipeBuilder -> recipeBuilder.EUt(GTValues.VA[GTValues.EV]))
+            .setSound(GTSoundEntries.BOILER);
+}

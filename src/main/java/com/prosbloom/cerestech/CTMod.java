@@ -1,7 +1,11 @@
 package com.prosbloom.cerestech;
 
+import com.gregtechceu.gtceu.api.addon.AddonFinder;
+import com.gregtechceu.gtceu.api.addon.GTAddon;
+import com.gregtechceu.gtceu.api.addon.forge.AddonFinderImpl;
 import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import com.mojang.logging.LogUtils;
+import com.prosbloom.cerestech.addon.CTAddon;
 import com.prosbloom.cerestech.machines.CTMachines;
 import com.tterrag.registrate.Registrate;
 import net.minecraft.client.Minecraft;
@@ -49,6 +53,7 @@ public class CTMod
     public static final RegistryObject<Block> EXAMPLE_BLOCK = BLOCKS.register("example_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE)));
     // Creates a new BlockItem with the id "examplemod:example_block", combining the namespace and path
     public static final RegistryObject<Item> EXAMPLE_BLOCK_ITEM = ITEMS.register("example_block", () -> new BlockItem(EXAMPLE_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
+    public CTAddon ctAddon = new CTAddon();
 
     public CTMod()
     {
@@ -64,7 +69,8 @@ public class CTMod
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
-        CTMachines.init();
+        // TODO - init our own machines vs addon init
+        //CTMachines.init();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)

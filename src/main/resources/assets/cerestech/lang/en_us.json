@@ -13,6 +13,8 @@
   "tagprefix.dust_oxide": "%s Oxide",
   "material.uranium_238_fuel_nitrate": "Uranium 238 Fuel Nitrate",
 
-  "item.gtceu.waste_nuclear": "Nuclear Waste"
+  "item.gtceu.waste_nuclear": "Nuclear Waste",
+  "material.coolant": "FLiBe Coolant",
+  "material.coolant_hot": "Hot FLiBe Coolant"
 
 }

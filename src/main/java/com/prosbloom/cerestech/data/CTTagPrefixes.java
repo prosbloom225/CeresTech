@@ -16,6 +16,41 @@ public class CTTagPrefixes {
     public static final MaterialIconType materialIconFuelDepleted = new MaterialIconType("fuel_depleted");
     public static final MaterialIconType materialIconWaste = new MaterialIconType("waste");
 
+    public static final TagPrefix fuelPure = new TagPrefix("fuel_pure")
+            .defaultTagPath(FORGE, "fuel_pure/%s")
+            .defaultTagPath(FABRIC, "%s_fuel_pure")
+            .unformattedTagPath(FORGE, "fuel_pure")
+            .unformattedTagPath(FABRIC, "fuel_pure")
+            .materialAmount(GTValues.M)
+            .materialIconType(materialIconFuelPure)
+            .unificationEnabled(true)
+            .generateItem(true)
+            .generationCondition(mat->fissileMaterials.contains(mat.getName()) ||
+                    fertileMaterials.contains(mat.getName()));
+    public static final TagPrefix dustOxide = new TagPrefix("dust_oxide")
+            .defaultTagPath(FORGE, "dust_oxide/%s")
+            .defaultTagPath(FABRIC, "%s_dust_oxide")
+            .unformattedTagPath(FORGE, "dust_oxide")
+            .unformattedTagPath(FABRIC, "dust_oxide")
+            .materialAmount(GTValues.M)
+            .materialIconType(MaterialIconType.dust)
+            .unificationEnabled(true)
+            .generateItem(true)
+            .generationCondition(mat->fissileMaterials.contains(mat.getName()) ||
+                    fertileMaterials.contains(mat.getName()));
+
+    public static final TagPrefix fuelOxide = new TagPrefix("fuel_oxide")
+            .defaultTagPath(FORGE, "fuel_oxide/%s")
+            .defaultTagPath(FABRIC, "%s_fuel_oxide")
+            .unformattedTagPath(FORGE, "fuel_oxide")
+            .unformattedTagPath(FABRIC, "fuel_oxide")
+            .materialAmount(GTValues.M)
+            .materialIconType(materialIconFuelPure)
+            .unificationEnabled(true)
+            .generateItem(true)
+            .generationCondition(mat->fissileMaterials.contains(mat.getName()) ||
+                    fertileMaterials.contains(mat.getName()));
+
     public static final TagPrefix depletedRod = new TagPrefix("depleted_rod")
             .defaultTagPath(FORGE, "depleted_rod/%s")
             .defaultTagPath(FABRIC, "%s_depleted_rod")

@@ -7,9 +7,10 @@
 
   "tagprefix.depleted_rod": "Depleted %s Rod",
   "tagprefix.depleted_oxide_rod": "%s Depleted Fuel Oxide Rod",
-  "tagprefix.depleted_fuel_nitrate_solution": "%s Depleted Fuel Nitrate Solution",
-  "tagprefix.depleted_fuel_nitride": "%s Depleted Fuel Nitride",
   "tagprefix.waste": "%s Waste",
+  "tagprefix.fuel_pure": "%s Fuel Pure",
+  "tagprefix.fuel_oxide": "%s Fuel Oxide",
+  "tagprefix.dust_oxide": "%s Oxide",
   "material.uranium_238_fuel_nitrate": "Uranium 238 Fuel Nitrate",
 
   "item.gtceu.waste_nuclear": "Nuclear Waste"

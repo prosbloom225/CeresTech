@@ -1,6 +1,8 @@
 package com.prosbloom.cerestech.data;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
+import com.gregtechceu.gtceu.api.registry.GTRegistries;
+import com.gregtechceu.gtceu.common.data.GTItems;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.prosbloom.cerestech.machines.CTMachines;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -18,6 +20,8 @@ import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
 import static com.prosbloom.cerestech.data.CTItems.WASTE_NUCLEAR;
 import static com.prosbloom.cerestech.data.CTTagPrefixes.*;
+import static com.prosbloom.cerestech.data.NuclearReactorRecipes.fertileMaterials;
+import static com.prosbloom.cerestech.data.NuclearReactorRecipes.fissileMaterials;
 
 public class NuclearCycleRecipes {
     public static void registerNuclearCycleRecipes(Consumer<FinishedRecipe> provider){
@@ -32,6 +36,12 @@ public class NuclearCycleRecipes {
         registerMainCycle(provider, Fermium, Mendelevium, VA[LuV]);
         registerMainCycle(provider, Mendelevium, Mendelevium, VA[LuV]);
         // TODO - mendelevium waste cycle doesnt have uptier output -- duping for now
+    }
+    public static void registerNuclearFuelCycleRecipes(Consumer<FinishedRecipe> provider) {
+        for (String s: fertileMaterials)
+            registerFuelCycle(provider, GTRegistries.MATERIALS.get(s));
+        for (String s: fissileMaterials)
+            registerFuelCycle(provider, GTRegistries.MATERIALS.get(s));
     }
 
     // Reactor - Depleted Uranium 238 Rod
@@ -69,6 +79,27 @@ public class NuclearCycleRecipes {
                 .chancedOutput(WASTE_NUCLEAR.asStack(), 1000, 0)
                 .chancedOutput(dust, fissile, 1, 3000, 0)
                 .duration(300).EUt(thermalVoltage)
+                .save(provider);
+    }
+
+    public static void registerFuelCycle(Consumer<FinishedRecipe> provider, Material fissile) {
+        EXTRUDER_RECIPES.recipeBuilder(fissile.getName() + "_fuel_pure")
+                .inputItems(ingot, fissile, 1)
+                .notConsumable(GTItems.SHAPE_MOLD_BALL)
+                .outputItems(fuelPure, fissile, 1)
+                .duration(200).EUt(30)
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder(fissile.getName() + "_dust_oxide")
+                .inputItems(ingot, fissile, 1)
+                .inputFluids(Oxygen.getFluid(1000))
+                .outputItems(dustOxide, fissile, 1)
+                .duration(300).EUt(30)
+                .save(provider);
+        EXTRUDER_RECIPES.recipeBuilder(fissile.getName() + "_fuel_oxide")
+                .inputItems(dustOxide,  fissile, 1)
+                .notConsumable(GTItems.SHAPE_MOLD_BALL)
+                .outputItems(fuelOxide, fissile, 1)
+                .duration(200).EUt(30)
                 .save(provider);
     }
 

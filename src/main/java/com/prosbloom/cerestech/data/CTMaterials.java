@@ -11,12 +11,20 @@ import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import com.gregtechceu.gtceu.common.data.GTElements;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 
-import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.METALLIC;
-import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.SHINY;
-import static com.gregtechceu.gtceu.common.data.GTMaterials.EXT_METAL;
-import static com.gregtechceu.gtceu.common.data.GTMaterials.Neptunium;
+import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 
 public class CTMaterials {
+    public static Material LithiumFluoride= new Material.Builder("lithium_fluoride")
+            .dust()
+                .color(0xDEDEFA).iconSet(FINE)
+                .components(Lithium, 1, Fluorine, 1)
+                .buildAndRegister();
+    public static Material BerylliumFluoride = new Material.Builder("beryllium_fluoride")
+            .dust()
+            .color(0xDEDEFA).iconSet(FINE)
+            .components(Beryllium, 1, Fluorine, 2)
+            .buildAndRegister();
     public static void init() {
         // TODO - removing these is a hack until they get used in the main mod
         GTRegistries.MATERIALS.remove("neptunium");
@@ -82,6 +90,9 @@ public class CTMaterials {
                 .appendFlags(EXT_METAL)
                 .element(GTElements.Fm)
                 .buildAndRegister();
-    }
 
+
+
+
+    }
 }

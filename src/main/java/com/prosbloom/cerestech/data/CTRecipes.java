@@ -62,10 +62,10 @@ public class CTRecipes {
 
         VanillaRecipeHelper.addShapedRecipe(provider, true, "hot_coolant_turbine", HOT_COOLANT_TURBINE.asStack(),
                 "CGC", "GHG", "PGP",
-                'G', new UnificationEntry(plate, Stellite100),
+                'G', new UnificationEntry(plate, HastelloyX),
                 'C', CustomTags.HV_CIRCUITS,
                 'H', GTMachines.HULL[GTValues.EV].asStack(),
-                'P', new UnificationEntry(pipeLargeFluid, Ultimet));
+                'P', new UnificationEntry(pipeLargeFluid, Tungsten));
 
 
         registerMachineRecipe(provider, DEHYDRATOR, "WCW", "WMW", "PRP", 'M', HULL, 'R', ROBOT_ARM, 'P', PLATE, 'C', CIRCUIT, 'W', CABLE);

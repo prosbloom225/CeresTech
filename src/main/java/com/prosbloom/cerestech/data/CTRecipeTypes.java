@@ -40,7 +40,7 @@ public class CTRecipeTypes {
             //.prepareBuilder(recipeBuilder -> recipeBuilder.EUt(GTValues.VA[GTValues.MV]))
             .setSound(GTSoundEntries.TURBINE);
 
-    public final static GTRecipeType DEHYDRATOR_RECIPES= register("dehydrator", MULTIBLOCK).setMaxIOSize(2, 9, 0, 0)
+    public final static GTRecipeType DEHYDRATOR_RECIPES= register("dehydrator", MULTIBLOCK).setMaxIOSize(2, 9, 0, 6)
             .setEUIO(IO.IN)
             .setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, LEFT_TO_RIGHT)
             .setSound(new ExistingSoundEntry(SoundEvents.SAND_PLACE, SoundSource.BLOCKS));

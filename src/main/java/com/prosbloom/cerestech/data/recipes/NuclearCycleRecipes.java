@@ -13,7 +13,7 @@ import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.dust;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.ingot;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
-import static com.prosbloom.cerestech.data.CTItems.WASTE_NUCLEAR;
+import static com.prosbloom.cerestech.data.CTItems.*;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.DEHYDRATOR_RECIPES;
 import static com.prosbloom.cerestech.data.CTTagPrefixes.*;
 import static com.prosbloom.cerestech.data.recipes.NuclearReactorRecipes.fertileMaterials;
@@ -100,9 +100,118 @@ public class NuclearCycleRecipes {
     }
 
     public static void registerWasteCycle(Consumer<FinishedRecipe> provider) {
-        DEHYDRATOR_RECIPES.recipeBuilder("thermal_nuclear_waste")
+        DEHYDRATOR_RECIPES.recipeBuilder("dehydrator_nuclear_waste")
                 .inputItems(WASTE_NUCLEAR, 1)
-                .chancedOutput(WASTE_NUCLEAR.asStack(), 1000, 0)
+                .chancedOutput(WASTE_LANTHANIDE_GROUP_A.asStack(), 1000, 1)
+                .chancedOutput(WASTE_LANTHANIDE_GROUP_B.asStack(), 1000, 1)
+                .chancedOutput(WASTE_ALKALINE.asStack(), 1000, 1)
+                .chancedOutput(WASTE_HEAVY_METAL.asStack(), 1000, 1)
+                .chancedOutput(WASTE_METAL_GROUP_A.asStack(), 1000, 1)
+                .chancedOutput(WASTE_METAL_GROUP_B.asStack(), 1000, 1)
+                .chancedOutput(WASTE_METAL_GROUP_C.asStack(), 1000, 1)
+                .chancedOutput(WASTE_NONMETAL.asStack(), 1000, 1)
+                .chancedOutput(WASTE_METALOID.asStack(), 1000, 1)
+                .duration(300).EUt(32)
+                .save(provider);
+
+        // TODO - missing waste outputs ...commenting for now.. also need to take a look at rates, gcy is even higher than these
+        DEHYDRATOR_RECIPES.recipeBuilder("dehydrator_lanthanide_a")
+                .inputItems(WASTE_LANTHANIDE_GROUP_A, 9)
+                //.chancedOutput(dust, Dysprosium, 2, 4000, 3000)
+                //.chancedOutput(dust, Holmium, 2, 4000, 3000)
+                //.chancedOutput(dust, Erbium, 2, 4000, 3000)
+                //.chancedOutput(dust, Thulium, 2, 4000, 3000)
+                //.chancedOutput(dust, Ytterbium, 2, 4000, 3000)
+                .chancedOutput(dust, Lutetium, 2, 4000, 3000)
+                .duration(300).EUt(32)
+                .save(provider);
+        DEHYDRATOR_RECIPES.recipeBuilder("dehydrator_lanthanide_b")
+                .inputItems(WASTE_LANTHANIDE_GROUP_B, 9)
+                .chancedOutput(dust, Lanthanum, 2, 4000, 3000)
+                .chancedOutput(dust, Cerium, 2, 4000, 3000)
+                //.chancedOutput(dust, Praseodymium, 2, 4000, 3000)
+                .chancedOutput(dust, Neodymium, 2, 4000, 3000)
+                //.chancedOutput(dust, Promethium, 2, 4000, 3000)
+                .chancedOutput(dust, Samarium, 2, 4000, 3000)
+                .chancedOutput(dust, Europium, 2, 4000, 3000)
+                //.chancedOutput(dust, Gadolinium, 2, 4000, 3000)
+                //.chancedOutput(dust, Terbium, 2, 4000, 3000)
+                .duration(300).EUt(32)
+                .save(provider);
+        DEHYDRATOR_RECIPES.recipeBuilder("dehydrator_alkaline")
+                .inputItems(WASTE_ALKALINE, 9)
+                .chancedOutput(WASTE_ALKALINE.asStack(), 1000, 1)
+                //.chancedOutput(dust, Rubidium, 2, 4000, 3000)
+                //.chancedOutput(dust, Strontium, 2, 4000, 3000)
+                .chancedOutput(dust, Caesium, 2, 4000, 3000)
+                .chancedOutput(dust, Barium, 2, 4000, 3000)
+                //.chancedOutput(dust, Francium, 2, 4000, 3000)
+                //.chancedOutput(dust, Radium, 2, 4000, 3000)
+                .duration(300).EUt(32)
+                .save(provider);
+        DEHYDRATOR_RECIPES.recipeBuilder("dehydrator_heavy_metal")
+                .inputItems(WASTE_HEAVY_METAL, 9)
+                .chancedOutput(dust, Zinc, 2, 4000, 3000)
+                .chancedOutput(dust, Gallium, 2, 4000, 3000)
+                .chancedOutput(dust, Cadmium, 2, 4000, 3000)
+                .chancedOutput(dust, Indium, 2, 4000, 3000)
+                .chancedOutput(dust, Tin, 2, 4000, 3000)
+                //.chancedOutput(dust, Thallium, 2, 4000, 3000)
+                .chancedOutput(dust, Lead, 2, 4000, 3000)
+                .chancedOutput(dust, Bismuth, 2, 4000, 3000)
+                //.chancedOutput(dust, Polonium, 2, 4000, 3000)
+                .chancedOutput(Mercury.getFluid(2250), 4000, 3000)
+                .duration(300).EUt(32)
+                .save(provider);
+        DEHYDRATOR_RECIPES.recipeBuilder("dehydrator_metal_group_a")
+                .inputItems(WASTE_METAL_GROUP_A, 9)
+                //.chancedOutput(dust, Hafnium, 2, 4000, 3000)
+                .chancedOutput(dust, Tantalum, 2, 4000, 3000)
+                .chancedOutput(dust, Tungsten, 2, 4000, 3000)
+                .chancedOutput(dust, Osmium, 2, 4000, 3000)
+                .chancedOutput(dust, Iridium, 2, 4000, 300)
+                .chancedOutput(dust, Platinum, 2, 4000, 300)
+                .chancedOutput(dust, Gold, 2, 4000, 3000)
+                .duration(300).EUt(32)
+                .save(provider);
+        DEHYDRATOR_RECIPES.recipeBuilder("dehydrator_metal_group_b")
+                .inputItems(WASTE_METAL_GROUP_B, 9)
+                .chancedOutput(dust, Yttrium, 2, 4000, 3000)
+                //.chancedOutput(dust, Zirconium, 2, 4000, 3000)
+                .chancedOutput(dust, Niobium, 2, 4000, 3000)
+                .chancedOutput(dust, Molybdenum, 2, 4000, 3000)
+                //.chancedOutput(dust, Technetium, 2, 4000, 300)
+                .chancedOutput(dust, Ruthenium, 2, 4000, 300)
+                .chancedOutput(dust, Rhodium, 2, 4000, 3000)
+                .chancedOutput(dust, Palladium, 2, 4000, 3000)
+                .chancedOutput(dust, Silver, 2, 4000, 3000)
+                .duration(300).EUt(32)
+                .save(provider);
+        DEHYDRATOR_RECIPES.recipeBuilder("dehydrator_metal_group_c")
+                .inputItems(WASTE_METAL_GROUP_C, 9)
+                .chancedOutput(dust, Iron, 2, 4000, 300)
+                .chancedOutput(dust, Cobalt, 2, 4000, 3000)
+                .chancedOutput(dust, Nickel, 2, 4000, 3000)
+                .chancedOutput(dust, Copper, 2, 4000, 3000)
+                .duration(300).EUt(32)
+                .save(provider);
+        DEHYDRATOR_RECIPES.recipeBuilder("dehydrator_nonmetal")
+                .inputItems(WASTE_NONMETAL, 9)
+                //.chancedOutput(dust, Selenium, 2, 4000, 3000)
+                //.chancedOutput(dust, Iodine, 2, 4000, 3000)
+                .chancedOutput(Krypton.getFluid(2250), 4000, 3000)
+                .chancedOutput(Xenon.getFluid(4500), 4000, 3000)
+                .chancedOutput(Radon.getFluid(9000), 4000, 3000)
+                .duration(300).EUt(32)
+                .save(provider);
+        DEHYDRATOR_RECIPES.recipeBuilder("dehydrator_metaloid")
+                .inputItems(WASTE_METALOID, 9)
+                //.chancedOutput(dust, Germanium, 2, 4000, 3000)
+                .chancedOutput(dust, Arsenic, 2, 4000, 3000)
+                .chancedOutput(dust, Antimony, 2, 4000, 3000)
+                //.chancedOutput(dust, Tellurium, 2, 4000, 3000)
+                //.chancedOutput(dust, Astatine, 2, 4000, 3000)
+                //.chancedOutput(dust, Actinium, 2, 4000, 3000)
                 .duration(300).EUt(32)
                 .save(provider);
     }

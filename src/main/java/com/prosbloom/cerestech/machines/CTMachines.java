@@ -83,7 +83,7 @@ public class CTMachines {
 
     public final static MultiblockMachineDefinition HOT_COOLANT_TURBINE = GTMachines.registerLargeTurbine("hot_coolant_turbine", EV,
             CTRecipeTypes.HOT_COOLANT_TURBINE_RECIPES,
-            CASING_STRESS_PROOF, CASING_TUNGSTENSTEEL_GEARBOX,
+            CASING_TUNGSTENSTEEL_TURBINE, CASING_TUNGSTENSTEEL_GEARBOX,
             GTCEu.id("block/casings/solid/machine_casing_robust_tungstensteel"),
             GTCEu.id("block/multiblock/generator/large_plasma_turbine"));
 }

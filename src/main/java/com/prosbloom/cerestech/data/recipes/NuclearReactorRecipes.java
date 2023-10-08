@@ -1,4 +1,4 @@
-package com.prosbloom.cerestech.data;
+package com.prosbloom.cerestech.data.recipes;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.registry.GTRegistries;

@@ -6,7 +6,7 @@ import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.LoaderType.FABRIC;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.LoaderType.FORGE;
-import static com.prosbloom.cerestech.data.NuclearReactorRecipes.*;
+import static com.prosbloom.cerestech.data.recipes.NuclearReactorRecipes.*;
 
 public class CTTagPrefixes {
     public static void init() {}

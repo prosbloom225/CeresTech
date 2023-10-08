@@ -1,4 +1,4 @@
-package com.prosbloom.cerestech.data;
+package com.prosbloom.cerestech.data.recipes;
 
 import net.minecraft.data.recipes.FinishedRecipe;
 

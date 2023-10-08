@@ -9,14 +9,14 @@ import com.gregtechceu.gtceu.api.recipe.ingredient.FluidIngredient;
 import com.gregtechceu.gtceu.api.recipe.ingredient.forge.SizedIngredientImpl;
 import com.gregtechceu.gtceu.common.machine.multiblock.steam.LargeBoilerMachine;
 import com.prosbloom.cerestech.data.CTFluids;
-import com.prosbloom.cerestech.data.NuclearReactorRecipes;
+import com.prosbloom.cerestech.data.recipes.NuclearReactorRecipes;
 import net.minecraft.nbt.IntTag;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static com.prosbloom.cerestech.data.NuclearReactorRecipes.reactorFuels;
+import static com.prosbloom.cerestech.data.recipes.NuclearReactorRecipes.reactorFuels;
 
 public class ReactorMachine extends LargeBoilerMachine {
     public ReactorMachine(IMachineBlockEntity holder, int maxTemperature, int heatSpeed, Object... args) {
@@ -37,12 +37,11 @@ public class ReactorMachine extends LargeBoilerMachine {
                         .filter(fuel-> ingredient.equals(fuel.getName() + "_fuel_oxide"))
                         .findAny().orElse(null);
                 if (rf != null) {
-                    // TODO - coolant scaler for nuclear reactor - 1000 atm
-                    maxDrain = 1000 * rf.getHeat() * count;
+                    maxDrain = 55 * rf.getHeat() * count;
                 }
 
                 // TODO - Dynamically pull from hct recipeList
-                var drainCoolant = List.of(FluidIngredient.of(55, CTFluids.Coolant.getFluid()));
+                var drainCoolant = List.of(FluidIngredient.of(maxDrain, CTFluids.Coolant.getFluid()));
                 List<IRecipeHandler<?>> inputTanks = new ArrayList<>();
                 if (getCapabilitiesProxy().contains(IO.IN, FluidRecipeCapability.CAP)) {
                     inputTanks.addAll(Objects.requireNonNull(getCapabilitiesProxy().get(IO.IN, FluidRecipeCapability.CAP)));

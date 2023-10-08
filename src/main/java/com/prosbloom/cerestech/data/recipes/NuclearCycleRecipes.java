@@ -1,4 +1,4 @@
-package com.prosbloom.cerestech.data;
+package com.prosbloom.cerestech.data.recipes;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.registry.GTRegistries;
@@ -15,8 +15,8 @@ import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
 import static com.prosbloom.cerestech.data.CTItems.WASTE_NUCLEAR;
 import static com.prosbloom.cerestech.data.CTTagPrefixes.*;
-import static com.prosbloom.cerestech.data.NuclearReactorRecipes.fertileMaterials;
-import static com.prosbloom.cerestech.data.NuclearReactorRecipes.fissileMaterials;
+import static com.prosbloom.cerestech.data.recipes.NuclearReactorRecipes.fertileMaterials;
+import static com.prosbloom.cerestech.data.recipes.NuclearReactorRecipes.fissileMaterials;
 
 public class NuclearCycleRecipes {
     public static void registerNuclearCycleRecipes(Consumer<FinishedRecipe> provider){

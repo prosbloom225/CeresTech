@@ -14,6 +14,7 @@ import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.ingot;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
 import static com.prosbloom.cerestech.data.CTItems.WASTE_NUCLEAR;
+import static com.prosbloom.cerestech.data.CTRecipeTypes.DEHYDRATOR_RECIPES;
 import static com.prosbloom.cerestech.data.CTTagPrefixes.*;
 import static com.prosbloom.cerestech.data.recipes.NuclearReactorRecipes.fertileMaterials;
 import static com.prosbloom.cerestech.data.recipes.NuclearReactorRecipes.fissileMaterials;
@@ -99,16 +100,11 @@ public class NuclearCycleRecipes {
     }
 
     public static void registerWasteCycle(Consumer<FinishedRecipe> provider) {
-        /*
-        CHEMICAL_DEHYDRATOR.recipeBuilder("thermal_nuclear_waste")
+        DEHYDRATOR_RECIPES.recipeBuilder("thermal_nuclear_waste")
                 .inputItems(WASTE_NUCLEAR, 1)
-                .outputItems(dust, output, 1)
                 .chancedOutput(WASTE_NUCLEAR.asStack(), 1000, 0)
-                .chancedOutput(dust, fissile, 1, 3000, 0)
-                .duration(300).EUt(60)
+                .duration(300).EUt(32)
                 .save(provider);
-
-         */
     }
 
 }

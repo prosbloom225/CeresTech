@@ -29,4 +29,11 @@ public class CTRecipeTypes {
             .setSlotOverlay(true, false, true, GuiTextures.ATOMIC_OVERLAY_1)
             .prepareBuilder(recipeBuilder -> recipeBuilder.EUt(GTValues.VA[GTValues.EV]))
             .setSound(GTSoundEntries.BOILER);
+
+    public final static GTRecipeType HOT_COOLANT_TURBINE_RECIPES = register("hot_coolant_turbine", MULTIBLOCK).setMaxIOSize(0, 0, 1, 1)
+            .setEUIO(IO.OUT)
+            .setSlotOverlay(false, true, true, GuiTextures.CENTRIFUGE_OVERLAY)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_GAS_COLLECTOR, LEFT_TO_RIGHT)
+            //.prepareBuilder(recipeBuilder -> recipeBuilder.EUt(GTValues.VA[GTValues.MV]))
+            .setSound(GTSoundEntries.TURBINE);
 }

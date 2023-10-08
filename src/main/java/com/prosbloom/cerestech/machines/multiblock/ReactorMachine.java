@@ -5,16 +5,12 @@ import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.capability.recipe.IRecipeHandler;
 import com.gregtechceu.gtceu.api.capability.recipe.ItemRecipeCapability;
 import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
-import com.gregtechceu.gtceu.api.recipe.RecipeHelper;
 import com.gregtechceu.gtceu.api.recipe.ingredient.FluidIngredient;
 import com.gregtechceu.gtceu.api.recipe.ingredient.forge.SizedIngredientImpl;
 import com.gregtechceu.gtceu.common.machine.multiblock.steam.LargeBoilerMachine;
-import com.gregtechceu.gtceu.data.recipe.CustomTags;
-import com.lowdragmc.lowdraglib.side.fluid.FluidHelper;
+import com.prosbloom.cerestech.data.CTFluids;
 import com.prosbloom.cerestech.data.NuclearReactorRecipes;
 import net.minecraft.nbt.IntTag;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.level.material.Fluids;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +41,8 @@ public class ReactorMachine extends LargeBoilerMachine {
                     maxDrain = 1000 * rf.getHeat() * count;
                 }
 
-                var drainWater = List.of(com.gregtechceu.gtceu.api.recipe.ingredient.FluidIngredient.of(maxDrain, Fluids.WATER));
+                // TODO - Dynamically pull from hct recipeList
+                var drainCoolant = List.of(FluidIngredient.of(55, CTFluids.Coolant.getFluid()));
                 List<IRecipeHandler<?>> inputTanks = new ArrayList<>();
                 if (getCapabilitiesProxy().contains(IO.IN, FluidRecipeCapability.CAP)) {
                     inputTanks.addAll(Objects.requireNonNull(getCapabilitiesProxy().get(IO.IN, FluidRecipeCapability.CAP)));
@@ -54,16 +51,16 @@ public class ReactorMachine extends LargeBoilerMachine {
                     inputTanks.addAll(Objects.requireNonNull(getCapabilitiesProxy().get(IO.BOTH, FluidRecipeCapability.CAP)));
                 }
                 for (IRecipeHandler<?> tank : inputTanks) {
-                    drainWater = (List<com.gregtechceu.gtceu.api.recipe.ingredient.FluidIngredient>) tank.handleRecipe(IO.IN, null, drainWater, null, false);
-                    if (drainWater == null) break;
+                    drainCoolant = (List<FluidIngredient>) tank.handleRecipe(IO.IN, null, drainCoolant, null, false);
+                    if (drainCoolant == null) break;
                 }
-                var drained = (drainWater == null || drainWater.isEmpty()) ? maxDrain : maxDrain - drainWater.get(0).getAmount();
+                var drained = (drainCoolant == null || drainCoolant.isEmpty()) ? maxDrain : maxDrain - drainCoolant.get(0).getAmount();
 
-                boolean hasDrainedWater = drained > 0;
+                boolean hasDrainedCoolant = drained > 0;
 
-                if (hasDrainedWater) {
-                    // fill steam
-                    var fillSteam = List.of(com.gregtechceu.gtceu.api.recipe.ingredient.FluidIngredient.of(CustomTags.STEAM, drained * 1));
+                if (hasDrainedCoolant) {
+                    // fill coolant
+                    var fillHotCoolant = List.of(FluidIngredient.of(CTFluids.CoolantHot.getFluid(drained)));
                     List<IRecipeHandler<?>> outputTanks = new ArrayList<>();
                     if (getCapabilitiesProxy().contains(IO.OUT, FluidRecipeCapability.CAP)) {
                         outputTanks.addAll(Objects.requireNonNull(getCapabilitiesProxy().get(IO.OUT, FluidRecipeCapability.CAP)));
@@ -72,8 +69,8 @@ public class ReactorMachine extends LargeBoilerMachine {
                         outputTanks.addAll(Objects.requireNonNull(getCapabilitiesProxy().get(IO.BOTH, FluidRecipeCapability.CAP)));
                     }
                     for (IRecipeHandler<?> tank : outputTanks) {
-                        fillSteam = (List<FluidIngredient>) tank.handleRecipe(IO.OUT, null, fillSteam, null, false);
-                        if (fillSteam == null) break;
+                        fillHotCoolant = (List<FluidIngredient>) tank.handleRecipe(IO.OUT, null, fillHotCoolant, null, false);
+                        if (fillHotCoolant == null) break;
                     }
                 }
             }

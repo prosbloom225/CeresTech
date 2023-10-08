@@ -5,6 +5,9 @@
   "block.gtceu.tree_farm": "Tree Farm",
   "gtceu.tree_farm": "Tree Farm",
 
+  "block.gtceu.hot_coolant_turbine": "Hot Coolant Turbine",
+  "gtceu.hot_coolant_turbine": "Hot Coolant Turbine(HCT)",
+
   "tagprefix.depleted_fuel": "Depleted %s Fuel",
   "tagprefix.depleted_fuel_oxide": "%s Depleted Fuel Oxide",
   "tagprefix.waste": "%s Waste",

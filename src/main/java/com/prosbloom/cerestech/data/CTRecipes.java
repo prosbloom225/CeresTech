@@ -1,10 +1,15 @@
 package com.prosbloom.cerestech.data;
 
+import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.UnificationEntry;
+import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.common.data.GTItems;
+import com.gregtechceu.gtceu.common.data.GTMachines;
+import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.gregtechceu.gtceu.data.recipe.CraftingComponent;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
+import com.prosbloom.cerestech.machines.CTMachines;
 import net.minecraft.data.recipes.FinishedRecipe;
 
 import java.util.function.Consumer;
@@ -22,8 +27,8 @@ import static com.prosbloom.cerestech.data.CTMaterials.BerylliumFluoride;
 import static com.prosbloom.cerestech.data.CTMaterials.LithiumFluoride;
 import static com.prosbloom.cerestech.data.CTTagPrefixes.dustOxide;
 import static com.prosbloom.cerestech.data.CTTagPrefixes.fuelOxide;
-import static com.prosbloom.cerestech.machines.CTMachines.NUCLEAR_REACTOR;
-import static com.prosbloom.cerestech.machines.CTMachines.TREE_FARM;
+import static com.prosbloom.cerestech.data.HotCoolantTurbineRecipes.registerHotCoolantTurbineRecipes;
+import static com.prosbloom.cerestech.machines.CTMachines.*;
 
 public class CTRecipes {
 
@@ -32,6 +37,7 @@ public class CTRecipes {
         registerManualRecipes(provider);
         registerMixerRecipes(provider);
         registerChemicalReactorRecipes(provider);
+        registerHotCoolantTurbineRecipes(provider);
 
         TreeFarmRecipes.registerTreeFarmRecipes(provider);
         NuclearReactorRecipes.registerNuclearReactorRecipes(provider);
@@ -48,6 +54,13 @@ public class CTRecipes {
                 "PCP", "BXB", "MKM",
                 'C', CustomTags.IV_CIRCUITS, 'P', new UnificationEntry(plate, Titanium), 'B', ELECTRIC_PISTON_IV.asStack(), 'M', ELECTRIC_MOTOR_IV.asStack(), 'X', MACERATOR[IV].asStack(), 'K', new UnificationEntry(cableGtSingle, Platinum));
 
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "hot_coolant_turbine", HOT_COOLANT_TURBINE.asStack(),
+                "CGC", "GHG", "PGP",
+                'G', new UnificationEntry(TagPrefix.gear, Stellite100),
+                'C', CustomTags.HV_CIRCUITS,
+                'H', GTMachines.HULL[GTValues.EV].asStack(),
+                'P', new UnificationEntry(TagPrefix.pipeLargeFluid, Ultimet));
+
     }
 
     private static void registerMixerRecipes(Consumer<FinishedRecipe> provider) {
@@ -63,7 +76,7 @@ public class CTRecipes {
         CHEMICAL_RECIPES.recipeBuilder("beryllium_fluoride")
                 .inputItems(dust, Beryllium, 1)
                 .inputFluids(Fluorine.getFluid(2000))
-                .outputItems(dust, LithiumFluoride , 3)
+                .outputItems(dust, BerylliumFluoride, 3)
                 .duration(30).EUt(30)
                 .save(provider);
         CHEMICAL_RECIPES.recipeBuilder("lithium_fluoride")

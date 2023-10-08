@@ -21,6 +21,7 @@ import static com.prosbloom.cerestech.data.recipes.NuclearReactorRecipes.fissile
 
 public class NuclearCycleRecipes {
     public static void registerNuclearCycleRecipes(Consumer<FinishedRecipe> provider){
+        registerMainCycle(provider, Uranium235, Neptunium, VA[MV]);
         registerMainCycle(provider, Uranium238, Neptunium, VA[MV]);
         registerMainCycle(provider, Neptunium, Plutonium241, VA[MV]);
         registerMainCycle(provider, Plutonium241, Americium, VA[HV]);
@@ -49,7 +50,7 @@ public class NuclearCycleRecipes {
     // Dehydrator +  Nuclear Waste = Lanthanide Group A Waste, Alkaline Waste, Metaloid Waste, etc
 
     public static void registerMainCycle(Consumer<FinishedRecipe> provider, Material fissile, Material output, int thermalVoltage) {
-        CHEMICAL_RECIPES.recipeBuilder(fissile.getName() + "_oxide_rod")
+        CHEMICAL_RECIPES.recipeBuilder(fissile.getName() + "_depleted_fuel")
                 .inputItems(depletedFuel, fissile, 1)
                 .inputFluids(Oxygen.getFluid(1000))
                 .outputItems(depletedFuelOxide, fissile, 1)

@@ -11,6 +11,7 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.dust;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.ingot;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
@@ -20,24 +21,18 @@ import static com.prosbloom.cerestech.data.CTTagPrefixes.*;
 
 public class NuclearCycleRecipes {
     public static void registerNuclearCycleRecipes(Consumer<FinishedRecipe> provider){
-        registerMainCycle(provider, Uranium238, Neptunium);
-        registerMainCycle(provider, Neptunium, Plutonium241);
-        registerMainCycle(provider, Plutonium241, Americium);
-        registerMainCycle(provider, Americium, Curium);
-        registerMainCycle(provider, Curium, Berkelium);
-        registerMainCycle(provider, Berkelium, Californium);
-        registerMainCycle(provider, Californium, Einsteinium);
-        registerMainCycle(provider, Einsteinium, Fermium);
-        registerMainCycle(provider, Fermium, Mendelevium);
-
-        // curium - ev
-        // mendelevium - luv thermal centrifuge for waste
+        registerMainCycle(provider, Uranium238, Neptunium, VA[MV]);
+        registerMainCycle(provider, Neptunium, Plutonium241, VA[MV]);
+        registerMainCycle(provider, Plutonium241, Americium, VA[HV]);
+        registerMainCycle(provider, Americium, Curium, VA[HV]);
+        registerMainCycle(provider, Curium, Berkelium, VA[EV]);
+        registerMainCycle(provider, Berkelium, Californium, VA[EV]);
+        registerMainCycle(provider, Californium, Einsteinium, VA[IV]);
+        registerMainCycle(provider, Einsteinium, Fermium, VA[IV]);
+        registerMainCycle(provider, Fermium, Mendelevium, VA[LuV]);
+        registerMainCycle(provider, Mendelevium, Mendelevium, VA[LuV]);
+        // TODO - mendelevium waste cycle doesnt have uptier output -- duping for now
     }
-    public static List<String> fertileMaterials= Stream.of("uranium", "thorium")
-            .collect(Collectors.toList());
-    public static List<String> fissileMaterials = Stream.of("uranium_235", "plutonium_241", "americium", "neptunium",
-                    "curium", "berkelium", "californium", "einsteinium", "fermium", "mendelevium")
-            .collect(Collectors.toList());
 
     // Reactor - Depleted Uranium 238 Rod
     // LCR + Oxygen = Uranium 238 Oxide Rod
@@ -47,7 +42,7 @@ public class NuclearCycleRecipes {
     // Thermal Centrifuge = Neptunium Dust + Nuclear Waste(7.6%) + Uranium 238 Dust(30%)
     // Dehydrator +  Nuclear Waste = Lanthanide Group A Waste, Alkaline Waste, Metaloid Waste, etc
 
-    public static void registerMainCycle(Consumer<FinishedRecipe> provider, Material fissile, Material output) {
+    public static void registerMainCycle(Consumer<FinishedRecipe> provider, Material fissile, Material output, int thermalVoltage) {
         CHEMICAL_RECIPES.recipeBuilder(fissile.getName() + "_oxide_rod")
                 .inputItems(depletedRod, fissile, 1)
                 .inputFluids(Oxygen.getFluid(1000))
@@ -73,7 +68,7 @@ public class NuclearCycleRecipes {
                 .outputItems(dust, output, 1)
                 .chancedOutput(WASTE_NUCLEAR.asStack(), 1000, 0)
                 .chancedOutput(dust, fissile, 1, 3000, 0)
-                .duration(300).EUt(60)
+                .duration(300).EUt(thermalVoltage)
                 .save(provider);
     }
 

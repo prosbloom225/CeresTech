@@ -6,6 +6,8 @@ import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.LoaderType.FABRIC;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.LoaderType.FORGE;
+import static com.prosbloom.cerestech.data.NuclearReactorRecipes.fertileMaterials;
+import static com.prosbloom.cerestech.data.NuclearReactorRecipes.fissileMaterials;
 
 public class CTTagPrefixes {
     public static void init() {}
@@ -19,8 +21,8 @@ public class CTTagPrefixes {
             .materialIconType(MaterialIconType.stick)
             .unificationEnabled(true)
             .generateItem(true)
-            .generationCondition(mat->NuclearCycleRecipes.fissileMaterials.contains(mat.getName()) ||
-                    NuclearCycleRecipes.fertileMaterials.contains(mat.getName()));
+            .generationCondition(mat->fissileMaterials.contains(mat.getName()) ||
+                    fertileMaterials.contains(mat.getName()));
     public static final TagPrefix depletedOxideRod = new TagPrefix("depleted_oxide_rod")
             .defaultTagPath(FORGE, "depleted_oxide_rod/%s")
             .defaultTagPath(FABRIC, "%s_depleted_oxide_rod")
@@ -30,8 +32,8 @@ public class CTTagPrefixes {
             .materialIconType(MaterialIconType.stick)
             .unificationEnabled(true)
             .generateItem(true)
-            .generationCondition(mat->NuclearCycleRecipes.fissileMaterials.contains(mat.getName()) ||
-                    NuclearCycleRecipes.fertileMaterials.contains(mat.getName()));
+            .generationCondition(mat->fissileMaterials.contains(mat.getName()) ||
+                    fertileMaterials.contains(mat.getName()));
 
     public static final TagPrefix depletedFuelNitride = new TagPrefix("depleted_fuel_nitride")
             .defaultTagPath(FORGE, "depleted_fuel_nitride/%s")
@@ -42,8 +44,8 @@ public class CTTagPrefixes {
             .materialIconType(MaterialIconType.stick)
             .unificationEnabled(true)
             .generateItem(true)
-            .generationCondition(mat->NuclearCycleRecipes.fissileMaterials.contains(mat.getName()) ||
-                    NuclearCycleRecipes.fertileMaterials.contains(mat.getName()));
+            .generationCondition(mat->fissileMaterials.contains(mat.getName()) ||
+                    fertileMaterials.contains(mat.getName()));
 
     public static final TagPrefix waste = new TagPrefix("waste")
             .defaultTagPath(FORGE, "waste/%s")
@@ -54,6 +56,6 @@ public class CTTagPrefixes {
             .materialIconType(MaterialIconType.dustImpure)
             .unificationEnabled(true)
             .generateItem(true)
-            .generationCondition(mat->NuclearCycleRecipes.fissileMaterials.contains(mat.getName()) ||
-                    NuclearCycleRecipes.fertileMaterials.contains(mat.getName()));
+            .generationCondition(mat->fissileMaterials.contains(mat.getName()) ||
+                    fertileMaterials.contains(mat.getName()));
 }

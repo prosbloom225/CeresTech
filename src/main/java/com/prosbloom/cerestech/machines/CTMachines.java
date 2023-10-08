@@ -2,32 +2,22 @@ package com.prosbloom.cerestech.machines;
 
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.data.RotationState;
-import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
-import com.gregtechceu.gtceu.api.machine.MetaMachine;
 import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
-import com.gregtechceu.gtceu.api.machine.feature.multiblock.IRotorHolderMachine;
-import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern;
 import com.gregtechceu.gtceu.api.pattern.Predicates;
-import com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate;
-import com.gregtechceu.gtceu.api.pattern.predicates.SimplePredicate;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
-import com.gregtechceu.gtceu.common.data.*;
-import com.gregtechceu.gtceu.common.machine.multiblock.generator.LargeTurbineMachine;
-import com.gregtechceu.gtceu.common.machine.multiblock.steam.LargeBoilerMachine;
-import com.lowdragmc.lowdraglib.utils.BlockInfo;
+import com.gregtechceu.gtceu.common.data.GTCompassSections;
+import com.gregtechceu.gtceu.common.data.GTMachines;
+import com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
 import com.prosbloom.cerestech.data.CTRecipeTypes;
-import com.prosbloom.cerestech.data.CTRecipes;
 import com.prosbloom.cerestech.machines.multiblock.ReactorMachine;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.level.ItemLike;
 
-import static com.gregtechceu.gtceu.api.GTValues.*;
-import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.gear;
-import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
+import static com.gregtechceu.gtceu.api.GTValues.EV;
+import static com.gregtechceu.gtceu.api.GTValues.HV;
+import static com.gregtechceu.gtceu.api.pattern.Predicates.blocks;
+import static com.gregtechceu.gtceu.api.pattern.Predicates.controller;
 import static com.gregtechceu.gtceu.api.registry.GTRegistries.REGISTRATE;
-import static com.gregtechceu.gtceu.common.data.GCyMBlocks.CASING_STRESS_PROOF;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 
 public class CTMachines {

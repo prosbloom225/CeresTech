@@ -20,6 +20,9 @@
   "material.coolant": "FLiBe Coolant",
   "material.coolant_hot": "Hot FLiBe Coolant",
   "material.lithium_fluoride": "Lithium Fluoride",
-  "material.beryllium_fluoride": "Beryllium Fluoride"
+  "material.beryllium_fluoride": "Beryllium Fluoride",
+
+  "gtceu.multiblock.nuclear_reactor.fuel": "Fuel: %s",
+  "gtceu.multiblock.nuclear_reactor.coolant_output": "Coolant Output: %d"
 
 }

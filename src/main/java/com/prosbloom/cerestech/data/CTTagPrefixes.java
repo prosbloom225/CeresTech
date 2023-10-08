@@ -6,8 +6,7 @@ import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.LoaderType.FABRIC;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.LoaderType.FORGE;
-import static com.prosbloom.cerestech.data.NuclearReactorRecipes.fertileMaterials;
-import static com.prosbloom.cerestech.data.NuclearReactorRecipes.fissileMaterials;
+import static com.prosbloom.cerestech.data.NuclearReactorRecipes.*;
 
 public class CTTagPrefixes {
     public static void init() {}
@@ -51,22 +50,22 @@ public class CTTagPrefixes {
             .generationCondition(mat->fissileMaterials.contains(mat.getName()) ||
                     fertileMaterials.contains(mat.getName()));
 
-    public static final TagPrefix depletedRod = new TagPrefix("depleted_rod")
-            .defaultTagPath(FORGE, "depleted_rod/%s")
-            .defaultTagPath(FABRIC, "%s_depleted_rod")
-            .unformattedTagPath(FORGE, "depleted_rod")
-            .unformattedTagPath(FABRIC, "depleted_rod")
+    public static final TagPrefix depletedFuel = new TagPrefix("depleted_fuel")
+            .defaultTagPath(FORGE, "depleted_fuel/%s")
+            .defaultTagPath(FABRIC, "%s_depleted_fuel")
+            .unformattedTagPath(FORGE, "depleted_fuel")
+            .unformattedTagPath(FABRIC, "depleted_fuel")
             .materialAmount(GTValues.M)
             .materialIconType(materialIconFuelDepleted)
             .unificationEnabled(true)
             .generateItem(true)
             .generationCondition(mat->fissileMaterials.contains(mat.getName()) ||
-                    fertileMaterials.contains(mat.getName()));
-    public static final TagPrefix depletedOxideRod = new TagPrefix("depleted_oxide_rod")
-            .defaultTagPath(FORGE, "depleted_oxide_rod/%s")
-            .defaultTagPath(FABRIC, "%s_depleted_oxide_rod")
-            .unformattedTagPath(FORGE, "depleted_oxide_rod")
-            .unformattedTagPath(FABRIC, "depleted_oxide_rod")
+                   fertileMaterials.contains(mat.getName()));
+    public static final TagPrefix depletedFuelOxide = new TagPrefix("depleted_fuel_oxide")
+            .defaultTagPath(FORGE, "depleted_fuel_oxide/%s")
+            .defaultTagPath(FABRIC, "%s_depleted_fuel_oxide")
+            .unformattedTagPath(FORGE, "depleted_fuel_oxide")
+            .unformattedTagPath(FABRIC, "depleted_fuel_oxide")
             .materialAmount(GTValues.M)
             .materialIconType(materialIconFuelDepleted)
             .unificationEnabled(true)

@@ -4,14 +4,9 @@ import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import com.gregtechceu.gtceu.common.data.GTItems;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
-import com.prosbloom.cerestech.machines.CTMachines;
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.world.item.ItemStack;
 
-import java.util.List;
 import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.dust;
@@ -54,13 +49,13 @@ public class NuclearCycleRecipes {
 
     public static void registerMainCycle(Consumer<FinishedRecipe> provider, Material fissile, Material output, int thermalVoltage) {
         CHEMICAL_RECIPES.recipeBuilder(fissile.getName() + "_oxide_rod")
-                .inputItems(depletedRod, fissile, 1)
+                .inputItems(depletedFuel, fissile, 1)
                 .inputFluids(Oxygen.getFluid(1000))
-                .outputItems(depletedOxideRod, fissile, 1)
+                .outputItems(depletedFuelOxide, fissile, 1)
                 .duration(300).EUt(30)
                 .save(provider);
         CHEMICAL_RECIPES.recipeBuilder(fissile.getName() + "_depleted_fuel_nitrate")
-                .inputItems(depletedOxideRod, fissile, 1)
+                .inputItems(depletedFuelOxide, fissile, 1)
                 .inputFluids(NitricAcid.getFluid(1000))
                 .notConsumable(dust, GTMaterials.FerriteMixture)
                 .notConsumable(dust, GTMaterials.Boron)

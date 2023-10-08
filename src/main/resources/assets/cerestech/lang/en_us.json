@@ -5,8 +5,8 @@
   "block.gtceu.tree_farm": "Tree Farm",
   "gtceu.tree_farm": "Tree Farm",
 
-  "tagprefix.depleted_rod": "Depleted %s Rod",
-  "tagprefix.depleted_oxide_rod": "%s Depleted Fuel Oxide Rod",
+  "tagprefix.depleted_fuel": "Depleted %s Fuel",
+  "tagprefix.depleted_fuel_oxide": "%s Depleted Fuel Oxide",
   "tagprefix.waste": "%s Waste",
   "tagprefix.fuel_pure": "%s Fuel Pure",
   "tagprefix.fuel_oxide": "%s Fuel Oxide",

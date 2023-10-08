@@ -12,6 +12,7 @@ import com.gregtechceu.gtceu.common.data.GTElements;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.METALLIC;
+import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.SHINY;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.EXT_METAL;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.Neptunium;
 
@@ -22,7 +23,7 @@ public class CTMaterials {
         GTMaterials.Neptunium = new Material.Builder("neptunium")
                 .ingot(3)
                 .fluid(FluidStorageKeys.LIQUID, new FluidBuilder().temperature(1405))
-                .color(0x284D7B).iconSet(METALLIC)
+                .color(0x284D7B).iconSet(SHINY)
                 .appendFlags(EXT_METAL)
                 .element(GTElements.Np)
                 .buildAndRegister();
@@ -31,7 +32,7 @@ public class CTMaterials {
         GTMaterials.Curium = new Material.Builder("curium")
                 .ingot(3)
                 .fluid(FluidStorageKeys.LIQUID, new FluidBuilder().temperature(1406))
-                .color(0x7B544E).iconSet(METALLIC)
+                .color(0x7B544E).iconSet(SHINY)
                 .appendFlags(EXT_METAL)
                 .element(GTElements.Cm)
                 .buildAndRegister();
@@ -40,7 +41,7 @@ public class CTMaterials {
         GTMaterials.Berkelium = new Material.Builder("berkelium")
                 .ingot(3)
                 .fluid(FluidStorageKeys.LIQUID, new FluidBuilder().temperature(1407))
-                .color(0x645A88).iconSet(METALLIC)
+                .color(0x645A88).iconSet(SHINY)
                 .appendFlags(EXT_METAL)
                 .element(GTElements.Bk)
                 .buildAndRegister();
@@ -49,7 +50,7 @@ public class CTMaterials {
         GTMaterials.Californium = new Material.Builder("californium")
                 .ingot(3)
                 .fluid(FluidStorageKeys.LIQUID, new FluidBuilder().temperature(1408))
-                .color(0xA85A12).iconSet(METALLIC)
+                .color(0xA85A12).iconSet(SHINY)
                 .appendFlags(EXT_METAL)
                 .element(GTElements.Cf)
                 .buildAndRegister();
@@ -58,7 +59,7 @@ public class CTMaterials {
         GTMaterials.Einsteinium = new Material.Builder("einsteinium")
                 .ingot(3)
                 .fluid(FluidStorageKeys.LIQUID, new FluidBuilder().temperature(1409))
-                .color(0xCE9F00).iconSet(METALLIC)
+                .color(0xCE9F00).iconSet(SHINY)
                 .appendFlags(EXT_METAL)
                 .element(GTElements.Es)
                 .buildAndRegister();
@@ -67,7 +68,7 @@ public class CTMaterials {
         GTMaterials.Fermium = new Material.Builder("fermium")
                 .ingot(3)
                 .fluid(FluidStorageKeys.LIQUID, new FluidBuilder().temperature(1410))
-                .color(0x984ACF).iconSet(METALLIC)
+                .color(0x984ACF).iconSet(SHINY)
                 .appendFlags(EXT_METAL)
                 .element(GTElements.Fm)
                 .buildAndRegister();
@@ -77,7 +78,7 @@ public class CTMaterials {
         GTMaterials.Mendelevium= new Material.Builder("mendelevium")
                 .ingot(3)
                 .fluid(FluidStorageKeys.LIQUID, new FluidBuilder().temperature(1411))
-                .color(0x1D4ACF).iconSet(METALLIC)
+                .color(0x1D4ACF).iconSet(SHINY)
                 .appendFlags(EXT_METAL)
                 .element(GTElements.Fm)
                 .buildAndRegister();

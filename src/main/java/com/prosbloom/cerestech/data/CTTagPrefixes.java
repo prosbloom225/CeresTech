@@ -12,13 +12,17 @@ import static com.prosbloom.cerestech.data.NuclearReactorRecipes.fissileMaterial
 public class CTTagPrefixes {
     public static void init() {}
 
+    public static final MaterialIconType materialIconFuelPure = new MaterialIconType("fuel_pure");
+    public static final MaterialIconType materialIconFuelDepleted = new MaterialIconType("fuel_depleted");
+    public static final MaterialIconType materialIconWaste = new MaterialIconType("waste");
+
     public static final TagPrefix depletedRod = new TagPrefix("depleted_rod")
             .defaultTagPath(FORGE, "depleted_rod/%s")
             .defaultTagPath(FABRIC, "%s_depleted_rod")
             .unformattedTagPath(FORGE, "depleted_rod")
             .unformattedTagPath(FABRIC, "depleted_rod")
             .materialAmount(GTValues.M)
-            .materialIconType(MaterialIconType.stick)
+            .materialIconType(materialIconFuelDepleted)
             .unificationEnabled(true)
             .generateItem(true)
             .generationCondition(mat->fissileMaterials.contains(mat.getName()) ||
@@ -29,7 +33,7 @@ public class CTTagPrefixes {
             .unformattedTagPath(FORGE, "depleted_oxide_rod")
             .unformattedTagPath(FABRIC, "depleted_oxide_rod")
             .materialAmount(GTValues.M)
-            .materialIconType(MaterialIconType.stick)
+            .materialIconType(materialIconFuelDepleted)
             .unificationEnabled(true)
             .generateItem(true)
             .generationCondition(mat->fissileMaterials.contains(mat.getName()) ||
@@ -41,7 +45,7 @@ public class CTTagPrefixes {
             .unformattedTagPath(FORGE, "depleted_fuel_nitride")
             .unformattedTagPath(FABRIC, "depleted_fuel_nitride")
             .materialAmount(GTValues.M)
-            .materialIconType(MaterialIconType.stick)
+            .materialIconType(materialIconFuelDepleted)
             .unificationEnabled(true)
             .generateItem(true)
             .generationCondition(mat->fissileMaterials.contains(mat.getName()) ||
@@ -53,7 +57,7 @@ public class CTTagPrefixes {
             .unformattedTagPath(FORGE, "waste")
             .unformattedTagPath(FABRIC, "waste")
             .materialAmount(GTValues.M)
-            .materialIconType(MaterialIconType.dustImpure)
+            .materialIconType(materialIconWaste)
             .unificationEnabled(true)
             .generateItem(true)
             .generationCondition(mat->fissileMaterials.contains(mat.getName()) ||

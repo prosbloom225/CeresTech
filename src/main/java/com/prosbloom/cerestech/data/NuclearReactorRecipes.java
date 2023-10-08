@@ -19,6 +19,8 @@ public class NuclearReactorRecipes {
     public static List<String> fissileMaterials = Stream.of("uranium_235", "plutonium_241", "americium", "neptunium",
                     "curium", "berkelium", "californium", "einsteinium", "fermium", "mendelevium")
             .collect(Collectors.toList());
+    // TODO - need to add reactor recipes dynamically - scale heat/steam output with tier
+    // TODO - breeder reactor
     public static void registerNuclearReactorRecipes(Consumer<FinishedRecipe> provider) {
         NUCLEAR_REACTOR_RECIPES.recipeBuilder("u238_pu239")
                 .inputItems(rod, GTMaterials.Uranium238, 9)

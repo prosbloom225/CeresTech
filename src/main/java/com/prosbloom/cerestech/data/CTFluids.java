@@ -18,14 +18,14 @@ public class CTFluids {
 
     }
 
-    // TODO - nitrate solution to nitride
-    /*
-    public static Material Uranium238FuelNitrate = new Material.Builder("uranium_238_fuel_nitrate")
-            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder().temperature(100))
-            .color(0x32F032).iconSet(MaterialIconSet.FLUID)
-            .element(GTElements.U238)
+    public static Material Coolant = new Material.Builder("coolant")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x328BA8).iconSet(MaterialIconSet.FLUID)
             .buildAndRegister();
 
-     */
+    public static Material CoolantHot = new Material.Builder("coolant_hot")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x6124BD).iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
 
 }

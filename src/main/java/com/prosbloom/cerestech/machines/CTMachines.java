@@ -10,7 +10,9 @@ import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
 import com.gregtechceu.gtceu.common.data.GTCompassSections;
 import com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
 import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
+import com.gregtechceu.gtceu.common.machine.multiblock.steam.LargeBoilerMachine;
 import com.prosbloom.cerestech.data.CTRecipeTypes;
+import com.prosbloom.cerestech.machines.multiblock.ReactorMachine;
 
 import static com.gregtechceu.gtceu.api.GTValues.EV;
 import static com.gregtechceu.gtceu.api.GTValues.HV;
@@ -47,7 +49,7 @@ public class CTMachines {
             .compassNodeSelf()
             .register();
 
-    public static MultiblockMachineDefinition NUCLEAR_REACTOR = REGISTRATE.multiblock("nuclear_reactor", WorkableElectricMultiblockMachine::new)
+    public static MultiblockMachineDefinition NUCLEAR_REACTOR = REGISTRATE.multiblock("nuclear_reactor", holder-> new ReactorMachine(holder, 1, 1))
             .langValue("Nuclear Reactor")
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(CTRecipeTypes.NUCLEAR_REACTOR_RECIPES)

@@ -16,7 +16,7 @@ import static com.prosbloom.cerestech.data.CTTagPrefixes.fuelOxide;
 
 public class NuclearReactorRecipes {
 
-    private static final List<ReactorFuel> reactorFuels = Stream.of(
+    public static final List<ReactorFuel> reactorFuels = Stream.of(
             new ReactorFuel("uranium_235", 23, 22),
             new ReactorFuel("plutonium_241", 29, 28),
             new ReactorFuel("americium", 31, 30),
@@ -49,21 +49,24 @@ public class NuclearReactorRecipes {
                         .duration(100)
                         // TODO - when done testing
                         //.duration(16000)
-                        // TODO - scale heat according to i
                         .EUt(r.voltage*i)
                         .save(provider);
         }
     }
 
-    private static class ReactorFuel{
+    public static class ReactorFuel{
+        public String name;
         public Material material;
         public int voltage;
         public int heat;
 
         public ReactorFuel(String name, int voltage, int heat) {
+            this.name = name;
             this.voltage = voltage;
             this.heat = heat;
             this.material = GTRegistries.MATERIALS.get(name);
         }
+        public String getName() { return this.name;}
+        public int getHeat() { return this.heat;}
     }
 }

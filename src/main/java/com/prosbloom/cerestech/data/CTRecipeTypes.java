@@ -20,7 +20,7 @@ public class CTRecipeTypes {
             .prepareBuilder(recipeBuilder -> recipeBuilder.EUt(GTValues.VA[GTValues.MV]))
             .setSound(GTSoundEntries.COOLING);
 
-    public final static GTRecipeType NUCLEAR_REACTOR_RECIPES = register("nuclear_reactor", MULTIBLOCK).setMaxIOSize(3, 2, 0, 0)
+    public final static GTRecipeType NUCLEAR_REACTOR_RECIPES = register("nuclear_reactor", MULTIBLOCK).setMaxIOSize(3, 2, 1, 1)
             .setEUIO(IO.IN)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
             .setSlotOverlay(false, false, false, GuiTextures.ATOMIC_OVERLAY_1)

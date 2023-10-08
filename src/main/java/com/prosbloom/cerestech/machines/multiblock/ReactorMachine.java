@@ -29,6 +29,7 @@ import static com.prosbloom.cerestech.data.recipes.NuclearReactorRecipes.reactor
 public class ReactorMachine extends LargeBoilerMachine {
     private String fuel;
     private int maxDrain;
+    private int coolantScaler = 30;
     public ReactorMachine(IMachineBlockEntity holder, int maxTemperature, int heatSpeed, Object... args) {
         super(holder, maxTemperature, heatSpeed, args);
     }
@@ -45,7 +46,7 @@ public class ReactorMachine extends LargeBoilerMachine {
                         .filter(f-> fuel.equals(f.getName() + "_fuel_oxide"))
                         .findAny().orElse(null);
                 if (rf != null) {
-                    maxDrain = 55 * rf.getHeat() * count;
+                    maxDrain = coolantScaler * rf.getHeat() * count;
                 }
 
                 // TODO - Dynamically pull from hct recipeList

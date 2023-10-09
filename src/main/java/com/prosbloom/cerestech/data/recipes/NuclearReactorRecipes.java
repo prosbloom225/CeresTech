@@ -70,6 +70,7 @@ public class NuclearReactorRecipes {
             return isotopeFuelPure;
         }
 
+        // TODO - decay chamber and recipes for isotopeDecay
         public Material getIsotopeDecay() {
             return isotopeDecay;
         }

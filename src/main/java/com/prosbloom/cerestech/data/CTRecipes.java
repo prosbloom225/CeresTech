@@ -40,9 +40,6 @@ public class CTRecipes {
         TreeFarmRecipes.registerTreeFarmRecipes(provider);
         NuclearReactorRecipes.registerNuclearReactorRecipes(provider);
         NuclearCycleRecipes.registerNuclearCycleRecipes(provider);
-        NuclearCycleRecipes.registerCentrifugeCycle(provider);
-        NuclearCycleRecipes.registerNuclearFuelCycleRecipes(provider);
-        NuclearCycleRecipes.registerWasteProducts(provider);
     }
 
     private static void registerManualRecipes(Consumer<FinishedRecipe> provider) {

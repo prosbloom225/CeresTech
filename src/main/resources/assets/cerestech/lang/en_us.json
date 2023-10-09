@@ -8,6 +8,9 @@
   "block.gtceu.hot_coolant_turbine": "Hot Coolant Turbine",
   "gtceu.hot_coolant_turbine": "Hot Coolant Turbine(HCT)",
 
+  "block.gtceu.gas_centrifuge": "Gas Centrifuge",
+  "gtceu.gas_centrifuge": "Gas Centrifuge",
+
   "block.gtceu.lv_dehydrator": "Basic Chemical Dehydrator",
   "block.gtceu.mv_dehydrator": "Advanced Chemical Dehydrator",
   "block.gtceu.hv_dehydrator": "Advanced Chemical Dehydrator II",
@@ -27,6 +30,8 @@
   "tagprefix.dust_oxide": "%s Oxide",
   "tagprefix.dust_nitrite": "%s Nitrite",
   "tagprefix.dust_dioxide": "%s Dioxide",
+  "tagprefix.hexachloride": "%s Hexachloride",
+  "tagprefix.hexafluoride": "%s Hexafluoride",
   "material.uranium_238_fuel_nitrate": "Uranium 238 Fuel Nitrate",
 
   "item.gtceu.waste_nuclear": "Nuclear Waste",

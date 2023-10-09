@@ -16,23 +16,13 @@ import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
 import static com.prosbloom.cerestech.data.CTItems.*;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.DEHYDRATOR_RECIPES;
 import static com.prosbloom.cerestech.data.CTTagPrefixes.*;
-import static com.prosbloom.cerestech.data.recipes.NuclearReactorRecipes.fertileMaterials;
-import static com.prosbloom.cerestech.data.recipes.NuclearReactorRecipes.fissileMaterials;
+import static com.prosbloom.cerestech.data.recipes.NuclearReactorRecipes.*;
 
 public class NuclearCycleRecipes {
     public static void registerNuclearCycleRecipes(Consumer<FinishedRecipe> provider){
-        registerMainCycle(provider, Uranium235, Neptunium, VA[MV]);
-        registerMainCycle(provider, Uranium238, Neptunium, VA[MV]);
-        registerMainCycle(provider, Neptunium, Plutonium241, VA[MV]);
-        registerMainCycle(provider, Plutonium241, Americium, VA[HV]);
-        registerMainCycle(provider, Americium, Curium, VA[HV]);
-        registerMainCycle(provider, Curium, Berkelium, VA[EV]);
-        registerMainCycle(provider, Berkelium, Californium, VA[EV]);
-        registerMainCycle(provider, Californium, Einsteinium, VA[IV]);
-        registerMainCycle(provider, Einsteinium, Fermium, VA[IV]);
-        registerMainCycle(provider, Fermium, Mendelevium, VA[LuV]);
-        registerMainCycle(provider, Mendelevium, Mendelevium, VA[LuV]);
-        // TODO - mendelevium waste cycle doesnt have uptier output -- duping for now
+        for (ReactorFuel rf : reactorFuels) {
+            registerMainCycle(provider, rf.baseElement, rf.uptierMaterial, rf.voltage);
+        }
     }
     public static void registerNuclearFuelCycleRecipes(Consumer<FinishedRecipe> provider) {
         for (String s: fertileMaterials)
@@ -41,6 +31,23 @@ public class NuclearCycleRecipes {
             registerFuelCycle(provider, GTRegistries.MATERIALS.get(s));
     }
 
+    // --- Centrifuge Cycle
+    // LCR + Dust + Nitric Acid*2000 = Uranium Nitrate*3 + Hydrogen*2000
+    // EBf *3 = Uranium Dioxide + Nitric Oxide*2000
+    // LCR + Chlorine*6000 = Uranium Hexachloride + Oxygen*2000
+    // LCR + Hydrofluoric Acid*6000 = Uranium Hexafluoride*1000 + Hydrochloric Acid*6000
+    // Gas Centrifuge 20000 = 234*29,235*200,238*19780 Hexafluoride
+    // Cracker + Steam*3000 = Steam Cracked 234,234,235 Hexafluoride*1000
+    // EBF + 0 = Uranium 234,235,238 Dioxide*3 + Hydrofluoric Acid*6000
+    // EBF = Uranium 234,235,238 Ingot + Oxygen*2000
+    public static void registerCentrifugeCycle(Consumer<FinishedRecipe> provider) {
+
+    }
+
+
+
+
+    // --- Depleted Cycle
     // Reactor - Depleted Uranium 238 Rod
     // LCR + Oxygen = Uranium 238 Oxide Rod
     // LCR + Nitric Acid + Boron Dust(noconsume) = Uranium 238 Depleted Fuel Nitrate Solution
@@ -48,7 +55,6 @@ public class NuclearCycleRecipes {
     // Electrolyzer = Uranium Waste + Oxygen
     // Thermal Centrifuge = Neptunium Dust + Nuclear Waste(7.6%) + Uranium 238 Dust(30%)
     // Dehydrator +  Nuclear Waste = Lanthanide Group A Waste, Alkaline Waste, Metaloid Waste, etc
-
     public static void registerMainCycle(Consumer<FinishedRecipe> provider, Material fissile, Material output, int thermalVoltage) {
         CHEMICAL_RECIPES.recipeBuilder(fissile.getName() + "_depleted_fuel")
                 .inputItems(depletedFuel, fissile, 1)
@@ -100,7 +106,7 @@ public class NuclearCycleRecipes {
                 .save(provider);
     }
 
-    public static void registerWasteCycle(Consumer<FinishedRecipe> provider) {
+    public static void registerWasteProducts(Consumer<FinishedRecipe> provider) {
         DEHYDRATOR_RECIPES.recipeBuilder("dehydrator_nuclear_waste")
                 .inputItems(WASTE_NUCLEAR, 1)
                 .chancedOutput(WASTE_LANTHANIDE_GROUP_A.asStack(), 1000, 1)

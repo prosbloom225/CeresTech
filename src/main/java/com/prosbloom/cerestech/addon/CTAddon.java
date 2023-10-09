@@ -18,6 +18,7 @@ public class CTAddon implements IGTAddon{
     @Override
     public void initializeAddon() {
         CTItems.init();
+        CTElements.init();
         LOGGER.info("CTAddon init!");
     }
 

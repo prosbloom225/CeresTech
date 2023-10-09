@@ -43,7 +43,7 @@ public class ReactorMachine extends LargeBoilerMachine {
                 fuel = ((SizedIngredientImpl) recipeLogic.getLastRecipe().getInputContents(ItemRecipeCapability.CAP).get(0).content).getInner().getItems()[0].getItem().toString();
                 int count = ((IntTag) ((SizedIngredientImpl) recipeLogic.getLastRecipe().getInputContents(ItemRecipeCapability.CAP).get(1).content).getInner().getItems()[0].getTag().get("Configuration")).getAsInt();
                 NuclearReactorRecipes.ReactorFuel rf = reactorFuels.stream()
-                        .filter(f-> fuel.equals(f.getName() + "_fuel_oxide"))
+                        .filter(f-> fuel.equals(f.isotopeFuelOxide.getName() + "_fuel_oxide"))
                         .findAny().orElse(null);
                 if (rf != null) {
                     maxDrain = coolantScaler * rf.getHeat() * count;

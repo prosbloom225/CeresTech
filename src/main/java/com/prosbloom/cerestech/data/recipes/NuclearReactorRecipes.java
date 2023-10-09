@@ -18,7 +18,7 @@ import static com.prosbloom.cerestech.data.CTTagPrefixes.fuelOxide;
 public class NuclearReactorRecipes {
 
     public static final List<ReactorFuel> reactorFuels = Stream.of(
-            new ReactorFuel(Uranium238, Uranium238, Uranium235, Uranium234, Neptunium, VA[MV], 22),
+            new ReactorFuel(Uranium238, Uranium235, Uranium238, Uranium234, Neptunium, VA[MV], 22),
             //237*10000, 239*6000, 235*4000
             new ReactorFuel(Neptunium, Neptunium237, Neptunium239, Neptunium235, Plutonium241, VA[MV], 24),
             //241*200, 244*19780, 240*20
@@ -46,7 +46,7 @@ public class NuclearReactorRecipes {
     public static void registerNuclearReactorRecipes(Consumer<FinishedRecipe> provider) {
         for (ReactorFuel r: reactorFuels) {
             for (int i=1; i<9; i++)
-                NUCLEAR_REACTOR_RECIPES.recipeBuilder(r.getName() + "_reactor_" +i)
+                NUCLEAR_REACTOR_RECIPES.recipeBuilder(r.isotopeFuelOxide.getName() + "_reactor_" +i)
                         .inputItems(fuelOxide, r.isotopeFuelOxide, i)
                         .circuitMeta(i)
                         .outputItems(depletedFuel, r.isotopeFuelOxide, i)
@@ -60,7 +60,6 @@ public class NuclearReactorRecipes {
     }
 
     public static class ReactorFuel{
-        public String name;
         public Material baseElement;
 
         public Material getIsotopeFuelOxide() {
@@ -87,8 +86,7 @@ public class NuclearReactorRecipes {
                            Material isotopeFuelPure,
                            Material isotopeDecay,
                            Material uptierMaterial, int voltage, int heat) {
-            this.name = baseElement.getName();
-            this.baseElement = GTRegistries.MATERIALS.get(name);
+            this.baseElement = baseElement;
             this.uptierMaterial = uptierMaterial;
             this.isotopeFuelOxide = isotopeFuelOxide;
             this.isotopeFuelPure = isotopeFuelPure;
@@ -96,7 +94,6 @@ public class NuclearReactorRecipes {
             this.voltage = voltage;
             this.heat = heat;
         }
-        public String getName() { return this.name;}
         public int getHeat() { return this.heat;}
     }
 }

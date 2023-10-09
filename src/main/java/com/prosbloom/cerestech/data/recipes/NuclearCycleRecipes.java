@@ -11,8 +11,7 @@ import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.ingot;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
 import static com.prosbloom.cerestech.data.CTItems.*;
-import static com.prosbloom.cerestech.data.CTRecipeTypes.DEHYDRATOR_RECIPES;
-import static com.prosbloom.cerestech.data.CTRecipeTypes.GAS_CENTRIFUGE_RECIPES;
+import static com.prosbloom.cerestech.data.CTRecipeTypes.*;
 import static com.prosbloom.cerestech.data.CTTagPrefixes.*;
 import static com.prosbloom.cerestech.data.recipes.NuclearReactorRecipes.*;
 
@@ -22,6 +21,7 @@ public class NuclearCycleRecipes {
             registerFuelCycle(provider, rf);
             registerMainCycle(provider, rf);
             registerCentrifugeCycle(provider, rf);
+            registerDecayChamberRecipes(provider, rf);
         }
         //registerCentrifugeCycle(provider, reactorFuels.get(0));
         registerWasteProducts(provider);
@@ -204,6 +204,13 @@ public class NuclearCycleRecipes {
                 .notConsumable(GTItems.SHAPE_MOLD_BALL)
                 .outputItems(fuelOxide, rf.isotopeFuelOxide, 1)
                 .duration(200).EUt(30)
+                .save(provider);
+    }
+    private static void registerDecayChamberRecipes(Consumer<FinishedRecipe> provider, ReactorFuel rf) {
+        DECAY_CHAMBER_RECIPES.recipeBuilder(rf.isotopeDecay.getName() + "_decay")
+                .inputItems(fuelOxide,  rf.isotopeDecay, 1)
+                .outputItems(dust, rf.uptierMaterial, 1)
+                .duration(600).EUt(30)
                 .save(provider);
     }
 

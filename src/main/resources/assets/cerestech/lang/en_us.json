@@ -29,7 +29,7 @@
   "block.gtceu.luv_decay_chamber": "Elite Decay Chamber II",
   "block.gtceu.zpm_decay_chamber": "Elite Decay Chamber III",
   "block.gtceu.uv_decay_chamber": "Ultimate Decay Chamber",
-  "gtceu.dehydrator": "Decay Chamber",
+  "gtceu.decay_chamber": "Decay Chamber",
 
   "tagprefix.depleted_fuel": "Depleted %s Fuel",
   "tagprefix.depleted_fuel_oxide": "%s Depleted Fuel Oxide",

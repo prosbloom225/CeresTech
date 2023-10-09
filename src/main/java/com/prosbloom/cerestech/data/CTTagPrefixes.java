@@ -48,7 +48,11 @@ public class CTTagPrefixes {
             .unificationEnabled(true)
             .generateItem(true)
             .generationCondition(mat-> reactorFuels.stream()
-                    .filter(rf->mat.getName().equals(rf.isotopeFuelOxide.getName())).findAny().orElse(null) != null);
+                    .filter(rf->
+                                    (mat.getName().equals(rf.baseElement.getName())
+                                            || mat.getName().equals(rf.isotopeFuelOxide.getName())
+                                            || mat.getName().equals(rf.isotopeDecay.getName()))
+                    ).findAny().orElse(null) != null);
 
     public static final TagPrefix depletedFuel = new TagPrefix("depleted_fuel")
             .defaultTagPath(FORGE, "depleted_fuel/%s")
@@ -124,7 +128,6 @@ public class CTTagPrefixes {
                                             || mat.getName().equals(rf.isotopeFuelOxide.getName())
                                             || mat.getName().equals(rf.isotopeFuelPure.getName())
                                             || mat.getName().equals(rf.isotopeDecay.getName()))
-                            //&& !mat.getName().equals("uranium")
                     ).findAny().orElse(null) != null);
 
     public static final TagPrefix hexachloride = new TagPrefix("hexachloride")
@@ -153,6 +156,5 @@ public class CTTagPrefixes {
                                     || mat.getName().equals(rf.isotopeFuelOxide.getName())
                                     || mat.getName().equals(rf.isotopeFuelPure.getName())
                                     || mat.getName().equals(rf.isotopeDecay.getName()))
-                            //&& !mat.getName().equals("uranium")
                     ).findAny().orElse(null) != null);
 }

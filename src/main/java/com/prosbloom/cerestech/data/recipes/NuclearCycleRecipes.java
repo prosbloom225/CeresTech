@@ -1,9 +1,6 @@
 package com.prosbloom.cerestech.data.recipes;
 
-import com.gregtechceu.gtceu.api.data.chemical.material.Material;
-import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import com.gregtechceu.gtceu.common.data.GTItems;
-import com.gregtechceu.gtceu.common.data.GTMaterials;
 import net.minecraft.data.recipes.FinishedRecipe;
 
 import java.util.function.Consumer;
@@ -13,8 +10,6 @@ import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.dust;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.ingot;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
-import static com.prosbloom.cerestech.data.CTFluids.Coolant;
-import static com.prosbloom.cerestech.data.CTFluids.CoolantHot;
 import static com.prosbloom.cerestech.data.CTItems.*;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.DEHYDRATOR_RECIPES;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.GAS_CENTRIFUGE_RECIPES;
@@ -26,8 +21,9 @@ public class NuclearCycleRecipes {
         for (ReactorFuel rf : reactorFuels) {
             registerFuelCycle(provider, rf);
             registerMainCycle(provider, rf);
+            registerCentrifugeCycle(provider, rf);
         }
-        registerCentrifugeCycle(provider, reactorFuels.get(0));
+        //registerCentrifugeCycle(provider, reactorFuels.get(0));
         registerWasteProducts(provider);
     }
 
@@ -74,15 +70,44 @@ public class NuclearCycleRecipes {
                 .EUt(VA[LV])
                 .duration(200)
                 .save(provider);
-        GAS_CENTRIFUGE_RECIPES.recipeBuilder(rf.baseElement.getName() + "_hexafluoride")
-                .inputItems(hexafluoride, rf.baseElement, 20)
-                .inputFluids(Steam.getFluid(20000))
-                .outputItems(hexafluoride, rf.isotopeFuelOxide, 1)
-                .outputItems(hexafluoride, rf.isotopeFuelPure, 1)
-                .outputItems(hexafluoride, rf.isotopeDecay, 1)
-                .outputFluids(Water.getFluid(20000))
-                .EUt(VA[EV])
-                .duration(600)
+        // every other cycle has smaller fuel oxide outputs
+        if (rf.largeFuelOxide)
+            GAS_CENTRIFUGE_RECIPES.recipeBuilder(rf.baseElement.getName() + "_hexafluoride")
+                    .inputItems(hexafluoride, rf.baseElement, 20)
+                    .inputFluids(Steam.getFluid(20000))
+                    .chancedOutput(hexafluoride, rf.isotopeFuelOxide, 10, 10000, 0)
+                    .chancedOutput(hexafluoride, rf.isotopeFuelPure, 6, 10000, 0)
+                    .chancedOutput(hexafluoride, rf.isotopeDecay, 4, 10000, 0)
+                    .outputFluids(Water.getFluid(20000))
+                    .EUt(VA[EV])
+                    .duration(600)
+                    .save(provider);
+        else
+            GAS_CENTRIFUGE_RECIPES.recipeBuilder(rf.baseElement.getName() + "_hexafluoride")
+                    .inputItems(hexafluoride, rf.baseElement, 20)
+                    .inputFluids(Steam.getFluid(20000))
+                    .chancedOutput(hexafluoride, rf.isotopeFuelOxide, 1, 2000, 1000)
+                    .chancedOutput(hexafluoride, rf.isotopeFuelPure, 19, 10000, 1000)
+                    .chancedOutput(hexafluoride, rf.isotopeDecay, 1, 200, 1000)
+                    .outputFluids(Water.getFluid(20000))
+                    .EUt(VA[EV])
+                    .duration(600)
+                    .save(provider);
+        BLAST_RECIPES.recipeBuilder(rf.baseElement.getName() + "_isotope_dioxide")
+                .inputItems(hexafluoride, rf.isotopeFuelOxide, 1)
+                .outputItems(dustDioxide, rf.isotopeFuelOxide, 3)
+                .outputFluids(HydrofluoricAcid.getFluid(2000))
+                .blastFurnaceTemp(600)
+                .EUt(VA[MV])
+                .duration(700)
+                .save(provider);
+        BLAST_RECIPES.recipeBuilder(rf.baseElement.getName() + "_isotope_ingot")
+                .inputItems(dustDioxide, rf.isotopeFuelOxide, 3)
+                .outputItems(ingot, rf.isotopeFuelOxide, 1)
+                .outputFluids(Oxygen.getFluid(2000))
+                .blastFurnaceTemp(1100)
+                .EUt(VA[MV])
+                .duration(700)
                 .save(provider);
 
     }

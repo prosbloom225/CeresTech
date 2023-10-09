@@ -1,7 +1,6 @@
 package com.prosbloom.cerestech.data.recipes;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
-import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import net.minecraft.data.recipes.FinishedRecipe;
 
 import java.util.List;
@@ -18,25 +17,16 @@ import static com.prosbloom.cerestech.data.CTTagPrefixes.fuelOxide;
 public class NuclearReactorRecipes {
 
     public static final List<ReactorFuel> reactorFuels = Stream.of(
-            new ReactorFuel(Uranium238, Uranium235, Uranium238, Uranium234, Neptunium, VA[MV], 22),
-            //237*10000, 239*6000, 235*4000
-            new ReactorFuel(Neptunium, Neptunium237, Neptunium239, Neptunium235, Plutonium241, VA[MV], 24),
-            //241*200, 244*19780, 240*20
-            new ReactorFuel(Plutonium241, Plutonium241, Plutonium244, Plutonium240, Americium,VA[HV], 28),
-            // 243*10000, 245*6000, 241*4000
-            new ReactorFuel(Americium, Americium243, Americium245, Americium241, Curium, VA[HV], 30),
-            //247*200, 250*19780, 246*20
-            new ReactorFuel(Curium, Curium247, Curium250, Curium246, Berkelium, VA[HV], 34),
-            // 249*10000, 251*6000, 247*4000
-            new ReactorFuel(Berkelium, Berkelium249, Berkelium251, Berkelium247, Californium, VA[EV], 36),
-            //253*200, 252*19780, 256*20
-            new ReactorFuel(Californium, Californium253, Californium252, Californium256, Einsteinium, VA[EV], 40),
-            // 255*10000, 257*6000, 253*4000
-            new ReactorFuel(Einsteinium, Einsteinium255, Einsteinium257, Einsteinium253, Fermium, VA[IV], 42),
-            // 259*200, 258*19780, 262*20
-            new ReactorFuel(Fermium, Fermium259, Fermium258, Fermium262, Mendelevium, VA[IV], 46),
-            // 261*10000, 263*6000, 259*4000
-            new ReactorFuel(Mendelevium, Mendelevium261, Mendelevium263, Mendelevium259, Mendelevium, VA[LuV], 48)
+            new ReactorFuel(Uranium238, Uranium235, Uranium238, Uranium234, Neptunium, VA[MV], 22, true),
+            new ReactorFuel(Neptunium, Neptunium237, Neptunium239, Neptunium235, Plutonium241, VA[MV], 24, true),
+            new ReactorFuel(Plutonium241, Plutonium241, Plutonium244, Plutonium240, Americium,VA[HV], 28, false),
+            new ReactorFuel(Americium, Americium243, Americium245, Americium241, Curium, VA[HV], 30, true),
+            new ReactorFuel(Curium, Curium247, Curium250, Curium246, Berkelium, VA[HV], 34, false),
+            new ReactorFuel(Berkelium, Berkelium249, Berkelium251, Berkelium247, Californium, VA[EV], 36, true),
+            new ReactorFuel(Californium, Californium253, Californium252, Californium256, Einsteinium, VA[EV], 40, false),
+            new ReactorFuel(Einsteinium, Einsteinium255, Einsteinium257, Einsteinium253, Fermium, VA[IV], 42, true),
+            new ReactorFuel(Fermium, Fermium259, Fermium258, Fermium262, Mendelevium, VA[IV], 46, false),
+            new ReactorFuel(Mendelevium, Mendelevium261, Mendelevium263, Mendelevium259, Mendelevium, VA[LuV], 48, true)
             // TODO - mendelevium waste cycle doesnt have uptier output -- duping for now
     ).toList();
 
@@ -66,6 +56,7 @@ public class NuclearReactorRecipes {
             return isotopeFuelOxide;
         }
 
+        // TODO - refactor isotopes to be a array instead of 3 separate fields
         public Material getIsotopeFuelPure() {
             return isotopeFuelPure;
         }
@@ -81,12 +72,13 @@ public class NuclearReactorRecipes {
         public Material uptierMaterial;
         public int voltage;
         public int heat;
+        public boolean largeFuelOxide;
 
         public ReactorFuel(Material baseElement,
                            Material isotopeFuelOxide,
                            Material isotopeFuelPure,
                            Material isotopeDecay,
-                           Material uptierMaterial, int voltage, int heat) {
+                           Material uptierMaterial, int voltage, int heat, boolean largeFissile) {
             this.baseElement = baseElement;
             this.uptierMaterial = uptierMaterial;
             this.isotopeFuelOxide = isotopeFuelOxide;
@@ -94,6 +86,7 @@ public class NuclearReactorRecipes {
             this.isotopeDecay = isotopeDecay;
             this.voltage = voltage;
             this.heat = heat;
+            this.largeFuelOxide = largeFissile;
         }
         public int getHeat() { return this.heat;}
     }

@@ -21,16 +21,17 @@ import static com.prosbloom.cerestech.data.recipes.NuclearReactorRecipes.*;
 public class NuclearCycleRecipes {
     public static void registerNuclearCycleRecipes(Consumer<FinishedRecipe> provider){
         for (ReactorFuel rf : reactorFuels) {
-            registerMainCycle(provider, rf.baseElement, rf.uptierMaterial, rf.voltage);
+            registerMainCycle(provider, rf.getIsotopeFuelOxide(), rf.uptierMaterial, rf.voltage);
         }
     }
     public static void registerNuclearFuelCycleRecipes(Consumer<FinishedRecipe> provider) {
-        for (String s: fertileMaterials)
-            registerFuelCycle(provider, GTRegistries.MATERIALS.get(s));
-        for (String s: fissileMaterials)
-            registerFuelCycle(provider, GTRegistries.MATERIALS.get(s));
+        // TODO - fix
+        for (ReactorFuel rf : reactorFuels) {
+            registerFuelCycle(provider, rf);
+        }
     }
 
+    // TODO  - Centrifuge cycle
     // --- Centrifuge Cycle
     // LCR + Dust + Nitric Acid*2000 = Uranium Nitrate*3 + Hydrogen*2000
     // EBf *3 = Uranium Dioxide + Nitric Oxide*2000
@@ -85,23 +86,23 @@ public class NuclearCycleRecipes {
                 .save(provider);
     }
 
-    public static void registerFuelCycle(Consumer<FinishedRecipe> provider, Material fissile) {
-        EXTRUDER_RECIPES.recipeBuilder(fissile.getName() + "_fuel_pure")
-                .inputItems(ingot, fissile, 1)
+    public static void registerFuelCycle(Consumer<FinishedRecipe> provider, ReactorFuel rf) {
+        EXTRUDER_RECIPES.recipeBuilder(rf.isotopeFuelPure.getName() + "_fuel_pure")
+                .inputItems(ingot, rf.isotopeFuelPure, 1)
                 .notConsumable(GTItems.SHAPE_MOLD_BALL)
-                .outputItems(fuelPure, fissile, 1)
+                .outputItems(fuelPure, rf.isotopeFuelPure, 1)
                 .duration(200).EUt(30)
                 .save(provider);
-        CHEMICAL_RECIPES.recipeBuilder(fissile.getName() + "_dust_oxide")
-                .inputItems(ingot, fissile, 1)
+        CHEMICAL_RECIPES.recipeBuilder(rf.isotopeFuelOxide.getName() + "_dust_oxide")
+                .inputItems(ingot, rf.isotopeFuelOxide, 1)
                 .inputFluids(Oxygen.getFluid(1000))
-                .outputItems(dustOxide, fissile, 1)
+                .outputItems(dustOxide, rf.isotopeFuelOxide, 1)
                 .duration(300).EUt(30)
                 .save(provider);
-        EXTRUDER_RECIPES.recipeBuilder(fissile.getName() + "_fuel_oxide")
-                .inputItems(dustOxide,  fissile, 1)
+        EXTRUDER_RECIPES.recipeBuilder(rf.isotopeFuelOxide.getName() + "_fuel_oxide")
+                .inputItems(dustOxide,  rf.isotopeFuelOxide, 1)
                 .notConsumable(GTItems.SHAPE_MOLD_BALL)
-                .outputItems(fuelOxide, fissile, 1)
+                .outputItems(fuelOxide, rf.isotopeFuelOxide, 1)
                 .duration(200).EUt(30)
                 .save(provider);
     }

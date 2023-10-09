@@ -24,8 +24,8 @@ public class CTTagPrefixes {
             .materialIconType(materialIconFuelPure)
             .unificationEnabled(true)
             .generateItem(true)
-            .generationCondition(mat->fissileMaterials.contains(mat.getName()) ||
-                    fertileMaterials.contains(mat.getName()));
+            .generationCondition(mat-> reactorFuels.stream()
+                    .filter(rf->mat.getName().equals(rf.isotopeFuelPure.getName())).findAny().orElse(null) != null);
     public static final TagPrefix dustOxide = new TagPrefix("dust_oxide")
             .defaultTagPath(FORGE, "dust_oxide/%s")
             .defaultTagPath(FABRIC, "%s_dust_oxide")
@@ -35,8 +35,8 @@ public class CTTagPrefixes {
             .materialIconType(MaterialIconType.dust)
             .unificationEnabled(true)
             .generateItem(true)
-            .generationCondition(mat->fissileMaterials.contains(mat.getName()) ||
-                    fertileMaterials.contains(mat.getName()));
+            .generationCondition(mat-> reactorFuels.stream()
+                    .filter(rf->mat.getName().equals(rf.isotopeFuelOxide.getName())).findAny().orElse(null) != null);
 
     public static final TagPrefix fuelOxide = new TagPrefix("fuel_oxide")
             .defaultTagPath(FORGE, "fuel_oxide/%s")
@@ -47,8 +47,8 @@ public class CTTagPrefixes {
             .materialIconType(materialIconFuelPure)
             .unificationEnabled(true)
             .generateItem(true)
-            .generationCondition(mat->fissileMaterials.contains(mat.getName()) ||
-                    fertileMaterials.contains(mat.getName()));
+            .generationCondition(mat-> reactorFuels.stream()
+                    .filter(rf->mat.getName().equals(rf.isotopeFuelOxide.getName())).findAny().orElse(null) != null);
 
     public static final TagPrefix depletedFuel = new TagPrefix("depleted_fuel")
             .defaultTagPath(FORGE, "depleted_fuel/%s")
@@ -59,8 +59,8 @@ public class CTTagPrefixes {
             .materialIconType(materialIconFuelDepleted)
             .unificationEnabled(true)
             .generateItem(true)
-            .generationCondition(mat->fissileMaterials.contains(mat.getName()) ||
-                   fertileMaterials.contains(mat.getName()));
+            .generationCondition(mat-> reactorFuels.stream()
+                    .filter(rf->mat.getName().equals(rf.isotopeFuelOxide.getName())).findAny().orElse(null) != null);
     public static final TagPrefix depletedFuelOxide = new TagPrefix("depleted_fuel_oxide")
             .defaultTagPath(FORGE, "depleted_fuel_oxide/%s")
             .defaultTagPath(FABRIC, "%s_depleted_fuel_oxide")
@@ -70,8 +70,8 @@ public class CTTagPrefixes {
             .materialIconType(materialIconFuelDepleted)
             .unificationEnabled(true)
             .generateItem(true)
-            .generationCondition(mat->fissileMaterials.contains(mat.getName()) ||
-                    fertileMaterials.contains(mat.getName()));
+            .generationCondition(mat-> reactorFuels.stream()
+                    .filter(rf->mat.getName().equals(rf.getIsotopeFuelOxide().getName())).findAny().orElse(null) != null);
 
     public static final TagPrefix depletedFuelNitride = new TagPrefix("depleted_fuel_nitride")
             .defaultTagPath(FORGE, "depleted_fuel_nitride/%s")
@@ -82,8 +82,8 @@ public class CTTagPrefixes {
             .materialIconType(materialIconFuelDepleted)
             .unificationEnabled(true)
             .generateItem(true)
-            .generationCondition(mat->fissileMaterials.contains(mat.getName()) ||
-                    fertileMaterials.contains(mat.getName()));
+            .generationCondition(mat-> reactorFuels.stream()
+                    .filter(rf->mat.getName().equals(rf.isotopeFuelOxide.getName())).findAny().orElse(null) != null);
 
     public static final TagPrefix waste = new TagPrefix("waste")
             .defaultTagPath(FORGE, "waste/%s")
@@ -94,6 +94,6 @@ public class CTTagPrefixes {
             .materialIconType(materialIconWaste)
             .unificationEnabled(true)
             .generateItem(true)
-            .generationCondition(mat->fissileMaterials.contains(mat.getName()) ||
-                    fertileMaterials.contains(mat.getName()));
+            .generationCondition(mat-> reactorFuels.stream()
+                    .filter(rf->mat.getName().equals(rf.getIsotopeFuelOxide().getName())).findAny().orElse(null) != null);
 }

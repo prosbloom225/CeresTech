@@ -6,7 +6,6 @@ import net.minecraft.data.recipes.FinishedRecipe;
 
 import java.util.List;
 import java.util.function.Consumer;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
@@ -41,13 +40,6 @@ public class NuclearReactorRecipes {
             // TODO - mendelevium waste cycle doesnt have uptier output -- duping for now
     ).toList();
 
-    // TODO - remove these static lists and pull from reactorFuels ... need to change CTTagPrefixes
-    public static List<String> fertileMaterials= Stream.of("uranium", "thorium")
-            .collect(Collectors.toList());
-    public static List<String> fissileMaterials = Stream.of("uranium_235", "plutonium_241", "americium", "neptunium",
-                    "curium", "berkelium", "californium", "einsteinium", "fermium", "mendelevium")
-
-            .collect(Collectors.toList());
     // TODO - need to add reactor recipes dynamically - scale heat/steam output with tier
     // TODO - reactor power scales with tier
     // TODO - breeder reactor
@@ -55,12 +47,13 @@ public class NuclearReactorRecipes {
         for (ReactorFuel r: reactorFuels) {
             for (int i=1; i<9; i++)
                 NUCLEAR_REACTOR_RECIPES.recipeBuilder(r.getName() + "_reactor_" +i)
-                        .inputItems(fuelOxide, r.baseElement, i)
+                        .inputItems(fuelOxide, r.isotopeFuelOxide, i)
                         .circuitMeta(i)
-                        .outputItems(depletedFuel, r.baseElement, i)
+                        .outputItems(depletedFuel, r.isotopeFuelOxide, i)
                         .duration(100)
                         // TODO - when done testing
                         //.duration(16000)
+                        // TODO - reactor power req should probably scale with tier of fuel, for now setting to MV
                         .EUt(VA[MV]*i)
                         .save(provider);
         }
@@ -69,6 +62,19 @@ public class NuclearReactorRecipes {
     public static class ReactorFuel{
         public String name;
         public Material baseElement;
+
+        public Material getIsotopeFuelOxide() {
+            return isotopeFuelOxide;
+        }
+
+        public Material getIsotopeFuelPure() {
+            return isotopeFuelPure;
+        }
+
+        public Material getIsotopeDecay() {
+            return isotopeDecay;
+        }
+
         public Material isotopeFuelOxide;
         public Material isotopeFuelPure;
         public Material isotopeDecay;

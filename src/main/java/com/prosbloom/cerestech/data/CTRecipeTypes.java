@@ -23,6 +23,11 @@ public class CTRecipeTypes {
             .prepareBuilder(recipeBuilder -> recipeBuilder.EUt(GTValues.VA[GTValues.MV]))
             .setSound(GTSoundEntries.COOLING);
 
+    public final static GTRecipeType GAS_CENTRIFUGE_RECIPES = register("gas_centrifuge", MULTIBLOCK).setMaxIOSize(0, 0, 1, 3)
+            .setEUIO(IO.IN)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_MIXER, LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.BATH);
+
     public final static GTRecipeType NUCLEAR_REACTOR_RECIPES = register("nuclear_reactor", MULTIBLOCK).setMaxIOSize(3, 2, 1, 1)
             .setEUIO(IO.IN)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)

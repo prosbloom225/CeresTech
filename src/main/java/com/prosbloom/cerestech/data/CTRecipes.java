@@ -61,6 +61,12 @@ public class CTRecipes {
                 'H', GTMachines.HULL[GTValues.EV].asStack(),
                 'P', new UnificationEntry(pipeLargeFluid, Tungsten));
 
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "gas_centrifuge", GAS_CENTRIFUGE.asStack(),
+                "PMP", "MHM", "PMP",
+                'P', ELECTRIC_PUMP_EV.asStack(),
+                'M', ELECTRIC_MOTOR_EV.asStack(),
+                'H', GTMachines.HULL[GTValues.EV].asStack());
+
 
         registerMachineRecipe(provider, DEHYDRATOR, "WCW", "WMW", "PRP", 'M', HULL, 'R', ROBOT_ARM, 'P', PLATE, 'C', CIRCUIT, 'W', CABLE);
     }

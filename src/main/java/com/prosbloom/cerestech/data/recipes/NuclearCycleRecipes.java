@@ -13,8 +13,11 @@ import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.dust;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.ingot;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
+import static com.prosbloom.cerestech.data.CTFluids.Coolant;
+import static com.prosbloom.cerestech.data.CTFluids.CoolantHot;
 import static com.prosbloom.cerestech.data.CTItems.*;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.DEHYDRATOR_RECIPES;
+import static com.prosbloom.cerestech.data.CTRecipeTypes.GAS_CENTRIFUGE_RECIPES;
 import static com.prosbloom.cerestech.data.CTTagPrefixes.*;
 import static com.prosbloom.cerestech.data.recipes.NuclearReactorRecipes.*;
 
@@ -39,6 +42,12 @@ public class NuclearCycleRecipes {
     // EBF + 0 = Uranium 234,235,238 Dioxide*3 + Hydrofluoric Acid*6000
     // EBF = Uranium 234,235,238 Ingot + Oxygen*2000
     private static void registerCentrifugeCycle(Consumer<FinishedRecipe> provider,ReactorFuel rf) {
+        GAS_CENTRIFUGE_RECIPES.recipeBuilder("test")
+                .inputFluids(CoolantHot.getFluid(55))
+                .outputFluids(Coolant.getFluid(55))
+                .EUt(VA[EV])
+                .duration(2)
+                .save(provider);
 
     }
 

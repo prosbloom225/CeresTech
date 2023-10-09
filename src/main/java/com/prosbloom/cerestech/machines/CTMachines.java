@@ -31,6 +31,7 @@ public class CTMachines {
 
 
     public final static MachineDefinition[] DEHYDRATOR= registerSimpleMachines("dehydrator", CTRecipeTypes.DEHYDRATOR_RECIPES);
+    public final static MachineDefinition[] DECAY_CHAMBER= registerSimpleMachines("decay_chamber", CTRecipeTypes.DECAY_CHAMBER_RECIPES);
     public static MultiblockMachineDefinition TREE_FARM = REGISTRATE.multiblock("tree_farm", WorkableElectricMultiblockMachine::new)
             .langValue("Tree Farm")
             .rotationState(RotationState.NON_Y_AXIS)

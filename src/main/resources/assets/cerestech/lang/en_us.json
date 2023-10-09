@@ -21,6 +21,16 @@
   "block.gtceu.uv_dehydrator": "Ultimate Chemical Dehydrator",
   "gtceu.dehydrator": "Chemical Dehydrator",
 
+  "block.gtceu.lv_decay_chamber": "Basic Decay Chamber",
+  "block.gtceu.mv_decay_chamber": "Advanced Decay Chamber",
+  "block.gtceu.hv_decay_chamber": "Advanced Decay Chamber II",
+  "block.gtceu.ev_decay_chamber": "Advanced Decay Chamber III",
+  "block.gtceu.iv_decay_chamber": "Elite Decay Chamber",
+  "block.gtceu.luv_decay_chamber": "Elite Decay Chamber II",
+  "block.gtceu.zpm_decay_chamber": "Elite Decay Chamber III",
+  "block.gtceu.uv_decay_chamber": "Ultimate Decay Chamber",
+  "gtceu.dehydrator": "Decay Chamber",
+
   "tagprefix.depleted_fuel": "Depleted %s Fuel",
   "tagprefix.depleted_fuel_oxide": "%s Depleted Fuel Oxide",
   "tagprefix.depleted_fuel_nitride": "%s Depleted Fuel Nitride",

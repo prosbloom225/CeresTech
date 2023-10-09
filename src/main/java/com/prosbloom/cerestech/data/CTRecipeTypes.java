@@ -17,7 +17,7 @@ public class CTRecipeTypes {
     public static void init() {
     }
 
-    public final static GTRecipeType TREE_FARM_RECIPES = register("tree_farm", MULTIBLOCK).setMaxIOSize(1, 2, 2, 1)
+    public final static GTRecipeType INDUSTRIAL_GREENHOUSE_RECIPES = register("industrial_greenhouse", MULTIBLOCK).setMaxIOSize(1, 2, 2, 1)
             .setEUIO(IO.IN)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
             .prepareBuilder(recipeBuilder -> recipeBuilder.EUt(GTValues.VA[GTValues.MV]))

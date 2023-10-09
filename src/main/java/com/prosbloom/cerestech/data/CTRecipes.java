@@ -6,9 +6,9 @@ import com.gregtechceu.gtceu.common.data.GTMachines;
 import com.gregtechceu.gtceu.data.recipe.CraftingComponent;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
+import com.prosbloom.cerestech.data.recipes.IndustrialGreenhouseRecipes;
 import com.prosbloom.cerestech.data.recipes.NuclearCycleRecipes;
 import com.prosbloom.cerestech.data.recipes.NuclearReactorRecipes;
-import com.prosbloom.cerestech.data.recipes.TreeFarmRecipes;
 import net.minecraft.data.recipes.FinishedRecipe;
 
 import java.util.function.Consumer;
@@ -37,13 +37,13 @@ public class CTRecipes {
         registerChemicalReactorRecipes(provider);
         registerHotCoolantTurbineRecipes(provider);
 
-        TreeFarmRecipes.registerTreeFarmRecipes(provider);
+        IndustrialGreenhouseRecipes.registerIndustrialGreenhouseRecipes(provider);
         NuclearReactorRecipes.registerNuclearReactorRecipes(provider);
         NuclearCycleRecipes.registerNuclearCycleRecipes(provider);
     }
 
     private static void registerManualRecipes(Consumer<FinishedRecipe> provider) {
-        VanillaRecipeHelper.addShapedRecipe(provider, true, "tree_farm", TREE_FARM.asStack(),
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "industrial_greenhouse", INDUSTRIAL_GREENHOUSE.asStack(),
                 "PCP", "BXB", "MKM",
                 'C', CustomTags.MV_CIRCUITS, 'P', new UnificationEntry(plate, Aluminium), 'B', ELECTRIC_PISTON_MV.asStack(), 'M', ELECTRIC_MOTOR_MV.asStack(), 'X', MACERATOR[MV].asStack(), 'K', new UnificationEntry(cableGtSingle, Aluminium));
 

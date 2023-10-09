@@ -10,6 +10,7 @@ import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import com.gregtechceu.gtceu.common.data.GTElements;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
+import com.gregtechceu.gtceu.common.data.materials.ElementMaterials;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
@@ -217,6 +218,12 @@ public class CTMaterials {
             .element(CTElements.Md263)
             .buildAndRegister();
 
+
+    // Lanthanides - Nuclear Waste missing materials
+    /*
+
+     */
+
     public static void init() {
         // TODO - removing these is a hack until they get used in the main mod
         GTRegistries.MATERIALS.remove("neptunium");
@@ -281,6 +288,200 @@ public class CTMaterials {
                 .color(0x1D4ACF).iconSet(SHINY)
                 .appendFlags(EXT_METAL)
                 .element(GTElements.Fm)
+                .buildAndRegister();
+        // Lanthanides
+        GTRegistries.MATERIALS.remove("dysprosium");
+        Dysprosium= new Material.Builder("dysprosium")
+                .ingot(3)
+                .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+                .color(0xC8C8C8).iconSet(METALLIC)
+                .appendFlags(EXT_METAL)
+                .element(GTElements.Dy)
+                .buildAndRegister();
+
+        GTRegistries.MATERIALS.remove("holmium");
+        Holmium = new Material.Builder("holmium")
+                .ingot(3)
+                .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+                .color(0xC8C8C8).iconSet(METALLIC)
+                .appendFlags(EXT_METAL)
+                .element(GTElements.Ho)
+                .buildAndRegister();
+        GTRegistries.MATERIALS.remove("erbium");
+        Erbium = new Material.Builder("erbium")
+                .ingot(3)
+                .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+                .color(0xC8C8C8).iconSet(METALLIC)
+                .appendFlags(EXT_METAL)
+                .element(GTElements.Er)
+                .buildAndRegister();
+        GTRegistries.MATERIALS.remove("thulium");
+        Thulium = new Material.Builder("thulium")
+                .ingot(3)
+                .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+                .color(0xC8C8C8).iconSet(METALLIC)
+                .appendFlags(EXT_METAL)
+                .element(GTElements.Tm)
+                .buildAndRegister();
+        GTRegistries.MATERIALS.remove("ytterbium");
+        Ytterbium = new Material.Builder("ytterbium")
+                .ingot(3)
+                .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+                .color(0xC8C8C8).iconSet(METALLIC)
+                .appendFlags(EXT_METAL)
+                .element(GTElements.Yb)
+                .buildAndRegister();
+        GTRegistries.MATERIALS.remove("praseodymium");
+        Praseodymium = new Material.Builder("praseodymium")
+                .ingot(3)
+                .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+                .color(0xC8C8C8).iconSet(METALLIC)
+                .appendFlags(EXT_METAL)
+                .element(GTElements.Pr)
+                .buildAndRegister();
+        GTRegistries.MATERIALS.remove("promethium");
+        Promethium = new Material.Builder("promethium")
+                .ingot(3)
+                .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+                .color(0xC8C8C8).iconSet(METALLIC)
+                .appendFlags(EXT_METAL)
+                .element(GTElements.Pm)
+                .buildAndRegister();
+        GTRegistries.MATERIALS.remove("gadolinium");
+        Gadolinium = new Material.Builder("gadolinium")
+                .ingot(3)
+                .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+                .color(0xC8C8C8).iconSet(METALLIC)
+                .appendFlags(EXT_METAL)
+                .element(GTElements.Gd)
+                .buildAndRegister();
+        GTRegistries.MATERIALS.remove("terbium");
+        Terbium = new Material.Builder("terbium")
+                .ingot(3)
+                .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+                .color(0xC8C8C8).iconSet(METALLIC)
+                .appendFlags(EXT_METAL)
+                .element(GTElements.Tb)
+                .buildAndRegister();
+        GTRegistries.MATERIALS.remove("rubidium");
+        Rubidium = new Material.Builder("rubidium")
+                .ingot(3)
+                .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+                .color(0xC8C8C8).iconSet(METALLIC)
+                .appendFlags(EXT_METAL)
+                .element(GTElements.Rb)
+                .buildAndRegister();
+        GTRegistries.MATERIALS.remove("strontium");
+        Strontium = new Material.Builder("strontium")
+                .ingot(3)
+                .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+                .color(0xC8C8C8).iconSet(METALLIC)
+                .appendFlags(EXT_METAL)
+                .element(GTElements.Sr)
+                .buildAndRegister();
+        GTRegistries.MATERIALS.remove("francium");
+        Francium = new Material.Builder("francium")
+                .ingot(3)
+                .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+                .color(0xC8C8C8).iconSet(METALLIC)
+                .appendFlags(EXT_METAL)
+                .element(GTElements.Fr)
+                .buildAndRegister();
+        GTRegistries.MATERIALS.remove("radium");
+        Radium = new Material.Builder("radium")
+                .ingot(3)
+                .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+                .color(0xC8C8C8).iconSet(METALLIC)
+                .appendFlags(EXT_METAL)
+                .element(GTElements.Ra)
+                .buildAndRegister();
+        GTRegistries.MATERIALS.remove("thallium");
+        Thallium = new Material.Builder("thallium")
+                .ingot(3)
+                .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+                .color(0xC8C8C8).iconSet(METALLIC)
+                .appendFlags(EXT_METAL)
+                .element(GTElements.Tl)
+                .buildAndRegister();
+        GTRegistries.MATERIALS.remove("polonium");
+        Polonium = new Material.Builder("polonium")
+                .ingot(3)
+                .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+                .color(0xC8C8C8).iconSet(METALLIC)
+                .appendFlags(EXT_METAL)
+                .element(GTElements.Po)
+                .buildAndRegister();
+        GTRegistries.MATERIALS.remove("hafnium");
+        Hafnium = new Material.Builder("hafnium")
+                .ingot(3)
+                .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+                .color(0xC8C8C8).iconSet(METALLIC)
+                .appendFlags(EXT_METAL)
+                .element(GTElements.Hf)
+                .buildAndRegister();
+        GTRegistries.MATERIALS.remove("zirconium");
+        Zirconium = new Material.Builder("zirconium")
+                .ingot(3)
+                .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+                .color(0xC8C8C8).iconSet(METALLIC)
+                .appendFlags(EXT_METAL)
+                .element(GTElements.Zr)
+                .buildAndRegister();
+        GTRegistries.MATERIALS.remove("technetium");
+        Technetium = new Material.Builder("technetium")
+                .ingot(3)
+                .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+                .color(0xC8C8C8).iconSet(METALLIC)
+                .appendFlags(EXT_METAL)
+                .element(GTElements.Tc)
+                .buildAndRegister();
+        GTRegistries.MATERIALS.remove("selenium");
+        Selenium = new Material.Builder("selenium")
+                .ingot(3)
+                .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+                .color(0xC8C8C8).iconSet(METALLIC)
+                .appendFlags(EXT_METAL)
+                .element(GTElements.Se)
+                .buildAndRegister();
+        GTRegistries.MATERIALS.remove("iodine");
+        Iodine = new Material.Builder("iodine")
+                .ingot(3)
+                .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+                .color(0xC8C8C8).iconSet(METALLIC)
+                .appendFlags(EXT_METAL)
+                .element(GTElements.I)
+                .buildAndRegister();
+        GTRegistries.MATERIALS.remove("germanium");
+        Germanium = new Material.Builder("germanium")
+                .ingot(3)
+                .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+                .color(0xC8C8C8).iconSet(METALLIC)
+                .appendFlags(EXT_METAL)
+                .element(GTElements.Ge)
+                .buildAndRegister();
+        GTRegistries.MATERIALS.remove("tellurium");
+        Tellurium = new Material.Builder("tellurium")
+                .ingot(3)
+                .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+                .color(0xC8C8C8).iconSet(METALLIC)
+                .appendFlags(EXT_METAL)
+                .element(GTElements.Te)
+                .buildAndRegister();
+        GTRegistries.MATERIALS.remove("astatine");
+        Astatine = new Material.Builder("astatine")
+                .ingot(3)
+                .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+                .color(0xC8C8C8).iconSet(METALLIC)
+                .appendFlags(EXT_METAL)
+                .element(GTElements.At)
+                .buildAndRegister();
+        GTRegistries.MATERIALS.remove("actinium");
+        Actinium = new Material.Builder("actinium")
+                .ingot(3)
+                .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+                .color(0xC8C8C8).iconSet(METALLIC)
+                .appendFlags(EXT_METAL)
+                .element(GTElements.Ac)
                 .buildAndRegister();
     }
 }

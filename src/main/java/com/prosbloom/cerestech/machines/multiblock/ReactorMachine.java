@@ -49,7 +49,6 @@ public class ReactorMachine extends LargeBoilerMachine {
                     maxDrain = coolantScaler * rf.getHeat() * count;
                 }
 
-                // TODO - Dynamically pull from hct recipeList
                 var drainCoolant = List.of(FluidIngredient.of(maxDrain, CTFluids.Coolant.getFluid()));
                 List<IRecipeHandler<?>> inputTanks = new ArrayList<>();
                 if (getCapabilitiesProxy().contains(IO.IN, FluidRecipeCapability.CAP)) {

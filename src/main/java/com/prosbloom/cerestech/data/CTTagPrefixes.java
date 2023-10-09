@@ -36,7 +36,12 @@ public class CTTagPrefixes {
             .unificationEnabled(true)
             .generateItem(true)
             .generationCondition(mat-> reactorFuels.stream()
-                    .filter(rf->mat.getName().equals(rf.isotopeFuelOxide.getName())).findAny().orElse(null) != null);
+                    .filter(rf->
+                            (mat.getName().equals(rf.baseElement.getName())
+                                    || mat.getName().equals(rf.isotopeFuelOxide.getName())
+                                    || mat.getName().equals(rf.isotopeFuelPure.getName())
+                                    || mat.getName().equals(rf.isotopeDecay.getName()))
+                    ).findAny().orElse(null) != null);
 
     public static final TagPrefix fuelOxide = new TagPrefix("fuel_oxide")
             .defaultTagPath(FORGE, "fuel_oxide/%s")

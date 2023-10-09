@@ -27,7 +27,6 @@ public class NuclearCycleRecipes {
         registerWasteProducts(provider);
     }
 
-    // TODO  - Centrifuge cycle
     // --- Centrifuge Cycle
     // LCR + Dust + Nitric Acid*2000 = Uranium Nitrate*3 + Hydrogen*2000
     // EBf *3 = Uranium Dioxide + Nitric Oxide*2000
@@ -193,6 +192,7 @@ public class NuclearCycleRecipes {
                 .outputItems(fuelPure, rf.isotopeFuelPure, 1)
                 .duration(200).EUt(30)
                 .save(provider);
+
         CHEMICAL_RECIPES.recipeBuilder(rf.isotopeFuelOxide.getName() + "_dust_oxide")
                 .inputItems(ingot, rf.isotopeFuelOxide, 1)
                 .inputFluids(Oxygen.getFluid(1000))
@@ -203,6 +203,19 @@ public class NuclearCycleRecipes {
                 .inputItems(dustOxide,  rf.isotopeFuelOxide, 1)
                 .notConsumable(GTItems.SHAPE_MOLD_BALL)
                 .outputItems(fuelOxide, rf.isotopeFuelOxide, 1)
+                .duration(200).EUt(30)
+                .save(provider);
+
+        CHEMICAL_RECIPES.recipeBuilder(rf.isotopeDecay.getName() + "_dust_oxide")
+                .inputItems(ingot, rf.isotopeDecay, 1)
+                .inputFluids(Oxygen.getFluid(1000))
+                .outputItems(dustOxide, rf.isotopeDecay, 1)
+                .duration(300).EUt(30)
+                .save(provider);
+        EXTRUDER_RECIPES.recipeBuilder(rf.isotopeDecay.getName() + "_fuel_oxide")
+                .inputItems(dustOxide,  rf.isotopeDecay, 1)
+                .notConsumable(GTItems.SHAPE_MOLD_BALL)
+                .outputItems(fuelOxide, rf.isotopeDecay, 1)
                 .duration(200).EUt(30)
                 .save(provider);
     }
@@ -229,14 +242,13 @@ public class NuclearCycleRecipes {
                 .duration(300).EUt(32)
                 .save(provider);
 
-        // TODO - missing waste outputs ...commenting for now.. also need to take a look at rates, gcy is even higher than these
         DEHYDRATOR_RECIPES.recipeBuilder("dehydrator_lanthanide_a")
                 .inputItems(WASTE_LANTHANIDE_GROUP_A, 9)
-                //.chancedOutput(dust, Dysprosium, 2, 4000, 3000)
-                //.chancedOutput(dust, Holmium, 2, 4000, 3000)
-                //.chancedOutput(dust, Erbium, 2, 4000, 3000)
-                //.chancedOutput(dust, Thulium, 2, 4000, 3000)
-                //.chancedOutput(dust, Ytterbium, 2, 4000, 3000)
+                .chancedOutput(dust, Dysprosium, 2, 4000, 3000)
+                .chancedOutput(dust, Holmium, 2, 4000, 3000)
+                .chancedOutput(dust, Erbium, 2, 4000, 3000)
+                .chancedOutput(dust, Thulium, 2, 4000, 3000)
+                .chancedOutput(dust, Ytterbium, 2, 4000, 3000)
                 .chancedOutput(dust, Lutetium, 2, 4000, 3000)
                 .duration(300).EUt(32)
                 .save(provider);
@@ -244,24 +256,24 @@ public class NuclearCycleRecipes {
                 .inputItems(WASTE_LANTHANIDE_GROUP_B, 9)
                 .chancedOutput(dust, Lanthanum, 2, 4000, 3000)
                 .chancedOutput(dust, Cerium, 2, 4000, 3000)
-                //.chancedOutput(dust, Praseodymium, 2, 4000, 3000)
+                .chancedOutput(dust, Praseodymium, 2, 4000, 3000)
                 .chancedOutput(dust, Neodymium, 2, 4000, 3000)
-                //.chancedOutput(dust, Promethium, 2, 4000, 3000)
+                .chancedOutput(dust, Promethium, 2, 4000, 3000)
                 .chancedOutput(dust, Samarium, 2, 4000, 3000)
                 .chancedOutput(dust, Europium, 2, 4000, 3000)
-                //.chancedOutput(dust, Gadolinium, 2, 4000, 3000)
-                //.chancedOutput(dust, Terbium, 2, 4000, 3000)
+                .chancedOutput(dust, Gadolinium, 2, 4000, 3000)
+                .chancedOutput(dust, Terbium, 2, 4000, 3000)
                 .duration(300).EUt(32)
                 .save(provider);
         DEHYDRATOR_RECIPES.recipeBuilder("dehydrator_alkaline")
                 .inputItems(WASTE_ALKALINE, 9)
                 .chancedOutput(WASTE_ALKALINE.asStack(), 1000, 1)
-                //.chancedOutput(dust, Rubidium, 2, 4000, 3000)
-                //.chancedOutput(dust, Strontium, 2, 4000, 3000)
+                .chancedOutput(dust, Rubidium, 2, 4000, 3000)
+                .chancedOutput(dust, Strontium, 2, 4000, 3000)
                 .chancedOutput(dust, Caesium, 2, 4000, 3000)
                 .chancedOutput(dust, Barium, 2, 4000, 3000)
-                //.chancedOutput(dust, Francium, 2, 4000, 3000)
-                //.chancedOutput(dust, Radium, 2, 4000, 3000)
+                .chancedOutput(dust, Francium, 2, 4000, 3000)
+                .chancedOutput(dust, Radium, 2, 4000, 3000)
                 .duration(300).EUt(32)
                 .save(provider);
         DEHYDRATOR_RECIPES.recipeBuilder("dehydrator_heavy_metal")
@@ -271,16 +283,16 @@ public class NuclearCycleRecipes {
                 .chancedOutput(dust, Cadmium, 2, 4000, 3000)
                 .chancedOutput(dust, Indium, 2, 4000, 3000)
                 .chancedOutput(dust, Tin, 2, 4000, 3000)
-                //.chancedOutput(dust, Thallium, 2, 4000, 3000)
+                .chancedOutput(dust, Thallium, 2, 4000, 3000)
                 .chancedOutput(dust, Lead, 2, 4000, 3000)
                 .chancedOutput(dust, Bismuth, 2, 4000, 3000)
-                //.chancedOutput(dust, Polonium, 2, 4000, 3000)
+                .chancedOutput(dust, Polonium, 2, 4000, 3000)
                 .chancedOutput(Mercury.getFluid(2250), 4000, 3000)
                 .duration(300).EUt(32)
                 .save(provider);
         DEHYDRATOR_RECIPES.recipeBuilder("dehydrator_metal_group_a")
                 .inputItems(WASTE_METAL_GROUP_A, 9)
-                //.chancedOutput(dust, Hafnium, 2, 4000, 3000)
+                .chancedOutput(dust, Hafnium, 2, 4000, 3000)
                 .chancedOutput(dust, Tantalum, 2, 4000, 3000)
                 .chancedOutput(dust, Tungsten, 2, 4000, 3000)
                 .chancedOutput(dust, Osmium, 2, 4000, 3000)
@@ -292,10 +304,10 @@ public class NuclearCycleRecipes {
         DEHYDRATOR_RECIPES.recipeBuilder("dehydrator_metal_group_b")
                 .inputItems(WASTE_METAL_GROUP_B, 9)
                 .chancedOutput(dust, Yttrium, 2, 4000, 3000)
-                //.chancedOutput(dust, Zirconium, 2, 4000, 3000)
+                .chancedOutput(dust, Zirconium, 2, 4000, 3000)
                 .chancedOutput(dust, Niobium, 2, 4000, 3000)
                 .chancedOutput(dust, Molybdenum, 2, 4000, 3000)
-                //.chancedOutput(dust, Technetium, 2, 4000, 300)
+                .chancedOutput(dust, Technetium, 2, 4000, 300)
                 .chancedOutput(dust, Ruthenium, 2, 4000, 300)
                 .chancedOutput(dust, Rhodium, 2, 4000, 3000)
                 .chancedOutput(dust, Palladium, 2, 4000, 3000)
@@ -312,8 +324,8 @@ public class NuclearCycleRecipes {
                 .save(provider);
         DEHYDRATOR_RECIPES.recipeBuilder("dehydrator_nonmetal")
                 .inputItems(WASTE_NONMETAL, 9)
-                //.chancedOutput(dust, Selenium, 2, 4000, 3000)
-                //.chancedOutput(dust, Iodine, 2, 4000, 3000)
+                .chancedOutput(dust, Selenium, 2, 4000, 3000)
+                .chancedOutput(dust, Iodine, 2, 4000, 3000)
                 .chancedOutput(Krypton.getFluid(2250), 4000, 3000)
                 .chancedOutput(Xenon.getFluid(4500), 4000, 3000)
                 .chancedOutput(Radon.getFluid(9000), 4000, 3000)
@@ -321,12 +333,12 @@ public class NuclearCycleRecipes {
                 .save(provider);
         DEHYDRATOR_RECIPES.recipeBuilder("dehydrator_metaloid")
                 .inputItems(WASTE_METALOID, 9)
-                //.chancedOutput(dust, Germanium, 2, 4000, 3000)
+                .chancedOutput(dust, Germanium, 2, 4000, 3000)
                 .chancedOutput(dust, Arsenic, 2, 4000, 3000)
                 .chancedOutput(dust, Antimony, 2, 4000, 3000)
-                //.chancedOutput(dust, Tellurium, 2, 4000, 3000)
-                //.chancedOutput(dust, Astatine, 2, 4000, 3000)
-                //.chancedOutput(dust, Actinium, 2, 4000, 3000)
+                .chancedOutput(dust, Tellurium, 2, 4000, 3000)
+                .chancedOutput(dust, Astatine, 2, 4000, 3000)
+                .chancedOutput(dust, Actinium, 2, 4000, 3000)
                 .duration(300).EUt(32)
                 .save(provider);
     }

@@ -30,8 +30,7 @@ public class NuclearReactorRecipes {
             // TODO - mendelevium waste cycle doesnt have uptier output -- duping for now
     ).toList();
 
-    // TODO - need to add reactor recipes dynamically - scale heat/steam output with tier
-    // TODO - reactor power scales with tier
+    // TODO - fuel pure additive recipes
     // TODO - breeder reactor
     public static void registerNuclearReactorRecipes(Consumer<FinishedRecipe> provider) {
         for (ReactorFuel r: reactorFuels) {

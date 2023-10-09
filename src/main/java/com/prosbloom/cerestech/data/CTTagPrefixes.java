@@ -96,4 +96,57 @@ public class CTTagPrefixes {
             .generateItem(true)
             .generationCondition(mat-> reactorFuels.stream()
                     .filter(rf->mat.getName().equals(rf.getIsotopeFuelOxide().getName())).findAny().orElse(null) != null);
+
+    public static final TagPrefix dustNitrite = new TagPrefix("dust_nitrite")
+            .defaultTagPath(FORGE, "dust_nitrite/%s")
+            .defaultTagPath(FABRIC, "%s_dust_nitrite")
+            .unformattedTagPath(FORGE, "dust_nitrite")
+            .unformattedTagPath(FABRIC, "dust_nitrite")
+            .materialAmount(GTValues.M)
+            .materialIconType(MaterialIconType.dust)
+            .unificationEnabled(true)
+            .generateItem(true)
+            .generationCondition(mat-> reactorFuels.stream()
+                    .filter(rf->mat.getName().equals(rf.baseElement.getName())).findAny().orElse(null) != null);
+
+    public static final TagPrefix dustDioxide = new TagPrefix("dust_dioxide")
+            .defaultTagPath(FORGE, "dust_dioxide/%s")
+            .defaultTagPath(FABRIC, "%s_dust_dioxide")
+            .unformattedTagPath(FORGE, "dust_dioxide")
+            .unformattedTagPath(FABRIC, "dust_dioxide")
+            .materialAmount(GTValues.M)
+            .materialIconType(MaterialIconType.dust)
+            .unificationEnabled(true)
+            .generateItem(true)
+            .generationCondition(mat-> reactorFuels.stream()
+                    .filter(rf->mat.getName().equals(rf.baseElement.getName())).findAny().orElse(null) != null);
+
+    public static final TagPrefix hexachloride = new TagPrefix("hexachloride")
+            .defaultTagPath(FORGE, "hexachloride/%s")
+            .defaultTagPath(FABRIC, "%s_hexachloride")
+            .unformattedTagPath(FORGE, "hexachloride")
+            .unformattedTagPath(FABRIC, "hexachloride")
+            .materialAmount(GTValues.M)
+            .materialIconType(MaterialIconType.dust)
+            .unificationEnabled(true)
+            .generateItem(true)
+            .generationCondition(mat-> reactorFuels.stream()
+                    .filter(rf->mat.getName().equals(rf.baseElement.getName())).findAny().orElse(null) != null);
+    public static final TagPrefix hexafluoride = new TagPrefix("hexafluoride")
+            .defaultTagPath(FORGE, "hexafluoride/%s")
+            .defaultTagPath(FABRIC, "%s_hexafluoride")
+            .unformattedTagPath(FORGE, "hexafluoride")
+            .unformattedTagPath(FABRIC, "hexafluoride")
+            .materialAmount(GTValues.M)
+            .materialIconType(MaterialIconType.dust)
+            .unificationEnabled(true)
+            .generateItem(true)
+            .generationCondition(mat-> reactorFuels.stream()
+                    .filter(rf->
+                            (mat.getName().equals(rf.baseElement.getName())
+                                    || mat.getName().equals(rf.isotopeFuelOxide.getName())
+                                    || mat.getName().equals(rf.isotopeFuelPure.getName())
+                                    || mat.getName().equals(rf.isotopeDecay.getName()))
+                            //&& !mat.getName().equals("uranium")
+                    ).findAny().orElse(null) != null);
 }

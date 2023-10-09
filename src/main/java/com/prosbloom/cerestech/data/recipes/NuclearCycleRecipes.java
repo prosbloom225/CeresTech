@@ -26,8 +26,8 @@ public class NuclearCycleRecipes {
         for (ReactorFuel rf : reactorFuels) {
             registerFuelCycle(provider, rf);
             registerMainCycle(provider, rf);
-            registerCentrifugeCycle(provider, rf);
         }
+        registerCentrifugeCycle(provider, reactorFuels.get(0));
         registerWasteProducts(provider);
     }
 
@@ -42,11 +42,47 @@ public class NuclearCycleRecipes {
     // EBF + 0 = Uranium 234,235,238 Dioxide*3 + Hydrofluoric Acid*6000
     // EBF = Uranium 234,235,238 Ingot + Oxygen*2000
     private static void registerCentrifugeCycle(Consumer<FinishedRecipe> provider,ReactorFuel rf) {
-        GAS_CENTRIFUGE_RECIPES.recipeBuilder("test")
-                .inputFluids(CoolantHot.getFluid(55))
-                .outputFluids(Coolant.getFluid(55))
+        CHEMICAL_RECIPES.recipeBuilder(rf.baseElement.getName() + "_dust_nitrate")
+                .inputItems(dust, rf.baseElement, 1)
+                .inputFluids(NitricAcid.getFluid(2000))
+                .outputItems(dustNitrite, rf.baseElement, 3)
+                .outputFluids(Hydrogen.getFluid(2000))
+                .EUt(VA[LV])
+                .duration(200)
+                .save(provider);
+        BLAST_RECIPES.recipeBuilder(rf.baseElement.getName() + "_dust_dioxide")
+                .inputItems(dustNitrite, rf.baseElement, 3)
+                .outputItems(dustDioxide, rf.baseElement, 1)
+                .outputFluids(NitricOxide.getFluid(2000))
+                .blastFurnaceTemp(600)
+                .EUt(VA[MV])
+                .duration(100)
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder(rf.baseElement.getName() + "_hexachloride")
+                .inputItems(dustDioxide, rf.baseElement, 1)
+                .inputFluids(Chlorine.getFluid(6000))
+                .outputItems(hexachloride, rf.baseElement, 1)
+                .outputFluids(Oxygen.getFluid(2000))
+                .EUt(VA[LV])
+                .duration(200)
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder(rf.baseElement.getName() + "_hexafluoride")
+                .inputItems(hexachloride, rf.baseElement, 1)
+                .inputFluids(HydrofluoricAcid.getFluid(6000))
+                .outputItems(hexafluoride, rf.baseElement, 1)
+                .outputFluids(HydrochloricAcid.getFluid(6000))
+                .EUt(VA[LV])
+                .duration(200)
+                .save(provider);
+        GAS_CENTRIFUGE_RECIPES.recipeBuilder(rf.baseElement.getName() + "_hexafluoride")
+                .inputItems(hexafluoride, rf.baseElement, 20)
+                .inputFluids(Steam.getFluid(20000))
+                .outputItems(hexafluoride, rf.isotopeFuelOxide, 1)
+                .outputItems(hexafluoride, rf.isotopeFuelPure, 1)
+                .outputItems(hexafluoride, rf.isotopeDecay, 1)
+                .outputFluids(Water.getFluid(20000))
                 .EUt(VA[EV])
-                .duration(2)
+                .duration(600)
                 .save(provider);
 
     }

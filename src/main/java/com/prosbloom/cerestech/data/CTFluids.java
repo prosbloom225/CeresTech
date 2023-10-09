@@ -13,6 +13,7 @@ import org.checkerframework.checker.units.qual.Temperature;
 
 import java.awt.*;
 
+import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.METALLIC;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 
 public class CTFluids {
@@ -34,6 +35,5 @@ public class CTFluids {
             .ingot()
             .color(0x6124BD).iconSet(MaterialIconSet.FLUID)
             .buildAndRegister();
-
 
 }

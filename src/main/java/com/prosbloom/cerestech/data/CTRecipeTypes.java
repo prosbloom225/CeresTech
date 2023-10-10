@@ -59,4 +59,9 @@ public class CTRecipeTypes {
             .setEUIO(IO.OUT)
             .setProgressBar(GuiTextures.PROGRESS_BAR_MACERATE, LEFT_TO_RIGHT)
             .setSound(new ExistingSoundEntry(SoundEvents.BLAZE_BURN, SoundSource.BLOCKS));
+
+    public final static GTRecipeType HEAT_EXCHANGER_RECIPES = register("heat_exchanger", MULTIBLOCK).setMaxIOSize(0, 0, 2, 2)
+            .setEUIO(IO.IN)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.COOLING);
 }

@@ -24,7 +24,6 @@ public class CTFluids {
     public static Material Coolant = new Material.Builder("coolant")
             .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
             .ingot()
-            // TODO - need to make intermediate dust chains... components wont work with liquid
             .components(Lithium, 2, Fluorine, 7, Beryllium, 3)
             .color(0x328BA8).iconSet(MaterialIconSet.FLUID)
             .components()
@@ -34,6 +33,12 @@ public class CTFluids {
             .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
             .ingot()
             .color(0x6124BD).iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
+    public static Material PahoehoeLava = new Material.Builder("pahoehoe_lava")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .ingot()
+            .color(0XFCBA03).iconSet(MaterialIconSet.FLUID)
             .buildAndRegister();
 
 }

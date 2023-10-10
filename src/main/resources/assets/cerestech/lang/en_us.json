@@ -11,6 +11,9 @@
   "block.gtceu.gas_centrifuge": "Gas Centrifuge",
   "gtceu.gas_centrifuge": "Gas Centrifuge",
 
+  "block.gtceu.large_heat_exchanger": "Large Heat Exchanger",
+  "gtceu.heat_exchanger": "Heat Exchanger",
+
   "block.gtceu.shielded_reactor_casing": "Shielded Reactor Casing",
 
   "block.gtceu.iv_naquadah_reactor": "Naquadah Reactor Mk I",
@@ -117,6 +120,7 @@
   "material.mendelevium_259": "Mendelevium 259",
   "material.mendelevium_261": "Mendelevium 261",
   "material.mendelevium_263": "Mendelevium 263",
+  "material.pahoehoe_lava": "Pahoehoe Lava",
 
   "gtceu.multiblock.nuclear_reactor.fuel": "Fuel: %s",
   "gtceu.multiblock.nuclear_reactor.coolant_output": "Coolant Output: %d"

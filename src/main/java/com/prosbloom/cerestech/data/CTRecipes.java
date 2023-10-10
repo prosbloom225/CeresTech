@@ -7,10 +7,7 @@ import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 import com.gregtechceu.gtceu.data.recipe.CraftingComponent;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
-import com.prosbloom.cerestech.data.recipes.IndustrialGreenhouseRecipes;
-import com.prosbloom.cerestech.data.recipes.NaquadahReactorRecipes;
-import com.prosbloom.cerestech.data.recipes.NuclearCycleRecipes;
-import com.prosbloom.cerestech.data.recipes.NuclearReactorRecipes;
+import com.prosbloom.cerestech.data.recipes.*;
 import com.prosbloom.cerestech.machines.multiblock.part.QuadFluidHatchPartMachine;
 import net.minecraft.data.recipes.FinishedRecipe;
 
@@ -29,6 +26,7 @@ import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.PUMP;
 import static com.gregtechceu.gtceu.data.recipe.misc.MetaTileEntityLoader.registerMachineRecipe;
 import static com.prosbloom.cerestech.data.CTBlocks.CASING_SHIELDED_REACTOR;
 import static com.prosbloom.cerestech.data.CTFluids.Coolant;
+import static com.prosbloom.cerestech.data.CTFluids.PahoehoeLava;
 import static com.prosbloom.cerestech.data.CTMaterials.*;
 import static com.prosbloom.cerestech.data.recipes.HotCoolantTurbineRecipes.registerHotCoolantTurbineRecipes;
 import static com.prosbloom.cerestech.machines.CTMachines.*;
@@ -43,11 +41,13 @@ public class CTRecipes {
         registerFormingPressRecipes(provider);
         registerChemicalReactorRecipes(provider);
         registerHotCoolantTurbineRecipes(provider);
+        registerCentrifugeRecipes(provider);
 
         IndustrialGreenhouseRecipes.registerIndustrialGreenhouseRecipes(provider);
         NuclearReactorRecipes.registerNuclearReactorRecipes(provider);
         NuclearCycleRecipes.registerNuclearCycleRecipes(provider);
         NaquadahReactorRecipes.registerNaquadahReactorRecipes(provider);
+        HeatExchangerRecipes.registerHeatExchangerRecipes(provider);
     }
 
     private static void registerManualRecipes(Consumer<FinishedRecipe> provider) {
@@ -73,6 +73,12 @@ public class CTRecipes {
                 "PMP", "MHM", "PMP",
                 'P', ELECTRIC_PUMP_EV.asStack(),
                 'M', ELECTRIC_MOTOR_EV.asStack(),
+                'H', HULL[EV].asStack());
+
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "large_heat_exchanger", LARGE_HEAT_EXCHANGER.asStack(),
+                "PWP", "WHW", "PWP",
+                'P', ELECTRIC_PUMP_EV.asStack(),
+                'W', new UnificationEntry(pipeLargeFluid, Titanium),
                 'H', HULL[EV].asStack());
 
 
@@ -127,19 +133,31 @@ public class CTRecipes {
     }
 
     private static void registerChemicalReactorRecipes(Consumer<FinishedRecipe> provider) {
-        CHEMICAL_RECIPES.recipeBuilder("beryllium_fluoride")
-                .inputItems(dust, Beryllium, 1)
-                .inputFluids(Fluorine.getFluid(2000))
-                .outputItems(dust, BerylliumFluoride, 3)
-                .duration(30).EUt(30)
-                .save(provider);
-        CHEMICAL_RECIPES.recipeBuilder("lithium_fluoride")
-                .inputItems(dust, Lithium, 1)
-                .inputFluids(Fluorine.getFluid(1000))
-                .outputItems(dust, LithiumFluoride, 2)
-                .duration(30).EUt(30)
-                .save(provider);
 
+    }
+    private static void registerCentrifugeRecipes(Consumer<FinishedRecipe> provider) {
+        CENTRIFUGE_RECIPES.recipeBuilder("pahoehoe_small")
+                .inputFluids(PahoehoeLava.getFluid(100))
+                .circuitMeta(10)
+                .chancedOutput(nugget, Copper, 2000, 0)
+                .chancedOutput(nugget, Tin, 1000, 0)
+                .chancedOutput(nugget, Silver, 250, 0)
+                .chancedOutput(dustSmall, Phosphorus, 5, 0)
+                .chancedOutput(dustSmall, Scheelite, 25, 0)
+                .chancedOutput(dustSmall, Bauxite, 50, 0)
+                .duration(40).EUt(VA[EV])
+                .save(provider);
+        CENTRIFUGE_RECIPES.recipeBuilder("pahoehoe_large")
+                .inputFluids(PahoehoeLava.getFluid(3600))
+                .circuitMeta(20)
+                .chancedOutput(ingot, Copper, 8000, 0)
+                .chancedOutput(ingot, Tin, 4000, 0)
+                .chancedOutput(ingot, Silver, 1000, 0)
+                .chancedOutput(dust, Phosphorus, 450, 0)
+                .chancedOutput(dust, Scheelite, 225, 0)
+                .chancedOutput(dust, Bauxite, 450, 0)
+                .duration(40).EUt(VA[IV])
+                .save(provider);
     }
 
     private static void registerFormingPressRecipes(Consumer<FinishedRecipe> provider) {

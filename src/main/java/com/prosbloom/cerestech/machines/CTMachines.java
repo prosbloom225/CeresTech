@@ -116,6 +116,27 @@ public class CTMachines {
             .compassNodeSelf()
             .register();
 
+    public static MultiblockMachineDefinition LARGE_HEAT_EXCHANGER = REGISTRATE.multiblock("large_heat_exchanger", WorkableElectricMultiblockMachine::new)
+            .langValue("Large Heat Exchanger")
+            .rotationState(RotationState.NON_Y_AXIS)
+            .recipeType(CTRecipeTypes.HEAT_EXCHANGER_RECIPES)
+            .appearanceBlock(CASING_TITANIUM_STABLE)
+            .pattern(definition -> FactoryBlockPattern.start()
+                    .aisle("XXX", "XXX", "XXX", "XXX")
+                    .aisle("XXX", "XPX", "XPX", "XXX")
+                    .aisle("XSX", "XXX", "XXX", "XXX")
+                    .where('S', controller(blocks(definition.getBlock())))
+                    .where('P', blocks(CASING_TITANIUM_GEARBOX.get()))
+                    .where('X', blocks(CASING_TITANIUM_STABLE.get()).setMinGlobalLimited(14)
+                            .or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                            .or(Predicates.autoAbilities(true, true, false)))
+                    .build())
+            .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_stable_titanium"),
+                    GTCEu.id("block/multiblock/large_heat_exchanger"), false)
+            .compassSections(GTCompassSections.TIER[EV])
+            .compassNodeSelf()
+            .register();
+
     public final static MachineDefinition[] QUAD_INPUT_HATCH = registerTieredMachines("quad_input_hatch",
             (holder, tier) -> new QuadFluidHatchPartMachine(holder, tier, IO.IN),
             (tier, builder) -> builder

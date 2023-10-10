@@ -7,6 +7,7 @@ import com.gregtechceu.gtceu.data.recipe.CraftingComponent;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
 import com.prosbloom.cerestech.data.recipes.IndustrialGreenhouseRecipes;
+import com.prosbloom.cerestech.data.recipes.NaquadahReactorRecipes;
 import com.prosbloom.cerestech.data.recipes.NuclearCycleRecipes;
 import com.prosbloom.cerestech.data.recipes.NuclearReactorRecipes;
 import com.prosbloom.cerestech.machines.multiblock.part.QuadFluidHatchPartMachine;
@@ -26,8 +27,7 @@ import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.CABLE;
 import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.PUMP;
 import static com.gregtechceu.gtceu.data.recipe.misc.MetaTileEntityLoader.registerMachineRecipe;
 import static com.prosbloom.cerestech.data.CTFluids.Coolant;
-import static com.prosbloom.cerestech.data.CTMaterials.BerylliumFluoride;
-import static com.prosbloom.cerestech.data.CTMaterials.LithiumFluoride;
+import static com.prosbloom.cerestech.data.CTMaterials.*;
 import static com.prosbloom.cerestech.data.recipes.HotCoolantTurbineRecipes.registerHotCoolantTurbineRecipes;
 import static com.prosbloom.cerestech.machines.CTMachines.*;
 
@@ -44,6 +44,7 @@ public class CTRecipes {
         IndustrialGreenhouseRecipes.registerIndustrialGreenhouseRecipes(provider);
         NuclearReactorRecipes.registerNuclearReactorRecipes(provider);
         NuclearCycleRecipes.registerNuclearCycleRecipes(provider);
+        NaquadahReactorRecipes.registerNaquadahReactorRecipes(provider);
     }
 
     private static void registerManualRecipes(Consumer<FinishedRecipe> provider) {
@@ -74,6 +75,15 @@ public class CTRecipes {
 
         registerMachineRecipe(provider, DEHYDRATOR, "WCW", "WMW", "PRP", 'M', HULL, 'R', ROBOT_ARM, 'P', PLATE, 'C', CIRCUIT, 'W', CABLE);
         registerMachineRecipe(provider, DECAY_CHAMBER, "RCR", "EHE", "WCW", 'R', new UnificationEntry(rod, Uranium238), 'E', EMITTER, 'H', HULL, 'C', CIRCUIT, 'W', CABLE);
+
+        // TODO - not working
+        registerMachineRecipe(provider, NAQUADAH_REACTOR, "RCR", "FHF", "WCW",
+                'R', new UnificationEntry(rod, Curium247),
+                'C', CIRCUIT,
+                'F', EMITTER,
+                'H', HULL,
+                'W', CABLE);
+
     }
 
     private static void registerMixerRecipes(Consumer<FinishedRecipe> provider) {

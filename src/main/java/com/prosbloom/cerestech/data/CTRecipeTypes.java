@@ -54,4 +54,9 @@ public class CTRecipeTypes {
             .setEUIO(IO.IN)
             .setProgressBar(GuiTextures.PROGRESS_BAR_MACERATE, LEFT_TO_RIGHT)
             .setSound(new ExistingSoundEntry(SoundEvents.SAND_PLACE, SoundSource.BLOCKS));
+
+    public final static GTRecipeType NAQUADAH_REACTOR_RECIPES = register("naquadah_reactor", MULTIBLOCK).setMaxIOSize(1, 1, 0, 0)
+            .setEUIO(IO.OUT)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_MACERATE, LEFT_TO_RIGHT)
+            .setSound(new ExistingSoundEntry(SoundEvents.BLAZE_BURN, SoundSource.BLOCKS));
 }

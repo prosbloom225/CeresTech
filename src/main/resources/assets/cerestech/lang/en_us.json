@@ -11,6 +11,14 @@
   "block.gtceu.gas_centrifuge": "Gas Centrifuge",
   "gtceu.gas_centrifuge": "Gas Centrifuge",
 
+  "block.gtceu.iv_naquadah_reactor": "Naquadah Reactor Mk I",
+  "block.gtceu.luv_naquadah_reactor": "Naquadah Reactor Mk II",
+  "block.gtceu.zpm_naquadah_reactor": "Naquadah Reactor Mk III",
+  "block.gtceu.uv_naquadah_reactor": "Naquadah Reactor Mk IV",
+  "block.gtceu.uhv_naquadah_reactor": "Naquadah Reactor Mk V",
+  "gtceu.naquadah_reactor": "Naquadah Reactor",
+  "gtceu.machine.naquadah_reactor.tooltip": "Requires Enriched Naquadah Rods",
+
   "block.gtceu.lv_dehydrator": "Basic Chemical Dehydrator",
   "block.gtceu.mv_dehydrator": "Advanced Chemical Dehydrator",
   "block.gtceu.hv_dehydrator": "Advanced Chemical Dehydrator II",

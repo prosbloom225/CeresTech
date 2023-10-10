@@ -14,6 +14,9 @@
   "block.gtceu.large_heat_exchanger": "Large Heat Exchanger",
   "gtceu.heat_exchanger": "Heat Exchanger",
 
+  "block.gtceu.industrial_coke_oven": "Industrial Coke Oven",
+  "gtceu.coke_oven": "Coke Oven",
+
   "block.gtceu.shielded_reactor_casing": "Shielded Reactor Casing",
 
   "block.gtceu.iv_naquadah_reactor": "Naquadah Reactor Mk I",

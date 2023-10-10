@@ -24,8 +24,11 @@ import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.blocks;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.controller;
 import static com.gregtechceu.gtceu.api.registry.GTRegistries.REGISTRATE;
+import static com.gregtechceu.gtceu.common.data.GCyMBlocks.HEAT_VENT;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
+import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.COKE_OVEN_RECIPES;
+import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.PYROLYSE_RECIPES;
 import static com.prosbloom.cerestech.data.CTBlocks.CASING_SHIELDED_REACTOR;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.NAQUADAH_REACTOR_RECIPES;
 import static net.minecraft.world.level.block.Blocks.DIRT;
@@ -101,14 +104,18 @@ public class CTMachines {
             .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
             .appearanceBlock(CASING_STAINLESS_CLEAN)
             .pattern(definition -> FactoryBlockPattern.start()
-                    .aisle("XXX", "XXX", "XXX")
-                    .aisle("XXX", "X#X", "XXX")
-                    .aisle("XXX", "XSX", "XXX")
+                    .aisle("#XXX#", "#XXX#", "#####", "#####", "#####", "#####", "#####")
+                    .aisle("XXXXX", "XXXXX", "#TCT#", "#T#T#", "#T#T#", "#T#T#", "#T#T#")
+                    .aisle("XXXXX", "XXXXX", "#CCC#", "#####", "#####", "#####", "#####")
+                    .aisle("XXXXX", "XXXXX", "#TCT#", "#T#T#", "#T#T#", "#T#T#", "#T#T#")
+                    .aisle("#XSX#", "#XXX#", "#####", "#####", "#####", "#####", "#####")
                     .where('S', controller(blocks(definition.getBlock())))
-                    .where('X', blocks(CASING_STAINLESS_CLEAN.get()).setMinGlobalLimited(14)
+                    .where('C', blocks(CASING_STEEL_PIPE.get()))
+                    .where('T', blocks(CASING_STEEL_SOLID.get()))
+                    .where('X', blocks(CASING_STAINLESS_CLEAN.get())
                             .or(Predicates.autoAbilities(definition.getRecipeTypes()))
                             .or(Predicates.autoAbilities(true, true, false)))
-                    .where('#', Predicates.air())
+                    .where('#', Predicates.any())
                     .build())
             .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_clean_stainless_steel"),
                     GTCEu.id("block/multiblock/gas_centrifuge"), false)
@@ -133,6 +140,31 @@ public class CTMachines {
                     .build())
             .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_stable_titanium"),
                     GTCEu.id("block/multiblock/large_heat_exchanger"), false)
+            .compassSections(GTCompassSections.TIER[EV])
+            .compassNodeSelf()
+            .register();
+
+    public static MultiblockMachineDefinition INDUSTRIAL_COKE_OVEN = REGISTRATE.multiblock("industrial_coke_oven", WorkableElectricMultiblockMachine::new)
+            .langValue("Industrial Coke Oven")
+            .rotationState(RotationState.NON_Y_AXIS)
+            .recipeType(PYROLYSE_RECIPES)
+            // TODO - parallel isnt working, seems like upstream issue
+            .recipeModifier(GTRecipeModifiers.PARALLEL_HATCH.apply(OverclockingLogic.PERFECT_OVERCLOCK, GTRecipeModifiers.ELECTRIC_OVERCLOCK))
+            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .appearanceBlock(CASING_INVAR_HEATPROOF)
+            .pattern(definition -> FactoryBlockPattern.start()
+                    .aisle("XXX", "VVV", "XXX")
+                    .aisle("XXX", "V#V", "XXX")
+                    .aisle("XSX", "VVV", "XXX")
+                    .where('S', controller(blocks(definition.getBlock())))
+                    .where('V', blocks(HEAT_VENT.get()))
+                    .where('X', blocks(CASING_INVAR_HEATPROOF.get())
+                            .or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                            .or(Predicates.autoAbilities(true, true, true)))
+                    .where('#', Predicates.air())
+                    .build())
+            .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_heatproof"),
+                    GTCEu.id("block/multiblock/industrial_coke_oven"), false)
             .compassSections(GTCompassSections.TIER[EV])
             .compassNodeSelf()
             .register();

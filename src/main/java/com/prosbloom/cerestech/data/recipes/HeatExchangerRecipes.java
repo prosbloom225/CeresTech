@@ -21,11 +21,11 @@ public class HeatExchangerRecipes {
                 .duration(20)
                 .save(provider);
         HEAT_EXCHANGER_RECIPES.recipeBuilder("hot_flibe_to_steam")
-                .inputFluids(CoolantHot.getFluid(10))
+                .inputFluids(CoolantHot.getFluid(600))
                 .inputFluids(DistilledWater.getFluid(400))
-                .outputFluids(Coolant.getFluid(10))
-                .outputFluids(Steam.getFluid(4000))
-                .EUt(VA[LV])
+                .outputFluids(Coolant.getFluid(600))
+                .outputFluids(Steam.getFluid(64000))
+                //.EUt(VA[LV])
                 .duration(20)
                 .save(provider);
     }

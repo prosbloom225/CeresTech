@@ -81,6 +81,13 @@ public class CTRecipes {
                 'W', new UnificationEntry(pipeLargeFluid, Titanium),
                 'H', HULL[EV].asStack());
 
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "industrial_coke_oven", INDUSTRIAL_COKE_OVEN.asStack(),
+                "PCP", "WHW", "PCP",
+                'P', new UnificationEntry(plate, TantalumCarbide),
+                'C', CustomTags.EV_CIRCUITS,
+                'W', PYROLYSE_OVEN.get(),
+                'H', HULL[EV].asStack());
+
 
         registerMachineRecipe(provider, DEHYDRATOR, "WCW", "WMW", "PRP", 'M', HULL, 'R', ROBOT_ARM, 'P', PLATE, 'C', CIRCUIT, 'W', CABLE);
         registerMachineRecipe(provider, DECAY_CHAMBER, "RCR", "EHE", "WCW", 'R', new UnificationEntry(rod, Uranium238), 'E', EMITTER, 'H', HULL, 'C', CIRCUIT, 'W', CABLE);

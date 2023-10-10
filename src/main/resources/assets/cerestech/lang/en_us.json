@@ -31,6 +31,17 @@
   "block.gtceu.uv_decay_chamber": "Ultimate Decay Chamber",
   "gtceu.decay_chamber": "Decay Chamber",
 
+  "block.gtceu.ulv_quad_input_hatch": "ULV Quad Input Hatch",
+  "block.gtceu.lv_quad_input_hatch": "LV Quad Input Hatch",
+  "block.gtceu.mv_quad_input_hatch": "MV Quad Input Hatch",
+  "block.gtceu.hv_quad_input_hatch": "HV Quad Input Hatch",
+  "block.gtceu.ev_quad_input_hatch": "EV Quad Input Hatch",
+  "block.gtceu.iv_quad_input_hatch": "IV Quad Input Hatch",
+  "block.gtceu.luv_quad_input_hatch": "LuV Quad Input Hatch",
+  "block.gtceu.zpm_quad_input_hatch": "ZPM Quad Input Hatch",
+  "block.gtceu.uv_quad_input_hatch": "UV Quad Input Hatch",
+  "block.gtceu.uhv_quad_input_hatch": "UHV Quad Input Hatch",
+
   "tagprefix.depleted_fuel": "Depleted %s Fuel",
   "tagprefix.depleted_fuel_oxide": "%s Depleted Fuel Oxide",
   "tagprefix.depleted_fuel_nitride": "%s Depleted Fuel Nitride",

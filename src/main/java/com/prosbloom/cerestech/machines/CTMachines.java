@@ -1,9 +1,11 @@
 package com.prosbloom.cerestech.machines;
 
 import com.gregtechceu.gtceu.GTCEu;
+import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.data.RotationState;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
+import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern;
 import com.gregtechceu.gtceu.api.pattern.Predicates;
@@ -11,25 +13,23 @@ import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
 import com.gregtechceu.gtceu.common.data.GTCompassSections;
 import com.gregtechceu.gtceu.common.data.GTMachines;
 import com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
-import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
+import com.lowdragmc.lowdraglib.side.fluid.FluidHelper;
 import com.prosbloom.cerestech.data.CTRecipeTypes;
 import com.prosbloom.cerestech.machines.multiblock.ReactorMachine;
+import com.prosbloom.cerestech.machines.multiblock.part.QuadFluidHatchPartMachine;
+import net.minecraft.network.chat.Component;
 
-import static com.gregtechceu.gtceu.api.GTValues.EV;
-import static com.gregtechceu.gtceu.api.GTValues.HV;
+import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.blocks;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.controller;
 import static com.gregtechceu.gtceu.api.registry.GTRegistries.REGISTRATE;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
-import static com.gregtechceu.gtceu.common.data.GTMachines.registerSimpleMachines;
+import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 
 public class CTMachines {
 
     public static void init(){
     }
-
-
-
     public final static MachineDefinition[] DEHYDRATOR= registerSimpleMachines("dehydrator", CTRecipeTypes.DEHYDRATOR_RECIPES);
     public final static MachineDefinition[] DECAY_CHAMBER= registerSimpleMachines("decay_chamber", CTRecipeTypes.DECAY_CHAMBER_RECIPES);
     public static MultiblockMachineDefinition INDUSTRIAL_GREENHOUSE = REGISTRATE.multiblock("industrial_greenhouse", WorkableElectricMultiblockMachine::new)
@@ -107,4 +107,18 @@ public class CTMachines {
             .compassSections(GTCompassSections.TIER[EV])
             .compassNodeSelf()
             .register();
+
+    public final static MachineDefinition[] QUAD_INPUT_HATCH = registerTieredMachines("quad_input_hatch",
+            (holder, tier) -> new QuadFluidHatchPartMachine(holder, tier, IO.IN),
+            (tier, builder) -> builder
+                    .langValue(VNF[tier] + " Quad Input Hatch")
+                    .rotationState(RotationState.ALL)
+                    .abilities(PartAbility.IMPORT_FLUIDS)
+                    .overlayTieredHullRenderer("fluid_hatch.import")
+                    .tooltips(Component.translatable("gtceu.machine.fluid_hatch.import.tooltip"),
+                            Component.translatable("gtceu.universal.tooltip.fluid_storage_capacity", (8 * FluidHelper.getBucket()) * (1L << Math.min(9, tier))))
+                    .compassNode("fluid_hatch")
+                    .register(),
+            ALL_TIERS);
+
 }

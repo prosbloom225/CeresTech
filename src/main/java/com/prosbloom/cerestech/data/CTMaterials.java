@@ -1,18 +1,22 @@
 package com.prosbloom.cerestech.data;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
-import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.DustProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.IMaterialProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.IngotProperty;
-import com.gregtechceu.gtceu.api.data.chemical.material.properties.MaterialProperties;
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import com.gregtechceu.gtceu.common.data.GTElements;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
-import com.gregtechceu.gtceu.common.data.materials.ElementMaterials;
 
+import java.util.Objects;
+
+import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.GENERATE_DENSE;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
+import static com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey.DUST;
+import static com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey.INGOT;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 
 public class CTMaterials {
@@ -225,6 +229,7 @@ public class CTMaterials {
      */
 
     public static void init() {
+        /*
         // TODO - removing these is a hack until they get used in the main mod
         GTRegistries.MATERIALS.remove("neptunium");
         GTMaterials.Neptunium = new Material.Builder("neptunium")
@@ -279,8 +284,6 @@ public class CTMaterials {
                 .appendFlags(EXT_METAL)
                 .element(GTElements.Fm)
                 .buildAndRegister();
-
-
         GTRegistries.MATERIALS.remove("mendelevium");
         GTMaterials.Mendelevium= new Material.Builder("mendelevium")
                 .ingot(3)
@@ -289,7 +292,10 @@ public class CTMaterials {
                 .appendFlags(EXT_METAL)
                 .element(GTElements.Fm)
                 .buildAndRegister();
+
+         */
         // Lanthanides
+        /*
         GTRegistries.MATERIALS.remove("dysprosium");
         Dysprosium= new Material.Builder("dysprosium")
                 .ingot(3)
@@ -403,6 +409,7 @@ public class CTMaterials {
                 .appendFlags(EXT_METAL)
                 .element(GTElements.Tl)
                 .buildAndRegister();
+        /*
         GTRegistries.MATERIALS.remove("polonium");
         Polonium = new Material.Builder("polonium")
                 .ingot(3)
@@ -475,6 +482,7 @@ public class CTMaterials {
                 .appendFlags(EXT_METAL)
                 .element(GTElements.At)
                 .buildAndRegister();
+
         GTRegistries.MATERIALS.remove("actinium");
         Actinium = new Material.Builder("actinium")
                 .ingot(3)
@@ -483,5 +491,41 @@ public class CTMaterials {
                 .appendFlags(EXT_METAL)
                 .element(GTElements.Ac)
                 .buildAndRegister();
+
+         */
+
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("neptunium")).setProperty(INGOT, new IngotProperty());
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("curium")).setProperty(INGOT, new IngotProperty());
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("berkelium")).setProperty(INGOT, new IngotProperty());
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("californium")).setProperty(INGOT, new IngotProperty());
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("einsteinium")).setProperty(INGOT, new IngotProperty());
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("fermium")).setProperty(INGOT, new IngotProperty());
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("mendelevium")).setProperty(INGOT, new IngotProperty());
+
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("dysprosium")).setProperty(DUST, new DustProperty(1,0));
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("holmium")).setProperty(DUST, new DustProperty(1,0));
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("erbium")).setProperty(DUST, new DustProperty(1,0));
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("thulium")).setProperty(DUST, new DustProperty(1,0));
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("ytterbium")).setProperty(DUST, new DustProperty(1,0));
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("praseodymium")).setProperty(DUST, new DustProperty(1,0));
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("promethium")).setProperty(DUST, new DustProperty(1,0));
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("gadolinium")).setProperty(DUST, new DustProperty(1,0));
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("terbium")).setProperty(DUST, new DustProperty(1,0));
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("rubidium")).setProperty(DUST, new DustProperty(1,0));
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("strontium")).setProperty(DUST, new DustProperty(1,0));
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("francium")).setProperty(DUST, new DustProperty(1,0));
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("radium")).setProperty(DUST, new DustProperty(1,0));
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("thallium")).setProperty(DUST, new DustProperty(1,0));
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("hafnium")).setProperty(DUST, new DustProperty(1,0));
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("polonium")).setProperty(DUST, new DustProperty(1,0));
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("technetium")).setProperty(DUST, new DustProperty(1,0));
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("zirconium")).setProperty(DUST, new DustProperty(1,0));
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("iodine")).setProperty(DUST, new DustProperty(1,0));
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("selenium")).setProperty(DUST, new DustProperty(1,0));
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("germanium")).setProperty(DUST, new DustProperty(1,0));
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("tellurium")).setProperty(DUST, new DustProperty(1,0));
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("astatine")).setProperty(DUST, new DustProperty(1,0));
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("actinium")).setProperty(DUST, new DustProperty(1,0));
+
     }
 }

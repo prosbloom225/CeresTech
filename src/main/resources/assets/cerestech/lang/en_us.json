@@ -11,6 +11,8 @@
   "block.gtceu.gas_centrifuge": "Gas Centrifuge",
   "gtceu.gas_centrifuge": "Gas Centrifuge",
 
+  "block.gtceu.shielded_reactor_casing": "Shielded Reactor Casing",
+
   "block.gtceu.iv_naquadah_reactor": "Naquadah Reactor Mk I",
   "block.gtceu.luv_naquadah_reactor": "Naquadah Reactor Mk II",
   "block.gtceu.zpm_naquadah_reactor": "Naquadah Reactor Mk III",

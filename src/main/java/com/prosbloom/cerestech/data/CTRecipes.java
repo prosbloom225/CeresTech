@@ -3,6 +3,7 @@ package com.prosbloom.cerestech.data;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.UnificationEntry;
 import com.gregtechceu.gtceu.common.data.GTMachines;
+import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 import com.gregtechceu.gtceu.data.recipe.CraftingComponent;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
@@ -26,6 +27,7 @@ import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.*;
 import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.CABLE;
 import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.PUMP;
 import static com.gregtechceu.gtceu.data.recipe.misc.MetaTileEntityLoader.registerMachineRecipe;
+import static com.prosbloom.cerestech.data.CTBlocks.CASING_SHIELDED_REACTOR;
 import static com.prosbloom.cerestech.data.CTFluids.Coolant;
 import static com.prosbloom.cerestech.data.CTMaterials.*;
 import static com.prosbloom.cerestech.data.recipes.HotCoolantTurbineRecipes.registerHotCoolantTurbineRecipes;
@@ -38,6 +40,7 @@ public class CTRecipes {
         registerManualRecipes(provider);
         registerMixerRecipes(provider);
         registerAssemblerRecipes(provider);
+        registerFormingPressRecipes(provider);
         registerChemicalReactorRecipes(provider);
         registerHotCoolantTurbineRecipes(provider);
 
@@ -77,18 +80,22 @@ public class CTRecipes {
         registerMachineRecipe(provider, DECAY_CHAMBER, "RCR", "EHE", "WCW", 'R', new UnificationEntry(rod, Uranium238), 'E', EMITTER, 'H', HULL, 'C', CIRCUIT, 'W', CABLE);
 
         // TODO - not working
+        registerMachineRecipe(provider, NAQUADAH_REACTOR, "CWC", "WMW", "PRP", 'M', HULL, 'R', ROBOT_ARM, 'P', PLATE, 'C', CIRCUIT, 'W', CABLE);
+        /*
         registerMachineRecipe(provider, NAQUADAH_REACTOR, "RCR", "FHF", "WCW",
-                'R', new UnificationEntry(rod, Curium247),
+                'R', SENSOR,//new UnificationEntry(rod, Curium247),
                 'C', CIRCUIT,
                 'F', EMITTER,
                 'H', HULL,
                 'W', CABLE);
 
+         */
+
     }
 
     private static void registerMixerRecipes(Consumer<FinishedRecipe> provider) {
         MIXER_RECIPES.recipeBuilder("coolant_dust")
-                .inputItems(dust, LithiumFluoride , 2)
+                .inputItems(dust, LithiumFluoride, 2)
                 .inputItems(dust, BerylliumFluoride, 3)
                 .outputItems(dust, Coolant, 5)
                 .duration(600).EUt(120)
@@ -97,7 +104,7 @@ public class CTRecipes {
     }
 
     private static void registerAssemblerRecipes(Consumer<FinishedRecipe> provider) {
-        for (int i =0; i < QUAD_INPUT_HATCH.length; i++)
+        for (int i = 0; i < QUAD_INPUT_HATCH.length; i++)
             if (QUAD_INPUT_HATCH[i] != null)
                 ASSEMBLER_RECIPES.recipeBuilder("quad_input_hatch_" + QUAD_INPUT_HATCH[i].getTier())
                         .inputItems(pipeQuadrupleFluid, Titanium, 1)
@@ -107,7 +114,7 @@ public class CTRecipes {
                         .duration(600).EUt(VA[EV])
                         .save(provider);
 
-        for (int i =0; i < QUAD_OUTPUT_HATCH.length; i++)
+        for (int i = 0; i < QUAD_OUTPUT_HATCH.length; i++)
             if (QUAD_OUTPUT_HATCH[i] != null)
                 ASSEMBLER_RECIPES.recipeBuilder("quad_output_hatch_" + QUAD_OUTPUT_HATCH[i].getTier())
                         .inputItems(pipeQuadrupleFluid, Titanium, 1)
@@ -118,6 +125,7 @@ public class CTRecipes {
                         .save(provider);
 
     }
+
     private static void registerChemicalReactorRecipes(Consumer<FinishedRecipe> provider) {
         CHEMICAL_RECIPES.recipeBuilder("beryllium_fluoride")
                 .inputItems(dust, Beryllium, 1)
@@ -128,11 +136,20 @@ public class CTRecipes {
         CHEMICAL_RECIPES.recipeBuilder("lithium_fluoride")
                 .inputItems(dust, Lithium, 1)
                 .inputFluids(Fluorine.getFluid(1000))
-                .outputItems(dust, LithiumFluoride , 2)
+                .outputItems(dust, LithiumFluoride, 2)
                 .duration(30).EUt(30)
                 .save(provider);
 
     }
 
-
+    private static void registerFormingPressRecipes(Consumer<FinishedRecipe> provider) {
+        FORMING_PRESS_RECIPES.recipeBuilder("casing_shielded_reactor")
+                .inputItems(plateDense, Lead, 9)
+                .inputItems(plateDense, Lead, 9)
+                .inputItems(plateDense, HastelloyX, 4)
+                .inputItems(plateDense, StainlessSteel, 2)
+                .outputItems(CASING_SHIELDED_REACTOR.asStack(4))
+                .duration(1500).EUt(500)
+                .save(provider);
+    }
 }

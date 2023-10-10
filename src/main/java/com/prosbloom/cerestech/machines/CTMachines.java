@@ -4,6 +4,8 @@ import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.data.RotationState;
+import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
+import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
 import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
@@ -11,9 +13,7 @@ import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMa
 import com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern;
 import com.gregtechceu.gtceu.api.pattern.Predicates;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
-import com.gregtechceu.gtceu.common.data.GTCompassSections;
-import com.gregtechceu.gtceu.common.data.GTMachines;
-import com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
+import com.gregtechceu.gtceu.common.data.*;
 import com.lowdragmc.lowdraglib.side.fluid.FluidHelper;
 import com.prosbloom.cerestech.data.CTRecipeTypes;
 import com.prosbloom.cerestech.machines.multiblock.ReactorMachine;
@@ -26,6 +26,7 @@ import static com.gregtechceu.gtceu.api.pattern.Predicates.controller;
 import static com.gregtechceu.gtceu.api.registry.GTRegistries.REGISTRATE;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
+import static com.prosbloom.cerestech.data.CTBlocks.CASING_SHIELDED_REACTOR;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.NAQUADAH_REACTOR_RECIPES;
 
 public class CTMachines {
@@ -66,18 +67,19 @@ public class CTMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(CTRecipeTypes.NUCLEAR_REACTOR_RECIPES)
             .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
-            .appearanceBlock(CASING_TITANIUM_STABLE)
+            .appearanceBlock(CASING_SHIELDED_REACTOR)
             .pattern(definition -> FactoryBlockPattern.start()
-                    .aisle("XXX", "XXX", "XXX")
-                    .aisle("XXX", "X#X", "XXX")
-                    .aisle("XXX", "XSX", "XXX")
+                    .aisle("XXX", "XGX", "XGX", "XGX", "XGX", "XGX", "XGX", "XGX", "XXX")
+                    .aisle("XXX", "GTG", "GTG", "GTG", "GTG", "GTG", "GTG", "GTG", "XXX")
+                    .aisle("XSX", "XGX", "XGX", "XGX", "XGX", "XGX", "XGX", "XGX", "XXX")
                     .where('S', controller(blocks(definition.getBlock())))
-                    .where('X', blocks(CASING_TITANIUM_STABLE.get()).setMinGlobalLimited(14)
+                    .where('T', blocks(ChemicalHelper.getBlock(TagPrefix.block, GTMaterials.Thorium)))
+                    .where('G', blocks(CASING_TEMPERED_GLASS.get()))
+                    .where('X', blocks(CASING_SHIELDED_REACTOR.get())
                             .or(Predicates.autoAbilities(definition.getRecipeTypes()))
-                            .or(Predicates.autoAbilities(true, true, false)))
-                    .where('#', Predicates.air())
+                            .or(Predicates.autoAbilities(true, false, false)))
                     .build())
-            .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_stable_titanium"),
+            .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_shielded_reactor"),
                     GTCEu.id("block/multiblock/nuclear_reactor"), false)
             .compassSections(GTCompassSections.TIER[EV])
             .compassNodeSelf()

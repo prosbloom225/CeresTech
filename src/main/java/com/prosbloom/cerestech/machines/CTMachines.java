@@ -28,6 +28,7 @@ import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.prosbloom.cerestech.data.CTBlocks.CASING_SHIELDED_REACTOR;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.NAQUADAH_REACTOR_RECIPES;
+import static net.minecraft.world.level.block.Blocks.DIRT;
 
 public class CTMachines {
 
@@ -45,15 +46,16 @@ public class CTMachines {
             .appearanceBlock(CASING_ALUMINIUM_FROSTPROOF)
             .pattern(definition -> FactoryBlockPattern.start()
                     .aisle("XXXXX", "TTTTT", "TTTTT", "XXXXX")
-                    .aisle("XXXXX", "T###T", "T###T", "XXXXX")
-                    .aisle("XXXXX", "T###T", "T###T", "XXXXX")
-                    .aisle("XXXXX", "T###T", "T###T", "XXXXX")
+                    .aisle("XXXXX", "TDDDT", "TDDDT", "XXXXX")
+                    .aisle("XXXXX", "TDDDT", "TDDDT", "XXXXX")
+                    .aisle("XXXXX", "TDDDT", "TDDDT", "XXXXX")
                     .aisle("XXSXX", "TTTTT", "TTTTT", "XXXXX")
                     .where('S', controller(blocks(definition.getBlock())))
                     .where('T', blocks(CASING_TEMPERED_GLASS.get()))
+                    .where('D', blocks(DIRT))
                     .where('X', blocks(CASING_ALUMINIUM_FROSTPROOF.get()).setMinGlobalLimited(14)
                             .or(Predicates.autoAbilities(definition.getRecipeTypes()))
-                            .or(Predicates.autoAbilities(true, true, false)))
+                            .or(Predicates.autoAbilities(true, false, false)))
                     .where('#', Predicates.air())
                     .build())
             .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_frost_proof"),

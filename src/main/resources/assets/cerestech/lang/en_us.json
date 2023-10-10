@@ -50,7 +50,7 @@
   "block.gtceu.iv_quad_output_hatch": "IV Quad Output Hatch",
   "block.gtceu.luv_quad_output_hatch": "LuV Quad Output Hatch",
   "block.gtceu.zpm_quad_output_hatch": "ZPM Quad Output Hatch",
-  "block.gtceu.hv_quad_output_hatch": "UV Quad Output Hatch",
+  "block.gtceu.uv_quad_output_hatch": "UV Quad Output Hatch",
   "block.gtceu.uhv_quad_output_hatch": "UHV Quad Output Hatch",
 
   "tagprefix.depleted_fuel": "Depleted %s Fuel",

@@ -42,6 +42,17 @@
   "block.gtceu.uv_quad_input_hatch": "UV Quad Input Hatch",
   "block.gtceu.uhv_quad_input_hatch": "UHV Quad Input Hatch",
 
+  "block.gtceu.ulv_quad_output_hatch": "ULV Quad Output Hatch",
+  "block.gtceu.lv_quad_output_hatch": "LV Quad Output Hatch",
+  "block.gtceu.mv_quad_output_hatch": "MV Quad Output Hatch",
+  "block.gtceu.hv_quad_output_hatch": "HV Quad Output Hatch",
+  "block.gtceu.ev_quad_output_hatch": "EV Quad Output Hatch",
+  "block.gtceu.iv_quad_output_hatch": "IV Quad Output Hatch",
+  "block.gtceu.luv_quad_output_hatch": "LuV Quad Output Hatch",
+  "block.gtceu.zpm_quad_output_hatch": "ZPM Quad Output Hatch",
+  "block.gtceu.hv_quad_output_hatch": "UV Quad Output Hatch",
+  "block.gtceu.uhv_quad_output_hatch": "UHV Quad Output Hatch",
+
   "tagprefix.depleted_fuel": "Depleted %s Fuel",
   "tagprefix.depleted_fuel_oxide": "%s Depleted Fuel Oxide",
   "tagprefix.depleted_fuel_nitride": "%s Depleted Fuel Nitride",

@@ -121,4 +121,17 @@ public class CTMachines {
                     .register(),
             ALL_TIERS);
 
+    public final static MachineDefinition[] QUAD_OUTPUT_HATCH = registerTieredMachines("quad_output_hatch",
+            (holder, tier) -> new QuadFluidHatchPartMachine(holder, tier, IO.OUT),
+            (tier, builder) -> builder
+                    .langValue(VNF[tier] + " Quad Output Hatch")
+                    .rotationState(RotationState.ALL)
+                    .abilities(PartAbility.IMPORT_FLUIDS)
+                    .overlayTieredHullRenderer("fluid_hatch.export")
+                    .tooltips(Component.translatable("gtceu.machine.fluid_hatch.export.tooltip"),
+                            Component.translatable("gtceu.universal.tooltip.fluid_storage_capacity", (8 * FluidHelper.getBucket()) * (1L << Math.min(9, tier))))
+                    .compassNode("fluid_hatch")
+                    .register(),
+            ALL_TIERS);
+
 }

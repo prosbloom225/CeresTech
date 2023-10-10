@@ -91,8 +91,19 @@ public class CTRecipes {
             if (QUAD_INPUT_HATCH[i] != null)
                 ASSEMBLER_RECIPES.recipeBuilder("quad_input_hatch_" + QUAD_INPUT_HATCH[i].getTier())
                         .inputItems(pipeQuadrupleFluid, Titanium, 1)
+                        .circuitMeta(1)
                         .inputItems(HULL[i].asStack())
                         .outputItems(QUAD_INPUT_HATCH[i].asStack())
+                        .duration(600).EUt(VA[EV])
+                        .save(provider);
+
+        for (int i =0; i < QUAD_OUTPUT_HATCH.length; i++)
+            if (QUAD_OUTPUT_HATCH[i] != null)
+                ASSEMBLER_RECIPES.recipeBuilder("quad_output_hatch_" + QUAD_OUTPUT_HATCH[i].getTier())
+                        .inputItems(pipeQuadrupleFluid, Titanium, 1)
+                        .circuitMeta(2)
+                        .inputItems(HULL[i].asStack())
+                        .outputItems(QUAD_OUTPUT_HATCH[i].asStack())
                         .duration(600).EUt(VA[EV])
                         .save(provider);
 

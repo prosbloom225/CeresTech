@@ -15,6 +15,7 @@ import com.prosbloom.cerestech.api.machine.trait.NotifiableFluidTankMulti;
 
 public class QuadFluidHatchPartMachine extends FluidHatchPartMachine  {
     // TODO - autoIO
+    // TODO - New Texture
     private final int numTanks = 4;
     private NotifiableFluidTankMulti tanks;
 

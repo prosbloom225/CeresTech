@@ -178,6 +178,7 @@ dependencies {
     implementation fg.deobf("curse.maven:shutup-experimental-settings-407174:3759881")
     //implementation fg.deobf("curse.maven:theoneprobe-245211:3965693")
     implementation fg.deobf("curse.maven:jade-324717:4719987")
+    implementation fg.deobf("curse.maven:applied-energistics-223794:4733119")
 
     compileOnly fg.deobf("com.tterrag.registrate:Registrate:MC1.19.3-1.1.13")
 }

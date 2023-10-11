@@ -19,7 +19,6 @@ import net.minecraft.server.level.ServerLevel;
 
 public class QuadFluidHatchPartMachine extends FluidHatchPartMachine  {
     protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(QuadFluidHatchPartMachine.class, TieredIOPartMachine.MANAGED_FIELD_HOLDER);
-    // TODO - autoIO
     // TODO - New Texture
     private final int numTanks = 4;
     @Persisted

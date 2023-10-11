@@ -91,7 +91,7 @@ public class CTMachines {
             .register();
 
 
-    public final static MultiblockMachineDefinition HOT_COOLANT_TURBINE = GTMachines.registerLargeTurbine("hot_coolant_turbine", EV,
+    public final static MultiblockMachineDefinition HOT_COOLANT_TURBINE = GTMachines.registerLargeTurbine("hot_coolant_turbine", IV,
             CTRecipeTypes.HOT_COOLANT_TURBINE_RECIPES,
             CASING_TUNGSTENSTEEL_TURBINE, CASING_TUNGSTENSTEEL_GEARBOX,
             GTCEu.id("block/casings/solid/machine_casing_robust_tungstensteel"),

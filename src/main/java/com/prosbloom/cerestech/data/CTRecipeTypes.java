@@ -42,7 +42,6 @@ public class CTRecipeTypes {
             .setEUIO(IO.OUT)
             .setSlotOverlay(false, true, true, GuiTextures.CENTRIFUGE_OVERLAY)
             .setProgressBar(GuiTextures.PROGRESS_BAR_GAS_COLLECTOR, LEFT_TO_RIGHT)
-            //.prepareBuilder(recipeBuilder -> recipeBuilder.EUt(GTValues.VA[GTValues.MV]))
             .setSound(GTSoundEntries.TURBINE);
 
     public final static GTRecipeType DEHYDRATOR_RECIPES= register("dehydrator", MULTIBLOCK).setMaxIOSize(2, 9, 0, 6)

@@ -65,9 +65,9 @@ public class CTRecipes {
         VanillaRecipeHelper.addShapedRecipe(provider, true, "hot_coolant_turbine", HOT_COOLANT_TURBINE.asStack(),
                 "CGC", "GHG", "PGP",
                 'G', new UnificationEntry(plate, HastelloyX),
-                'C', CustomTags.HV_CIRCUITS,
-                'H', HULL[EV].asStack(),
-                'P', new UnificationEntry(pipeLargeFluid, Tungsten));
+                'C', CustomTags.IV_CIRCUITS,
+                'H', HULL[IV].asStack(),
+                'P', new UnificationEntry(pipeLargeFluid, TungstenSteel));
 
         VanillaRecipeHelper.addShapedRecipe(provider, true, "gas_centrifuge", GAS_CENTRIFUGE.asStack(),
                 "PMP", "MHM", "PMP",

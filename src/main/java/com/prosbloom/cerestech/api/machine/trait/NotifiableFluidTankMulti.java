@@ -85,11 +85,6 @@ public class NotifiableFluidTankMulti extends NotifiableFluidTank {
         if (io != this.handlerIO) return left;
         var capabilities = simulate ? Arrays.stream(storages).map(FluidStorage::copy).toArray(FluidStorage[]::new) : storages;
 
-        // simulate filling tanks
-        for (FluidIngredient i : left) {
-            if (fillInternal(i.getStacks()[0], true) == 0)
-                return left;
-        }
 
         for (FluidStorage capability : capabilities) {
             Iterator<FluidIngredient> iterator = left.iterator();
@@ -119,6 +114,11 @@ public class NotifiableFluidTankMulti extends NotifiableFluidTank {
                     }
                 }
             } else if (io == IO.OUT) {
+                // simulate filling tanks
+                for (FluidIngredient i : left) {
+                    if (fillInternal(i.getStacks()[0], true) == 0)
+                        return left;
+                }
                 while (iterator.hasNext()) {
                     FluidIngredient fluidStack = iterator.next();
                     if (fluidStack.isEmpty()) {

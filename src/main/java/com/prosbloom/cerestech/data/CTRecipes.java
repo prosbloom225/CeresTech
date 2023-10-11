@@ -137,6 +137,26 @@ public class CTRecipes {
                         .duration(600).EUt(VA[EV])
                         .save(provider);
 
+        for (int i = 0; i < NONUPLE_INPUT_HATCH.length; i++)
+            if (NONUPLE_INPUT_HATCH[i] != null)
+                ASSEMBLER_RECIPES.recipeBuilder("nonuple_input_hatch_" + NONUPLE_INPUT_HATCH[i].getTier())
+                        .inputItems(pipeNonupleFluid, Titanium, 1)
+                        .circuitMeta(1)
+                        .inputItems(HULL[i].asStack())
+                        .outputItems(NONUPLE_INPUT_HATCH[i].asStack())
+                        .duration(600).EUt(VA[EV])
+                        .save(provider);
+
+        for (int i = 0; i < NONUPLE_OUTPUT_HATCH.length; i++)
+            if (NONUPLE_OUTPUT_HATCH[i] != null)
+                ASSEMBLER_RECIPES.recipeBuilder("nonuple_output_hatch_" + NONUPLE_OUTPUT_HATCH[i].getTier())
+                        .inputItems(pipeNonupleFluid, Titanium, 1)
+                        .circuitMeta(2)
+                        .inputItems(HULL[i].asStack())
+                        .outputItems(NONUPLE_OUTPUT_HATCH[i].asStack())
+                        .duration(600).EUt(VA[EV])
+                        .save(provider);
+
     }
 
     private static void registerChemicalReactorRecipes(Consumer<FinishedRecipe> provider) {

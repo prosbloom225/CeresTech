@@ -6,17 +6,23 @@ import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.data.RotationState;
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
+import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
+import com.gregtechceu.gtceu.api.machine.MetaMachine;
 import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
 import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern;
 import com.gregtechceu.gtceu.api.pattern.Predicates;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
-import com.gregtechceu.gtceu.common.data.*;
+import com.gregtechceu.gtceu.common.data.GTCompassSections;
+import com.gregtechceu.gtceu.common.data.GTMachines;
+import com.gregtechceu.gtceu.common.data.GTMaterials;
+import com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
 import com.lowdragmc.lowdraglib.side.fluid.FluidHelper;
 import com.prosbloom.cerestech.data.CTRecipeTypes;
 import com.prosbloom.cerestech.machines.multiblock.ReactorMachine;
+import com.prosbloom.cerestech.machines.multiblock.part.NonupleFluidHatchPartMachine;
 import com.prosbloom.cerestech.machines.multiblock.part.QuadFluidHatchPartMachine;
 import net.minecraft.network.chat.Component;
 
@@ -27,7 +33,6 @@ import static com.gregtechceu.gtceu.api.registry.GTRegistries.REGISTRATE;
 import static com.gregtechceu.gtceu.common.data.GCyMBlocks.HEAT_VENT;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
-import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.COKE_OVEN_RECIPES;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.PYROLYSE_RECIPES;
 import static com.prosbloom.cerestech.data.CTBlocks.CASING_SHIELDED_REACTOR;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.NAQUADAH_REACTOR_RECIPES;
@@ -181,11 +186,35 @@ public class CTMachines {
                     .compassNode("fluid_hatch")
                     .register(),
             ALL_TIERS);
-
     public final static MachineDefinition[] QUAD_OUTPUT_HATCH = registerTieredMachines("quad_output_hatch",
             (holder, tier) -> new QuadFluidHatchPartMachine(holder, tier, IO.OUT),
             (tier, builder) -> builder
                     .langValue(VNF[tier] + " Quad Output Hatch")
+                    .rotationState(RotationState.ALL)
+                    .abilities(PartAbility.IMPORT_FLUIDS)
+                    .overlayTieredHullRenderer("fluid_hatch.export")
+                    .tooltips(Component.translatable("gtceu.machine.fluid_hatch.export.tooltip"),
+                            Component.translatable("gtceu.universal.tooltip.fluid_storage_capacity", (8 * FluidHelper.getBucket()) * (1L << Math.min(9, tier))))
+                    .compassNode("fluid_hatch")
+                    .register(),
+            ALL_TIERS);
+
+    public final static MachineDefinition[] NONUPLE_INPUT_HATCH = registerTieredMachines("nonuple_input_hatch",
+            (holder, tier) -> new NonupleFluidHatchPartMachine(holder, tier, IO.IN),
+            (tier, builder) -> builder
+                    .langValue(VNF[tier] + " Nonuple Input Hatch")
+                    .rotationState(RotationState.ALL)
+                    .abilities(PartAbility.IMPORT_FLUIDS)
+                    .overlayTieredHullRenderer("fluid_hatch.import")
+                    .tooltips(Component.translatable("gtceu.machine.fluid_hatch.import.tooltip"),
+                            Component.translatable("gtceu.universal.tooltip.fluid_storage_capacity", (8 * FluidHelper.getBucket()) * (1L << Math.min(9, tier))))
+                    .compassNode("fluid_hatch")
+                    .register(),
+            ALL_TIERS);
+    public final static MachineDefinition[] NONUPLE_OUTPUT_HATCH = registerTieredMachines("nonuple_output_hatch",
+            (holder, tier) -> new NonupleFluidHatchPartMachine(holder, tier, IO.OUT),
+            (tier, builder) -> builder
+                    .langValue(VNF[tier] + " Nonuple Output Hatch")
                     .rotationState(RotationState.ALL)
                     .abilities(PartAbility.IMPORT_FLUIDS)
                     .overlayTieredHullRenderer("fluid_hatch.export")

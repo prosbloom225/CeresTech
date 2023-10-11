@@ -69,6 +69,30 @@
   "block.gtceu.uv_quad_output_hatch": "UV Quad Output Hatch",
   "block.gtceu.uhv_quad_output_hatch": "UHV Quad Output Hatch",
 
+  "block.gtceu.ulv_nonuple_input_hatch": "ULV Nonuple Input Hatch",
+  "block.gtceu.lv_nonuple_input_hatch": "LV Nonuple Input Hatch",
+  "block.gtceu.mv_nonuple_input_hatch": "MV Nonuple Input Hatch",
+  "block.gtceu.hv_nonuple_input_hatch": "HV Nonuple Input Hatch",
+  "block.gtceu.ev_nonuple_input_hatch": "EV Nonuple Input Hatch",
+  "block.gtceu.iv_nonuple_input_hatch": "IV Nonuple Input Hatch",
+  "block.gtceu.luv_nonuple_input_hatch": "LuV Nonuple Input Hatch",
+  "block.gtceu.zpm_nonuple_input_hatch": "ZPM Nonuple Input Hatch",
+  "block.gtceu.uv_nonuple_input_hatch": "UV Nonuple Input Hatch",
+  "block.gtceu.uhv_nonuple_input_hatch": "UHV Nonuple Input Hatch",
+
+  "block.gtceu.ulv_nonuple_output_hatch": "ULV Nonuple Output Hatch",
+  "block.gtceu.lv_nonuple_output_hatch": "LV Nonuple Output Hatch",
+  "block.gtceu.mv_nonuple_output_hatch": "MV Nonuple Output Hatch",
+  "block.gtceu.hv_nonuple_output_hatch": "HV Nonuple Output Hatch",
+  "block.gtceu.ev_nonuple_output_hatch": "EV Nonuple Output Hatch",
+  "block.gtceu.iv_nonuple_output_hatch": "IV Nonuple Output Hatch",
+  "block.gtceu.luv_nonuple_output_hatch": "LuV Nonuple Output Hatch",
+  "block.gtceu.zpm_nonuple_output_hatch": "ZPM Nonuple Output Hatch",
+  "block.gtceu.uv_nonuple_output_hatch": "UV Nonuple Output Hatch",
+  "block.gtceu.uhv_nonuple_output_hatch": "UHV Nonuple Output Hatch",
+
+
+
   "tagprefix.depleted_fuel": "Depleted %s Fuel",
   "tagprefix.depleted_fuel_oxide": "%s Depleted Fuel Oxide",
   "tagprefix.depleted_fuel_nitride": "%s Depleted Fuel Nitride",

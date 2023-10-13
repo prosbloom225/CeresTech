@@ -91,6 +91,12 @@
   "block.gtceu.uv_nonuple_output_hatch": "UV Nonuple Output Hatch",
   "block.gtceu.uhv_nonuple_output_hatch": "UHV Nonuple Output Hatch",
 
+  "block.gtceu.iv_me_output_bus": "IV Output Bus (ME)",
+  "block.gtceu.luv_me_output_bus": "LuV Output Bus (ME)",
+  "block.gtceu.zpm_me_output_bus": "Zpm Output Bus (ME)",
+  "block.gtceu.uv_me_output_bus": "UV Output Bus (ME)",
+  "block.gtceu.uhv_me_output_bus": "UHV Output Bus (ME)",
+
 
 
   "tagprefix.depleted_fuel": "Depleted %s Fuel",

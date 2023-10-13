@@ -22,6 +22,7 @@ import com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
 import com.lowdragmc.lowdraglib.side.fluid.FluidHelper;
 import com.prosbloom.cerestech.data.CTRecipeTypes;
 import com.prosbloom.cerestech.machines.multiblock.ReactorMachine;
+import com.prosbloom.cerestech.machines.multiblock.part.MEItemPartMachine;
 import com.prosbloom.cerestech.machines.multiblock.part.NonupleFluidHatchPartMachine;
 import com.prosbloom.cerestech.machines.multiblock.part.QuadFluidHatchPartMachine;
 import net.minecraft.network.chat.Component;
@@ -223,4 +224,16 @@ public class CTMachines {
                     .compassNode("fluid_hatch")
                     .register(),
             ALL_TIERS);
+
+
+    public final static MachineDefinition[] ME_OUTPUT_BUS = registerTieredMachines("me_output_bus",
+            (holder, tier) -> new MEItemPartMachine(holder, tier, IO.OUT),
+            (tier, builder) -> builder
+                    .langValue("ME Output Bus")
+                    .rotationState(RotationState.ALL)
+                    .abilities(PartAbility.EXPORT_ITEMS)
+                    .overlayTieredHullRenderer("fluid_hatch.export")
+                    .compassNode("me_output_bus")
+                    .register(),
+            HIGH_TIERS);
 }

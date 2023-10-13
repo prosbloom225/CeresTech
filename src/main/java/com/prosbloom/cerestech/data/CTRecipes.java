@@ -169,7 +169,7 @@ public class CTRecipes {
 
         for (int i = 0; i < ME_OUTPUT_BUS.length; i++)
             if (ME_OUTPUT_BUS[i] != null)
-                ASSEMBLER_RECIPES.recipeBuilder("me_output_bus")
+                ASSEMBLER_RECIPES.recipeBuilder("me_output_hatch")
                         .inputItems(FLUID_EXPORT_HATCH[i])
                         .inputItems(AEBlocks.INTERFACE.asItem())
                         .outputItems(ME_OUTPUT_HATCH[i].asStack())

@@ -240,7 +240,7 @@ public class CTMachines {
             (tier, builder) -> builder
                     .langValue("ME Output Hatch")
                     .rotationState(RotationState.ALL)
-                    .abilities(PartAbility.EXPORT_ITEMS)
+                    .abilities(PartAbility.EXPORT_FLUIDS)
                     .overlayTieredHullRenderer("fluid_hatch.export")
                     .compassNode("me_output_hatch")
                     .register(),

@@ -160,16 +160,16 @@ public class CTRecipes {
 
         for (int i = 0; i < ME_OUTPUT_BUS.length; i++)
             if (ME_OUTPUT_BUS[i] != null)
-                ASSEMBLER_RECIPES.recipeBuilder("me_output_bus")
+                ASSEMBLER_RECIPES.recipeBuilder("me_output_bus_"+ME_OUTPUT_BUS[i].getTier())
                         .inputItems(ITEM_EXPORT_BUS[i])
                         .inputItems(AEBlocks.INTERFACE.asItem())
                         .outputItems(ME_OUTPUT_BUS[i].asStack())
                         .duration(600).EUt(VA[i])
                         .save(provider);
 
-        for (int i = 0; i < ME_OUTPUT_BUS.length; i++)
-            if (ME_OUTPUT_BUS[i] != null)
-                ASSEMBLER_RECIPES.recipeBuilder("me_output_hatch")
+        for (int i = 0; i < ME_OUTPUT_HATCH.length; i++)
+            if (ME_OUTPUT_HATCH[i] != null)
+                ASSEMBLER_RECIPES.recipeBuilder("me_output_hatch"+ME_OUTPUT_HATCH[i].getTier())
                         .inputItems(FLUID_EXPORT_HATCH[i])
                         .inputItems(AEBlocks.INTERFACE.asItem())
                         .outputItems(ME_OUTPUT_HATCH[i].asStack())

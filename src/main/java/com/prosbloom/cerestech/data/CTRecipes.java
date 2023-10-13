@@ -166,6 +166,15 @@ public class CTRecipes {
                         .outputItems(ME_OUTPUT_BUS[i].asStack())
                         .duration(600).EUt(VA[i])
                         .save(provider);
+
+        for (int i = 0; i < ME_OUTPUT_BUS.length; i++)
+            if (ME_OUTPUT_BUS[i] != null)
+                ASSEMBLER_RECIPES.recipeBuilder("me_output_bus")
+                        .inputItems(FLUID_EXPORT_HATCH[i])
+                        .inputItems(AEBlocks.INTERFACE.asItem())
+                        .outputItems(ME_OUTPUT_HATCH[i].asStack())
+                        .duration(600).EUt(VA[i])
+                        .save(provider);
     }
 
     private static void registerChemicalReactorRecipes(Consumer<FinishedRecipe> provider) {

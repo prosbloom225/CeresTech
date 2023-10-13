@@ -22,6 +22,7 @@ import com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
 import com.lowdragmc.lowdraglib.side.fluid.FluidHelper;
 import com.prosbloom.cerestech.data.CTRecipeTypes;
 import com.prosbloom.cerestech.machines.multiblock.ReactorMachine;
+import com.prosbloom.cerestech.machines.multiblock.part.MEFluidHatchPartMachine;
 import com.prosbloom.cerestech.machines.multiblock.part.MEItemPartMachine;
 import com.prosbloom.cerestech.machines.multiblock.part.NonupleFluidHatchPartMachine;
 import com.prosbloom.cerestech.machines.multiblock.part.QuadFluidHatchPartMachine;
@@ -232,8 +233,19 @@ public class CTMachines {
                     .langValue("ME Output Bus")
                     .rotationState(RotationState.ALL)
                     .abilities(PartAbility.EXPORT_ITEMS)
-                    .overlayTieredHullRenderer("fluid_hatch.export")
+                    .overlayTieredHullRenderer("item_bus.export")
                     .compassNode("me_output_bus")
+                    .register(),
+            HIGH_TIERS);
+
+    public final static MachineDefinition[] ME_OUTPUT_HATCH = registerTieredMachines("me_output_hatch",
+            (holder, tier) -> new MEFluidHatchPartMachine(holder, tier, IO.OUT),
+            (tier, builder) -> builder
+                    .langValue("ME Output Hatch")
+                    .rotationState(RotationState.ALL)
+                    .abilities(PartAbility.EXPORT_ITEMS)
+                    .overlayTieredHullRenderer("fluid_hatch.export")
+                    .compassNode("me_output_hatch")
                     .register(),
             HIGH_TIERS);
 }

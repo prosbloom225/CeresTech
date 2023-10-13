@@ -22,10 +22,7 @@ import com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
 import com.lowdragmc.lowdraglib.side.fluid.FluidHelper;
 import com.prosbloom.cerestech.data.CTRecipeTypes;
 import com.prosbloom.cerestech.machines.multiblock.ReactorMachine;
-import com.prosbloom.cerestech.machines.multiblock.part.MEFluidHatchPartMachine;
-import com.prosbloom.cerestech.machines.multiblock.part.MEItemPartMachine;
-import com.prosbloom.cerestech.machines.multiblock.part.NonupleFluidHatchPartMachine;
-import com.prosbloom.cerestech.machines.multiblock.part.QuadFluidHatchPartMachine;
+import com.prosbloom.cerestech.machines.multiblock.part.*;
 import net.minecraft.network.chat.Component;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
@@ -248,4 +245,5 @@ public class CTMachines {
                     .compassNode("me_output_hatch")
                     .register(),
             HIGH_TIERS);
+
 }

@@ -62,22 +62,6 @@ public class MEFluidHatchPartMachine extends MEPartMachine {
         return MANAGED_FIELD_HOLDER;
     }
 
-    public void createMainNode() {
-        // need to delay node creation till chunk is fully loaded
-        if (mainNode != null)
-            mainNode.destroy();
-        if (getLevel() != null && !this.getLevel().isClientSide && getPos() != null && getLevel().isLoaded(getPos())) {
-            mainNode = GridHelper.createManagedNode(this, BlockEntityNodeListener.INSTANCE)
-                    .setFlags(GridFlags.REQUIRE_CHANNEL)
-                    .setIdlePowerUsage(1)
-                    .setVisualRepresentation(CTMachines.ME_OUTPUT_BUS[getTier()].getItem())
-                    .setExposedOnSides(EnumSet.of(this.getFrontFacing()))
-                    .setInWorldNode(true);
-            mainNode.create(getLevel(), getPos());
-            unsubscribe(aeSubs);
-        }
-    }
-
     @Override
     protected InteractionResult onWrenchClick(Player playerIn, InteractionHand hand, Direction gridSide, BlockHitResult hitResult) {
         // TODO - node scanning cant be triggered by remote entities... GridHelper:68 checks the blockEntity for IInWorldGridNodeHost, but we are implementing in the child.. i have no idea how to implement in the super blockEntity without implementing the whole BlockEntity->This stack

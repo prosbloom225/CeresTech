@@ -18,8 +18,10 @@ import com.lowdragmc.lowdraglib.gui.widget.ImageWidget;
 import com.lowdragmc.lowdraglib.gui.widget.TankWidget;
 import com.lowdragmc.lowdraglib.gui.widget.Widget;
 import com.lowdragmc.lowdraglib.gui.widget.WidgetGroup;
+import com.lowdragmc.lowdraglib.side.fluid.FluidHelper;
 import com.lowdragmc.lowdraglib.side.fluid.FluidStack;
 import com.lowdragmc.lowdraglib.side.fluid.FluidTransferHelper;
+import com.lowdragmc.lowdraglib.syncdata.ISubscription;
 import com.lowdragmc.lowdraglib.syncdata.annotation.Persisted;
 import com.lowdragmc.lowdraglib.syncdata.field.ManagedFieldHolder;
 import com.prosbloom.cerestech.api.machine.trait.NotifiableFluidTankMulti;
@@ -36,19 +38,23 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
 
-public class MEFluidHatchPartMachine extends FluidHatchPartMachine implements IInWorldGridNodeHost, IGridConnectedBlockEntity  {
+public class MEFluidHatchPartMachine extends MEPartMachine {
     protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(MEFluidHatchPartMachine.class, TieredIOPartMachine.MANAGED_FIELD_HOLDER);
     // TODO - New Texture
     private final int numTanks = 9;
     @Persisted
     private NotifiableFluidTankMulti tanks;
 
-    private IManagedGridNode mainNode;
-    private TickableSubscription aeSubs;
+    protected ISubscription tankSubs;
 
+    private static final long INITIAL_TANK_CAPACITY = 8 * FluidHelper.getBucket();
 
-    public MEFluidHatchPartMachine(IMachineBlockEntity holder, int tier, IO io, Object... args) {
-        super(holder, tier, io, args);
+    protected long getTankCapacity() {
+        return INITIAL_TANK_CAPACITY * (1L << Math.min(9, getTier()));
+    }
+    public MEFluidHatchPartMachine(IMachineBlockEntity holder, int tier, IO io) {
+        super(holder, tier, io);
+        this.tanks = createTank();
     }
 
     @Override
@@ -83,14 +89,10 @@ public class MEFluidHatchPartMachine extends FluidHatchPartMachine implements II
         return ir;
     }
 
-    @Override
-    protected NotifiableFluidTank createTank(Object... args) {
-        tanks = new NotifiableFluidTankMulti(this, numTanks, getTankCapacity(), io);
-        // dummy tank
-        return new NotifiableFluidTank(this, 0, getTankCapacity(), io);
+    protected NotifiableFluidTankMulti createTank() {
+        return new NotifiableFluidTankMulti(this, numTanks, getTankCapacity(), io);
     }
 
-    @Override
     public void updateTankSubscription() {
         if (isWorkingEnabled() && ((io == IO.OUT && !tanks.isEmpty()) || io == IO.IN)){
             autoIOSubs = subscribeServerTick(autoIOSubs, this::autoIO);
@@ -100,7 +102,6 @@ public class MEFluidHatchPartMachine extends FluidHatchPartMachine implements II
         }
     }
 
-    @Override
     protected void autoIO() {
         if (getOffsetTimer() %5 ==0) {
             if (isWorkingEnabled() && ((io == IO.OUT && !tanks.isEmpty()) || io == IO.IN) && mainNode != null) {
@@ -150,24 +151,5 @@ public class MEFluidHatchPartMachine extends FluidHatchPartMachine implements II
         return group;
     }
 
-    @Nullable
-    @Override
-    public IGridNode getGridNode(Direction direction) {
-        return getActionableNode();
-    }
 
-    @Override
-    public IManagedGridNode getMainNode() {
-        return mainNode;
-    }
-
-    @Override
-    public void securityBreak() {
-
-    }
-
-    @Override
-    public void saveChanges() {
-
-    }
 }

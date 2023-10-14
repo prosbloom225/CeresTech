@@ -18,6 +18,7 @@
   "gtceu.coke_oven": "Coke Oven",
 
   "block.gtceu.shielded_reactor_casing": "Shielded Reactor Casing",
+  "block.gtceu.volcanus": "Volcanus",
 
   "block.gtceu.iv_naquadah_reactor": "Naquadah Reactor Mk I",
   "block.gtceu.luv_naquadah_reactor": "Naquadah Reactor Mk II",
@@ -130,6 +131,7 @@
   "item.gtceu.waste_metaloid": "Metaloid Waste",
   "material.coolant": "FLiBe Coolant",
   "material.coolant_hot": "Hot FLiBe Coolant",
+  "material.pyrotheum": "Pyrotheum",
   "material.lithium_fluoride": "Lithium Fluoride",
   "material.beryllium_fluoride": "Beryllium Fluoride",
   "material.uranium_234": "Uranium 234",

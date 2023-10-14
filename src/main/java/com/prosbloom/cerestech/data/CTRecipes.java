@@ -89,6 +89,13 @@ public class CTRecipes {
                 'W', PYROLYSE_OVEN.get(),
                 'H', HULL[EV].asStack());
 
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "volcanus", VOLCANUS.asStack(),
+                "GCG", "RHR", "PCP",
+                'P', new UnificationEntry(plate, TantalumCarbide),
+                'C', CustomTags.EV_CIRCUITS,
+                'W', PYROLYSE_OVEN.get(),
+                'H', HULL[EV].asStack());
+
 
         registerMachineRecipe(provider, DEHYDRATOR, "WCW", "WMW", "PRP", 'M', HULL, 'R', ROBOT_ARM, 'P', PLATE, 'C', CIRCUIT, 'W', CABLE);
         registerMachineRecipe(provider, DECAY_CHAMBER, "RCR", "EHE", "WCW", 'R', new UnificationEntry(rod, Uranium238), 'E', EMITTER, 'H', HULL, 'C', CIRCUIT, 'W', CABLE);

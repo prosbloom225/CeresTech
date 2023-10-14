@@ -41,4 +41,10 @@ public class CTFluids {
             .color(0XFCBA03).iconSet(MaterialIconSet.FLUID)
             .buildAndRegister();
 
+    public static Material Pyrotheum = new Material.Builder("pyrotheum")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .ingot()
+            .color(0xFF9D00).iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
 }

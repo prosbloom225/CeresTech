@@ -10,28 +10,39 @@ import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.machine.MetaMachine;
 import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
+import com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern;
+import com.gregtechceu.gtceu.api.pattern.MultiblockShapeInfo;
 import com.gregtechceu.gtceu.api.pattern.Predicates;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
-import com.gregtechceu.gtceu.common.data.GTCompassSections;
-import com.gregtechceu.gtceu.common.data.GTMachines;
-import com.gregtechceu.gtceu.common.data.GTMaterials;
-import com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
+import com.gregtechceu.gtceu.common.data.*;
+import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.lowdragmc.lowdraglib.side.fluid.FluidHelper;
+import com.prosbloom.cerestech.data.CTRecipeModifiers;
 import com.prosbloom.cerestech.data.CTRecipeTypes;
 import com.prosbloom.cerestech.machines.multiblock.ReactorMachine;
+import com.prosbloom.cerestech.machines.multiblock.VolcanusMachine;
 import com.prosbloom.cerestech.machines.multiblock.part.*;
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Blocks;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
-import static com.gregtechceu.gtceu.api.pattern.Predicates.blocks;
-import static com.gregtechceu.gtceu.api.pattern.Predicates.controller;
+import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
 import static com.gregtechceu.gtceu.api.registry.GTRegistries.REGISTRATE;
 import static com.gregtechceu.gtceu.common.data.GCyMBlocks.HEAT_VENT;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
+import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.BLAST_RECIPES;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.PYROLYSE_RECIPES;
 import static com.prosbloom.cerestech.data.CTBlocks.CASING_SHIELDED_REACTOR;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.NAQUADAH_REACTOR_RECIPES;
@@ -169,6 +180,60 @@ public class CTMachines {
                     .build())
             .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_heatproof"),
                     GTCEu.id("block/multiblock/industrial_coke_oven"), false)
+            .compassSections(GTCompassSections.TIER[EV])
+            .compassNodeSelf()
+            .register();
+
+    public final static MultiblockMachineDefinition VOLCANUS = REGISTRATE.multiblock("volcanus", VolcanusMachine::new)
+            .rotationState(RotationState.NON_Y_AXIS)
+            .recipeType(GTRecipeTypes.BLAST_RECIPES)
+            .recipeModifier((machine, recipe) -> CTRecipeModifiers.volcanusParallel(machine, recipe, 8, false))
+            .appearanceBlock(CASING_INVAR_HEATPROOF)
+            .pattern(definition -> FactoryBlockPattern.start()
+                    .aisle("XXX", "CCC", "CCC", "XXX")
+                    .aisle("XXX", "C#C", "C#C", "XMX")
+                    .aisle("XSX", "CCC", "CCC", "XXX")
+                    .where('S', controller(blocks(definition.getBlock())))
+                    .where('X', blocks(CASING_INVAR_HEATPROOF.get()).setMinGlobalLimited(9)
+                            .or(autoAbilities(definition.getRecipeTypes()))
+                            .or(autoAbilities(true, false, false)))
+                    .where('M', abilities(PartAbility.MUFFLER))
+                    .where('C', heatingCoils())
+                    .where('#', air())
+                    .build())
+            .shapeInfos(definition -> {
+                List<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
+                var builder = MultiblockShapeInfo.builder()
+                        .aisle("ISO", "CCC", "CCC", "XMX")
+                        .aisle("FXD", "C#C", "C#C", "XHX")
+                        .aisle("EEX", "CCC", "CCC", "XXX")
+                        .where('X', CASING_INVAR_HEATPROOF.getDefaultState())
+                        .where('S', definition, Direction.NORTH)
+                        .where('#', Blocks.AIR.defaultBlockState())
+                        .where('E', ENERGY_INPUT_HATCH[GTValues.LV], Direction.SOUTH)
+                        .where('I', ITEM_IMPORT_BUS[GTValues.LV], Direction.NORTH)
+                        .where('O', ITEM_EXPORT_BUS[GTValues.LV], Direction.NORTH)
+                        .where('F', FLUID_IMPORT_HATCH[GTValues.LV], Direction.WEST)
+                        .where('D', FLUID_EXPORT_HATCH[GTValues.LV], Direction.EAST)
+                        .where('H', MUFFLER_HATCH[GTValues.LV], Direction.UP)
+                        .where('M', MAINTENANCE_HATCH, Direction.NORTH);
+                ALL_COILS.entrySet().stream()
+                        .sorted(Comparator.comparingInt(entry -> entry.getKey().getTier()))
+                        .forEach(coil -> shapeInfo.add(builder.where('C', coil.getValue().get()).build()));
+                return shapeInfo;
+            })
+            .recoveryItems(() -> new ItemLike[]{GTItems.MATERIAL_ITEMS.get(TagPrefix.dustTiny, GTMaterials.Ash).get()})
+            .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_heatproof"),
+                    GTCEu.id("block/multiblock/electric_blast_furnace"), false)
+            .tooltips(Component.translatable("gtceu.machine.electric_blast_furnace.tooltip.1",
+                    Component.translatable("gtceu.machine.electric_blast_furnace.tooltip.2"),
+                    Component.translatable("gtceu.machine.electric_blast_furnace.tooltip.3")))
+            .additionalDisplay((controller, components) -> {
+                if (controller instanceof CoilWorkableElectricMultiblockMachine coilMachine && controller.isFormed()) {
+                    components.add(Component.translatable("gtceu.multiblock.blast_furnace.max_temperature",
+                            Component.translatable(FormattingUtil.formatNumbers(coilMachine.getCoilType().getCoilTemperature() + 100L * Math.max(0, coilMachine.getTier() - GTValues.MV)) + "K").setStyle(Style.EMPTY.withColor(ChatFormatting.RED))));
+                }
+            })
             .compassSections(GTCompassSections.TIER[EV])
             .compassNodeSelf()
             .register();

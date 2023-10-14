@@ -45,6 +45,7 @@ import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.BLAST_RECIPES;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.PYROLYSE_RECIPES;
 import static com.prosbloom.cerestech.data.CTBlocks.CASING_SHIELDED_REACTOR;
+import static com.prosbloom.cerestech.data.CTBlocks.CASING_VOLCANUS;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.NAQUADAH_REACTOR_RECIPES;
 import static net.minecraft.world.level.block.Blocks.DIRT;
 
@@ -188,13 +189,13 @@ public class CTMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTRecipeTypes.BLAST_RECIPES)
             .recipeModifier((machine, recipe) -> CTRecipeModifiers.volcanusParallel(machine, recipe, 8, false))
-            .appearanceBlock(CASING_INVAR_HEATPROOF)
+            .appearanceBlock(CASING_VOLCANUS)
             .pattern(definition -> FactoryBlockPattern.start()
                     .aisle("XXX", "CCC", "CCC", "XXX")
                     .aisle("XXX", "C#C", "C#C", "XMX")
                     .aisle("XSX", "CCC", "CCC", "XXX")
                     .where('S', controller(blocks(definition.getBlock())))
-                    .where('X', blocks(CASING_INVAR_HEATPROOF.get()).setMinGlobalLimited(9)
+                    .where('X', blocks(CASING_VOLCANUS.get()).setMinGlobalLimited(9)
                             .or(autoAbilities(definition.getRecipeTypes()))
                             .or(autoAbilities(true, false, false)))
                     .where('M', abilities(PartAbility.MUFFLER))
@@ -207,7 +208,7 @@ public class CTMachines {
                         .aisle("ISO", "CCC", "CCC", "XMX")
                         .aisle("FXD", "C#C", "C#C", "XHX")
                         .aisle("EEX", "CCC", "CCC", "XXX")
-                        .where('X', CASING_INVAR_HEATPROOF.getDefaultState())
+                        .where('X', CASING_VOLCANUS.getDefaultState())
                         .where('S', definition, Direction.NORTH)
                         .where('#', Blocks.AIR.defaultBlockState())
                         .where('E', ENERGY_INPUT_HATCH[GTValues.LV], Direction.SOUTH)
@@ -223,11 +224,12 @@ public class CTMachines {
                 return shapeInfo;
             })
             .recoveryItems(() -> new ItemLike[]{GTItems.MATERIAL_ITEMS.get(TagPrefix.dustTiny, GTMaterials.Ash).get()})
-            .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_heatproof"),
+            .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_volcanus"),
                     GTCEu.id("block/multiblock/electric_blast_furnace"), false)
             .tooltips(Component.translatable("gtceu.machine.electric_blast_furnace.tooltip.1",
                     Component.translatable("gtceu.machine.electric_blast_furnace.tooltip.2"),
-                    Component.translatable("gtceu.machine.electric_blast_furnace.tooltip.3")))
+                    Component.translatable("gtceu.machine.electric_blast_furnace.tooltip.3"),
+                    Component.translatable("gtceu.machine.volcanus.tooltip")))
             .additionalDisplay((controller, components) -> {
                 if (controller instanceof CoilWorkableElectricMultiblockMachine coilMachine && controller.isFormed()) {
                     components.add(Component.translatable("gtceu.multiblock.blast_furnace.max_temperature",

@@ -19,6 +19,8 @@
 
   "block.gtceu.shielded_reactor_casing": "Shielded Reactor Casing",
   "block.gtceu.volcanus": "Volcanus",
+  "block.gtceu.volcanus_casing": "Volcanus Casing",
+  "gtceu.machine.volcanus.tooltip": "Requires up to 8 Programmable Circuits",
 
   "block.gtceu.iv_naquadah_reactor": "Naquadah Reactor Mk I",
   "block.gtceu.luv_naquadah_reactor": "Naquadah Reactor Mk II",
@@ -27,6 +29,7 @@
   "block.gtceu.uhv_naquadah_reactor": "Naquadah Reactor Mk V",
   "gtceu.naquadah_reactor": "Naquadah Reactor",
   "gtceu.machine.naquadah_reactor.tooltip": "Requires Enriched Naquadah Rods",
+
 
   "block.gtceu.lv_dehydrator": "Basic Chemical Dehydrator",
   "block.gtceu.mv_dehydrator": "Advanced Chemical Dehydrator",
@@ -129,6 +132,8 @@
   "item.gtceu.waste_metal_group_c": "Metal Group C Waste",
   "item.gtceu.waste_nonmetal": "Nonmetal Waste",
   "item.gtceu.waste_metaloid": "Metaloid Waste",
+
+
   "material.coolant": "FLiBe Coolant",
   "material.coolant_hot": "Hot FLiBe Coolant",
   "material.pyrotheum": "Pyrotheum",

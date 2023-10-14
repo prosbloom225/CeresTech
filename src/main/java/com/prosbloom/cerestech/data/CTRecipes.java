@@ -11,7 +11,9 @@ import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
 import com.prosbloom.cerestech.data.recipes.*;
 import com.prosbloom.cerestech.machines.multiblock.part.QuadFluidHatchPartMachine;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.world.item.Items;
 
+import javax.swing.*;
 import java.util.function.Consumer;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
@@ -26,8 +28,8 @@ import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.CABLE;
 import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.PUMP;
 import static com.gregtechceu.gtceu.data.recipe.misc.MetaTileEntityLoader.registerMachineRecipe;
 import static com.prosbloom.cerestech.data.CTBlocks.CASING_SHIELDED_REACTOR;
-import static com.prosbloom.cerestech.data.CTFluids.Coolant;
-import static com.prosbloom.cerestech.data.CTFluids.PahoehoeLava;
+import static com.prosbloom.cerestech.data.CTBlocks.CASING_VOLCANUS;
+import static com.prosbloom.cerestech.data.CTFluids.*;
 import static com.prosbloom.cerestech.data.CTMaterials.*;
 import static com.prosbloom.cerestech.data.recipes.HotCoolantTurbineRecipes.registerHotCoolantTurbineRecipes;
 import static com.prosbloom.cerestech.machines.CTMachines.*;
@@ -91,10 +93,18 @@ public class CTRecipes {
 
         VanillaRecipeHelper.addShapedRecipe(provider, true, "volcanus", VOLCANUS.asStack(),
                 "GCG", "RHR", "PCP",
-                'P', new UnificationEntry(plate, TantalumCarbide),
+                'P', new UnificationEntry(plateDouble, HastelloyX),
+                'G', new UnificationEntry(gear, HastelloyX),
                 'C', CustomTags.EV_CIRCUITS,
-                'W', PYROLYSE_OVEN.get(),
-                'H', HULL[EV].asStack());
+                'R', ROBOT_ARM_IV,
+                'H', CASING_VOLCANUS.get());
+
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "volcanus_casing", CASING_VOLCANUS.asStack(),
+                "PCP", "CBC", "PGP",
+                'P', new UnificationEntry(plateDouble, HastelloyX),
+                'G', new UnificationEntry(gear, HastelloyX),
+                'B', new UnificationEntry(frameGt, HastelloyX),
+                'C', CustomTags.IV_CIRCUITS);
 
 
         registerMachineRecipe(provider, DEHYDRATOR, "WCW", "WMW", "PRP", 'M', HULL, 'R', ROBOT_ARM, 'P', PLATE, 'C', CIRCUIT, 'W', CABLE);
@@ -120,6 +130,15 @@ public class CTRecipes {
                 .inputItems(dust, BerylliumFluoride, 3)
                 .outputItems(dust, Coolant, 5)
                 .duration(600).EUt(120)
+                .save(provider);
+
+        MIXER_RECIPES.recipeBuilder("pyrotheum_dust")
+                .inputItems(dust, Coal, 1)
+                .inputItems(dust, Sulfur, 1)
+                .inputItems(dust, Redstone, 1)
+                .inputItems(Items.BLAZE_POWDER, 1)
+                .outputItems(dust, Pyrotheum, 1)
+                .duration(160).EUt(120)
                 .save(provider);
 
     }

@@ -7,3 +7,4 @@
 - Hot Coolant Turbine
 - Naquadah Reactor
 - Quadruple Input/Output Hatches
+- Volcanus

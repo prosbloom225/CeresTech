@@ -104,7 +104,7 @@ public class CTRecipes {
                 'P', new UnificationEntry(plateDouble, HastelloyX),
                 'G', new UnificationEntry(gear, HastelloyX),
                 'B', new UnificationEntry(frameGt, HastelloyX),
-                'C', CustomTags.IV_CIRCUITS);
+                'C', CustomTags.EV_CIRCUITS);
 
 
         registerMachineRecipe(provider, DEHYDRATOR, "WCW", "WMW", "PRP", 'M', HULL, 'R', ROBOT_ARM, 'P', PLATE, 'C', CIRCUIT, 'W', CABLE);

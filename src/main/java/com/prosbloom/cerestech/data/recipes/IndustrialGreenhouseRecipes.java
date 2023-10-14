@@ -16,13 +16,13 @@ public class IndustrialGreenhouseRecipes {
                 .inputItems(Items.OAK_SAPLING, 1)
                 .inputFluids(Water.getFluid(100))
                 .outputItems(new ItemStack(Items.OAK_LOG, 4), new ItemStack(Items.OAK_SAPLING, 1))
-                .chancedOutput(new ItemStack(Items.APPLE, 1), 5000, 600)
+                .chancedOutput(new ItemStack(Items.APPLE, 1), 8000, 600)
                 .duration(60).EUt(96)
                 .save(provider);
         INDUSTRIAL_GREENHOUSE_RECIPES.recipeBuilder("farm_spruce")
                 .inputItems(Items.SPRUCE_SAPLING, 1)
                 .inputFluids(Water.getFluid(100))
-                .outputItems(new ItemStack(Items.SPRUCE_LOG, 4), new ItemStack(Items.SPRUCE_SAPLING, 1))
+                .outputItems(new ItemStack(Items.SPRUCE_LOG, 8), new ItemStack(Items.SPRUCE_SAPLING, 1))
                 .duration(60).EUt(96)
                 .save(provider);
         INDUSTRIAL_GREENHOUSE_RECIPES.recipeBuilder("farm_acacia")

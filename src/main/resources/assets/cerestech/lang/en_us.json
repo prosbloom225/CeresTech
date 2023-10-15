@@ -107,6 +107,9 @@
   "block.gtceu.uv_me_output_hatch": "UV Output Hatch (ME)",
   "block.gtceu.uhv_me_output_hatch": "UHV Output Hatch (ME)",
 
+  "block.gtceu.super_capacitor": "Lapotronic Super Capacitor",
+  "block.gtceu.casing_super_capacitor": "Lapotronic Super Capacitor Casing",
+
 
 
   "tagprefix.depleted_fuel": "Depleted %s Fuel",

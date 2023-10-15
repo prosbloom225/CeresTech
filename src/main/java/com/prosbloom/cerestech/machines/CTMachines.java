@@ -23,6 +23,7 @@ import com.lowdragmc.lowdraglib.side.fluid.FluidHelper;
 import com.prosbloom.cerestech.data.CTRecipeModifiers;
 import com.prosbloom.cerestech.data.CTRecipeTypes;
 import com.prosbloom.cerestech.machines.multiblock.ReactorMachine;
+import com.prosbloom.cerestech.machines.multiblock.SuperCapacitorMachine;
 import com.prosbloom.cerestech.machines.multiblock.VolcanusMachine;
 import com.prosbloom.cerestech.machines.multiblock.part.*;
 import net.minecraft.ChatFormatting;
@@ -239,6 +240,28 @@ public class CTMachines {
             .compassSections(GTCompassSections.TIER[EV])
             .compassNodeSelf()
             .register();
+
+    public static MultiblockMachineDefinition SUPER_CAPACITOR = REGISTRATE.multiblock("super_capacitor", SuperCapacitorMachine::new)
+            .langValue("Super Capacitor")
+            .rotationState(RotationState.NON_Y_AXIS)
+            // TODO - parallel isnt working, seems like upstream issue
+            .appearanceBlock(CASING_INVAR_HEATPROOF)
+            .pattern(definition -> FactoryBlockPattern.start()
+                    .aisle("XXX", "XXX", "XXX")
+                    .aisle("XXX", "X#X", "XXX")
+                    .aisle("XSX", "XXX", "XXX")
+                    .where('S', controller(blocks(definition.getBlock())))
+                    .where('X', blocks(CASING_INVAR_HEATPROOF.get())
+                            .or(abilities(PartAbility.INPUT_ENERGY, PartAbility.OUTPUT_ENERGY))
+                            .or(autoAbilities(true, false, false)))
+                    .where('#', Predicates.air())
+                    .build())
+            .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_heatproof"),
+                    GTCEu.id("block/multiblock/industrial_coke_oven"), false)
+            .compassSections(GTCompassSections.TIER[EV])
+            .compassNodeSelf()
+            .register();
+
 
     public final static MachineDefinition[] QUAD_INPUT_HATCH = registerTieredMachines("quad_input_hatch",
             (holder, tier) -> new QuadFluidHatchPartMachine(holder, tier, IO.IN),

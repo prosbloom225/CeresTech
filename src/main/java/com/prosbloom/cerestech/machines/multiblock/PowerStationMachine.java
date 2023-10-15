@@ -99,9 +99,25 @@ public class PowerStationMachine extends MultiblockControllerMachine implements 
         energyContainer = NotifiableEnergyContainer.emitterContainer(this, cap, tier, 64);
         energyContainer.setEnergyStored(currEnergy);
 
+        updateEnergySubscriptions();
+        outputEnergy();
+    }
+
+    @Override
+    public void onLoad() {
+        super.onLoad();
+        if (energyContainer != null)
+            updateEnergySubscriptions();
+    }
+
+    public void updateEnergySubscriptions() {
+        if (energyOutputSubs != null)
+            unsubscribe(energyOutputSubs);
+        if (energyInputSubs != null)
+            unsubscribe(energyInputSubs);
         energyOutputSubs = subscribeServerTick(this::outputEnergy);
         energyInputSubs = subscribeServerTick(this::inputEnergy);
-        outputEnergy();
+
     }
 
     @Override
@@ -115,7 +131,7 @@ public class PowerStationMachine extends MultiblockControllerMachine implements 
     }
 
     private void inputEnergy() {
-        long curr = 0;
+        long curr = 0L;
         if (energyContainer.getEnergyCanBeInserted() > V[tier])
             if (hatches.stream().filter(h->h.getEnergyStored() >= V[tier]).findAny().orElse(null) != null) {
                 List<IEnergyContainer> hatchesToPull = hatches.stream().filter(h -> h.getEnergyStored() >= V[tier]).toList();
@@ -131,7 +147,7 @@ public class PowerStationMachine extends MultiblockControllerMachine implements 
 
     }
     private void outputEnergy() {
-        long curr = 0;
+        long curr = 0L;
         if (energyContainer.getEnergyStored() > V[tier])
             if (dynamos.stream().filter(h->h.getEnergyCanBeInserted() >= V[tier]).findAny().orElse(null) != null){
                 List<IEnergyContainer> dynamosToFill = dynamos.stream().filter(h->h.getEnergyCanBeInserted() >= V[tier]).toList();
@@ -164,9 +180,9 @@ public class PowerStationMachine extends MultiblockControllerMachine implements 
         var editableUI = createEnergyBar();
         var energyBar = editableUI.createDefault();
 
-        var group = new WidgetGroup(0, 0, 180 + 8, 80 + 8);
-        var container = new WidgetGroup(22, 4, 150, 80);
-        container.addWidget(new DraggableScrollableWidgetGroup(4, 4, 142, 72).setBackground(GuiTextures.DISPLAY)
+        var group = new WidgetGroup(0, 0, 200 + 8, 80 + 8);
+        var container = new WidgetGroup(22, 4, 170, 80);
+        container.addWidget(new DraggableScrollableWidgetGroup(4, 4, 162, 72).setBackground(GuiTextures.DISPLAY)
                         .addWidget(new LabelWidget(4, 4, self().getBlockState().getBlock().getDescriptionId()))
                         .addWidget(new LabelWidget(4, 14, () -> String.format("Max Energy:     %s", energyContainer.getEnergyCapacity())))
                         .addWidget(new LabelWidget(4, 24, () -> String.format("Energy Stored: %s\nAvg Out: %s\nAvg In:  %s",

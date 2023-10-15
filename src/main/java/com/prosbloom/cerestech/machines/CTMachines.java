@@ -17,7 +17,7 @@ import com.gregtechceu.gtceu.api.pattern.MultiblockShapeInfo;
 import com.gregtechceu.gtceu.api.pattern.Predicates;
 import com.gregtechceu.gtceu.api.pattern.util.RelativeDirection;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
-import com.gregtechceu.gtceu.client.renderer.machine.TieredHullMachineRenderer;
+import com.gregtechceu.gtceu.client.renderer.machine.MachineRenderer;
 import com.gregtechceu.gtceu.common.data.*;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.lowdragmc.lowdraglib.side.fluid.FluidHelper;
@@ -27,6 +27,7 @@ import com.prosbloom.cerestech.machines.multiblock.ReactorMachine;
 import com.prosbloom.cerestech.machines.multiblock.PowerStationMachine;
 import com.prosbloom.cerestech.machines.multiblock.VolcanusMachine;
 import com.prosbloom.cerestech.machines.multiblock.part.*;
+import com.prosbloom.cerestech.util.ColorUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -340,9 +341,10 @@ public class CTMachines {
             (tier, builder) -> builder
                     .langValue("Redox Cell")
                     .rotationState(RotationState.ALL)
-                    // TODO - upstream PartAbility constructor isnt public...using steam as a magic var
                     .abilities(PartAbility.STEAM)
-                    .renderer(() -> new TieredHullMachineRenderer(tier, GTCEu.id("block/machine/fisher_machine")))
+                    .renderer(() -> new MachineRenderer(GTCEu.id("block/machine/redox_cell")))
+                    .itemColor((s, t)-> ColorUtils.getRedoxColorFromTier(tier))
+                    .paintingColor(ColorUtils.getRedoxColorFromTier(tier))
                     .register(),
             EV, IV, LuV, ZPM, UV);
 

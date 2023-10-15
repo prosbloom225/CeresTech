@@ -10,6 +10,7 @@ import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
 import com.prosbloom.cerestech.data.recipes.*;
 import com.prosbloom.cerestech.machines.multiblock.part.QuadFluidHatchPartMachine;
+import com.prosbloom.cerestech.machines.multiblock.part.RedoxPartMachine;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Items;
 
@@ -199,6 +200,15 @@ public class CTRecipes {
                         .inputItems(FLUID_EXPORT_HATCH[i])
                         .inputItems(AEBlocks.INTERFACE.asItem())
                         .outputItems(ME_OUTPUT_HATCH[i].asStack())
+                        .duration(600).EUt(VA[i])
+                        .save(provider);
+
+        for (int i = 0; i < REDOX_CELL.length; i++)
+            if (REDOX_CELL[i] != null)
+                ASSEMBLER_RECIPES.recipeBuilder("redox_cell"+REDOX_CELL[i].getTier())
+                        .inputItems(FLUID_EXPORT_HATCH[i])
+                        .inputItems(AEBlocks.INTERFACE.asItem())
+                        .outputItems(REDOX_CELL[i].asStack())
                         .duration(600).EUt(VA[i])
                         .save(provider);
     }

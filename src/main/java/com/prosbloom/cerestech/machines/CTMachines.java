@@ -11,11 +11,13 @@ import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
 import com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
+import com.gregtechceu.gtceu.api.machine.multiblock.part.TieredIOPartMachine;
 import com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern;
 import com.gregtechceu.gtceu.api.pattern.MultiblockShapeInfo;
 import com.gregtechceu.gtceu.api.pattern.Predicates;
 import com.gregtechceu.gtceu.api.pattern.util.RelativeDirection;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
+import com.gregtechceu.gtceu.client.renderer.machine.TieredHullMachineRenderer;
 import com.gregtechceu.gtceu.common.data.*;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.lowdragmc.lowdraglib.side.fluid.FluidHelper;
@@ -243,15 +245,15 @@ public class CTMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             // TODO - need to fix power station pattern, add redox blocks
             .appearanceBlock(CASING_POWER_STATION)
-            .pattern(definition -> FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.FRONT, RelativeDirection.DOWN)
-                    .aisle("XXXX", "XXXX", "XXXX", "XXXX")
+            .pattern(definition -> FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.BACK, RelativeDirection.UP)
+                    .aisle("XSXX", "XXXX", "XXXX", "XXXX")
                     .aisle("XXXX", "X##X", "X##X", "XXXX").setRepeatable(1, 12)
-                    .aisle("XXXX", "XSXX", "XXXX", "XXXX")
+                    .aisle("XXXX", "XXXX", "XXXX", "XXXX")
                     .where('S', controller(blocks(definition.getBlock())))
                     .where('X', blocks(CASING_POWER_STATION.get())
                             .or(abilities(PartAbility.INPUT_ENERGY, PartAbility.OUTPUT_ENERGY))
                             .or(autoAbilities(true, false, false)))
-                    .where('#', Predicates.air())
+                    .where('#', abilities(PartAbility.STEAM))
                     .build())
             .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_power_station"),
                     GTCEu.id("block/multiblock/industrial_coke_oven"), false)
@@ -332,6 +334,17 @@ public class CTMachines {
                     .compassNode("me_output_hatch")
                     .register(),
             HIGH_TIERS);
+
+    public final static MachineDefinition[] REDOX_CELL = registerTieredMachines("redox_cell",
+            (holder, tier) -> new TieredIOPartMachine(holder, tier, IO.OUT),
+            (tier, builder) -> builder
+                    .langValue("Redox Cell")
+                    .rotationState(RotationState.ALL)
+                    // TODO - upstream PartAbility constructor isnt public...using steam as a magic var
+                    .abilities(PartAbility.STEAM)
+                    .renderer(() -> new TieredHullMachineRenderer(tier, GTCEu.id("block/machine/fisher_machine")))
+                    .register(),
+            EV, IV, LuV, ZPM, UV);
 
 
 }

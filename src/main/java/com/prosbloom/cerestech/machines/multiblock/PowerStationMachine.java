@@ -17,14 +17,14 @@ import com.lowdragmc.lowdraglib.gui.widget.*;
 import com.lowdragmc.lowdraglib.syncdata.annotation.DescSynced;
 import com.lowdragmc.lowdraglib.syncdata.annotation.Persisted;
 import com.lowdragmc.lowdraglib.syncdata.field.ManagedFieldHolder;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
-import static com.gregtechceu.gtceu.api.GTValues.EV;
-import static com.gregtechceu.gtceu.api.GTValues.V;
+import static com.gregtechceu.gtceu.api.GTValues.*;
 
 public class PowerStationMachine extends MultiblockControllerMachine implements IFancyUIMachine {
 
@@ -37,8 +37,8 @@ public class PowerStationMachine extends MultiblockControllerMachine implements 
     List<IEnergyContainer> hatches = new ArrayList<>();
     private int tier = EV;
 
-    private Queue<Integer> avgIn = new SizeLimitedQueue<>(100);
-    private Queue<Integer> avgOut = new SizeLimitedQueue<>(100);
+    private Queue<Long> avgIn = new SizeLimitedQueue<>(100);
+    private Queue<Long> avgOut = new SizeLimitedQueue<>(100);
 
     protected TickableSubscription energyOutputSubs;
     protected TickableSubscription energyInputSubs;
@@ -58,7 +58,8 @@ public class PowerStationMachine extends MultiblockControllerMachine implements 
         super.onStructureFormed();
         dynamos = new ArrayList<>();
         hatches = new ArrayList<>();
-        for (IMultiPart part : getParts())
+        long cap = 0;
+        for (IMultiPart part : getParts()) {
             for (var handler : part.getRecipeHandlers()) {
                 if (handler.getHandlerIO() == IO.OUT && handler.getCapability() == EURecipeCapability.CAP) {
                     dynamos.add((IEnergyContainer) handler);
@@ -66,6 +67,38 @@ public class PowerStationMachine extends MultiblockControllerMachine implements 
                     hatches.add((IEnergyContainer) handler);
                 }
             }
+            switch (part.self().getHolder().getDefinition().getName()){
+                case "ev_redox_cell" :
+                    cap += 100000000L;
+                    tier = EV;
+                    break;
+                case "iv_redox_cell" :
+                    cap += 400000000L;
+                    tier = IV;
+                    break;
+                case "luv_redox_cell" :
+                    cap += 1600000000L;
+                    tier = LuV;
+                    break;
+                case "zpm_redox_cell" :
+                    cap += 6400000000L;
+                    tier = ZPM;
+                    break;
+                case "uv_redox_cell" :
+                    cap += 25600000000L;
+                    tier = UV;
+                    break;
+                default:
+                    break;
+            }
+
+        }
+        long currEnergy = 0;
+        if (energyContainer != null)
+            currEnergy = energyContainer.getEnergyStored();
+        energyContainer = NotifiableEnergyContainer.emitterContainer(this, cap, tier, 64);
+        energyContainer.setEnergyStored(currEnergy);
+
         energyOutputSubs = subscribeServerTick(this::outputEnergy);
         energyInputSubs = subscribeServerTick(this::inputEnergy);
         outputEnergy();
@@ -82,7 +115,7 @@ public class PowerStationMachine extends MultiblockControllerMachine implements 
     }
 
     private void inputEnergy() {
-        int curr = 0;
+        long curr = 0;
         if (energyContainer.getEnergyCanBeInserted() > V[tier])
             if (hatches.stream().filter(h->h.getEnergyStored() >= V[tier]).findAny().orElse(null) != null) {
                 List<IEnergyContainer> hatchesToPull = hatches.stream().filter(h -> h.getEnergyStored() >= V[tier]).toList();
@@ -98,7 +131,7 @@ public class PowerStationMachine extends MultiblockControllerMachine implements 
 
     }
     private void outputEnergy() {
-        int curr = 0;
+        long curr = 0;
         if (energyContainer.getEnergyStored() > V[tier])
             if (dynamos.stream().filter(h->h.getEnergyCanBeInserted() >= V[tier]).findAny().orElse(null) != null){
                 List<IEnergyContainer> dynamosToFill = dynamos.stream().filter(h->h.getEnergyCanBeInserted() >= V[tier]).toList();
@@ -149,12 +182,12 @@ public class PowerStationMachine extends MultiblockControllerMachine implements 
     }
 
     public static class SizeLimitedQueue<E> extends ArrayDeque<E> {
-        private int maxSize;
+        private final int maxSize;
         public SizeLimitedQueue(int maxSize) {
             this.maxSize = maxSize;
         }
         @Override
-        public boolean add(E e) {
+        public boolean add(@NotNull E e) {
             while (this.size() == maxSize)
                 super.remove();
             super.add(e);

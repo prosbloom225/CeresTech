@@ -108,8 +108,13 @@
   "block.gtceu.uhv_me_output_hatch": "UHV Output Hatch (ME)",
 
   "block.gtceu.power_station": "Power Station Capacitor",
-  "block.gtceu.casing_power_station": "Power Station Casing",
+  "block.gtceu.power_station_casing": "Power Station Casing",
 
+  "block.gtceu.ev_redox_cell": "Vanadium Redox Power Cell (EV)",
+  "block.gtceu.iv_redox_cell": "Vanadium Redox Power Cell (IV)",
+  "block.gtceu.luv_redox_cell": "Vanadium Redox Power Cell (LuV)",
+  "block.gtceu.zpm_redox_cell": "Vanadium Redox Power Cell (Zpm)",
+  "block.gtceu.uv_redox_cell": "Vanadium Redox Power Cell (UV)",
 
 
   "tagprefix.depleted_fuel": "Depleted %s Fuel",

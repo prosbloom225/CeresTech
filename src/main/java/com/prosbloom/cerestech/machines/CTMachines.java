@@ -336,6 +336,17 @@ public class CTMachines {
                     .register(),
             HIGH_TIERS);
 
+    public final static MachineDefinition[] DUAL_INPUT_BUS= registerTieredMachines("dual_input_bus",
+            (holder, tier) -> new DualInputPartMachine(holder, tier, IO.IN),
+            (tier, builder) -> builder
+                    .langValue("Dual Input Bus")
+                    .rotationState(RotationState.ALL)
+                    .abilities(PartAbility.IMPORT_ITEMS, PartAbility.IMPORT_FLUIDS)
+                    .overlayTieredHullRenderer("item_bus.import")
+                    .compassNode("dual_input_bus")
+                    .register(),
+            LuV);
+
     public final static MachineDefinition[] REDOX_CELL = registerTieredMachines("redox_cell",
             (holder, tier) -> new TieredIOPartMachine(holder, tier, IO.OUT),
             (tier, builder) -> builder

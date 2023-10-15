@@ -207,6 +207,16 @@ public class CTRecipes {
                         .duration(600).EUt(VA[i])
                         .save(provider);
 
+        ASSEMBLER_RECIPES.recipeBuilder("dual_input_bus"+DUAL_INPUT_BUS[LuV].getTier())
+                .inputItems(ITEM_IMPORT_BUS[LuV])
+                .inputItems(FLUID_IMPORT_HATCH[LuV])
+                .inputItems(CustomTags.LuV_CIRCUITS, 1)
+                .inputItems(ELECTRIC_PUMP_LuV)
+                .inputItems(CONVEYOR_MODULE_LuV)
+                .outputItems(DUAL_INPUT_BUS[LuV].asStack())
+                .duration(600).EUt(VA[LuV])
+                .save(provider);
+
         // --- Redox Cells
         ASSEMBLER_RECIPES.recipeBuilder("redox_cell_ev")
                 .inputItems(frameGt, Vanadium, 1)

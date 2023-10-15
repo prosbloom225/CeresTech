@@ -6,9 +6,7 @@ import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.data.RotationState;
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
-import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
-import com.gregtechceu.gtceu.api.machine.MetaMachine;
 import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
 import com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
@@ -16,6 +14,7 @@ import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMa
 import com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern;
 import com.gregtechceu.gtceu.api.pattern.MultiblockShapeInfo;
 import com.gregtechceu.gtceu.api.pattern.Predicates;
+import com.gregtechceu.gtceu.api.pattern.util.RelativeDirection;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
 import com.gregtechceu.gtceu.common.data.*;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
@@ -23,7 +22,7 @@ import com.lowdragmc.lowdraglib.side.fluid.FluidHelper;
 import com.prosbloom.cerestech.data.CTRecipeModifiers;
 import com.prosbloom.cerestech.data.CTRecipeTypes;
 import com.prosbloom.cerestech.machines.multiblock.ReactorMachine;
-import com.prosbloom.cerestech.machines.multiblock.SuperCapacitorMachine;
+import com.prosbloom.cerestech.machines.multiblock.PowerStationMachine;
 import com.prosbloom.cerestech.machines.multiblock.VolcanusMachine;
 import com.prosbloom.cerestech.machines.multiblock.part.*;
 import net.minecraft.ChatFormatting;
@@ -43,10 +42,8 @@ import static com.gregtechceu.gtceu.api.registry.GTRegistries.REGISTRATE;
 import static com.gregtechceu.gtceu.common.data.GCyMBlocks.HEAT_VENT;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
-import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.BLAST_RECIPES;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.PYROLYSE_RECIPES;
-import static com.prosbloom.cerestech.data.CTBlocks.CASING_SHIELDED_REACTOR;
-import static com.prosbloom.cerestech.data.CTBlocks.CASING_VOLCANUS;
+import static com.prosbloom.cerestech.data.CTBlocks.*;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.NAQUADAH_REACTOR_RECIPES;
 import static net.minecraft.world.level.block.Blocks.DIRT;
 
@@ -241,22 +238,22 @@ public class CTMachines {
             .compassNodeSelf()
             .register();
 
-    public static MultiblockMachineDefinition SUPER_CAPACITOR = REGISTRATE.multiblock("super_capacitor", SuperCapacitorMachine::new)
-            .langValue("Super Capacitor")
+    public static MultiblockMachineDefinition POWER_STATION = REGISTRATE.multiblock("power_station", PowerStationMachine::new)
+            .langValue("Power Station")
             .rotationState(RotationState.NON_Y_AXIS)
-            // TODO - parallel isnt working, seems like upstream issue
-            .appearanceBlock(CASING_INVAR_HEATPROOF)
-            .pattern(definition -> FactoryBlockPattern.start()
-                    .aisle("XXX", "XXX", "XXX")
-                    .aisle("XXX", "X#X", "XXX")
-                    .aisle("XSX", "XXX", "XXX")
+            // TODO - need to fix power station pattern, add redox blocks
+            .appearanceBlock(CASING_POWER_STATION)
+            .pattern(definition -> FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.FRONT, RelativeDirection.DOWN)
+                    .aisle("XXXX", "XXXX", "XXXX", "XXXX")
+                    .aisle("XXXX", "X##X", "X##X", "XXXX").setRepeatable(1, 12)
+                    .aisle("XXXX", "XSXX", "XXXX", "XXXX")
                     .where('S', controller(blocks(definition.getBlock())))
-                    .where('X', blocks(CASING_INVAR_HEATPROOF.get())
+                    .where('X', blocks(CASING_POWER_STATION.get())
                             .or(abilities(PartAbility.INPUT_ENERGY, PartAbility.OUTPUT_ENERGY))
                             .or(autoAbilities(true, false, false)))
                     .where('#', Predicates.air())
                     .build())
-            .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_heatproof"),
+            .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_power_station"),
                     GTCEu.id("block/multiblock/industrial_coke_oven"), false)
             .compassSections(GTCompassSections.TIER[EV])
             .compassNodeSelf()

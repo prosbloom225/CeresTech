@@ -7,36 +7,28 @@ import com.gregtechceu.gtceu.api.gui.GuiTextures;
 import com.gregtechceu.gtceu.api.gui.editor.EditableUI;
 import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.TickableSubscription;
-import com.gregtechceu.gtceu.api.machine.TieredEnergyMachine;
 import com.gregtechceu.gtceu.api.machine.feature.IFancyUIMachine;
 import com.gregtechceu.gtceu.api.machine.feature.multiblock.IMultiPart;
 import com.gregtechceu.gtceu.api.machine.multiblock.MultiblockControllerMachine;
 import com.gregtechceu.gtceu.api.machine.trait.NotifiableEnergyContainer;
-import com.gregtechceu.gtceu.common.machine.electric.BatteryBufferMachine;
 import com.lowdragmc.lowdraglib.gui.texture.IGuiTexture;
 import com.lowdragmc.lowdraglib.gui.texture.ProgressTexture;
 import com.lowdragmc.lowdraglib.gui.widget.*;
 import com.lowdragmc.lowdraglib.syncdata.annotation.DescSynced;
 import com.lowdragmc.lowdraglib.syncdata.annotation.Persisted;
 import com.lowdragmc.lowdraglib.syncdata.field.ManagedFieldHolder;
-import com.lowdragmc.lowdraglib.utils.Position;
-import com.lowdragmc.lowdraglib.utils.Size;
-import net.minecraft.network.chat.Component;
-import org.apache.http.conn.UnsupportedSchemeException;
 
-import java.awt.*;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
-import java.util.function.DoubleSupplier;
 
 import static com.gregtechceu.gtceu.api.GTValues.EV;
 import static com.gregtechceu.gtceu.api.GTValues.V;
 
-public class SuperCapacitorMachine extends MultiblockControllerMachine implements IFancyUIMachine {
+public class PowerStationMachine extends MultiblockControllerMachine implements IFancyUIMachine {
 
-    protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(SuperCapacitorMachine.class, MultiblockControllerMachine.MANAGED_FIELD_HOLDER);
+    protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(PowerStationMachine.class, MultiblockControllerMachine.MANAGED_FIELD_HOLDER);
 
     @Persisted
     @DescSynced
@@ -51,7 +43,7 @@ public class SuperCapacitorMachine extends MultiblockControllerMachine implement
     protected TickableSubscription energyOutputSubs;
     protected TickableSubscription energyInputSubs;
 
-    public SuperCapacitorMachine(IMachineBlockEntity holder) {
+    public PowerStationMachine(IMachineBlockEntity holder) {
         super(holder);
         energyContainer = NotifiableEnergyContainer.emitterContainer(this, V[tier]* 100000, tier, 64);
         dynamos = new ArrayList<>();
@@ -122,7 +114,7 @@ public class SuperCapacitorMachine extends MultiblockControllerMachine implement
     }
 
 
-    protected static EditableUI<ProgressWidget, SuperCapacitorMachine> createEnergyBar() {
+    protected static EditableUI<ProgressWidget, PowerStationMachine> createEnergyBar() {
         return new EditableUI<>("energy_container", ProgressWidget.class, () -> {
             var progressBar = new ProgressWidget(ProgressWidget.JEIProgress, 0, 15, 18, 60,
                     new ProgressTexture(IGuiTexture.EMPTY, GuiTextures.ENERGY_BAR_BASE));

@@ -13,8 +13,7 @@ import com.gregtechceu.gtceu.common.data.GTMaterials;
 
 import java.util.Objects;
 
-import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.GENERATE_DENSE;
-import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.GENERATE_GEAR;
+import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey.DUST;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey.INGOT;
@@ -223,7 +222,6 @@ public class CTMaterials {
             .element(CTElements.Md263)
             .buildAndRegister();
 
-
     // Lanthanides - Nuclear Waste missing materials
     /*
 
@@ -269,6 +267,10 @@ public class CTMaterials {
         Objects.requireNonNull(GTRegistries.MATERIALS.get("lead")).addFlags(GENERATE_DENSE);
         Objects.requireNonNull(GTRegistries.MATERIALS.get("stainless_steel")).addFlags(GENERATE_DENSE);
         Objects.requireNonNull(GTRegistries.MATERIALS.get("hastelloy_x")).addFlags(GENERATE_DENSE, GENERATE_GEAR);
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("vanadium")).addFlags(GENERATE_ROD, GENERATE_FRAME);
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("titanium")).addFlags(GENERATE_DENSE);
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("iridium")).addFlags(GENERATE_DENSE);
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("naquadah")).addFlags(GENERATE_DENSE);
 
     }
 }

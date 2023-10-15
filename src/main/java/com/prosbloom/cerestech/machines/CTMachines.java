@@ -248,7 +248,7 @@ public class CTMachines {
             .appearanceBlock(CASING_POWER_STATION)
             .pattern(definition -> FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.BACK, RelativeDirection.UP)
                     .aisle("XSXX", "XXXX", "XXXX", "XXXX")
-                    .aisle("XXXX", "X##X", "X##X", "XXXX").setRepeatable(1, 12)
+                    .aisle("XXXX", "X##X", "X##X", "XXXX").setRepeatable(1, 255)
                     .aisle("XXXX", "XXXX", "XXXX", "XXXX")
                     .where('S', controller(blocks(definition.getBlock())))
                     .where('X', blocks(CASING_POWER_STATION.get())

@@ -28,8 +28,7 @@ import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.*;
 import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.CABLE;
 import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.PUMP;
 import static com.gregtechceu.gtceu.data.recipe.misc.MetaTileEntityLoader.registerMachineRecipe;
-import static com.prosbloom.cerestech.data.CTBlocks.CASING_SHIELDED_REACTOR;
-import static com.prosbloom.cerestech.data.CTBlocks.CASING_VOLCANUS;
+import static com.prosbloom.cerestech.data.CTBlocks.*;
 import static com.prosbloom.cerestech.data.CTFluids.*;
 import static com.prosbloom.cerestech.data.CTMaterials.*;
 import static com.prosbloom.cerestech.data.recipes.HotCoolantTurbineRecipes.registerHotCoolantTurbineRecipes;
@@ -113,15 +112,20 @@ public class CTRecipes {
 
         // TODO - not working
         registerMachineRecipe(provider, NAQUADAH_REACTOR, "CWC", "WMW", "PRP", 'M', HULL, 'R', ROBOT_ARM, 'P', PLATE, 'C', CIRCUIT, 'W', CABLE);
-        /*
-        registerMachineRecipe(provider, NAQUADAH_REACTOR, "RCR", "FHF", "WCW",
-                'R', SENSOR,//new UnificationEntry(rod, Curium247),
-                'C', CIRCUIT,
-                'F', EMITTER,
-                'H', HULL,
-                'W', CABLE);
 
-         */
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "casing_power_station", CASING_POWER_STATION.asStack(),
+                "SPS", "PFP", "SPS",
+                'P', new UnificationEntry(plate, IncoloyMA956),
+                'S', new UnificationEntry(screw, Titanium),
+                'F', new UnificationEntry(frameGt, IncoloyMA956));
+
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "power_station", POWER_STATION.asStack(),
+                "PCP", "BRB", "PPP",
+                'P', new UnificationEntry(plate, IncoloyMA956),
+                'B', CASING_POWER_STATION.get(),
+                'R', REDOX_CELL[EV].get(),
+                'C', CustomTags.EV_CIRCUITS);
+
 
     }
 
@@ -203,14 +207,57 @@ public class CTRecipes {
                         .duration(600).EUt(VA[i])
                         .save(provider);
 
-        for (int i = 0; i < REDOX_CELL.length; i++)
-            if (REDOX_CELL[i] != null)
-                ASSEMBLER_RECIPES.recipeBuilder("redox_cell"+REDOX_CELL[i].getTier())
-                        .inputItems(FLUID_EXPORT_HATCH[i])
-                        .inputItems(AEBlocks.INTERFACE.asItem())
-                        .outputItems(REDOX_CELL[i].asStack())
-                        .duration(600).EUt(VA[i])
-                        .save(provider);
+        // --- Redox Cells
+        ASSEMBLER_RECIPES.recipeBuilder("redox_cell_ev")
+                .inputItems(frameGt, Vanadium, 1)
+                .inputItems(plateDense, Lead,4)
+                .inputItems(CustomTags.HV_CIRCUITS, 4)
+                // TODO - add recipes for superconductor wires
+                .inputItems(wireGtSingle, MercuryBariumCalciumCuprate)
+                .inputFluids(Oxygen.getFluid(16000))
+                .outputItems(REDOX_CELL[EV].asStack())
+                .duration(200).EUt(VA[HV])
+                .save(provider);
+        ASSEMBLER_RECIPES.recipeBuilder("redox_cell_iv")
+                .inputItems(REDOX_CELL[EV])
+                .inputItems(plateDense, Titanium,4)
+                .inputItems(CustomTags.EV_CIRCUITS, 4)
+                // TODO - add recipes for superconductor wires
+                .inputItems(wireGtSingle, UraniumTriplatinum)
+                .inputFluids(Nitrogen.getFluid(16000))
+                .outputItems(REDOX_CELL[IV].asStack())
+                .duration(200).EUt(VA[EV])
+                .save(provider);
+        ASSEMBLER_RECIPES.recipeBuilder("redox_cell_luv")
+                .inputItems(REDOX_CELL[IV])
+                .inputItems(plateDense, TungstenSteel,4)
+                .inputItems(CustomTags.IV_CIRCUITS, 4)
+                // TODO - add recipes for superconductor wires
+                .inputItems(wireGtSingle, SamariumIronArsenicOxide)
+                .inputFluids(Helium.getFluid(8000))
+                .outputItems(REDOX_CELL[LuV].asStack())
+                .duration(200).EUt(VA[LuV])
+                .save(provider);
+        ASSEMBLER_RECIPES.recipeBuilder("redox_cell_zpm")
+                .inputItems(REDOX_CELL[LuV])
+                .inputItems(plateDense, Iridium,4)
+                .inputItems(CustomTags.LuV_CIRCUITS, 4)
+                // TODO - add recipes for superconductor wires
+                .inputItems(wireGtSingle, IndiumTinBariumTitaniumCuprate)
+                .inputFluids(Argon.getFluid(8000))
+                .outputItems(REDOX_CELL[ZPM].asStack())
+                .duration(200).EUt(VA[ZPM])
+                .save(provider);
+        ASSEMBLER_RECIPES.recipeBuilder("redox_cell_uv")
+                .inputItems(REDOX_CELL[ZPM])
+                .inputItems(plateDense, Naquadah,4)
+                .inputItems(CustomTags.ZPM_CIRCUITS, 4)
+                // TODO - add recipes for superconductor wires
+                .inputItems(wireGtSingle, UraniumRhodiumDinaquadide)
+                .inputFluids(Radon.getFluid(8000))
+                .outputItems(REDOX_CELL[UV].asStack())
+                .duration(200).EUt(VA[UV])
+                .save(provider);
     }
 
     private static void registerChemicalReactorRecipes(Consumer<FinishedRecipe> provider) {

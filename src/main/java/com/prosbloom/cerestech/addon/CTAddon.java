@@ -20,18 +20,12 @@ public class CTAddon implements IGTAddon{
         CTItems.init();
         CTBlocks.init();
         CTElements.init();
+        CTRecipeTypes.init();
+        CTMachines.init();
         LOGGER.info("CTAddon init!");
     }
 
-    @Override
-    public void registerMachines() {
-        CTMachines.init();
-    }
 
-    @Override
-    public void registerRecipeTypes() {
-        CTRecipeTypes.init();
-    }
 
     @Override
     public void registerMaterials() {
@@ -45,7 +39,7 @@ public class CTAddon implements IGTAddon{
     }
 
     @Override
-    public void initializeRecipes(Consumer<FinishedRecipe> provider) {
+    public void addRecipes(Consumer<FinishedRecipe> provider) {
         CTRecipes.init(provider);
 
     }

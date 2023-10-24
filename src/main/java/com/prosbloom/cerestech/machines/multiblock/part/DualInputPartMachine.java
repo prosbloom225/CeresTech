@@ -4,6 +4,7 @@ import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.gui.GuiTextures;
 import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.TickableSubscription;
+import com.gregtechceu.gtceu.api.machine.feature.multiblock.IDistinctPart;
 import com.gregtechceu.gtceu.api.machine.multiblock.part.TieredIOPartMachine;
 import com.gregtechceu.gtceu.api.machine.trait.NotifiableFluidTank;
 import com.gregtechceu.gtceu.api.machine.trait.NotifiableItemStackHandler;
@@ -18,7 +19,7 @@ import com.prosbloom.cerestech.api.machine.trait.NotifiableFluidTankMulti;
 import net.minecraft.server.TickTask;
 import net.minecraft.server.level.ServerLevel;
 
-public class DualInputPartMachine extends TieredIOPartMachine {
+public class DualInputPartMachine extends TieredIOPartMachine implements IDistinctPart {
     protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(DualInputPartMachine.class, TieredIOPartMachine.MANAGED_FIELD_HOLDER);
     private final int numTanks = 4;
     private final int tankCapacity = 16000;
@@ -110,4 +111,13 @@ public class DualInputPartMachine extends TieredIOPartMachine {
         return group;
     }
 
+    @Override
+    public boolean isDistinct() {
+        return inventory.isDistinct();
+    }
+
+    @Override
+    public void setDistinct(boolean isDistinct) {
+        inventory.setDistinct(isDistinct);
+    }
 }

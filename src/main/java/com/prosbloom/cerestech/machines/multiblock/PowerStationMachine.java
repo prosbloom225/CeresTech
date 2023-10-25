@@ -10,6 +10,7 @@ import com.gregtechceu.gtceu.api.machine.TickableSubscription;
 import com.gregtechceu.gtceu.api.machine.feature.IFancyUIMachine;
 import com.gregtechceu.gtceu.api.machine.feature.multiblock.IMultiPart;
 import com.gregtechceu.gtceu.api.machine.multiblock.MultiblockControllerMachine;
+import com.gregtechceu.gtceu.api.machine.trait.MachineTrait;
 import com.gregtechceu.gtceu.api.machine.trait.NotifiableEnergyContainer;
 import com.lowdragmc.lowdraglib.gui.texture.IGuiTexture;
 import com.lowdragmc.lowdraglib.gui.texture.ProgressTexture;
@@ -31,11 +32,11 @@ public class PowerStationMachine extends MultiblockControllerMachine implements 
     protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(PowerStationMachine.class, MultiblockControllerMachine.MANAGED_FIELD_HOLDER);
 
     @Persisted
-    @DescSynced
-    private NotifiableEnergyContainer energyContainer;
+    public NotifiableEnergyContainer energyContainer;
     List<IEnergyContainer> dynamos = new ArrayList<>();
     List<IEnergyContainer> hatches = new ArrayList<>();
     private int tier = EV;
+
 
     private Queue<Long> avgIn = new SizeLimitedQueue<>(100);
     private Queue<Long> avgOut = new SizeLimitedQueue<>(100);
@@ -108,6 +109,11 @@ public class PowerStationMachine extends MultiblockControllerMachine implements 
         super.onLoad();
         if (energyContainer != null)
             updateEnergySubscriptions();
+    }
+
+    @Override
+    public void onUnload() {
+        super.onUnload();
     }
 
     public void updateEnergySubscriptions() {

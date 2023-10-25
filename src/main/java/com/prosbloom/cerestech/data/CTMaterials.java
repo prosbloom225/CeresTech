@@ -1,6 +1,7 @@
 package com.prosbloom.cerestech.data;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
+import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.DustProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.IMaterialProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.IngotProperty;
@@ -29,6 +30,36 @@ public class CTMaterials {
             .dust()
             .color(0xDEDEFA).iconSet(FINE)
             .components(Beryllium, 1, Fluorine, 2)
+            .buildAndRegister();
+
+    public static Material UranylTricarbonate = new Material.Builder("uranyl_tricarbonate")
+            .dust()
+            .color(0xCCCC00).iconSet(FINE)
+            .buildAndRegister();
+
+    public static Material UraniumPeroxideThoriumOxideMixture = new Material.Builder("uranium_peroxide_thorium_oxide_mixture")
+            .dust()
+            .color(0x282828).iconSet(FINE)
+            .buildAndRegister();
+
+    public static Material UraniumDioxideThoriumOxideMixture = new Material.Builder("uranium_dioxide_thorium_oxide_mixture")
+            .dust()
+            .color(0x282828).iconSet(FINE)
+            .buildAndRegister();
+
+    public static Material UranylSulfateThoriumOxideMixture = new Material.Builder("uranyl_sulfate_thorium_oxide_mixture")
+            .dust()
+            .color(0xC8C850).iconSet(FINE)
+            .buildAndRegister();
+
+    public static Material UranylNitrateThoriumNitrateMixture = new Material.Builder("uranyl_nitrate_thorium_nitrate_mixture")
+            .dust()
+            .color(0xCCCC00).iconSet(FINE)
+            .buildAndRegister();
+
+    public static Material UraniumOxideThoriumNitrateMixture= new Material.Builder("uranium_oxide_thorium_nitrate_mixture")
+            .dust()
+            .color(0x32F032).iconSet(FINE)
             .buildAndRegister();
 
     // Isotopes

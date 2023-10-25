@@ -31,6 +31,7 @@ import static com.gregtechceu.gtceu.data.recipe.misc.MetaTileEntityLoader.regist
 import static com.prosbloom.cerestech.data.CTBlocks.*;
 import static com.prosbloom.cerestech.data.CTFluids.*;
 import static com.prosbloom.cerestech.data.CTMaterials.*;
+import static com.prosbloom.cerestech.data.CTTagPrefixes.dustOxide;
 import static com.prosbloom.cerestech.data.recipes.HotCoolantTurbineRecipes.registerHotCoolantTurbineRecipes;
 import static com.prosbloom.cerestech.machines.CTMachines.*;
 
@@ -45,6 +46,8 @@ public class CTRecipes {
         registerChemicalReactorRecipes(provider);
         registerHotCoolantTurbineRecipes(provider);
         registerCentrifugeRecipes(provider);
+        registerElectrolyzerRecipes(provider);
+        registerBlastFurnaceRecipes(provider);
 
         IndustrialGreenhouseRecipes.registerIndustrialGreenhouseRecipes(provider);
         NuclearReactorRecipes.registerNuclearReactorRecipes(provider);
@@ -134,7 +137,7 @@ public class CTRecipes {
                 .inputItems(dust, LithiumFluoride, 2)
                 .inputItems(dust, BerylliumFluoride, 3)
                 .outputItems(dust, Coolant, 5)
-                .duration(600).EUt(120)
+                .duration(600).EUt(VA[MV])
                 .save(provider);
 
         MIXER_RECIPES.recipeBuilder("pyrotheum_dust")
@@ -143,7 +146,22 @@ public class CTRecipes {
                 .inputItems(dust, Redstone, 1)
                 .inputItems(Items.BLAZE_POWDER, 1)
                 .outputItems(dust, Pyrotheum, 1)
-                .duration(160).EUt(120)
+                .duration(160).EUt(VA[MV])
+                .save(provider);
+
+        MIXER_RECIPES.recipeBuilder("piranha_solution")
+                .inputFluids(HydrogenPeroxide.getFluid(1000))
+                .inputFluids(SulfuricAcid.getFluid(1000))
+                .outputFluids(PiranhaSolution.getFluid(2000))
+                .duration(160).EUt(VA[MV])
+                .save(provider);
+
+        MIXER_RECIPES.recipeBuilder("uranium_dioxide_output")
+                .inputItems(dust, UraniumOxideThoriumNitrateMixture, 18)
+                .inputFluids(DistilledWater.getFluid(1000))
+                .outputItems(dustOxide, Uranium238, 3)
+                .outputFluids(ThoriumNitrateSolution.getFluid(1000))
+                .duration(600).EUt(VA[LV])
                 .save(provider);
 
     }
@@ -271,6 +289,74 @@ public class CTRecipes {
     }
 
     private static void registerChemicalReactorRecipes(Consumer<FinishedRecipe> provider) {
+        // cheater H2O2 recipe
+        CHEMICAL_RECIPES.recipeBuilder("hydrogen_peroxide")
+                .inputFluids(Oxygen.getFluid(1000))
+                .inputFluids(Water.getFluid(1000))
+                .outputFluids(HydrogenPeroxide.getFluid(1000))
+                .duration(600).EUt(VA[HV])
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("uraninite_chloride_solution")
+                .inputItems(dust, Uraninite, 3)
+                .inputFluids(Water.getFluid(1000))
+                .inputFluids(Chlorine.getFluid(2000))
+                .outputFluids(UranylChlorideSolution.getFluid(1000))
+                .duration(50).EUt(VA[MV])
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("uranyl_nitrate_solution")
+                .inputFluids(UranylChlorideSolution.getFluid(1000))
+                .inputFluids(NitricAcid.getFluid(2000))
+                .outputFluids(UranylNitrateSolution.getFluid(1000))
+                .outputFluids(HydrochloricAcid.getFluid(2000))
+                .duration(50).EUt(VA[MV])
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("purified_uranyl_nitrate_solution")
+                .inputFluids(UranylNitrateSolution.getFluid(1000))
+                .inputFluids(SulfuricAcid.getFluid(1000))
+                .outputFluids(PurifiedUranylNitrateSolution.getFluid(1000))
+                .outputFluids(UraniumSulfateWasteSolution.getFluid(1000))
+                .duration(50).EUt(VA[MV])
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("ammonia_diuranate_solution")
+                .inputFluids(PurifiedUranylNitrateSolution.getFluid(1000))
+                .inputFluids(Water.getFluid(1001))
+                .inputItems(dust, Carbon, 8)
+                .outputFluids(AmmoniaDiuranateSolution.getFluid(1000))
+                .outputFluids(NitricAcid.getFluid(2000))
+                .outputFluids(CarbonMonoxide.getFluid(8000))
+                .duration(140).EUt(VA[MV])
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("uranyl_tricarbonate")
+                .inputFluids(AmmoniaDiuranateSolution.getFluid(1000))
+                .inputItems(dust, Potassium, 8)
+                .outputItems(dust, UranylTricarbonate, 10)
+                .outputFluids(Ammonia.getFluid(2000))
+                .outputFluids(Water.getFluid(1000))
+                .duration(160).EUt(VA[MV])
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("uranium_peroxide_thorium_oxide_mixture")
+                .inputItems(dust, UranylTricarbonate, 5)
+                .inputFluids(PiranhaSolution.getFluid(2000))
+                .outputItems(dust, UraniumPeroxideThoriumOxideMixture, 8)
+                .outputFluids(UraniumRefinementWasteSolution.getFluid(1000))
+                .duration(200).EUt(VA[HV])
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("uranyl_sulfate_thorium_oxide_mixture")
+                .inputItems(dust, UraniumDioxideThoriumOxideMixture, 6)
+                .inputItems(dust, Sulfur, 1)
+                .inputFluids(SulfuricAcid.getFluid(1000))
+                .outputItems(dust, UranylSulfateThoriumOxideMixture, 11)
+                .outputFluids(HydrogenSulfide.getFluid(1000))
+                .duration(110).EUt(VA[MV])
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("uranyl_nitrate_thorium_nitrate_mixture")
+                .inputItems(dust, UranylSulfateThoriumOxideMixture, 11)
+                .inputFluids(NitricAcid.getFluid(6000))
+                .outputItems(dust, UranylNitrateThoriumNitrateMixture, 26)
+                .outputFluids(SulfuricAcid.getFluid(1000))
+                .outputFluids(Water.getFluid(2000))
+                .duration(120).EUt(VA[MV])
+                .save(provider);
 
     }
     private static void registerCentrifugeRecipes(Consumer<FinishedRecipe> provider) {
@@ -298,6 +384,53 @@ public class CTRecipes {
                 .save(provider);
     }
 
+    private static void registerBlastFurnaceRecipes(Consumer<FinishedRecipe> provider) {
+        BLAST_RECIPES.recipeBuilder("uranium_oxide_thorium_nitrate_mixture")
+                .inputItems(dust, UranylNitrateThoriumNitrateMixture, 26)
+                .inputFluids(Hydrogen.getFluid(2000))
+                .outputItems(dust, UraniumOxideThoriumNitrateMixture, 18)
+                .outputFluids(NitricAcid.getFluid(2000))
+                .blastFurnaceTemp(500)
+                .duration(200).EUt(VA[MV])
+                .save(provider);
+    }
+    private static void registerElectrolyzerRecipes(Consumer<FinishedRecipe> provider) {
+        ELECTROLYZER_RECIPES.recipeBuilder("uranium_refinement_waste_solution_output")
+                .inputFluids(UraniumRefinementWasteSolution.getFluid(20000))
+                .outputItems(dust, Caesium, 3)
+                .outputItems(dust, Molybdenum, 4)
+                .outputItems(dust, Vanadium, 7)
+                .outputFluids(SulfuricAcid.getFluid(20000))
+                .outputFluids(Oxygen.getFluid(15000))
+                .duration(20).EUt(VA[EV])
+                .save(provider);
+
+        ELECTROLYZER_RECIPES.recipeBuilder("uranium_dioxide_thorium_mixture")
+                .inputItems(dust, UraniumPeroxideThoriumOxideMixture, 8)
+                .outputItems(dust, UraniumDioxideThoriumOxideMixture, 6)
+                .outputFluids(HydrogenPeroxide.getFluid(1000))
+                .outputFluids(Oxygen.getFluid(1000))
+                .duration(200).EUt(VA[LV])
+                .save(provider);
+
+        ELECTROLYZER_RECIPES.recipeBuilder("thorium_nitrate_output")
+                .inputFluids(ThoriumNitrateSolution.getFluid(1000))
+                .outputItems(dust, Thorium, 2)
+                .outputFluids(NitricAcid.getFluid(2000))
+                .duration(120).EUt(VA[MV])
+                .save(provider);
+
+        ELECTROLYZER_RECIPES.recipeBuilder("uranyl_sulfate_waste_solution_output")
+                .inputFluids(UraniumSulfateWasteSolution.getFluid(1000))
+                .outputItems(dust, Lead, 1)
+                .outputItems(dustTiny, Radium, 1)
+                .outputItems(dustTiny, Strontium, 1)
+                .outputItems(dustTiny, Barium, 1)
+                .outputFluids(SulfuricAcid.getFluid(1000))
+                .duration(120).EUt(VA[MV])
+                .save(provider);
+
+    }
     private static void registerFormingPressRecipes(Consumer<FinishedRecipe> provider) {
         FORMING_PRESS_RECIPES.recipeBuilder("casing_shielded_reactor")
                 .inputItems(plateDense, Lead, 9)

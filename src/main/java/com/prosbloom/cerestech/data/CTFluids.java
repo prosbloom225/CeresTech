@@ -47,4 +47,58 @@ public class CTFluids {
             .color(0xFF9D00).iconSet(MaterialIconSet.FLUID)
             .buildAndRegister();
 
+    public static Material UranylChlorideSolution = new Material.Builder("uranyl_chloride_solution")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .ingot()
+            .color(0xCCCC00) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
+    public static Material UranylNitrateSolution = new Material.Builder("uranyl_nitrate_solution")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .ingot()
+            .color(0xCCCC00) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
+    public static Material PurifiedUranylNitrateSolution = new Material.Builder("purified_uranyl_nitrate_solution")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .ingot()
+            .color(0xCCCC00) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
+    public static Material UraniumSulfateWasteSolution = new Material.Builder("uranium_sulfate_waste_solution")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .ingot()
+            .color(0xCCCC00) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
+    public static Material AmmoniaDiuranateSolution = new Material.Builder("ammonia_diuranate_solution")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .ingot()
+            .color(0xCCCC00) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
+    public static Material PiranhaSolution = new Material.Builder("piranha_solution")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .ingot()
+            .color(0x3A1D81) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
+    public static Material HydrogenPeroxide = new Material.Builder("hydrogen_peroxide")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .ingot()
+            .color(0xA9D0F5) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
+    public static Material UraniumRefinementWasteSolution = new Material.Builder("uranium_refinement_waste_solution")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .ingot()
+            .color(0xCCCC00) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
+    public static Material ThoriumNitrateSolution = new Material.Builder("thorium_nitrate_solution")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .ingot()
+            .color(0x32F032) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
 }

@@ -102,7 +102,7 @@ public class CTMaterials {
             .ingot(3)
             .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
             .color(0xF03232).iconSet(METALLIC)
-            .appendFlags(EXT_METAL)
+            .appendFlags(EXT_METAL, GENERATE_FRAME)
             .element(CTElements.Pu240)
             .buildAndRegister();
     public static Material Americium241 = new Material.Builder("americium_241")

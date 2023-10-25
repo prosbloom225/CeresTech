@@ -48,6 +48,7 @@ public class CTRecipes {
         registerCentrifugeRecipes(provider);
         registerElectrolyzerRecipes(provider);
         registerBlastFurnaceRecipes(provider);
+        registerAssemblyLineRecipes(provider);
 
         IndustrialGreenhouseRecipes.registerIndustrialGreenhouseRecipes(provider);
         NuclearReactorRecipes.registerNuclearReactorRecipes(provider);
@@ -439,6 +440,50 @@ public class CTRecipes {
                 .inputItems(plateDense, StainlessSteel, 2)
                 .outputItems(CASING_SHIELDED_REACTOR.asStack(4))
                 .duration(1500).EUt(500)
+                .save(provider);
+    }
+
+    private static void registerAssemblyLineRecipes(Consumer<FinishedRecipe> provider) {
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("bedrock_miner_mv")
+                .inputItems(LARGE_MINER[LuV])
+                .inputItems(frameGt, Tritanium, 9)
+                .inputItems(plate, Europium, 3)
+                .inputItems(ELECTRIC_MOTOR_LuV, 9)
+                .inputItems(SENSOR_LuV, 9)
+                .inputItems(FIELD_GENERATOR_LuV, 9)
+                .inputItems(screw, HSSS, 36)
+                .inputFluids(Neon.getFluid(20000))
+                .inputFluids(SolderingAlloy.getFluid(1440))
+                .outputItems(BEDROCK_ORE_MINER[MV])
+                .duration(6000).EUt(VA[LuV])
+                .save(provider);
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("bedrock_miner_hv")
+                .inputItems(BEDROCK_ORE_MINER[MV])
+                .inputItems(frameGt, Plutonium240, 9)
+                .inputItems(plate, Plutonium240, 3)
+                .inputItems(ELECTRIC_MOTOR_ZPM, 9)
+                .inputItems(SENSOR_ZPM, 9)
+                .inputItems(FIELD_GENERATOR_ZPM, 9)
+                .inputItems(screw, Tritanium, 36)
+                .inputFluids(Krypton.getFluid(20000))
+                .inputFluids(SolderingAlloy.getFluid(1440))
+                .outputItems(BEDROCK_ORE_MINER[HV])
+                .duration(6000).EUt(VA[ZPM])
+                .save(provider);
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("bedrock_miner_ev")
+                .inputItems(BEDROCK_ORE_MINER[HV])
+                .inputItems(frameGt, Neutronium, 9)
+                .inputItems(plate, Neutronium, 3)
+                .inputItems(ELECTRIC_MOTOR_UV, 9)
+                .inputItems(SENSOR_UV, 9)
+                .inputItems(FIELD_GENERATOR_UV, 9)
+                .inputItems(screw, Neutronium, 36)
+                .inputFluids(Xenon.getFluid(20000))
+                .inputFluids(SolderingAlloy.getFluid(1440))
+                .outputItems(BEDROCK_ORE_MINER[EV])
+                .duration(6000).EUt(VA[UV])
                 .save(provider);
     }
 }

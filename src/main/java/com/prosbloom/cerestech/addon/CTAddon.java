@@ -18,10 +18,10 @@ public class CTAddon implements IGTAddon{
     @Override
     public void initializeAddon() {
         CTItems.init();
-        CTBlocks.init();
         CTElements.init();
         CTRecipeTypes.init();
         CTMachines.init();
+        CTBlocks.init();
         LOGGER.info("CTAddon init!");
     }
 
@@ -32,6 +32,7 @@ public class CTAddon implements IGTAddon{
         CTMaterials.init();
         CTFluids.init();
     }
+
 
     @Override
     public void registerTagPrefixes() {

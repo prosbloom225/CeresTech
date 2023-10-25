@@ -170,7 +170,7 @@ dependencies {
     //implementation fg.deobf("com.blamejared.crafttweaker:CraftTweaker-forge-1.19.2:10.1.49")
     //implementation fg.deobf("dev.latvian.mods:kubejs-forge:1902.6.1-build.370") { transitive = false }
     implementation fg.deobf("com.lowdragmc.ldlib:ldlib-forge-1.19.2:1.0.19.d") { transitive = false }
-    implementation fg.deobf("com.gregtechceu.gtceu:gtceu-forge-1.19.2:1.0.13.c") {
+    implementation fg.deobf("com.gregtechceu.gtceu:gtceu-forge-1.19.2:1.0.13.d") {
         transitive = false
     }
     implementation fg.deobf("com.simibubi.create:create-1.19.2:0.5.1.c-36:all") { transitive = false }
@@ -180,7 +180,7 @@ dependencies {
     implementation fg.deobf("curse.maven:jade-324717:4719987")
     implementation fg.deobf("curse.maven:applied-energistics-223794:4733119")
 
-    compileOnly fg.deobf("com.tterrag.registrate:Registrate:MC1.19.3-1.1.13")
+    compileOnly fg.deobf("com.tterrag.registrate:Registrate:MC1.19-1.1.5")
 }
 
 

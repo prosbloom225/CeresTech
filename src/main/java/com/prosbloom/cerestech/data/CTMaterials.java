@@ -19,6 +19,7 @@ import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIcon
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey.DUST;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey.INGOT;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
+import static com.prosbloom.cerestech.data.CTTagPrefixes.dustOxide;
 
 public class CTMaterials {
     public static Material LithiumFluoride= new Material.Builder("lithium_fluoride")
@@ -268,6 +269,7 @@ public class CTMaterials {
         Objects.requireNonNull(GTRegistries.MATERIALS.get("einsteinium")).setProperty(INGOT, new IngotProperty());
         Objects.requireNonNull(GTRegistries.MATERIALS.get("fermium")).setProperty(INGOT, new IngotProperty());
         Objects.requireNonNull(GTRegistries.MATERIALS.get("mendelevium")).setProperty(INGOT, new IngotProperty());
+
 
         // Lanthanides
         Objects.requireNonNull(GTRegistries.MATERIALS.get("dysprosium")).setProperty(DUST, new DustProperty(1,0));

@@ -394,6 +394,14 @@ public class CTRecipes {
                 .blastFurnaceTemp(500)
                 .duration(200).EUt(VA[MV])
                 .save(provider);
+        // initial fuel recipe for nuclear
+        BLAST_RECIPES.recipeBuilder("uranium_oxide")
+                .inputItems(dustOxide, Uranium238, 3)
+                .outputItems(ingot, Uranium238, 1)
+                .outputFluids(Oxygen.getFluid(2000))
+                .blastFurnaceTemp(600)
+                .duration(1000).EUt(VA[MV])
+                .save(provider);
     }
     private static void registerElectrolyzerRecipes(Consumer<FinishedRecipe> provider) {
         ELECTROLYZER_RECIPES.recipeBuilder("uranium_refinement_waste_solution_output")

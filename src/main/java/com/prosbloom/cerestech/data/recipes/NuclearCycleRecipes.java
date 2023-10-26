@@ -23,7 +23,6 @@ public class NuclearCycleRecipes {
             registerCentrifugeCycle(provider, rf);
             registerDecayChamberRecipes(provider, rf);
         }
-        //registerCentrifugeCycle(provider, reactorFuels.get(0));
         registerWasteProducts(provider);
     }
 

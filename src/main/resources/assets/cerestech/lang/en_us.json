@@ -22,11 +22,12 @@
   "block.gtceu.volcanus_casing": "Volcanus Casing",
   "gtceu.machine.volcanus.tooltip": "Requires up to 8 Programmable Circuits",
 
-  "block.gtceu.iv_naquadah_reactor": "Naquadah Reactor Mk I",
-  "block.gtceu.luv_naquadah_reactor": "Naquadah Reactor Mk II",
-  "block.gtceu.zpm_naquadah_reactor": "Naquadah Reactor Mk III",
-  "block.gtceu.uv_naquadah_reactor": "Naquadah Reactor Mk IV",
-  "block.gtceu.uhv_naquadah_reactor": "Naquadah Reactor Mk V",
+  "block.gtceu.ev_naquadah_reactor": "Naquadah Reactor Mk I",
+  "block.gtceu.iv_naquadah_reactor": "Naquadah Reactor Mk II",
+  "block.gtceu.luv_naquadah_reactor": "Naquadah Reactor Mk III",
+  "block.gtceu.zpm_naquadah_reactor": "Naquadah Reactor Mk IV",
+  "block.gtceu.uv_naquadah_reactor": "Naquadah Reactor Mk V",
+  "block.gtceu.uhv_naquadah_reactor": "Naquadah Reactor Mk VI",
   "gtceu.naquadah_reactor": "Naquadah Reactor",
   "gtceu.machine.naquadah_reactor.tooltip": "Requires Enriched Naquadah Rods",
 

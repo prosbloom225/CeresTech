@@ -57,7 +57,7 @@ public class CTMachines {
     public final static MachineDefinition[] DEHYDRATOR= registerSimpleMachines("dehydrator", CTRecipeTypes.DEHYDRATOR_RECIPES);
     public final static MachineDefinition[] DECAY_CHAMBER= registerSimpleMachines("decay_chamber", CTRecipeTypes.DECAY_CHAMBER_RECIPES);
     public final static MachineDefinition[] NAQUADAH_REACTOR = registerSimpleGenerator("naquadah_reactor", NAQUADAH_REACTOR_RECIPES, defaultTankSizeFunction,
-            GTValues.IV, GTValues.LuV, GTValues.ZPM);
+            GTValues.EV, GTValues.IV, GTValues.LuV, GTValues.ZPM);
     public static MultiblockMachineDefinition INDUSTRIAL_GREENHOUSE = REGISTRATE.multiblock("industrial_greenhouse", WorkableElectricMultiblockMachine::new)
             .langValue("Industrial Greenhouse")
             .rotationState(RotationState.NON_Y_AXIS)

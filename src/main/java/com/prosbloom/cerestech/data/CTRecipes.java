@@ -128,6 +128,8 @@ public class CTRecipes {
         registerMachineRecipe(provider, DEHYDRATOR, "WCW", "WMW", "PRP", 'M', CraftingComponent.HULL, 'R', ROBOT_ARM, 'P', PLATE, 'C', CIRCUIT, 'W', CABLE);
         registerMachineRecipe(provider, DECAY_CHAMBER, "RCR", "EHE", "WCW", 'R', STICK_RADIOACTIVE, 'E', EMITTER, 'H', CraftingComponent.HULL, 'C', CIRCUIT, 'W', CABLE);
 
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "naquadah_reactor_ev", NAQUADAH_REACTOR[EV].asStack(), "RCR", "FHF", "WCW", 'R',
+                new UnificationEntry(rod, Uranium238), 'F', FIELD_GENERATOR_EV, 'H', HULL[EV].asStack(), 'C', CustomTags.IV_CIRCUITS, 'W', new UnificationEntry(cableGtQuadruple, Aluminium));
         VanillaRecipeHelper.addShapedRecipe(provider, true, "naquadah_reactor_iv", NAQUADAH_REACTOR[IV].asStack(), "RCR", "FHF", "WCW", 'R',
                 new UnificationEntry(rod, Plutonium241), 'F', FIELD_GENERATOR_IV, 'H', HULL[IV].asStack(), 'C', CustomTags.LuV_CIRCUITS, 'W', new UnificationEntry(cableGtQuadruple, Tungsten));
         VanillaRecipeHelper.addShapedRecipe(provider, true, "naquadah_reactor_luv", NAQUADAH_REACTOR[LuV].asStack(), "RCR", "FHF", "WCW", 'R',

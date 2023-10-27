@@ -298,6 +298,20 @@ public class CTRecipes {
     }
 
     private static void registerChemicalReactorRecipes(Consumer<FinishedRecipe> provider) {
+        CHEMICAL_RECIPES.recipeBuilder("lithium_fluoried")
+                .inputItems(dust, Lithium)
+                .inputFluids(HydrofluoricAcid.getFluid(1000))
+                .outputItems(dust, LithiumFluoride)
+                .outputFluids(Hydrogen.getFluid(1000))
+                .duration(120).EUt(VA[MV])
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("beryllium_fluoried")
+                .inputItems(dust, Beryllium)
+                .inputFluids(HydrofluoricAcid.getFluid(2000))
+                .outputItems(dust, BerylliumFluoride)
+                .outputFluids(Hydrogen.getFluid(2000))
+                .duration(120).EUt(VA[MV])
+                .save(provider);
         // cheater H2O2 recipe
         CHEMICAL_RECIPES.recipeBuilder("hydrogen_peroxide")
                 .inputFluids(Oxygen.getFluid(1000))

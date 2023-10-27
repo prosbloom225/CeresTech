@@ -110,13 +110,6 @@ public class CTRecipes {
                 'B', new UnificationEntry(frameGt, HastelloyX),
                 'C', CustomTags.EV_CIRCUITS);
 
-
-        registerMachineRecipe(provider, DEHYDRATOR, "WCW", "WMW", "PRP", 'M', HULL, 'R', ROBOT_ARM, 'P', PLATE, 'C', CIRCUIT, 'W', CABLE);
-        registerMachineRecipe(provider, DECAY_CHAMBER, "RCR", "EHE", "WCW", 'R', new UnificationEntry(rod, Uranium238), 'E', EMITTER, 'H', HULL, 'C', CIRCUIT, 'W', CABLE);
-
-        // TODO - not working
-        registerMachineRecipe(provider, NAQUADAH_REACTOR, "CWC", "WMW", "PRP", 'M', HULL, 'R', ROBOT_ARM, 'P', PLATE, 'C', CIRCUIT, 'W', CABLE);
-
         VanillaRecipeHelper.addShapedRecipe(provider, true, "casing_power_station", CASING_POWER_STATION.asStack(),
                 "SPS", "PFP", "SPS",
                 'P', new UnificationEntry(plate, IncoloyMA956),
@@ -129,6 +122,19 @@ public class CTRecipes {
                 'B', CASING_POWER_STATION.get(),
                 'R', REDOX_CELL[EV].get(),
                 'C', CustomTags.EV_CIRCUITS);
+
+
+        // TODO - not working
+        registerMachineRecipe(provider, DEHYDRATOR, "WCW", "WMW", "PRP", 'M', CraftingComponent.HULL, 'R', ROBOT_ARM, 'P', PLATE, 'C', CIRCUIT, 'W', CABLE);
+        registerMachineRecipe(provider, DECAY_CHAMBER, "RCR", "EHE", "WCW", 'R', STICK_RADIOACTIVE, 'E', EMITTER, 'H', CraftingComponent.HULL, 'C', CIRCUIT, 'W', CABLE);
+
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "naquadah_reactor_iv", NAQUADAH_REACTOR[IV].asStack(), "RCR", "FHF", "WCW", 'R',
+                new UnificationEntry(rod, Plutonium241), 'F', FIELD_GENERATOR_IV, 'H', HULL[IV].asStack(), 'C', CustomTags.LuV_CIRCUITS, 'W', new UnificationEntry(cableGtQuadruple, Tungsten));
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "naquadah_reactor_luv", NAQUADAH_REACTOR[LuV].asStack(), "RCR", "FHF", "WCW", 'R',
+                new UnificationEntry(rod, Europium), 'F', FIELD_GENERATOR_LuV, 'H', HULL[LuV].asStack(), 'C', CustomTags.ZPM_CIRCUITS, 'W', new UnificationEntry(cableGtQuadruple, HSSG));
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "naquadah_reactor_zpm", NAQUADAH_REACTOR[ZPM].asStack(), "RCR", "FHF", "WCW", 'R',
+                new UnificationEntry(rod, Americium), 'F', FIELD_GENERATOR_ZPM, 'H', HULL[ZPM].asStack(), 'C', CustomTags.UV_CIRCUITS, 'W', new UnificationEntry(cableGtQuadruple, Naquadah));
+
 
 
     }

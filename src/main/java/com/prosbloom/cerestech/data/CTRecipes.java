@@ -294,6 +294,8 @@ public class CTRecipes {
         CHEMICAL_RECIPES.recipeBuilder("hydrogen_peroxide")
                 .inputFluids(Oxygen.getFluid(1000))
                 .inputFluids(Water.getFluid(1000))
+                .inputFluids(Dimethylbenzene.getFluid(100))
+                .circuitMeta(1)
                 .outputFluids(HydrogenPeroxide.getFluid(1000))
                 .duration(600).EUt(VA[HV])
                 .save(provider);

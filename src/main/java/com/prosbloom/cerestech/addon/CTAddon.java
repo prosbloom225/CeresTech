@@ -20,8 +20,8 @@ public class CTAddon implements IGTAddon{
         CTItems.init();
         CTElements.init();
         CTRecipeTypes.init();
-        CTMachines.init();
         CTBlocks.init();
+        CTMachines.init();
         LOGGER.info("CTAddon init!");
     }
 

@@ -6,6 +6,7 @@ import com.gregtechceu.gtceu.api.addon.forge.AddonFinderImpl;
 import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import com.mojang.logging.LogUtils;
 import com.prosbloom.cerestech.addon.CTAddon;
+import com.prosbloom.cerestech.data.CTBlocks;
 import com.prosbloom.cerestech.machines.CTMachines;
 import com.tterrag.registrate.Registrate;
 import net.minecraft.client.Minecraft;
@@ -69,8 +70,6 @@ public class CTMod
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
-        // TODO - init our own machines vs addon init
-        //CTMachines.init();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)

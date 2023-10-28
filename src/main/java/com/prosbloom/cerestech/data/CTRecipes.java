@@ -295,6 +295,52 @@ public class CTRecipes {
                 .outputItems(REDOX_CELL[UV].asStack())
                 .duration(200).EUt(VA[UV])
                 .save(provider);
+
+            ASSEMBLER_RECIPES.recipeBuilder("ev_energy_output_hatch_16a")
+                    .inputItems(TRANSFORMER[EV])
+                    .inputItems(ENERGY_OUTPUT_HATCH_4A[EV])
+                    .inputItems(wireGtOctal, Aluminium, 8)
+                    .inputItems(plate, Titanium, 4)
+                    .inputFluids(Electrum.getFluid(144))
+                    .outputItems(ENERGY_OUTPUT_HATCH_16A[EV].asStack())
+                    .duration(200).EUt(VA[HV])
+                    .save(provider);
+        ASSEMBLER_RECIPES.recipeBuilder("iv_energy_output_hatch_16a")
+                .inputItems(TRANSFORMER[IV])
+                .inputItems(ENERGY_OUTPUT_HATCH_4A[IV])
+                .inputItems(wireGtOctal, Tungsten, 8)
+                .inputItems(plate, TungstenSteel, 4)
+                .inputFluids(Electrum.getFluid(144))
+                .outputItems(ENERGY_OUTPUT_HATCH_16A[IV].asStack())
+                .duration(200).EUt(VA[EV])
+                .save(provider);
+        ASSEMBLER_RECIPES.recipeBuilder("luv_energy_output_hatch_16a")
+                .inputItems(TRANSFORMER[LuV])
+                .inputItems(ENERGY_OUTPUT_HATCH_4A[LuV])
+                .inputItems(wireGtOctal, VanadiumGallium, 8)
+                .inputItems(plate, RhodiumPlatedPalladium, 4)
+                .inputFluids(Electrum.getFluid(288))
+                .outputItems(ENERGY_OUTPUT_HATCH_16A[LuV].asStack())
+                .duration(200).EUt(VA[IV])
+                .save(provider);
+        ASSEMBLER_RECIPES.recipeBuilder("zpm_energy_output_hatch_16a")
+                .inputItems(TRANSFORMER[ZPM])
+                .inputItems(ENERGY_OUTPUT_HATCH_4A[ZPM])
+                .inputItems(wireGtOctal, Naquadah, 8)
+                .inputItems(plate, Iridium, 4)
+                .inputFluids(Electrum.getFluid(576))
+                .outputItems(ENERGY_OUTPUT_HATCH_16A[ZPM].asStack())
+                .duration(200).EUt(VA[LuV])
+                .save(provider);
+        ASSEMBLER_RECIPES.recipeBuilder("uv_energy_output_hatch_16a")
+                .inputItems(TRANSFORMER[UV])
+                .inputItems(ENERGY_OUTPUT_HATCH_4A[UV])
+                .inputItems(wireGtOctal, NaquadahAlloy, 8)
+                .inputItems(plate, Osmium, 4)
+                .inputFluids(Electrum.getFluid(1152))
+                .outputItems(ENERGY_OUTPUT_HATCH_16A[UV].asStack())
+                .duration(200).EUt(VA[ZPM])
+                .save(provider);
     }
 
     private static void registerChemicalReactorRecipes(Consumer<FinishedRecipe> provider) {

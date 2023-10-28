@@ -336,6 +336,17 @@ public class CTMachines {
                     .register(),
             HIGH_TIERS);
 
+    public final static MachineDefinition[] ME_INPUT_BUS = registerTieredMachines("me_input_bus",
+            (holder, tier) -> new MEInputBusPartMachine(holder, tier, IO.IN),
+            (tier, builder) -> builder
+                    .langValue("ME Input Bus")
+                    .rotationState(RotationState.ALL)
+                    .abilities(PartAbility.IMPORT_ITEMS)
+                    .overlayTieredHullRenderer("item_bus.import")
+                    .compassNode("me_input_bus")
+                    .register(),
+            LuV);
+
 
     public final static MachineDefinition[] DUAL_INPUT_BUS= registerTieredMachines("dual_input_bus",
             (holder, tier) -> new DualInputPartMachine(holder, tier, IO.IN),

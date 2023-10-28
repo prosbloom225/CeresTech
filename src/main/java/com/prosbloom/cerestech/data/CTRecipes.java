@@ -1,6 +1,7 @@
 package com.prosbloom.cerestech.data;
 
 import appeng.core.definitions.AEBlocks;
+import appeng.core.definitions.AEItems;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.UnificationEntry;
 import com.gregtechceu.gtceu.common.data.GTMachines;
@@ -234,7 +235,7 @@ public class CTRecipes {
                         .duration(600).EUt(VA[i])
                         .save(provider);
 
-            ASSEMBLER_RECIPES.recipeBuilder("dual_input_bus"+DUAL_INPUT_BUS[IV].getTier())
+        ASSEMBLER_RECIPES.recipeBuilder("dual_input_bus"+DUAL_INPUT_BUS[IV].getTier())
                     .inputItems(ITEM_IMPORT_BUS[IV])
                     .inputItems(FLUID_IMPORT_HATCH[IV])
                     .inputItems(CustomTags.IV_CIRCUITS, 1)
@@ -243,6 +244,15 @@ public class CTRecipes {
                     .outputItems(DUAL_INPUT_BUS[IV].asStack())
                     .duration(600).EUt(VA[IV])
                     .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("luv_stocking_item_bus")
+                .inputItems(ITEM_IMPORT_BUS[LuV])
+                .inputItems(AEBlocks.INTERFACE.asItem())
+                .inputItems(AEItems.SPEED_CARD.asItem(), 4)
+                .circuitMeta(1)
+                .outputItems(ME_INPUT_BUS[LuV])
+                .duration(300).EUt(VA[HV])
+                .save(provider);
 
         // --- Redox Cells
         ASSEMBLER_RECIPES.recipeBuilder("redox_cell_ev")

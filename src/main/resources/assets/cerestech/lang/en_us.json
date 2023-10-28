@@ -108,8 +108,11 @@
   "block.gtceu.uv_me_output_hatch": "UV Output Hatch (ME)",
   "block.gtceu.uhv_me_output_hatch": "UHV Output Hatch (ME)",
 
+  "block.gtceu.luv_me_input_bus": "LuV ME Stocking Input Bus",
+
   "block.gtceu.iv_dual_input_bus": "IV Dual Input Bus",
   "block.gtceu.luv_dual_input_bus": "LuV Dual Input Bus",
+
 
   "block.gtceu.power_station": "Power Station Controller",
   "block.gtceu.power_station_casing": "Power Station Casing",

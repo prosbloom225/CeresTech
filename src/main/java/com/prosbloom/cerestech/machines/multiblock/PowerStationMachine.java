@@ -10,8 +10,10 @@ import com.gregtechceu.gtceu.api.machine.TickableSubscription;
 import com.gregtechceu.gtceu.api.machine.feature.IFancyUIMachine;
 import com.gregtechceu.gtceu.api.machine.feature.multiblock.IMultiPart;
 import com.gregtechceu.gtceu.api.machine.multiblock.MultiblockControllerMachine;
+import com.gregtechceu.gtceu.api.machine.multiblock.part.TieredIOPartMachine;
 import com.gregtechceu.gtceu.api.machine.trait.MachineTrait;
 import com.gregtechceu.gtceu.api.machine.trait.NotifiableEnergyContainer;
+import com.gregtechceu.gtceu.common.machine.multiblock.part.EnergyHatchPartMachine;
 import com.lowdragmc.lowdraglib.gui.texture.IGuiTexture;
 import com.lowdragmc.lowdraglib.gui.texture.ProgressTexture;
 import com.lowdragmc.lowdraglib.gui.widget.*;
@@ -94,12 +96,7 @@ public class PowerStationMachine extends MultiblockControllerMachine implements 
             }
 
         }
-        long currEnergy = 0;
-        if (energyContainer != null)
-            currEnergy = energyContainer.getEnergyStored();
-        energyContainer = NotifiableEnergyContainer.emitterContainer(this, cap, tier, 64);
-        energyContainer.setEnergyStored(currEnergy);
-
+        energyContainer.resetBasicInfo(cap, tier, 64, tier, 64);
         updateEnergySubscriptions();
         outputEnergy();
     }
@@ -109,11 +106,6 @@ public class PowerStationMachine extends MultiblockControllerMachine implements 
         super.onLoad();
         if (energyContainer != null)
             updateEnergySubscriptions();
-    }
-
-    @Override
-    public void onUnload() {
-        super.onUnload();
     }
 
     public void updateEnergySubscriptions() {

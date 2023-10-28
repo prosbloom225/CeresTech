@@ -7,14 +7,18 @@ import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.gui.GuiTextures;
 import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.feature.multiblock.IDistinctPart;
+import com.gregtechceu.gtceu.api.machine.multiblock.part.TieredIOPartMachine;
 import com.gregtechceu.gtceu.api.machine.trait.NotifiableItemStackHandler;
 import com.lowdragmc.lowdraglib.gui.widget.SlotWidget;
 import com.lowdragmc.lowdraglib.gui.widget.Widget;
 import com.lowdragmc.lowdraglib.gui.widget.WidgetGroup;
 import com.lowdragmc.lowdraglib.syncdata.annotation.Persisted;
+import com.lowdragmc.lowdraglib.syncdata.field.ManagedFieldHolder;
 import net.minecraft.world.item.ItemStack;
 
 public class MEInputBusPartMachine extends MEItemPartMachine implements IDistinctPart {
+
+    protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(MEInputBusPartMachine.class, MEItemPartMachine.MANAGED_FIELD_HOLDER);
 
     @Persisted
     public final NotifiableItemStackHandler meInventory;
@@ -24,14 +28,18 @@ public class MEInputBusPartMachine extends MEItemPartMachine implements IDistinc
     }
 
     @Override
+    public ManagedFieldHolder getFieldHolder() { return MANAGED_FIELD_HOLDER; }
+
+    @Override
     protected void autoIO() {
-        if (getOffsetTimer() % 100 == 0) {
+        if (getOffsetTimer() % 5 == 0) {
             if (isWorkingEnabled() && ((io == IO.OUT && !inventory.isEmpty()) || io == IO.IN) && mainNode != null) {
                 var grid = getMainNode().getGrid();
                 if (grid == null || !getMainNode().isActive())
                     return;
                 var storage = grid.getStorageService().getInventory();
 
+                // TODO - still not working quite right
                 for (int j = 0; j < inventory.getSlots(); j++) {
                     ItemStack is = inventory.storage.getStackInSlot(j).copy();
                     if (is.getItem() != meInventory.storage.getStackInSlot(j).getItem() && !meInventory.storage.getStackInSlot(j).isEmpty()) {
@@ -39,13 +47,17 @@ public class MEInputBusPartMachine extends MEItemPartMachine implements IDistinc
                         meInventory.storage.setStackInSlot(j, ItemStack.EMPTY);
                     }
                     if (is != null && !is.isEmpty()) {
-                        is.setCount(is.getCount() - meInventory.storage.getStackInSlot(j).getCount());
-                        if (is.getCount() > 0) {
-                            boolean didExtract = StorageHelper.poweredExtraction(grid.getEnergyService(), storage, AEItemKey.of(is), is.getCount(), IActionSource.ofMachine(mainNode::getNode)) != 0;
+                        int sizeDiff = is.getCount() - meInventory.storage.getStackInSlot(j).getCount();
+                        if (sizeDiff > 0) {
+                            boolean didExtract = StorageHelper.poweredExtraction(grid.getEnergyService(), storage, AEItemKey.of(is), Math.abs(sizeDiff), IActionSource.ofMachine(mainNode::getNode)) != 0;
                             if (didExtract) {
                                 meInventory.storage.setStackInSlot(j, is);
                             }
+                        } else {
+                            StorageHelper.poweredInsert(grid.getEnergyService(), storage, AEItemKey.of(meInventory.storage.getStackInSlot(j).getItem()), Math.abs(sizeDiff), IActionSource.ofMachine(mainNode::getNode));
+                            meInventory.storage.setStackInSlot(j, is);
                         }
+
                     }
                 }
             }

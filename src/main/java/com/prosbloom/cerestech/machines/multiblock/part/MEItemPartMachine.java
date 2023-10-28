@@ -21,7 +21,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class MEItemPartMachine extends MEPartMachine{
 
-    protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(MEItemPartMachine.class, TieredIOPartMachine.MANAGED_FIELD_HOLDER);
+    protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(MEItemPartMachine.class, MEPartMachine.MANAGED_FIELD_HOLDER);
 
     @Persisted
     public final NotifiableItemStackHandler inventory;

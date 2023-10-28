@@ -39,9 +39,9 @@ public class NuclearReactorRecipes {
                         .inputItems(fuelOxide, r.isotopeFuelOxide, i)
                         .circuitMeta(i)
                         .outputItems(depletedFuel, r.isotopeFuelOxide, i)
-                        .duration(100)
-                        // TODO - when done testing
-                        //.duration(16000)
+                        // TODO - testing
+                        //.duration(100)
+                        .duration(16000)
                         // TODO - reactor power req should probably scale with tier of fuel, for now setting to MV
                         .EUt(VA[MV]*i)
                         .save(provider);

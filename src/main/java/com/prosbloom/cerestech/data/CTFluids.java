@@ -101,4 +101,29 @@ public class CTFluids {
             .color(0x32F032) .iconSet(MaterialIconSet.FLUID)
             .buildAndRegister();
 
+    public static Material RareEarthHydroxides = new Material.Builder("rare_earth_hydroxides")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xBDB78C) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+    public static Material RareEarthChlorides = new Material.Builder("rare_earth_chlorides")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x246E57) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+    public static Material LaNdOxidesSolution = new Material.Builder("la_nd_oxides_solution")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x78ACA6) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+    public static Material SmGdOxidesSolution = new Material.Builder("sm_gd_oxides_solution")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xBDBD73) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+    public static Material TbHoOxidesSolution = new Material.Builder("tb_ho_oxides_solution")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x7DCE7D) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+    public static Material ErLuOxidesSolution = new Material.Builder("er_lu_oxides_solution")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xBF88BF) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
 }

@@ -2,10 +2,7 @@ package com.prosbloom.cerestech.data;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
-import com.gregtechceu.gtceu.api.data.chemical.material.properties.DustProperty;
-import com.gregtechceu.gtceu.api.data.chemical.material.properties.IMaterialProperty;
-import com.gregtechceu.gtceu.api.data.chemical.material.properties.IngotProperty;
-import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.*;
 import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.api.registry.GTRegistries;
@@ -254,6 +251,11 @@ public class CTMaterials {
             .element(CTElements.Md263)
             .buildAndRegister();
 
+    public static Material ThoriumUraniumSludge = new Material.Builder("thorium_uranium_sludge")
+            .dust()
+            .color(0x000000).iconSet(FINE)
+            .buildAndRegister();
+
     // Lanthanides - Nuclear Waste missing materials
     /*
 
@@ -296,6 +298,7 @@ public class CTMaterials {
         Objects.requireNonNull(GTRegistries.MATERIALS.get("tellurium")).setProperty(DUST, new DustProperty(1,0));
         Objects.requireNonNull(GTRegistries.MATERIALS.get("astatine")).setProperty(DUST, new DustProperty(1,0));
         Objects.requireNonNull(GTRegistries.MATERIALS.get("actinium")).setProperty(DUST, new DustProperty(1,0));
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("scandium")).setProperty(DUST, new DustProperty(1,0));
 
         Objects.requireNonNull(GTRegistries.MATERIALS.get("lead")).addFlags(GENERATE_DENSE);
         Objects.requireNonNull(GTRegistries.MATERIALS.get("stainless_steel")).addFlags(GENERATE_DENSE);

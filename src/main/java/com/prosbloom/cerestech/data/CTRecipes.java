@@ -438,6 +438,22 @@ public class CTRecipes {
                 .outputFluids(Water.getFluid(2000))
                 .duration(120).EUt(VA[MV])
                 .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("rare_earth_hydroxides")
+                .inputItems(dust, RareEarth, 1)
+                .inputFluids(Water.getFluid(3000))
+                .inputItems(dust, SodiumHydroxide, 3)
+                .outputFluids(RareEarthHydroxides.getFluid(1000))
+                .outputFluids(Hydrogen.getFluid(3000))
+                .duration(200).EUt(VA[HV])
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("rare_earth_chlorides")
+                .inputFluids(RareEarthHydroxides.getFluid(1000))
+                .inputFluids(HydrochloricAcid.getFluid(3000))
+                .outputItems(dust, ThoriumUraniumSludge, 2)
+                .outputItems(dust, SodiumHydroxide, 3)
+                .outputFluids(RareEarthChlorides.getFluid(3000))
+                .duration(200).EUt(VA[HV])
+                .save(provider);
 
     }
     private static void registerCentrifugeRecipes(Consumer<FinishedRecipe> provider) {
@@ -462,6 +478,60 @@ public class CTRecipes {
                 .chancedOutput(dust, Scheelite, 225, 0)
                 .chancedOutput(dust, Bauxite, 450, 0)
                 .duration(40).EUt(VA[IV])
+                .save(provider);
+        // TODO - gtnh monazite/bastnasite lines are better, using tj rare earth for now
+        CENTRIFUGE_RECIPES.recipeBuilder("thorium_uranium_sludge_output")
+                .inputItems(dust, ThoriumUraniumSludge, 4)
+                .inputFluids(Oxygen.getFluid(500))
+                .outputItems(dust, Thorium)
+                .chancedOutput(dustTiny, Thorium, 2000, 150)
+                .chancedOutput(dustTiny, Uranium238, 2000, 150)
+                .duration(250).EUt(VA[MV])
+                .save(provider);
+        CENTRIFUGE_RECIPES.recipeBuilder("rare_earth_output")
+                .inputFluids(RareEarthChlorides.getFluid(6000))
+                .outputFluids(HydrochloricAcid.getFluid(6000))
+                .outputFluids(LaNdOxidesSolution.getFluid(250))
+                .outputFluids(SmGdOxidesSolution.getFluid(250))
+                .outputFluids(TbHoOxidesSolution.getFluid(250))
+                .outputFluids(ErLuOxidesSolution.getFluid(250))
+                .duration(600).EUt(VA[HV])
+                .save(provider);
+        CENTRIFUGE_RECIPES.recipeBuilder("la_nd_oxides_solution_output")
+                .inputFluids(LaNdOxidesSolution.getFluid(4000))
+                .outputItems(dust, Lanthanum, 5)
+                .outputItems(dust, Praseodymium, 5)
+                .outputItems(dust, Neodymium, 5)
+                .outputItems(dust, Cerium, 5)
+                .outputFluids(Oxygen.getFluid(3000))
+                .duration(220).EUt(VA[HV])
+                .save(provider);
+        CENTRIFUGE_RECIPES.recipeBuilder("sm_gd_oxides_solution_output")
+                .inputFluids(SmGdOxidesSolution.getFluid(4000))
+                .outputItems(dust, Scandium, 5)
+                .outputItems(dust, Europium, 5)
+                .outputItems(dust, Gadolinium, 5)
+                .outputItems(dust, Samarium, 5)
+                .outputFluids(Oxygen.getFluid(3000))
+                .duration(220).EUt(VA[HV])
+                .save(provider);
+        CENTRIFUGE_RECIPES.recipeBuilder("tb_ho_oxides_solution_output")
+                .inputFluids(TbHoOxidesSolution.getFluid(4000))
+                .outputItems(dust, Yttrium, 5)
+                .outputItems(dust, Terbium, 5)
+                .outputItems(dust, Dysprosium, 5)
+                .outputItems(dust, Holmium, 5)
+                .outputFluids(Oxygen.getFluid(3000))
+                .duration(220).EUt(VA[HV])
+                .save(provider);
+        CENTRIFUGE_RECIPES.recipeBuilder("er_lu_oxides_solution_output")
+                .inputFluids(ErLuOxidesSolution.getFluid(4000))
+                .outputItems(dust, Erbium, 5)
+                .outputItems(dust, Thulium, 5)
+                .outputItems(dust, Ytterbium, 5)
+                .outputItems(dust, Lutetium, 5)
+                .outputFluids(Oxygen.getFluid(3000))
+                .duration(220).EUt(VA[HV])
                 .save(provider);
     }
 

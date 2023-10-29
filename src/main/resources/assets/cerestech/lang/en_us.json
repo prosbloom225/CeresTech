@@ -197,6 +197,13 @@
   "material.mendelevium_261": "Mendelevium 261",
   "material.mendelevium_263": "Mendelevium 263",
   "material.pahoehoe_lava": "Pahoehoe Lava",
+  "material.rare_earth_hydroxides": "Rare Earth Hydroxides",
+  "material.rare_earth_chlorides": "Rare Earth Chlorides",
+  "material.thorium_uranium_sludge": "Thorium-Uranium Sludge",
+  "material.la_nd_oxides_solution": "La-Nd Oxides Solution",
+  "material.sm_gd_oxides_solution": "Sm-Gd Oxides Solution",
+  "material.tb_ho_oxides_solution": "Tb-Ho Oxides Solution",
+  "material.er_lu_oxides_solution": "Er-Lu Oxides Solution",
 
   "gtceu.multiblock.nuclear_reactor.fuel": "Fuel: %s",
   "gtceu.multiblock.nuclear_reactor.coolant_output": "Coolant Output: %d"

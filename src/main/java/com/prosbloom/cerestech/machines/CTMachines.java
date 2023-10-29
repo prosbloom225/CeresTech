@@ -357,7 +357,7 @@ public class CTMachines {
                     .overlayTieredHullRenderer("item_bus.import")
                     .compassNode("dual_input_bus")
                     .register(),
-            IV, LuV);
+            IV, LuV, ZPM);
 
     public final static MachineDefinition[] REDOX_CELL = registerTieredMachines("redox_cell",
             (holder, tier) -> new TieredIOPartMachine(holder, tier, IO.OUT),

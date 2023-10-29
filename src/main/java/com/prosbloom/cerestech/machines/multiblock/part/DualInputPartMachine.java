@@ -23,7 +23,6 @@ public class DualInputPartMachine extends TieredIOPartMachine implements IDistin
     protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(DualInputPartMachine.class, TieredIOPartMachine.MANAGED_FIELD_HOLDER);
     private final int numTanks = 4;
     private final int tankCapacity = 16000;
-    private final int inventorySize = 8;
     @Persisted
     private NotifiableFluidTankMulti tanks;
 
@@ -36,8 +35,8 @@ public class DualInputPartMachine extends TieredIOPartMachine implements IDistin
 
     public DualInputPartMachine(IMachineBlockEntity holder, int tier, IO io, Object... args) {
         super(holder, tier, io);
-        tanks = createTank();
-        inventory = new NotifiableItemStackHandler(this, inventorySize, io);
+        tanks = new NotifiableFluidTankMulti(this, getTankSize(), 16000L * tier, io);
+        inventory = new NotifiableItemStackHandler(this, getInventorySize(), io);
     }
 
     @Override
@@ -45,8 +44,11 @@ public class DualInputPartMachine extends TieredIOPartMachine implements IDistin
         return MANAGED_FIELD_HOLDER;
     }
 
-    protected NotifiableFluidTankMulti createTank() {
-        return new NotifiableFluidTankMulti(this, numTanks, tankCapacity, io);
+    protected int getInventorySize() {
+        return 4 * (getTier() - 3);
+    }
+    protected int getTankSize() {
+        return 4 * (getTier() - 4);
     }
 
     public void updateSubscriptions() {
@@ -92,21 +94,18 @@ public class DualInputPartMachine extends TieredIOPartMachine implements IDistin
 
     @Override
     public Widget createUIWidget() {
-        var group = new WidgetGroup(0, 0, 110, 79);
-        group.addWidget(new ImageWidget(4, 4, 101, 70, GuiTextures.DISPLAY))
-                .addWidget(new TankWidget(tanks.storages[0], 15, 10, true, io.support(IO.IN)).setBackground(GuiTextures.FLUID_SLOT))
-                .addWidget(new TankWidget(tanks.storages[1], 35, 10, true, io.support(IO.IN)).setBackground(GuiTextures.FLUID_SLOT))
-                .addWidget(new TankWidget(tanks.storages[2], 55, 10, true, io.support(IO.IN)).setBackground(GuiTextures.FLUID_SLOT))
-                .addWidget(new TankWidget(tanks.storages[3], 75, 10, true, io.support(IO.IN)).setBackground(GuiTextures.FLUID_SLOT));
-        int rowSize = 4;
-        int colSize = 2;
+        int rows = getTankSize()/4;
+        var group = new WidgetGroup(0, 0, 110, 65 + (32 * rows +1));
+        group.addWidget(new ImageWidget(4, 4, 101, 56 + (32 * rows+1), GuiTextures.DISPLAY));
         int index = 0;
-        for (int y = 0; y < colSize; y++) {
-            for (int x = 0; x < rowSize; x++) {
-                group.addWidget(new SlotWidget(inventory.storage, index++, 18 + x * 18, 32 + y * 18, true, io.support(IO.IN))
+        for (int i = 0; i < rows; i++)
+            for (int x = 0; x < 4; x++)
+                group.addWidget(new TankWidget(tanks.storages[index++], 15 + 20 * x, (i + 1) * 18, true, io.support(IO.IN)).setBackground(GuiTextures.FLUID_SLOT));
+        index = 0;
+        for (int y = 0; y < rows+1; y++)
+            for (int x = 0; x < 4; x++)
+                group.addWidget(new SlotWidget(inventory.storage, index++, 18 + x * 18, 18 * rows + 24 + y * 18, true, io.support(IO.IN))
                         .setBackgroundTexture(GuiTextures.SLOT));
-            }
-        }
         group.setBackground(GuiTextures.BACKGROUND_INVERSE);
         return group;
     }

@@ -2,6 +2,7 @@ package com.prosbloom.cerestech.data;
 
 import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEItems;
+import appeng.parts.networking.CoveredCablePart;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.UnificationEntry;
 import com.gregtechceu.gtceu.common.data.GTMachines;
@@ -244,6 +245,24 @@ public class CTRecipes {
                     .outputItems(DUAL_INPUT_BUS[IV].asStack())
                     .duration(600).EUt(VA[IV])
                     .save(provider);
+        ASSEMBLER_RECIPES.recipeBuilder("dual_input_bus"+DUAL_INPUT_BUS[LuV].getTier())
+                .inputItems(ITEM_IMPORT_BUS[LuV])
+                .inputItems(FLUID_IMPORT_HATCH[LuV])
+                .inputItems(CustomTags.LuV_CIRCUITS, 1)
+                .inputItems(ELECTRIC_PUMP_LuV)
+                .inputItems(CONVEYOR_MODULE_LuV)
+                .outputItems(DUAL_INPUT_BUS[LuV].asStack())
+                .duration(600).EUt(VA[LuV])
+                .save(provider);
+        ASSEMBLER_RECIPES.recipeBuilder("dual_input_bus"+DUAL_INPUT_BUS[ZPM].getTier())
+                .inputItems(ITEM_IMPORT_BUS[ZPM])
+                .inputItems(FLUID_IMPORT_HATCH[ZPM])
+                .inputItems(CustomTags.ZPM_CIRCUITS, 1)
+                .inputItems(ELECTRIC_PUMP_ZPM)
+                .inputItems(CONVEYOR_MODULE_ZPM)
+                .outputItems(DUAL_INPUT_BUS[ZPM].asStack())
+                .duration(600).EUt(VA[ZPM])
+                .save(provider);
 
         ASSEMBLER_RECIPES.recipeBuilder("luv_stocking_item_bus")
                 .inputItems(ITEM_IMPORT_BUS[LuV])

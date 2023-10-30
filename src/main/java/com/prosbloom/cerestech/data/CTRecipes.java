@@ -14,6 +14,7 @@ import com.prosbloom.cerestech.data.recipes.*;
 import com.prosbloom.cerestech.machines.multiblock.part.QuadFluidHatchPartMachine;
 import com.prosbloom.cerestech.machines.multiblock.part.RedoxPartMachine;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.world.item.EnderpearlItem;
 import net.minecraft.world.item.Items;
 
 import javax.swing.*;
@@ -50,6 +51,7 @@ public class CTRecipes {
         registerCentrifugeRecipes(provider);
         registerElectrolyzerRecipes(provider);
         registerBlastFurnaceRecipes(provider);
+        registerMaceratorRecipes(provider);
         registerAssemblyLineRecipes(provider);
 
         IndustrialGreenhouseRecipes.registerIndustrialGreenhouseRecipes(provider);
@@ -166,7 +168,6 @@ public class CTRecipes {
                 .outputFluids(PiranhaSolution.getFluid(2000))
                 .duration(160).EUt(VA[MV])
                 .save(provider);
-
         MIXER_RECIPES.recipeBuilder("uranium_dioxide_output")
                 .inputItems(dust, UraniumOxideThoriumNitrateMixture, 18)
                 .inputFluids(DistilledWater.getFluid(1000))
@@ -174,7 +175,13 @@ public class CTRecipes {
                 .outputFluids(ThoriumNitrateSolution.getFluid(1000))
                 .duration(600).EUt(VA[LV])
                 .save(provider);
-
+        MIXER_RECIPES.recipeBuilder("ae2_fluix_crystal")
+                .inputItems(AEItems.CERTUS_QUARTZ_CRYSTAL_CHARGED.asItem())
+                .inputItems(dust, Redstone, 1)
+                .inputItems(dust, NetherQuartz, 1)
+                .outputItems(AEItems.FLUIX_CRYSTAL.asItem())
+                .duration(20).EUt(VA[LV])
+                .save(provider);
     }
 
     private static void registerAssemblerRecipes(Consumer<FinishedRecipe> provider) {
@@ -370,6 +377,28 @@ public class CTRecipes {
                 .outputItems(ENERGY_OUTPUT_HATCH_16A[UV].asStack())
                 .duration(200).EUt(VA[ZPM])
                 .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("ae2_logic_processor")
+                .inputItems(AEItems.SILICON_PRINT.asItem())
+                .inputItems(AEItems.LOGIC_PROCESSOR_PRINT.asItem())
+                .inputFluids(Redstone.getFluid(144))
+                .outputItems(AEItems.LOGIC_PROCESSOR.asItem())
+                .duration(64).EUt(VA[LV])
+                .save(provider);
+        ASSEMBLER_RECIPES.recipeBuilder("ae2_engineering_processor")
+                .inputItems(AEItems.SILICON_PRINT.asItem())
+                .inputItems(AEItems.ENGINEERING_PROCESSOR_PRINT.asItem())
+                .inputFluids(Redstone.getFluid(144))
+                .outputItems(AEItems.ENGINEERING_PROCESSOR.asItem())
+                .duration(64).EUt(VA[LV])
+                .save(provider);
+        ASSEMBLER_RECIPES.recipeBuilder("ae2_calculation_processor")
+                .inputItems(AEItems.SILICON_PRINT.asItem())
+                .inputItems(AEItems.CALCULATION_PROCESSOR_PRINT.asItem())
+                .inputFluids(Redstone.getFluid(144))
+                .outputItems(AEItems.CALCULATION_PROCESSOR.asItem())
+                .duration(64).EUt(VA[LV])
+                .save(provider);
     }
 
     private static void registerChemicalReactorRecipes(Consumer<FinishedRecipe> provider) {
@@ -473,7 +502,12 @@ public class CTRecipes {
                 .outputFluids(RareEarthChlorides.getFluid(3000))
                 .duration(200).EUt(VA[HV])
                 .save(provider);
-
+        CHEMICAL_RECIPES.recipeBuilder("ae2_charged_certus_quartz")
+                .inputItems(AEItems.CERTUS_QUARTZ_CRYSTAL.asItem())
+                .inputItems(dust, Redstone, 1)
+                .outputItems(AEItems.CERTUS_QUARTZ_CRYSTAL_CHARGED.asItem())
+                .duration(600).EUt(VA[LV])
+                .save(provider);
     }
     private static void registerCentrifugeRecipes(Consumer<FinishedRecipe> provider) {
         CENTRIFUGE_RECIPES.recipeBuilder("pahoehoe_small")
@@ -618,6 +652,30 @@ public class CTRecipes {
                 .outputItems(CASING_SHIELDED_REACTOR.asStack(4))
                 .duration(1500).EUt(500)
                 .save(provider);
+        FORMING_PRESS_RECIPES.recipeBuilder("ae2_printed_silicon")
+                .inputItems(plate, Silicon, 1)
+                .notConsumable(AEItems.SILICON_PRESS.stack())
+                .outputItems(AEItems.SILICON_PRINT.asItem())
+                .duration(200).EUt(VA[LV])
+                .save(provider);
+        FORMING_PRESS_RECIPES.recipeBuilder("ae2_printed_logic")
+                .inputItems(plate, Gold, 1)
+                .notConsumable(AEItems.LOGIC_PROCESSOR_PRESS.stack())
+                .outputItems(AEItems.LOGIC_PROCESSOR_PRINT.asItem())
+                .duration(200).EUt(VA[LV])
+                .save(provider);
+        FORMING_PRESS_RECIPES.recipeBuilder("ae2_printed_engineering")
+                .inputItems(plate, Diamond, 1)
+                .notConsumable(AEItems.ENGINEERING_PROCESSOR_PRESS.stack())
+                .outputItems(AEItems.ENGINEERING_PROCESSOR_PRINT.asItem())
+                .duration(200).EUt(VA[LV])
+                .save(provider);
+        FORMING_PRESS_RECIPES.recipeBuilder("ae2_printed_calculation")
+                .inputItems(plate, Diamond, 1)
+                .notConsumable(AEItems.CALCULATION_PROCESSOR_PRESS.stack())
+                .outputItems(AEItems.CALCULATION_PROCESSOR_PRINT.asItem())
+                .duration(200).EUt(VA[LV])
+                .save(provider);
     }
 
     private static void registerAssemblyLineRecipes(Consumer<FinishedRecipe> provider) {
@@ -661,6 +719,24 @@ public class CTRecipes {
                 .inputFluids(SolderingAlloy.getFluid(1440))
                 .outputItems(BEDROCK_ORE_MINER[EV])
                 .duration(6000).EUt(VA[UV])
+                .save(provider);
+    }
+
+    private static void registerMaceratorRecipes(Consumer<FinishedRecipe> provider) {
+        MACERATOR_RECIPES.recipeBuilder("ae2_certus_dust")
+                .inputItems(AEItems.CERTUS_QUARTZ_CRYSTAL.asItem())
+                .outputItems(AEItems.CERTUS_QUARTZ_DUST.asItem())
+                .duration(1500).EUt(VA[ULV])
+                .save(provider);
+        MACERATOR_RECIPES.recipeBuilder("ae2_fluix_dust")
+                .inputItems(AEItems.FLUIX_CRYSTAL.asItem())
+                .outputItems(AEItems.FLUIX_DUST.asItem())
+                .duration(1500).EUt(VA[ULV])
+                .save(provider);
+        MACERATOR_RECIPES.recipeBuilder("ae2_sky_ston_dust")
+                .inputItems(AEBlocks.SKY_STONE_BLOCK.asItem())
+                .outputItems(AEItems.SKY_DUST.asItem())
+                .duration(1500).EUt(VA[ULV])
                 .save(provider);
     }
 }

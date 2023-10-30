@@ -671,7 +671,7 @@ public class CTRecipes {
                 .duration(200).EUt(VA[LV])
                 .save(provider);
         FORMING_PRESS_RECIPES.recipeBuilder("ae2_printed_calculation")
-                .inputItems(plate, Diamond, 1)
+                .inputItems(plate, CertusQuartz, 1)
                 .notConsumable(AEItems.CALCULATION_PROCESSOR_PRESS.stack())
                 .outputItems(AEItems.CALCULATION_PROCESSOR_PRINT.asItem())
                 .duration(200).EUt(VA[LV])

@@ -38,7 +38,7 @@ public class VolcanusMachine extends CoilWorkableElectricMultiblockMachine {
                 // TODO - change these to actually pull from tanks
                 if (tank instanceof NotifiableFluidTank) {
                     fluidDrained = ((NotifiableFluidTank) tank).drain(maxDrain, false);
-                    if (drainCoolant != null) break;
+                    if (!fluidDrained.isEmpty()) break;
                 }
             }
             // TODO - probably a more elegant way of doing this so you dont have to manually restart machines when out of pyro..

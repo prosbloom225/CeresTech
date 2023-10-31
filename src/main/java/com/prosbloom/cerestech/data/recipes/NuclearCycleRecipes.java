@@ -26,7 +26,7 @@ public class NuclearCycleRecipes {
         registerWasteProducts(provider);
     }
 
-    // --- Centrifuge Cycle
+   // --- Centrifuge Cycle
     // LCR + Dust + Nitric Acid*2000 = Uranium Nitrate*3 + Hydrogen*2000
     // EBf *3 = Uranium Dioxide + Nitric Oxide*2000
     // LCR + Chlorine*6000 = Uranium Hexachloride + Oxygen*2000
@@ -155,6 +155,7 @@ public class NuclearCycleRecipes {
     // Thermal Centrifuge = Neptunium Dust + Nuclear Waste(7.6%) + Uranium 238 Dust(30%)
     // Dehydrator +  Nuclear Waste = Lanthanide Group A Waste, Alkaline Waste, Metaloid Waste, etc
     private static void registerMainCycle(Consumer<FinishedRecipe> provider, ReactorFuel rf){
+        // Fuel Oxide
         CHEMICAL_RECIPES.recipeBuilder(rf.isotopeFuelOxide.getName() + "_depleted_fuel")
                 .inputItems(depletedFuel, rf.isotopeFuelOxide, 1)
                 .inputFluids(Oxygen.getFluid(1000))
@@ -180,6 +181,34 @@ public class NuclearCycleRecipes {
                 .outputItems(dust, rf.uptierMaterial, 1)
                 .chancedOutput(WASTE_NUCLEAR.asStack(), 1000, 0)
                 .chancedOutput(dust, rf.isotopeFuelOxide, 1, 3000, 0)
+                .duration(300).EUt(rf.voltage)
+                .save(provider);
+        // Fuel Pure
+        CHEMICAL_RECIPES.recipeBuilder(rf.isotopeFuelPure.getName() + "_depleted_fuel_pure")
+                .inputItems(depletedFuel, rf.isotopeFuelPure, 1)
+                .inputFluids(Oxygen.getFluid(1000))
+                .outputItems(depletedFuelOxide, rf.isotopeFuelPure, 1)
+                .duration(300).EUt(30)
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder(rf.isotopeFuelPure.getName() + "_depleted_fuel_nitrate_pure")
+                .inputItems(depletedFuelOxide, rf.isotopeFuelPure, 1)
+                .inputFluids(NitricAcid.getFluid(1000))
+                .notConsumable(dust, FerriteMixture)
+                .notConsumable(dust, Boron)
+                .outputItems(depletedFuelNitride, rf.isotopeFuelPure, 1)
+                .duration(1000).EUt(30)
+                .save(provider);
+        ELECTROLYZER_RECIPES.recipeBuilder(rf.isotopeFuelPure.getName() + "_waste_pure")
+                .inputItems(depletedFuelNitride, rf.isotopeFuelPure, 1)
+                .outputItems(waste, rf.isotopeFuelPure, 1)
+                .outputFluids(Nitrogen.getFluid(1000))
+                .duration(1000).EUt(30)
+                .save(provider);
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder(rf.isotopeFuelPure.getName() + "_thermal")
+                .inputItems(waste, rf.isotopeFuelPure, 1)
+                .outputItems(dust, rf.uptierMaterial, 1)
+                .chancedOutput(WASTE_NUCLEAR.asStack(), 1000, 0)
+                .chancedOutput(dust, rf.isotopeFuelPure, 1, 3000, 0)
                 .duration(300).EUt(rf.voltage)
                 .save(provider);
     }

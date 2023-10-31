@@ -11,8 +11,7 @@ import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.prosbloom.cerestech.data.CTMaterials.*;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.NUCLEAR_REACTOR_RECIPES;
-import static com.prosbloom.cerestech.data.CTTagPrefixes.depletedFuel;
-import static com.prosbloom.cerestech.data.CTTagPrefixes.fuelOxide;
+import static com.prosbloom.cerestech.data.CTTagPrefixes.*;
 
 public class NuclearReactorRecipes {
 
@@ -34,17 +33,28 @@ public class NuclearReactorRecipes {
     // TODO - breeder reactor
     public static void registerNuclearReactorRecipes(Consumer<FinishedRecipe> provider) {
         for (ReactorFuel r: reactorFuels) {
-            for (int i=1; i<9; i++)
-                NUCLEAR_REACTOR_RECIPES.recipeBuilder(r.isotopeFuelOxide.getName() + "_reactor_" +i)
+            for (int i=1; i<9; i++) {
+                // solo fuelOxide
+                NUCLEAR_REACTOR_RECIPES.recipeBuilder(r.isotopeFuelOxide.getName() + "_reactor_" + i)
                         .inputItems(fuelOxide, r.isotopeFuelOxide, i)
-                        .circuitMeta(i)
+                        .circuitMeta(i+10)
                         .outputItems(depletedFuel, r.isotopeFuelOxide, i)
-                        // TODO - testing
-                        //.duration(100)
-                        .duration(16000)
-                        // TODO - reactor power req should probably scale with tier of fuel, for now setting to MV
-                        .EUt(VA[MV]*i)
+                        .duration(600)
+                        .EUt(VA[MV] * i)
                         .save(provider);
+                // fuelOxide + fuelPure
+                int finalI = i;
+                reactorFuels.forEach(f->
+                        NUCLEAR_REACTOR_RECIPES.recipeBuilder(r.isotopeFuelOxide.getName() + "_reactor_pure_" + f.isotopeFuelPure + finalI)
+                                .inputItems(fuelOxide, r.isotopeFuelOxide, finalI)
+                                .inputItems(fuelPure, f.isotopeFuelPure, 9)
+                                .circuitMeta(finalI)
+                                .outputItems(depletedFuel, r.isotopeFuelOxide, finalI)
+                                .outputItems(depletedFuel, f.isotopeFuelPure, 9)
+                                .duration(600)
+                                .EUt(VA[MV] * finalI)
+                                .save(provider));
+            }
         }
     }
 

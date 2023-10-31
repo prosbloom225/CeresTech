@@ -56,6 +56,7 @@ public class CTTagPrefixes {
                     .filter(rf->
                                     (mat.getName().equals(rf.baseElement.getName())
                                             || mat.getName().equals(rf.isotopeFuelOxide.getName())
+                                            || mat.getName().equals(rf.isotopeFuelPure.getName())
                                             || mat.getName().equals(rf.isotopeDecay.getName()))
                     ).findAny().orElse(null) != null);
 
@@ -69,7 +70,12 @@ public class CTTagPrefixes {
             .unificationEnabled(true)
             .generateItem(true)
             .generationCondition(mat-> reactorFuels.stream()
-                    .filter(rf->mat.getName().equals(rf.isotopeFuelOxide.getName())).findAny().orElse(null) != null);
+                    .filter(rf->
+                            (mat.getName().equals(rf.baseElement.getName())
+                                    || mat.getName().equals(rf.isotopeFuelOxide.getName())
+                                    || mat.getName().equals(rf.isotopeFuelPure.getName())
+                                    || mat.getName().equals(rf.isotopeFuelPure.getName())
+                            )).findAny().orElse(null) != null);
     public static final TagPrefix depletedFuelOxide = new TagPrefix("depleted_fuel_oxide")
             .defaultTagPath(FORGE, "depleted_fuel_oxide/%s")
             .defaultTagPath(FABRIC, "%s_depleted_fuel_oxide")
@@ -80,7 +86,9 @@ public class CTTagPrefixes {
             .unificationEnabled(true)
             .generateItem(true)
             .generationCondition(mat-> reactorFuels.stream()
-                    .filter(rf->mat.getName().equals(rf.getIsotopeFuelOxide().getName())).findAny().orElse(null) != null);
+                    .filter(rf->mat.getName().equals(rf.getIsotopeFuelOxide().getName())
+                            || mat.getName().equals(rf.isotopeFuelPure.getName())
+                    ).findAny().orElse(null) != null);
 
     public static final TagPrefix depletedFuelNitride = new TagPrefix("depleted_fuel_nitride")
             .defaultTagPath(FORGE, "depleted_fuel_nitride/%s")
@@ -92,7 +100,9 @@ public class CTTagPrefixes {
             .unificationEnabled(true)
             .generateItem(true)
             .generationCondition(mat-> reactorFuels.stream()
-                    .filter(rf->mat.getName().equals(rf.isotopeFuelOxide.getName())).findAny().orElse(null) != null);
+                    .filter(rf->mat.getName().equals(rf.isotopeFuelOxide.getName())
+                            || mat.getName().equals(rf.isotopeFuelPure.getName())
+                    ).findAny().orElse(null) != null);
 
     public static final TagPrefix waste = new TagPrefix("waste")
             .defaultTagPath(FORGE, "waste/%s")
@@ -104,7 +114,9 @@ public class CTTagPrefixes {
             .unificationEnabled(true)
             .generateItem(true)
             .generationCondition(mat-> reactorFuels.stream()
-                    .filter(rf->mat.getName().equals(rf.getIsotopeFuelOxide().getName())).findAny().orElse(null) != null);
+                    .filter(rf->mat.getName().equals(rf.getIsotopeFuelOxide().getName())
+                            || mat.getName().equals(rf.isotopeFuelPure.getName())
+                    ).findAny().orElse(null) != null);
 
     public static final TagPrefix dustNitrite = new TagPrefix("dust_nitrite")
             .defaultTagPath(FORGE, "dust_nitrite/%s")

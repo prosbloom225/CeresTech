@@ -7,4 +7,7 @@
 - Hot Coolant Turbine
 - Naquadah Reactor
 - Quadruple Input/Output Hatches
+- Dual Input Hatches
+- ME Output Bus
 - Volcanus
+- TJ Rare Earth Line

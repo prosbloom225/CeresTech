@@ -63,4 +63,9 @@ public class CTRecipeTypes {
             .setEUIO(IO.IN)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.COOLING);
+
+    public final static GTRecipeType PCB_FACTORY_RECIPES = register("pcb_factory", MULTIBLOCK).setMaxIOSize(6, 9, 3, 0)
+            .setEUIO(IO.IN)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_CIRCUIT_ASSEMBLER, LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.COOLING);
 }

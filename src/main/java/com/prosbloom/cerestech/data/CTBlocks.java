@@ -39,6 +39,7 @@ public class CTBlocks {
 
     public static final BlockEntry<Block> CASING_VOLCANUS = createCasingBlock("volcanus_casing", GTCEu.id("block/casings/solid/machine_casing_volcanus"));
     public static final BlockEntry<Block> CASING_POWER_STATION = createCasingBlock("power_station_casing", GTCEu.id("block/casings/solid/machine_casing_power_station"));
+    public static final BlockEntry<Block> CASING_PHOTOLITHOGRAPHIC = createCasingBlock("photolithographic_casing", GTCEu.id("block/casings/solid/machine_casing_photolithographic"));
 
 
     private static BlockEntry<Block> createCasingBlock(String name, ResourceLocation texture) {

@@ -59,6 +59,7 @@ public class CTRecipes {
         NuclearCycleRecipes.registerNuclearCycleRecipes(provider);
         NaquadahReactorRecipes.registerNaquadahReactorRecipes(provider);
         HeatExchangerRecipes.registerHeatExchangerRecipes(provider);
+        PcbFactoryRecipes.registerPcbFactoryRecipes(provider);
     }
 
     private static void registerManualRecipes(Consumer<FinishedRecipe> provider) {
@@ -182,6 +183,22 @@ public class CTRecipes {
                 .outputItems(AEItems.FLUIX_CRYSTAL.asItem())
                 .duration(20).EUt(VA[LV])
                 .save(provider);
+        MIXER_RECIPES.recipeBuilder("enriched_holmium")
+                .inputItems(dust, Holmium, 1)
+                .inputItems(dust, NaquadahEnriched, 4)
+                .outputItems(dust, EnrichedHolmium, 5)
+                .duration(300).EUt(VA[ZPM])
+                .save(provider);
+        MIXER_RECIPES.recipeBuilder("artherium_sn")
+                .inputItems(dust, Adamantium, 12)
+                .inputItems(dust, Tin, 8)
+                .inputItems(dust, Arsenic, 7)
+                .inputItems(dust, Caesium, 4)
+                .inputItems(dust, Osmiridium, 3)
+                .outputItems(dust, ArtheriumSn, 34)
+                .circuitMeta(6)
+                .duration(300).EUt(VA[ZPM])
+                .save(provider);
     }
 
     private static void registerAssemblerRecipes(Consumer<FinishedRecipe> provider) {
@@ -225,6 +242,7 @@ public class CTRecipes {
                         .duration(600).EUt(VA[EV])
                         .save(provider);
 
+        /*
         for (int i = 0; i < ME_OUTPUT_BUS.length; i++)
             if (ME_OUTPUT_BUS[i] != null)
                 ASSEMBLER_RECIPES.recipeBuilder("me_output_bus_"+ME_OUTPUT_BUS[i].getTier())
@@ -242,6 +260,17 @@ public class CTRecipes {
                         .outputItems(ME_OUTPUT_HATCH[i].asStack())
                         .duration(600).EUt(VA[i])
                         .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("luv_stocking_item_bus")
+                .inputItems(ITEM_IMPORT_BUS[LuV])
+                .inputItems(AEBlocks.INTERFACE.asItem())
+                .inputItems(AEItems.SPEED_CARD.asItem(), 4)
+                .circuitMeta(1)
+                .outputItems(ME_INPUT_BUS[LuV])
+                .duration(300).EUt(VA[HV])
+                .save(provider);
+
+         */
 
         ASSEMBLER_RECIPES.recipeBuilder("dual_input_bus"+DUAL_INPUT_BUS[IV].getTier())
                     .inputItems(ITEM_IMPORT_BUS[IV])
@@ -271,14 +300,6 @@ public class CTRecipes {
                 .duration(600).EUt(VA[ZPM])
                 .save(provider);
 
-        ASSEMBLER_RECIPES.recipeBuilder("luv_stocking_item_bus")
-                .inputItems(ITEM_IMPORT_BUS[LuV])
-                .inputItems(AEBlocks.INTERFACE.asItem())
-                .inputItems(AEItems.SPEED_CARD.asItem(), 4)
-                .circuitMeta(1)
-                .outputItems(ME_INPUT_BUS[LuV])
-                .duration(300).EUt(VA[HV])
-                .save(provider);
 
         // --- Redox Cells
         ASSEMBLER_RECIPES.recipeBuilder("redox_cell_ev")
@@ -398,6 +419,13 @@ public class CTRecipes {
                 .inputFluids(Redstone.getFluid(144))
                 .outputItems(AEItems.CALCULATION_PROCESSOR.asItem())
                 .duration(64).EUt(VA[LV])
+                .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("casing_photolithographic")
+                .inputItems(frameGt, NaquadahAlloy, 1)
+                .inputItems(plate, ArtheriumSn, 1)
+                .outputItems(CASING_PHOTOLITHOGRAPHIC, 1)
+                .duration(600).EUt(VA[ZPM])
                 .save(provider);
     }
 
@@ -718,6 +746,17 @@ public class CTRecipes {
                 .inputFluids(Xenon.getFluid(20000))
                 .inputFluids(SolderingAlloy.getFluid(1440))
                 .outputItems(BEDROCK_ORE_MINER[EV])
+                .duration(6000).EUt(VA[UV])
+                .save(provider);
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("pcb_factory")
+                .inputItems(frameGt, Neutronium, 32)
+                .inputItems(CIRCUIT_ASSEMBLER[ZPM], 4)
+                .inputItems(CustomTags.LuV_CIRCUITS, 16)
+                .inputItems(ROBOT_ARM_ZPM,8)
+                .inputFluids(Naquadah.getFluid(2592))
+                .inputFluids(SolderingAlloy.getFluid(5184))
+                .outputItems(PCB_FACTORY)
                 .duration(6000).EUt(VA[UV])
                 .save(provider);
     }

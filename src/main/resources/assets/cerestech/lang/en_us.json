@@ -17,6 +17,9 @@
   "block.gtceu.industrial_coke_oven": "Industrial Coke Oven",
   "gtceu.coke_oven": "Coke Oven",
 
+  "block.gtceu.pcb_factory": "PCB Factory",
+  "gtceu.pcb_factory": "PCB Factory",
+
   "block.gtceu.shielded_reactor_casing": "Shielded Reactor Casing",
   "block.gtceu.volcanus": "Volcanus",
   "block.gtceu.volcanus_casing": "Volcanus Casing",
@@ -205,6 +208,10 @@
   "material.sm_gd_oxides_solution": "Sm-Gd Oxides Solution",
   "material.tb_ho_oxides_solution": "Tb-Ho Oxides Solution",
   "material.er_lu_oxides_solution": "Er-Lu Oxides Solution",
+  "material.enriched_holmium": "Enriched Holmium",
+  "material.kevlar": "Kevlar",
+  "material.artherium_sn": "Artherium-Sn",
+  "material.adamantium": "Adamantium",
 
   "gtceu.multiblock.nuclear_reactor.fuel": "Fuel: %s",
   "gtceu.multiblock.nuclear_reactor.coolant_output": "Coolant Output: %d"

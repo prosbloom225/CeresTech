@@ -19,6 +19,7 @@ import com.gregtechceu.gtceu.api.pattern.util.RelativeDirection;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
 import com.gregtechceu.gtceu.client.renderer.machine.MachineRenderer;
 import com.gregtechceu.gtceu.common.data.*;
+import com.gregtechceu.gtceu.common.machine.multiblock.electric.LargeMinerMachine;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.lowdragmc.lowdraglib.side.fluid.FluidHelper;
 import com.prosbloom.cerestech.data.CTRecipeModifiers;
@@ -42,6 +43,7 @@ import java.util.List;
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
 import static com.gregtechceu.gtceu.api.registry.GTRegistries.REGISTRATE;
+import static com.gregtechceu.gtceu.common.data.GCyMBlocks.CASING_ATOMIC;
 import static com.gregtechceu.gtceu.common.data.GCyMBlocks.HEAT_VENT;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
@@ -314,6 +316,10 @@ public class CTMachines {
             ALL_TIERS);
 
 
+    public static MachineDefinition[] ME_OUTPUT_BUS;
+    public static MachineDefinition[] ME_OUTPUT_HATCH;
+    public static MachineDefinition[] ME_INPUT_BUS;
+    /*
     public final static MachineDefinition[] ME_OUTPUT_BUS = registerTieredMachines("me_output_bus",
             (holder, tier) -> new MEItemPartMachine(holder, tier, IO.OUT),
             (tier, builder) -> builder
@@ -346,6 +352,7 @@ public class CTMachines {
                     .compassNode("me_input_bus")
                     .register(),
             LuV);
+    */
 
 
     public final static MachineDefinition[] DUAL_INPUT_BUS= registerTieredMachines("dual_input_bus",
@@ -371,5 +378,35 @@ public class CTMachines {
                     .register(),
             EV, IV, LuV, ZPM, UV);
 
+
+    public static MultiblockMachineDefinition PCB_FACTORY = REGISTRATE.multiblock("pcb_factory", WorkableElectricMultiblockMachine::new)
+            .langValue("PCB Factory")
+            .rotationState(RotationState.NON_Y_AXIS)
+            .appearanceBlock(CASING_PHOTOLITHOGRAPHIC)
+            .recipeType(CTRecipeTypes.PCB_FACTORY_RECIPES)
+            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .pattern(definition -> FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.BACK, RelativeDirection.UP)
+                    .aisle("FXXSXXF", "XPPPPPX", "XPPPPPX", "XPPPPPX", "XPPPPPX", "XPPPPPX", "FXXXXXF")
+                    .aisle("FGGGGGF", "X#####X", "E#VVV#E", "E#VVV#E", "E#VVV#E", "X#####X", "FXXXXXF")
+                    .aisle("FGGGGGF", "X#####X", "E#####G", "E#####E", "E#####E", "X#####X", "FXXXXXF")
+                    .aisle("FGGGGGF", "X#####X", "X#####X", "X#####X", "X#####X", "X#####X", "FXXXXXF")
+                    .aisle("FFFFFFF", "XGGGGGX", "XGGGGGX", "XXXXXXX", "XXXXXXX", "XXXXXXX", "F#####F")
+                    .aisle("#######", "F#####F", "F#####F", "FFFFFFF", "F#####F", "F#####F", "#######")
+                    .where('S', controller(blocks(definition.getBlock())))
+                    .where('X', blocks(CASING_PHOTOLITHOGRAPHIC.get())
+                            .or(abilities(PartAbility.INPUT_ENERGY, PartAbility.OUTPUT_ENERGY))
+                            .or(autoAbilities(true, false, true)))
+                    .where('G', blocks(CASING_LAMINATED_GLASS.get()))
+                    .where('P', blocks(PLASTCRETE.get()))
+                    .where('E', blocks(CASING_GRATE.get()))
+                    .where('F', frames(GTMaterials.DamascusSteel))
+                    .where('V', frames(GTMaterials.IncoloyMA956))
+                    .where('#', Predicates.air())
+                    .build())
+            .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_photolithographic"),
+                    GTCEu.id("block/multiblock/pcb_factory"), false)
+            .compassSections(GTCompassSections.TIER[ZPM])
+            .compassNodeSelf()
+            .register();
 
 }

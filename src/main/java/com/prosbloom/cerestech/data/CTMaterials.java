@@ -1,5 +1,6 @@
 package com.prosbloom.cerestech.data;
 
+import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.*;
@@ -15,6 +16,8 @@ import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey.DUST;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey.INGOT;
+import static com.gregtechceu.gtceu.common.data.GTElements.Ho;
+import static com.gregtechceu.gtceu.common.data.GTElements.Nq1;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.prosbloom.cerestech.data.CTTagPrefixes.dustOxide;
 
@@ -256,6 +259,37 @@ public class CTMaterials {
             .color(0x000000).iconSet(FINE)
             .buildAndRegister();
 
+    public static Material EnrichedHolmium = new Material.Builder("enriched_holmium")
+            .ingot()
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x0F55DA).iconSet(METALLIC)
+            .blastTemp(9000, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.MV], 6000)
+            .appendFlags(EXT_METAL, GENERATE_FOIL)
+            .buildAndRegister();
+
+    public static Material Kevlar = new Material.Builder("kevlar")
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xBBBB5E).iconSet(DULL)
+            .appendFlags(EXT_METAL)
+            .buildAndRegister();
+
+    public static Material ArtheriumSn = new Material.Builder("artherium_sn")
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x5D34EE).iconSet(METALLIC)
+            .blastTemp(6500, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.ZPM], 500)
+            .appendFlags(EXT_METAL)
+            .buildAndRegister();
+
+    public static Material Adamantium = new Material.Builder("adamantium")
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xE2E2E2).iconSet(METALLIC)
+            .blastTemp(7200, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.MV], 14400)
+            .appendFlags(EXT_METAL)
+            .buildAndRegister();
+
     // Lanthanides - Nuclear Waste missing materials
     /*
 
@@ -307,6 +341,7 @@ public class CTMaterials {
         Objects.requireNonNull(GTRegistries.MATERIALS.get("titanium")).addFlags(GENERATE_DENSE);
         Objects.requireNonNull(GTRegistries.MATERIALS.get("iridium")).addFlags(GENERATE_DENSE);
         Objects.requireNonNull(GTRegistries.MATERIALS.get("naquadah")).addFlags(GENERATE_DENSE);
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("damascus_steel")).addFlags(GENERATE_FRAME);
 
     }
 }

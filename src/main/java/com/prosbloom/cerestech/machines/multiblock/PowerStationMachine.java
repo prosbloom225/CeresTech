@@ -161,6 +161,13 @@ public class PowerStationMachine extends MultiblockControllerMachine implements 
         avgOut.add(curr);
     }
 
+    @Override
+    public void saveCustomPersistedData(CompoundTag tag, boolean forDrop) {
+        super.saveCustomPersistedData(tag, forDrop);
+        tag.putInt("tier", tier);
+        tag.putLong("output", Math.round(avgOut.stream().mapToDouble(i->i).average().orElse(0)));
+        tag.putLong("input", Math.round(avgIn.stream().mapToDouble(i->i).average().orElse(0)));
+    }
 
     protected static EditableUI<ProgressWidget, PowerStationMachine> createEnergyBar() {
         return new EditableUI<>("energy_container", ProgressWidget.class, () -> {

@@ -27,7 +27,6 @@ public class CryogenicFreezerMachine extends WorkableElectricMultiblockMachine {
     public CryogenicFreezerMachine(IMachineBlockEntity holder) {
         super(holder);
     }
-
     @Override
     public void onWorking() {
         super.onWorking();

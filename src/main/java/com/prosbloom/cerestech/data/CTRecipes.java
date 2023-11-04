@@ -35,6 +35,7 @@ import static com.prosbloom.cerestech.data.CTBlocks.*;
 import static com.prosbloom.cerestech.data.CTFluids.*;
 import static com.prosbloom.cerestech.data.CTMaterials.*;
 import static com.prosbloom.cerestech.data.CTTagPrefixes.dustOxide;
+import static com.prosbloom.cerestech.data.CTTagPrefixes.fuelPure;
 import static com.prosbloom.cerestech.data.recipes.HotCoolantTurbineRecipes.registerHotCoolantTurbineRecipes;
 import static com.prosbloom.cerestech.machines.CTMachines.*;
 
@@ -60,6 +61,7 @@ public class CTRecipes {
         NaquadahReactorRecipes.registerNaquadahReactorRecipes(provider);
         HeatExchangerRecipes.registerHeatExchangerRecipes(provider);
         PcbFactoryRecipes.registerPcbFactoryRecipes(provider);
+        NeutronActivatorRecipes.registerNeutronActivatorRecipes(provider);
     }
 
     private static void registerManualRecipes(Consumer<FinishedRecipe> provider) {
@@ -242,7 +244,6 @@ public class CTRecipes {
                         .duration(600).EUt(VA[EV])
                         .save(provider);
 
-        /*
         for (int i = 0; i < ME_OUTPUT_BUS.length; i++)
             if (ME_OUTPUT_BUS[i] != null)
                 ASSEMBLER_RECIPES.recipeBuilder("me_output_bus_"+ME_OUTPUT_BUS[i].getTier())
@@ -270,7 +271,6 @@ public class CTRecipes {
                 .duration(300).EUt(VA[HV])
                 .save(provider);
 
-         */
 
         ASSEMBLER_RECIPES.recipeBuilder("dual_input_bus"+DUAL_INPUT_BUS[IV].getTier())
                     .inputItems(ITEM_IMPORT_BUS[IV])
@@ -426,6 +426,27 @@ public class CTRecipes {
                 .inputItems(plate, ArtheriumSn, 1)
                 .outputItems(CASING_PHOTOLITHOGRAPHIC, 1)
                 .duration(600).EUt(VA[ZPM])
+                .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("neutron_activator")
+                .inputItems(EMITTER_EV, 2)
+                .inputItems(plateDense, Steel, 4)
+                .inputItems(fuelPure, Uranium238, 1)
+                .inputItems(CustomTags.EV_CIRCUITS, 2)
+                .inputFluids(StainlessSteel.getFluid(576))
+                .inputFluids(TungstenCarbide.getFluid(144))
+                .outputItems(NEUTRON_ACTIVATOR)
+                .duration(600).EUt(VA[IV])
+                .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("speeding_pipe_casing")
+                .inputItems(pipeLargeFluid, StainlessSteel, 1)
+                .inputItems(frameGt, BlueAlloy, 1)
+                .inputItems(wireGtSingle, MercuryBariumCalciumCuprate, 32)
+                .inputItems(plate, Beryllium, 32)
+                .inputItems(CustomTags.IV_CIRCUITS, 1)
+                .outputItems(CASING_SPEEDING_PIPE)
+                .duration(300).EUt(VA[EV])
                 .save(provider);
     }
 

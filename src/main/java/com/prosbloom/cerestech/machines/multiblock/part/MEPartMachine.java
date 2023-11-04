@@ -79,7 +79,9 @@ public class MEPartMachine extends TieredIOPartMachine implements IInWorldGridNo
     @Nullable
     @Override
     public IGridNode getGridNode(Direction direction) {
-        return getActionableNode();
+        if (mainNode != null)
+            return getActionableNode();
+        return null;
     }
 
     @Override

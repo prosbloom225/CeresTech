@@ -254,7 +254,7 @@ public class CTMachines {
                     .aisle("XXXX", "XXXX", "XXXX", "XXXX")
                     .where('S', controller(blocks(definition.getBlock())))
                     .where('X', blocks(CASING_POWER_STATION.get())
-                            .or(abilities(PartAbility.INPUT_ENERGY, PartAbility.OUTPUT_ENERGY))
+                            .or(abilities(PartAbility.INPUT_ENERGY, PartAbility.OUTPUT_ENERGY, PartAbility.INPUT_LASER, PartAbility.OUTPUT_LASER))
                             .or(autoAbilities(true, false, false)))
                     .where('#', abilities(PartAbility.STEAM))
                     .build())
@@ -316,10 +316,6 @@ public class CTMachines {
             ALL_TIERS);
 
 
-    public static MachineDefinition[] ME_OUTPUT_BUS;
-    public static MachineDefinition[] ME_OUTPUT_HATCH;
-    public static MachineDefinition[] ME_INPUT_BUS;
-    /*
     public final static MachineDefinition[] ME_OUTPUT_BUS = registerTieredMachines("me_output_bus",
             (holder, tier) -> new MEItemPartMachine(holder, tier, IO.OUT),
             (tier, builder) -> builder
@@ -352,7 +348,6 @@ public class CTMachines {
                     .compassNode("me_input_bus")
                     .register(),
             LuV);
-    */
 
 
     public final static MachineDefinition[] DUAL_INPUT_BUS= registerTieredMachines("dual_input_bus",
@@ -406,6 +401,34 @@ public class CTMachines {
             .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_photolithographic"),
                     GTCEu.id("block/multiblock/pcb_factory"), false)
             .compassSections(GTCompassSections.TIER[ZPM])
+            .compassNodeSelf()
+            .register();
+
+    public static MultiblockMachineDefinition NEUTRON_ACTIVATOR = REGISTRATE.multiblock("neutron_activator", WorkableElectricMultiblockMachine::new)
+            .langValue("Neutron Activator")
+            .rotationState(RotationState.NON_Y_AXIS)
+            .appearanceBlock(CASING_STAINLESS_CLEAN)
+            .recipeType(CTRecipeTypes.NEUTRON_ACTIVATOR_RECIPES)
+            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .pattern(definition -> FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.BACK, RelativeDirection.UP)
+                    .aisle("XXSXX", "XXXXX", "XXXXX", "XXXXX", "XXXXX")
+                    .aisle("F###F", "#GGG#", "#GPG#", "#GGG#", "F###F")
+                    .aisle("F###F", "#GGG#", "#GPG#", "#GGG#", "F###F")
+                    .aisle("F###F", "#GGG#", "#GPG#", "#GGG#", "F###F")
+                    .aisle("F###F", "#GGG#", "#GPG#", "#GGG#", "F###F")
+                    .aisle("XXXXX", "XXXXX", "XXXXX", "XXXXX", "XXXXX")
+                    .where('S', controller(blocks(definition.getBlock())))
+                    .where('X', blocks(CASING_STAINLESS_CLEAN.get())
+                            .or(abilities(PartAbility.INPUT_ENERGY, PartAbility.OUTPUT_ENERGY))
+                            .or(autoAbilities(true, false, false)))
+                    .where('G', blocks(CASING_LAMINATED_GLASS.get()))
+                    .where('F', frames(GTMaterials.Steel))
+                    .where('P', blocks(CASING_SPEEDING_PIPE.get()))
+                    .where('#', Predicates.air())
+                    .build())
+            .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_clean_stainless_steel"),
+                    GTCEu.id("block/multiblock/neutron_activator"), false)
+            .compassSections(GTCompassSections.TIER[IV])
             .compassNodeSelf()
             .register();
 

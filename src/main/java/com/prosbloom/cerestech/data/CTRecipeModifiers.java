@@ -24,6 +24,13 @@ public class CTRecipeModifiers {
         }
         return null;
     }
+    public static GTRecipe cryogenicParallel(MetaMachine machine, @Nonnull GTRecipe recipe, int maxParallel, boolean modifyDuration) {
+        // TODO - clean this up, shouldnt have to override these to nest.. Also need to set programmable_circuit stacksize to 1 on parallelized recipes
+        if (machine instanceof IRecipeCapabilityHolder holder) {
+            return tryParallel(holder, recipe, 1, maxParallel, modifyDuration);
+        }
+        return null;
+    }
 
     private static GTRecipe tryParallel(IRecipeCapabilityHolder holder, GTRecipe original, int min, int max, boolean modifyDuration) {
         if (min > max) return null;

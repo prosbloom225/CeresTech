@@ -9,6 +9,7 @@ import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import com.gregtechceu.gtceu.common.data.GTElements;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
+import com.prosbloom.cerestech.data.recipes.NaquadahReactorRecipes;
 
 import java.util.Objects;
 
@@ -273,21 +274,41 @@ public class CTMaterials {
             .color(0xBBBB5E).iconSet(DULL)
             .appendFlags(EXT_METAL)
             .buildAndRegister();
-
-    public static Material ArtheriumSn = new Material.Builder("artherium_sn")
-            .ingot(3)
-            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
-            .color(0x5D34EE).iconSet(METALLIC)
-            .blastTemp(6500, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.ZPM], 500)
-            .appendFlags(EXT_METAL)
-            .buildAndRegister();
-
     public static Material Adamantium = new Material.Builder("adamantium")
             .ingot(3)
             .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
             .color(0xE2E2E2).iconSet(METALLIC)
             .blastTemp(7200, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.MV], 14400)
             .appendFlags(EXT_METAL)
+            .buildAndRegister();
+
+    public static Material ArtheriumSn = new Material.Builder("artherium_sn")
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x5D34EE).iconSet(METALLIC)
+            .blastTemp(6500, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.ZPM], 500)
+            .components(Adamantium, 12, Tin, 8, Arsenic, 7, Caesium, 4, Osmiridium, 3)
+            .appendFlags(EXT_METAL)
+            .buildAndRegister();
+
+    public static Material Lafium = new Material.Builder("lafium")
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x7A9085).iconSet(METALLIC)
+            .blastTemp(7200, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.LuV], 7200)
+            .components(HastelloyC276, 4, Naquadah, 2, Samarium, 1, Tungsten, 2, Aluminium, 3, Nickel, 4, Carbon, 1)
+            .appendFlags(EXT_METAL, GENERATE_FRAME)
+            .buildAndRegister();
+
+    public static Material GelidCryotheum = new Material.Builder("gelid_cryotheum")
+            .dust()
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x2BB1FA) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
+    public static Material Blizz = new Material.Builder("blizz")
+            .dust()
+            .color(0xFFFFFF) .iconSet(MaterialIconSet.FLUID)
             .buildAndRegister();
 
     // Lanthanides - Nuclear Waste missing materials
@@ -344,6 +365,7 @@ public class CTMaterials {
         Objects.requireNonNull(GTRegistries.MATERIALS.get("damascus_steel")).addFlags(GENERATE_FRAME);
         Objects.requireNonNull(GTRegistries.MATERIALS.get("steel")).addFlags(GENERATE_DENSE);
         Objects.requireNonNull(GTRegistries.MATERIALS.get("blue_alloy")).addFlags(GENERATE_FRAME);
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("incoloy_ma_956")).addFlags(GENERATE_GEAR);
 
     }
 }

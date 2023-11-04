@@ -29,6 +29,11 @@
   "block.gtceu.volcanus_casing": "Volcanus Casing",
   "gtceu.machine.volcanus.tooltip": "Requires up to 8 Programmable Circuits",
 
+  "block.gtceu.cryogenic_freezer": "Cryogenic Freezer",
+  "block.gtceu.cryogenic_casing": "Cryogenic Casing",
+  "gtceu.machine.cryogenic_freezer.tooltip": "Requires up to 8 Programmable Circuits",
+  "gtceu.machine.cryogenic_freezer.tooltip.1": "Requires 20mb/s of Gelid Cryotheum",
+
   "block.gtceu.ev_naquadah_reactor": "Naquadah Reactor Mk I",
   "block.gtceu.iv_naquadah_reactor": "Naquadah Reactor Mk II",
   "block.gtceu.luv_naquadah_reactor": "Naquadah Reactor Mk III",
@@ -216,6 +221,9 @@
   "material.kevlar": "Kevlar",
   "material.artherium_sn": "Artherium-Sn",
   "material.adamantium": "Adamantium",
+  "material.gelid_cryotheum": "Gelid Cryotheum",
+  "material.blizz": "Blizz",
+  "material.lafium": "Lafium",
 
   "gtceu.multiblock.nuclear_reactor.fuel": "Fuel: %s",
   "gtceu.multiblock.nuclear_reactor.coolant_output": "Coolant Output: %d"

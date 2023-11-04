@@ -15,13 +15,16 @@ import com.prosbloom.cerestech.machines.multiblock.part.QuadFluidHatchPartMachin
 import com.prosbloom.cerestech.machines.multiblock.part.RedoxPartMachine;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.EnderpearlItem;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.SnowballItem;
 
 import javax.swing.*;
 import java.util.function.Consumer;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
+import static com.gregtechceu.gtceu.common.data.GCyMRecipeTypes.ALLOY_BLAST_RECIPES;
 import static com.gregtechceu.gtceu.common.data.GTItems.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.HULL;
@@ -54,6 +57,7 @@ public class CTRecipes {
         registerBlastFurnaceRecipes(provider);
         registerMaceratorRecipes(provider);
         registerAssemblyLineRecipes(provider);
+        registerChemicalBathRecipes(provider);
 
         IndustrialGreenhouseRecipes.registerIndustrialGreenhouseRecipes(provider);
         NuclearReactorRecipes.registerNuclearReactorRecipes(provider);
@@ -130,8 +134,22 @@ public class CTRecipes {
                 'R', REDOX_CELL[EV].get(),
                 'C', CustomTags.EV_CIRCUITS);
 
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "cryogenic_freezer", CRYOGENIC_FREEZER.asStack(),
+                "GCG", "IHI", "PCP",
+                'G', new UnificationEntry(gear, IncoloyMA956),
+                'P', new UnificationEntry(plateDouble, TungstenSteel),
+                'I', ELECTRIC_PISTON_IV,
+                'H', CASING_CRYOGENIC.get(),
+                'C', CustomTags.LuV_CIRCUITS);
 
-        // TODO - not working
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "cryogenic_casing", CASING_CRYOGENIC.asStack(),
+                "PGP", "OFO", "PGP",
+                'G', new UnificationEntry(gear, IncoloyMA956),
+                'P', new UnificationEntry(plateDouble, TungstenSteel),
+                'F', new UnificationEntry(frameGt, Lafium),
+                'O', CASING_CRYOGENIC.get());
+
+
         registerMachineRecipe(provider, DEHYDRATOR, "WCW", "WMW", "PRP", 'M', CraftingComponent.HULL, 'R', ROBOT_ARM, 'P', PLATE, 'C', CIRCUIT, 'W', CABLE);
         registerMachineRecipe(provider, DECAY_CHAMBER, "RCR", "EHE", "WCW", 'R', STICK_RADIOACTIVE, 'E', EMITTER, 'H', CraftingComponent.HULL, 'C', CIRCUIT, 'W', CABLE);
 
@@ -191,14 +209,12 @@ public class CTRecipes {
                 .outputItems(dust, EnrichedHolmium, 5)
                 .duration(300).EUt(VA[ZPM])
                 .save(provider);
-        MIXER_RECIPES.recipeBuilder("artherium_sn")
-                .inputItems(dust, Adamantium, 12)
-                .inputItems(dust, Tin, 8)
-                .inputItems(dust, Arsenic, 7)
-                .inputItems(dust, Caesium, 4)
-                .inputItems(dust, Osmiridium, 3)
-                .outputItems(dust, ArtheriumSn, 34)
-                .circuitMeta(6)
+        MIXER_RECIPES.recipeBuilder("gelid_cryotheum")
+                .inputItems(dust, Ice, 1)
+                .inputItems(dust, Saltpeter, 1)
+                .inputItems(dust, Redstone, 1)
+                .inputItems(dust, Blizz, 1)
+                .outputItems(dust, GelidCryotheum, 1)
                 .duration(300).EUt(VA[ZPM])
                 .save(provider);
     }
@@ -797,6 +813,16 @@ public class CTRecipes {
                 .inputItems(AEBlocks.SKY_STONE_BLOCK.asItem())
                 .outputItems(AEItems.SKY_DUST.asItem())
                 .duration(1500).EUt(VA[ULV])
+                .save(provider);
+    }
+
+    private static void registerChemicalBathRecipes(Consumer<FinishedRecipe> provider) {
+
+        CHEMICAL_BATH_RECIPES.recipeBuilder("blizz_powder")
+                .inputItems(new ItemStack(Items.SNOWBALL, 4))
+                .inputFluids(Blaze.getFluid(1440))
+                .outputItems(dust, Blizz, 1)
+                .duration(400).EUt(VA[HV])
                 .save(provider);
     }
 }

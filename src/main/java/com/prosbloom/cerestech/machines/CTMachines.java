@@ -19,13 +19,13 @@ import com.gregtechceu.gtceu.api.pattern.util.RelativeDirection;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
 import com.gregtechceu.gtceu.client.renderer.machine.MachineRenderer;
 import com.gregtechceu.gtceu.common.data.*;
-import com.gregtechceu.gtceu.common.machine.multiblock.electric.LargeMinerMachine;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.lowdragmc.lowdraglib.side.fluid.FluidHelper;
 import com.prosbloom.cerestech.data.CTRecipeModifiers;
 import com.prosbloom.cerestech.data.CTRecipeTypes;
-import com.prosbloom.cerestech.machines.multiblock.ReactorMachine;
+import com.prosbloom.cerestech.machines.multiblock.CryogenicFreezerMachine;
 import com.prosbloom.cerestech.machines.multiblock.PowerStationMachine;
+import com.prosbloom.cerestech.machines.multiblock.ReactorMachine;
 import com.prosbloom.cerestech.machines.multiblock.VolcanusMachine;
 import com.prosbloom.cerestech.machines.multiblock.part.*;
 import com.prosbloom.cerestech.util.ColorUtils;
@@ -43,7 +43,6 @@ import java.util.List;
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
 import static com.gregtechceu.gtceu.api.registry.GTRegistries.REGISTRATE;
-import static com.gregtechceu.gtceu.common.data.GCyMBlocks.CASING_ATOMIC;
 import static com.gregtechceu.gtceu.common.data.GCyMBlocks.HEAT_VENT;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
@@ -205,6 +204,7 @@ public class CTMachines {
                     .where('C', heatingCoils())
                     .where('#', air())
                     .build())
+            // TODO - need to add shapeInfos for all multiblocks
             .shapeInfos(definition -> {
                 List<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
                 var builder = MultiblockShapeInfo.builder()
@@ -243,10 +243,32 @@ public class CTMachines {
             .compassNodeSelf()
             .register();
 
+    public final static MultiblockMachineDefinition CRYOGENIC_FREEZER = REGISTRATE.multiblock("cryogenic_freezer", CryogenicFreezerMachine::new)
+            .rotationState(RotationState.NON_Y_AXIS)
+            .recipeType(GTRecipeTypes.VACUUM_RECIPES)
+            .recipeModifier((machine, recipe) -> CTRecipeModifiers.cryogenicParallel(machine, recipe, 8, false))
+            .appearanceBlock(CASING_VOLCANUS)
+            .pattern(definition -> FactoryBlockPattern.start()
+                    .aisle("XXX", "XXX", "XXX")
+                    .aisle("XXX", "X#X", "XXX")
+                    .aisle("XXX", "XSX", "XXX")
+                    .where('S', controller(blocks(definition.getBlock())))
+                    .where('X', blocks(CASING_CRYOGENIC.get()).setMinGlobalLimited(9)
+                            .or(autoAbilities(definition.getRecipeTypes()))
+                            .or(autoAbilities(true, false, false)))
+                    .where('#', air())
+                    .build())
+            .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_cryogenic"),
+                    GTCEu.id("block/multiblock/cryogenic_freezer"), false)
+            .tooltips(Component.translatable("gtceu.machine.cryogenic_freezer.tooltip",
+                    "gtceu.machine.cryogenic_freezer.tooltip.1"))
+            .compassSections(GTCompassSections.TIER[IV])
+            .compassNodeSelf()
+            .register();
+
     public static MultiblockMachineDefinition POWER_STATION = REGISTRATE.multiblock("power_station", PowerStationMachine::new)
             .langValue("Power Station")
             .rotationState(RotationState.NON_Y_AXIS)
-            // TODO - need to fix power station pattern, add redox blocks
             .appearanceBlock(CASING_POWER_STATION)
             .pattern(definition -> FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.BACK, RelativeDirection.UP)
                     .aisle("XSXX", "XXXX", "XXXX", "XXXX")

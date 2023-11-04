@@ -16,6 +16,7 @@ public class CTBlocks {
     public static final BlockEntry<Block> CASING_SHIELDED_REACTOR= createCasingBlock("shielded_reactor_casing", GTCEu.id("block/casings/solid/machine_casing_shielded_reactor"));
 
     public static final BlockEntry<Block> CASING_VOLCANUS = createCasingBlock("volcanus_casing", GTCEu.id("block/casings/solid/machine_casing_volcanus"));
+    public static final BlockEntry<Block> CASING_CRYOGENIC = createCasingBlock("cryogenic_casing", GTCEu.id("block/casings/solid/machine_casing_cryogenic"));
     public static final BlockEntry<Block> CASING_POWER_STATION = createCasingBlock("power_station_casing", GTCEu.id("block/casings/solid/machine_casing_power_station"));
     public static final BlockEntry<Block> CASING_PHOTOLITHOGRAPHIC = createCasingBlock("photolithographic_casing", GTCEu.id("block/casings/solid/machine_casing_photolithographic"));
 

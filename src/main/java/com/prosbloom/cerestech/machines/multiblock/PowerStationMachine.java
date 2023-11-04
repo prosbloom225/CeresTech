@@ -20,6 +20,7 @@ import com.lowdragmc.lowdraglib.gui.widget.*;
 import com.lowdragmc.lowdraglib.syncdata.annotation.DescSynced;
 import com.lowdragmc.lowdraglib.syncdata.annotation.Persisted;
 import com.lowdragmc.lowdraglib.syncdata.field.ManagedFieldHolder;
+import net.minecraft.nbt.CompoundTag;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayDeque;

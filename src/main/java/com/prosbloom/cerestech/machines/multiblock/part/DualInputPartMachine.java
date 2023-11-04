@@ -3,7 +3,9 @@ package com.prosbloom.cerestech.machines.multiblock.part;
 import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.gui.GuiTextures;
 import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
+import com.gregtechceu.gtceu.api.machine.MetaMachine;
 import com.gregtechceu.gtceu.api.machine.TickableSubscription;
+import com.gregtechceu.gtceu.api.machine.feature.IMachineModifyDrops;
 import com.gregtechceu.gtceu.api.machine.feature.multiblock.IDistinctPart;
 import com.gregtechceu.gtceu.api.machine.multiblock.part.TieredIOPartMachine;
 import com.gregtechceu.gtceu.api.machine.trait.NotifiableFluidTank;
@@ -16,10 +18,15 @@ import com.lowdragmc.lowdraglib.syncdata.ISubscription;
 import com.lowdragmc.lowdraglib.syncdata.annotation.Persisted;
 import com.lowdragmc.lowdraglib.syncdata.field.ManagedFieldHolder;
 import com.prosbloom.cerestech.api.machine.trait.NotifiableFluidTankMulti;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.TickTask;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 
-public class DualInputPartMachine extends TieredIOPartMachine implements IDistinctPart {
+import java.util.List;
+
+public class DualInputPartMachine extends TieredIOPartMachine implements IDistinctPart, IMachineModifyDrops {
     protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(DualInputPartMachine.class, TieredIOPartMachine.MANAGED_FIELD_HOLDER);
     private final int numTanks = 4;
     private final int tankCapacity = 16000;
@@ -92,6 +99,7 @@ public class DualInputPartMachine extends TieredIOPartMachine implements IDistin
         tankSubs = tanks.addChangedListener(this::updateSubscriptions);
     }
 
+
     @Override
     public Widget createUIWidget() {
         int rows = getTankSize()/4;
@@ -118,5 +126,10 @@ public class DualInputPartMachine extends TieredIOPartMachine implements IDistin
     @Override
     public void setDistinct(boolean isDistinct) {
         inventory.setDistinct(isDistinct);
+    }
+
+    @Override
+    public void onDrops(List<ItemStack> drops, Player entity) {
+        MetaMachine.clearInventory(drops, inventory);
     }
 }

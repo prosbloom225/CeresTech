@@ -169,8 +169,8 @@ dependencies {
     implementation fg.deobf("mezz.jei:jei-1.19.2-forge:11.6.0.1018")
     //implementation fg.deobf("com.blamejared.crafttweaker:CraftTweaker-forge-1.19.2:10.1.49")
     //implementation fg.deobf("dev.latvian.mods:kubejs-forge:1902.6.1-build.370") { transitive = false }
-    implementation fg.deobf("com.lowdragmc.ldlib:ldlib-forge-1.19.2:1.0.20") { transitive = false }
-    implementation fg.deobf("com.gregtechceu.gtceu:gtceu-forge-1.19.2:1.0.14") {
+    implementation fg.deobf("com.lowdragmc.ldlib:ldlib-forge-1.19.2:1.0.20.a") { transitive = false }
+    implementation fg.deobf("com.gregtechceu.gtceu:gtceu-forge-1.19.2:1.0.14.a") {
         transitive = false
     }
     implementation fg.deobf("com.simibubi.create:create-1.19.2:0.5.1.c-36:all") { transitive = false }

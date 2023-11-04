@@ -10,4 +10,6 @@
 - Dual Input Hatches
 - ME Output Bus
 - Volcanus
+- Cryogenic Freezer
+- Neutron Activator
 - TJ Rare Earth Line

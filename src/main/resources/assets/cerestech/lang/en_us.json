@@ -20,6 +20,10 @@
   "block.gtceu.pcb_factory": "PCB Factory",
   "gtceu.pcb_factory": "PCB Factory",
 
+  "block.gtceu.neutron_activator": "Neutron Activator",
+  "gtceu.neutron_activator": "Neutron Activator",
+  "block.gtceu.speeding_pipe_casing": "Speeding Pipe Casing",
+
   "block.gtceu.shielded_reactor_casing": "Shielded Reactor Casing",
   "block.gtceu.volcanus": "Volcanus",
   "block.gtceu.volcanus_casing": "Volcanus Casing",

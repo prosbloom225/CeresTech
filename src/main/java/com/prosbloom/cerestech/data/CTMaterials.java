@@ -342,6 +342,8 @@ public class CTMaterials {
         Objects.requireNonNull(GTRegistries.MATERIALS.get("iridium")).addFlags(GENERATE_DENSE);
         Objects.requireNonNull(GTRegistries.MATERIALS.get("naquadah")).addFlags(GENERATE_DENSE);
         Objects.requireNonNull(GTRegistries.MATERIALS.get("damascus_steel")).addFlags(GENERATE_FRAME);
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("steel")).addFlags(GENERATE_DENSE);
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("blue_alloy")).addFlags(GENERATE_FRAME);
 
     }
 }

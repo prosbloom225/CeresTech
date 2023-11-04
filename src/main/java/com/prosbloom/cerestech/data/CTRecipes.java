@@ -242,7 +242,6 @@ public class CTRecipes {
                         .duration(600).EUt(VA[EV])
                         .save(provider);
 
-        /*
         for (int i = 0; i < ME_OUTPUT_BUS.length; i++)
             if (ME_OUTPUT_BUS[i] != null)
                 ASSEMBLER_RECIPES.recipeBuilder("me_output_bus_"+ME_OUTPUT_BUS[i].getTier())
@@ -270,7 +269,6 @@ public class CTRecipes {
                 .duration(300).EUt(VA[HV])
                 .save(provider);
 
-         */
 
         ASSEMBLER_RECIPES.recipeBuilder("dual_input_bus"+DUAL_INPUT_BUS[IV].getTier())
                     .inputItems(ITEM_IMPORT_BUS[IV])

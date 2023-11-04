@@ -254,7 +254,7 @@ public class CTMachines {
                     .aisle("XXXX", "XXXX", "XXXX", "XXXX")
                     .where('S', controller(blocks(definition.getBlock())))
                     .where('X', blocks(CASING_POWER_STATION.get())
-                            .or(abilities(PartAbility.INPUT_ENERGY, PartAbility.OUTPUT_ENERGY))
+                            .or(abilities(PartAbility.INPUT_ENERGY, PartAbility.OUTPUT_ENERGY, PartAbility.INPUT_LASER, PartAbility.OUTPUT_LASER))
                             .or(autoAbilities(true, false, false)))
                     .where('#', abilities(PartAbility.STEAM))
                     .build())
@@ -316,10 +316,12 @@ public class CTMachines {
             ALL_TIERS);
 
 
+    /*
     public static MachineDefinition[] ME_OUTPUT_BUS;
     public static MachineDefinition[] ME_OUTPUT_HATCH;
     public static MachineDefinition[] ME_INPUT_BUS;
-    /*
+
+     */
     public final static MachineDefinition[] ME_OUTPUT_BUS = registerTieredMachines("me_output_bus",
             (holder, tier) -> new MEItemPartMachine(holder, tier, IO.OUT),
             (tier, builder) -> builder
@@ -352,7 +354,6 @@ public class CTMachines {
                     .compassNode("me_input_bus")
                     .register(),
             LuV);
-    */
 
 
     public final static MachineDefinition[] DUAL_INPUT_BUS= registerTieredMachines("dual_input_bus",

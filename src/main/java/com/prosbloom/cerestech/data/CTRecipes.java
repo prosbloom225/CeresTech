@@ -147,7 +147,7 @@ public class CTRecipes {
                 'G', new UnificationEntry(gear, IncoloyMA956),
                 'P', new UnificationEntry(plateDouble, TungstenSteel),
                 'F', new UnificationEntry(frameGt, Lafium),
-                'O', CASING_CRYOGENIC.get());
+                'O', new UnificationEntry(plateDense, RhodiumPlatedPalladium));
 
 
         registerMachineRecipe(provider, DEHYDRATOR, "WCW", "WMW", "PRP", 'M', CraftingComponent.HULL, 'R', ROBOT_ARM, 'P', PLATE, 'C', CIRCUIT, 'W', CABLE);
@@ -215,7 +215,7 @@ public class CTRecipes {
                 .inputItems(dust, Redstone, 1)
                 .inputItems(dust, Blizz, 1)
                 .outputItems(dust, GelidCryotheum, 1)
-                .duration(300).EUt(VA[ZPM])
+                .duration(300).EUt(VA[LV])
                 .save(provider);
     }
 

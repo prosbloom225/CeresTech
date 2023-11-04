@@ -296,7 +296,7 @@ public class CTMaterials {
             .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
             .color(0x7A9085).iconSet(METALLIC)
             .blastTemp(7200, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.LuV], 7200)
-            .components(HastelloyC276, 4, Naquadah, 2, Samarium, 1, Tungsten, 2, Aluminium, 3, Nickel, 4, Carbon, 1)
+            .components(HastelloyC276, 4, Naquadah, 2, Samarium, 1, Tungsten, 2, Aluminium, 3, Nickel, 4 )
             .appendFlags(EXT_METAL, GENERATE_FRAME)
             .buildAndRegister();
 

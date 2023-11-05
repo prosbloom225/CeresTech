@@ -464,6 +464,14 @@ public class CTRecipes {
                 .outputItems(CASING_SPEEDING_PIPE)
                 .duration(300).EUt(VA[EV])
                 .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("chemical_plant")
+                .inputItems(LARGE_CHEMICAL_REACTOR.getItem(), 64)
+                .inputFluids(SolderingAlloy.getFluid(9216))
+                .circuitMeta(2)
+                .outputItems(CHEMICAL_PLANT)
+                .duration(72000).EUt(VA[HV])
+                .save(provider);
     }
 
     private static void registerChemicalReactorRecipes(Consumer<FinishedRecipe> provider) {

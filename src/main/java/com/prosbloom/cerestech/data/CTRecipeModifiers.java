@@ -11,7 +11,6 @@ import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
 import com.gregtechceu.gtceu.api.recipe.RecipeHelper;
 import com.gregtechceu.gtceu.api.recipe.content.Content;
 import com.gregtechceu.gtceu.api.recipe.content.ContentModifier;
-import com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -28,9 +27,9 @@ public class CTRecipeModifiers {
         }
         return null;
     }
-    public static GTRecipe cryogenicParallel(MetaMachine machine, @Nonnull GTRecipe recipe, int maxParallel, boolean modifyDuration) {
+    public static GTRecipe parallelOverclock(MetaMachine machine, @Nonnull GTRecipe recipe, int maxParallel, boolean modifyDuration) {
         if (machine instanceof IRecipeCapabilityHolder holder) {
-            recipe = tryParallel(holder, recipe, 1, maxParallel, modifyDuration, true);
+            recipe = tryParallel(holder, recipe, 1, maxParallel, modifyDuration, false);
             if (recipe != null)
                 return RecipeHelper.applyOverclock(OverclockingLogic.PERFECT_OVERCLOCK, recipe, ((IOverclockMachine)machine).getOverclockVoltage());
         }

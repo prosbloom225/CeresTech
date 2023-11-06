@@ -34,6 +34,11 @@
   "gtceu.machine.cryogenic_freezer.tooltip": "Requires up to 8 Programmable Circuits",
   "gtceu.machine.cryogenic_freezer.tooltip.1": "Requires 20mb/s of Gelid Cryotheum",
 
+  "block.gtceu.luv_void_miner": "Void Miner Mk I",
+  "block.gtceu.zpm_void_miner": "Void Miner Mk II",
+  "block.gtceu.uv_void_miner": "Void Miner Mk III",
+  "gtceu.machine.void_miner.tooltip.1": "Requires 20mb/s of Drilling Fluid",
+
   "block.gtceu.chemical_plant": "Chemical Plant",
 
   "block.gtceu.ev_naquadah_reactor": "Naquadah Reactor Mk I",

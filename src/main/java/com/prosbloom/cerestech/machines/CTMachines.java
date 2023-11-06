@@ -16,17 +16,16 @@ import com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern;
 import com.gregtechceu.gtceu.api.pattern.MultiblockShapeInfo;
 import com.gregtechceu.gtceu.api.pattern.Predicates;
 import com.gregtechceu.gtceu.api.pattern.util.RelativeDirection;
+import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
 import com.gregtechceu.gtceu.client.renderer.machine.MachineRenderer;
 import com.gregtechceu.gtceu.common.data.*;
+import com.gregtechceu.gtceu.common.machine.multiblock.electric.BedrockOreMinerMachine;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.lowdragmc.lowdraglib.side.fluid.FluidHelper;
 import com.prosbloom.cerestech.data.CTRecipeModifiers;
 import com.prosbloom.cerestech.data.CTRecipeTypes;
-import com.prosbloom.cerestech.machines.multiblock.CryogenicFreezerMachine;
-import com.prosbloom.cerestech.machines.multiblock.PowerStationMachine;
-import com.prosbloom.cerestech.machines.multiblock.ReactorMachine;
-import com.prosbloom.cerestech.machines.multiblock.VolcanusMachine;
+import com.prosbloom.cerestech.machines.multiblock.*;
 import com.prosbloom.cerestech.machines.multiblock.part.*;
 import com.prosbloom.cerestech.util.ColorUtils;
 import net.minecraft.ChatFormatting;
@@ -487,4 +486,27 @@ public class CTMachines {
             .compassNodeSelf()
             .register();
 
+
+   public static  MultiblockMachineDefinition[] VOID_MINER = registerTieredMultis("void_miner", VoidMinerMachine::new, (tier, builder) -> builder
+            .rotationState(RotationState.NON_Y_AXIS)
+            .langValue("%s Void Ore Miner %s".formatted(VLVH[tier], VLVT[tier]))
+            .recipeType(new GTRecipeType(GTCEu.id("void_miner"), "dummy"))
+            .tooltips(
+            Component.translatable("gtceu.machine.void_miner.description"))
+            .appearanceBlock(() -> BedrockOreMinerMachine.getCasingState(tier))
+            .pattern((definition) -> FactoryBlockPattern.start()
+            .aisle("XXX", "#F#", "#F#", "#F#", "###", "###", "###")
+                                    .aisle("XXX", "FCF", "FCF", "FCF", "#F#", "#F#", "#F#")
+                                    .aisle("XSX", "#F#", "#F#", "#F#", "###", "###", "###")
+                                    .where('S', controller(blocks(definition.get())))
+            .where('X', blocks(VoidMinerMachine.getCasingState(tier)).setMinGlobalLimited(3)
+                                            .or(abilities(PartAbility.INPUT_ENERGY, PartAbility.IMPORT_FLUIDS).setMinGlobalLimited(1).setMaxGlobalLimited(3))
+            .or(abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(1)))
+            .where('C', blocks(VoidMinerMachine.getCasingState(tier)))
+            .where('F', blocks(VoidMinerMachine.getFrameState(tier)))
+            .where('#', any())
+            .build())
+            .workableCasingRenderer(BedrockOreMinerMachine.getBaseTexture(tier), GTCEu.id("block/multiblock/bedrock_ore_miner"), false)
+            .register(),
+    LuV, ZPM, UV);
 }

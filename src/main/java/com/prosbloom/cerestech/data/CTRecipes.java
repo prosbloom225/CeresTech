@@ -5,6 +5,8 @@ import appeng.core.definitions.AEItems;
 import appeng.parts.networking.CoveredCablePart;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.UnificationEntry;
+import com.gregtechceu.gtceu.api.fluids.FluidState;
+import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.common.data.GTMachines;
 import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 import com.gregtechceu.gtceu.data.recipe.CraftingComponent;
@@ -25,6 +27,7 @@ import java.util.function.Consumer;
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
 import static com.gregtechceu.gtceu.common.data.GCyMRecipeTypes.ALLOY_BLAST_RECIPES;
+import static com.gregtechceu.gtceu.common.data.GTBlocks.CASING_LAMINATED_GLASS;
 import static com.gregtechceu.gtceu.common.data.GTItems.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.HULL;
@@ -37,6 +40,7 @@ import static com.gregtechceu.gtceu.data.recipe.misc.MetaTileEntityLoader.regist
 import static com.prosbloom.cerestech.data.CTBlocks.*;
 import static com.prosbloom.cerestech.data.CTFluids.*;
 import static com.prosbloom.cerestech.data.CTMaterials.*;
+import static com.prosbloom.cerestech.data.CTRecipeTypes.BACTERIAL_VAT_RECIPES;
 import static com.prosbloom.cerestech.data.CTTagPrefixes.dustOxide;
 import static com.prosbloom.cerestech.data.CTTagPrefixes.fuelPure;
 import static com.prosbloom.cerestech.data.recipes.HotCoolantTurbineRecipes.registerHotCoolantTurbineRecipes;
@@ -58,6 +62,12 @@ public class CTRecipes {
         registerMaceratorRecipes(provider);
         registerAssemblyLineRecipes(provider);
         registerChemicalBathRecipes(provider);
+        registerDistillationTowerRecipes(provider);
+        registerOilCrackerRecipes(provider);
+        registerAutoclaveRecipes(provider);
+        registerPyrolyseOvenRecipes(provider);
+        registerBacterialVatRecipes(provider);
+        registerFusionCoilRecipes(provider);
 
         IndustrialGreenhouseRecipes.registerIndustrialGreenhouseRecipes(provider);
         NuclearReactorRecipes.registerNuclearReactorRecipes(provider);
@@ -148,6 +158,13 @@ public class CTRecipes {
                 'P', new UnificationEntry(plateDouble, TungstenSteel),
                 'F', new UnificationEntry(frameGt, Lafium),
                 'O', new UnificationEntry(plateDense, RhodiumPlatedPalladium));
+
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "bacterial_vat", BACTERIAL_VAT.asStack(),
+                "GCG", "WHW", "GCG",
+                'G', CASING_LAMINATED_GLASS,
+                'C', CustomTags.EV_CIRCUITS,
+                'W', new UnificationEntry(wireGtOctal, Silver),
+                'H', HULL[HV]);
 
 
         registerMachineRecipe(provider, DEHYDRATOR, "WCW", "WMW", "PRP", 'M', CraftingComponent.HULL, 'R', ROBOT_ARM, 'P', PLATE, 'C', CIRCUIT, 'W', CABLE);
@@ -581,6 +598,14 @@ public class CTRecipes {
                 .outputItems(AEItems.CERTUS_QUARTZ_CRYSTAL_CHARGED.asItem())
                 .duration(600).EUt(VA[LV])
                 .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("molten_radox_polymer")
+                .inputFluids(RadoxGas.getFluid(2160))
+                .inputFluids(Oxygen.getFluid(FluidStorageKeys.PLASMA, 7500))
+                .inputFluids(Titanium.getFluid(FluidStorageKeys.PLASMA, 100))
+                .circuitMeta(2)
+                .outputFluids(Radox.getFluid(720))
+                .duration(600).EUt(VA[UV])
+                .save(provider);
     }
     private static void registerCentrifugeRecipes(Consumer<FinishedRecipe> provider) {
         CENTRIFUGE_RECIPES.recipeBuilder("pahoehoe_small")
@@ -658,6 +683,11 @@ public class CTRecipes {
                 .outputItems(dust, Lutetium, 5)
                 .outputFluids(Oxygen.getFluid(3000))
                 .duration(220).EUt(VA[HV])
+                .save(provider);
+        CENTRIFUGE_RECIPES.recipeBuilder("super_heavy_to_heavy_radox")
+                .inputFluids(SuperHeavyRadox.getFluid(1))
+                .outputFluids(HeavyRadox.getFluid(2))
+                .duration(60).EUt(VA[UV])
                 .save(provider);
     }
 
@@ -832,5 +862,105 @@ public class CTRecipes {
                 .outputItems(dust, Blizz, 1)
                 .duration(400).EUt(VA[HV])
                 .save(provider);
+    }
+
+    private static void registerDistillationTowerRecipes(Consumer<FinishedRecipe> provider) {
+        DISTILLATION_RECIPES.recipeBuilder("distill_cracked_radox")
+                .inputFluids(CrackedRadox.getFluid(1000))
+                .outputFluids(RadoxGas.getFluid(100))
+                .outputFluids(LightRadox.getFluid(200))
+                .outputItems(dust, Ash, 1)
+                .duration(600).EUt(VA[UV])
+                .save(provider);
+
+        DISTILLATION_RECIPES.recipeBuilder("distill_raw_radox")
+                .inputFluids(RawRadox.getFluid(5000))
+                .outputItems(dust, Ash, 5)
+                .outputFluids(Xenoxene.getFluid(50))
+                .outputFluids(LightRadox.getFluid(300))
+                .outputFluids(SuperLightRadox.getFluid(500))
+                .outputFluids(HeavyRadox.getFluid(150))
+                .outputFluids(SuperHeavyRadox.getFluid(100))
+                .outputFluids(FermentedBiomass.getFluid(50))
+                .outputFluids(Creosote.getFluid(1000))
+                .outputFluids(Water.getFluid(1400))
+                .outputFluids(FermentedBacterialSludge.getFluid(50))
+                .outputFluids(OilHeavy.getFluid(600))
+                .outputFluids(Oil.getFluid(600))
+                .duration(800).EUt(VA[UHV])
+                .save(provider);
+
+        DISTILLATION_RECIPES.recipeBuilder("distill_fermented_bacterial_sludge")
+                .inputFluids(FermentedBacterialSludge.getFluid(10))
+                .outputFluids(Mutagen.getFluid(1))
+                .duration(60).EUt(VA[EV])
+                .save(provider);
+    }
+    private static void registerPyrolyseOvenRecipes(Consumer<FinishedRecipe> provider) {
+        PYROLYSE_RECIPES.recipeBuilder("raw_radox")
+                .inputItems(Items.OAK_LOG.asItem(), 64)
+                .inputFluids(Xenoxene.getFluid(1000))
+                .circuitMeta(24)
+                .outputItems(dust, Ash, 8)
+                .outputFluids(RawRadox.getFluid(1000))
+                .duration(3600).EUt(VA[UV])
+                .save(provider);
+
+    }
+
+    private static void registerOilCrackerRecipes(Consumer<FinishedRecipe> provider) {
+        CRACKING_RECIPES.recipeBuilder("heavy_radox_cracking")
+                .inputFluids(SilverPlasma.getFluid(FluidStorageKeys.PLASMA, 1))
+                .inputFluids(HeavyRadox.getFluid(100))
+                .circuitMeta(24)
+                .outputFluids(LightRadox.getFluid(20))
+                .duration(500).EUt(VA[UV])
+                .save(provider);
+        CRACKING_RECIPES.recipeBuilder("light_radox_cracking")
+                .inputFluids(SilverPlasma.getFluid(FluidStorageKeys.PLASMA, 1))
+                .inputFluids(LightRadox.getFluid(100))
+                .circuitMeta(24)
+                .outputFluids(SuperLightRadox.getFluid(50))
+                .duration(500).EUt(VA[UV])
+                .save(provider);
+
+        CRACKING_RECIPES.recipeBuilder("super_light_radox_cracking")
+                .inputFluids(SilverPlasma.getFluid(FluidStorageKeys.PLASMA, 1))
+                .inputFluids(SuperLightRadox.getFluid(100))
+                .circuitMeta(24)
+                .outputFluids(CrackedRadox.getFluid(100))
+                .duration(500).EUt(VA[UV])
+                .save(provider);
+    }
+
+    private static void registerAutoclaveRecipes(Consumer<FinishedRecipe> provider) {
+        AUTOCLAVE_RECIPES.recipeBuilder("radox_naquadah_to_enriched")
+                .inputItems(dust, Naquadah, 1)
+                .inputFluids(LightRadox.getFluid(2000))
+                .outputItems(dust, NaquadahEnriched, 3)
+                .duration(350).EUt(VA[IV])
+                .save(provider);
+    }
+
+    private static void registerBacterialVatRecipes(Consumer<FinishedRecipe> provider) {
+        BACTERIAL_VAT_RECIPES.recipeBuilder("bacterial_vat_xenoxene")
+                .inputItems(dust, AntimonyTrifluoride, 16)
+                .inputItems(dust, Osmium, 16)
+                .inputFluids(Oil.getFluid(20))
+                .circuitMeta(12)
+                .outputFluids(Xenoxene.getFluid(20))
+                .duration(3600).EUt(VA[UEV])
+                .save(provider);
+    }
+
+    private static void registerFusionCoilRecipes(Consumer<FinishedRecipe> provider) {
+        FUSION_RECIPES.recipeBuilder("silver_plasma")
+                .inputFluids(Gold.getFluid(144))
+                .inputFluids(Arsenic.getFluid(144))
+                .outputFluids(SilverPlasma.getFluid(FluidStorageKeys.PLASMA, 144))
+                .duration(16).EUt(VA[ZPM])
+                .fusionStartEU(350000000)
+                .save(provider);
+
     }
 }

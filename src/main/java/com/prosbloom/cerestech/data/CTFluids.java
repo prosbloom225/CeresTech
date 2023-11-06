@@ -9,6 +9,7 @@ import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKey;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.common.data.GTElements;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
+import net.minecraft.world.level.material.Fluid;
 import org.checkerframework.checker.units.qual.Temperature;
 
 import java.awt.*;
@@ -125,6 +126,49 @@ public class CTFluids {
             .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
             .color(0xBF88BF) .iconSet(MaterialIconSet.FLUID)
             .buildAndRegister();
+    public static Material RadoxGas = new Material.Builder("radox_gas")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x680064) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
+    public static Material RawRadox = new Material.Builder("raw_radox")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x3F1B3F) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+    public static Material SuperHeavyRadox = new Material.Builder("super_heavy_radox")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x4D064D) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+    public static Material HeavyRadox = new Material.Builder("heavy_radox")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x590559) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+    public static Material LightRadox= new Material.Builder("light_radox")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x6F046F) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
+    public static Material SuperLightRadox = new Material.Builder("super_light_radox")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x6F046F) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
+    public static Material CrackedRadox = new Material.Builder("cracked_radox")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x906990) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
+    public static Material Xenoxene = new Material.Builder("xenoxene")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x979390) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
+    public static Material FermentedBacterialSludge = new Material.Builder("fermented_bacterial_sludge")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x009414) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
+
 
 
 }

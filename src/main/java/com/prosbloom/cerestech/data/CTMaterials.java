@@ -5,6 +5,7 @@ import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.*;
 import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
+import com.gregtechceu.gtceu.api.fluids.FluidState;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import com.gregtechceu.gtceu.common.data.GTElements;
@@ -311,10 +312,21 @@ public class CTMaterials {
             .color(0xFFFFFF) .iconSet(MaterialIconSet.FLUID)
             .buildAndRegister();
 
-    // Lanthanides - Nuclear Waste missing materials
-    /*
+    public static Material Radox = new Material.Builder("radox")
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x680064).iconSet(METALLIC)
+            .appendFlags(EXT_METAL)
+            .buildAndRegister();
 
-     */
+    // Plasma
+    // TODO - dont see a way to add plasma to fluids like you can with addFlags..making a plasma specific element for the time
+    public static Material SilverPlasma = new Material.Builder("silver_plasma")
+            .plasma()
+            .color(0xDCDCFF).iconSet(SHINY)
+            .element(GTElements.Ag)
+            .buildAndRegister();
+
 
     public static void init() {
 

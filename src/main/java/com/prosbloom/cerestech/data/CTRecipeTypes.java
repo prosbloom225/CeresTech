@@ -73,4 +73,9 @@ public class CTRecipeTypes {
             .setEUIO(IO.IN)
             .setProgressBar(GuiTextures.PROGRESS_BAR_FUSION, LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.ARC);
+
+    public final static GTRecipeType BACTERIAL_VAT_RECIPES = register("bacterial_vat", MULTIBLOCK).setMaxIOSize(6, 3, 1, 2)
+            .setEUIO(IO.IN)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.BATH);
 }

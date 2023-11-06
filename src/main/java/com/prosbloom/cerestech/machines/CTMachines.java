@@ -49,6 +49,7 @@ import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.PYROLYSE_RECIPES;
 import static com.prosbloom.cerestech.data.CTBlocks.*;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.NAQUADAH_REACTOR_RECIPES;
 import static net.minecraft.world.level.block.Blocks.DIRT;
+import static net.minecraft.world.level.block.Blocks.WATER;
 
 public class CTMachines {
 
@@ -509,4 +510,29 @@ public class CTMachines {
             .workableCasingRenderer(VoidMinerMachine.getBaseTexture(tier), GTCEu.id("block/multiblock/bedrock_ore_miner"), false)
             .register(),
     LuV, ZPM, UV);
+
+    public static MultiblockMachineDefinition BACTERIAL_VAT = REGISTRATE.multiblock("bacterial_vat", WorkableElectricMultiblockMachine::new)
+            .langValue("Bacterial Vat")
+            .rotationState(RotationState.NON_Y_AXIS)
+            .appearanceBlock(CASING_STAINLESS_CLEAN)
+            .recipeType(CTRecipeTypes.BACTERIAL_VAT_RECIPES)
+            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .pattern(definition -> FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.BACK, RelativeDirection.UP)
+                    .aisle("XXSXX", "XXXXX", "XXXXX", "XXXXX", "XXXXX")
+                    .aisle("GGGGG", "GWWWG", "GWWWG", "GWWWG", "GGGGG")
+                    .aisle("GGGGG", "GWWWG", "GWWWG", "GWWWG", "GGGGG")
+                    .aisle("XXXXX", "XXXXX", "XXXXX", "XXXXX", "XXXXX")
+                    .where('S', controller(blocks(definition.getBlock())))
+                    .where('X', blocks(CASING_STAINLESS_CLEAN.get())
+                            .or(abilities(PartAbility.INPUT_ENERGY))
+                            .or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                            .or(autoAbilities(true, false, true)))
+                    .where('G', blocks(CASING_LAMINATED_GLASS.get()))
+                    .where('W', blocks(WATER))
+                    .build())
+            .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_clean_stainless_steel"),
+                    GTCEu.id("block/multiblock/bacterial_vat"), false)
+            .compassSections(GTCompassSections.TIER[IV])
+            .compassNodeSelf()
+            .register();
 }

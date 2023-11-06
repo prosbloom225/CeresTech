@@ -20,6 +20,9 @@
   "block.gtceu.pcb_factory": "PCB Factory",
   "gtceu.pcb_factory": "PCB Factory",
 
+  "block.gtceu.bacterial_vat": "Bacterial Vat",
+  "gtceu.bacterial_vat": "Bacterial Vat",
+
   "block.gtceu.neutron_activator": "Neutron Activator",
   "gtceu.neutron_activator": "Neutron Activator",
   "block.gtceu.speeding_pipe_casing": "Speeding Pipe Casing",
@@ -231,6 +234,17 @@
   "material.gelid_cryotheum": "Gelid Cryotheum",
   "material.blizz": "Blizz",
   "material.lafium": "Lafium",
+  "material.silver_plasma": "Silver",
+  "material.radox": "Radox",
+  "material.radox_gas": "Radox Gas",
+  "material.raw_radox": "Raw Radox",
+  "material.super_heavy_radox": "Super Heavy Radox",
+  "material.heavy_radox": "Heavy Radox",
+  "material.light_radox": "Light Radox",
+  "material.super_light_radox": "Super Light Radox",
+  "material.cracked_radox": "Cracked Radox",
+  "material.xenoxene": "Xenoxene",
+  "material.fermented_bacterial_sludge": "Fermented Bacterial Sludge",
 
   "gtceu.multiblock.nuclear_reactor.fuel": "Fuel: %s",
   "gtceu.multiblock.nuclear_reactor.coolant_output": "Coolant Output: %d"

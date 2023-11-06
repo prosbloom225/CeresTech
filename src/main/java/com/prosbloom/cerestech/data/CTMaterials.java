@@ -366,6 +366,7 @@ public class CTMaterials {
         Objects.requireNonNull(GTRegistries.MATERIALS.get("steel")).addFlags(GENERATE_DENSE);
         Objects.requireNonNull(GTRegistries.MATERIALS.get("blue_alloy")).addFlags(GENERATE_FRAME);
         Objects.requireNonNull(GTRegistries.MATERIALS.get("incoloy_ma_956")).addFlags(GENERATE_GEAR);
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("americium")).addFlags(GENERATE_FRAME);
 
     }
 }

@@ -37,7 +37,7 @@
   "block.gtceu.luv_void_miner": "Void Miner Mk I",
   "block.gtceu.zpm_void_miner": "Void Miner Mk II",
   "block.gtceu.uv_void_miner": "Void Miner Mk III",
-  "gtceu.machine.void_miner.tooltip.1": "Requires 20mb/s of Drilling Fluid",
+  "gtceu.machine.void_miner.tooltip": "Requires 20mb/s of Drilling Fluid",
 
   "block.gtceu.chemical_plant": "Chemical Plant",
 

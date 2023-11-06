@@ -13,3 +13,4 @@
 - Cryogenic Freezer
 - Neutron Activator
 - TJ Rare Earth Line
+- Void Ore Miners

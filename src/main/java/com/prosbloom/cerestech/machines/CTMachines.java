@@ -492,8 +492,8 @@ public class CTMachines {
             .langValue("%s Void Ore Miner %s".formatted(VLVH[tier], VLVT[tier]))
             .recipeType(new GTRecipeType(GTCEu.id("void_miner"), "dummy"))
             .tooltips(
-            Component.translatable("gtceu.machine.void_miner.description"))
-            .appearanceBlock(() -> BedrockOreMinerMachine.getCasingState(tier))
+            Component.translatable("gtceu.machine.void_miner.tooltip"))
+            .appearanceBlock(() -> VoidMinerMachine.getCasingState(tier))
             .pattern((definition) -> FactoryBlockPattern.start()
             .aisle("XXX", "#F#", "#F#", "#F#", "###", "###", "###")
                                     .aisle("XXX", "FCF", "FCF", "FCF", "#F#", "#F#", "#F#")
@@ -506,7 +506,7 @@ public class CTMachines {
             .where('F', blocks(VoidMinerMachine.getFrameState(tier)))
             .where('#', any())
             .build())
-            .workableCasingRenderer(BedrockOreMinerMachine.getBaseTexture(tier), GTCEu.id("block/multiblock/bedrock_ore_miner"), false)
+            .workableCasingRenderer(VoidMinerMachine.getBaseTexture(tier), GTCEu.id("block/multiblock/bedrock_ore_miner"), false)
             .register(),
     LuV, ZPM, UV);
 }

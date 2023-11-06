@@ -1,5 +1,6 @@
 package com.prosbloom.cerestech.machines.multiblock;
 
+import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.capability.recipe.FluidRecipeCapability;
 import com.gregtechceu.gtceu.api.capability.recipe.IO;
@@ -26,6 +27,7 @@ import com.gregtechceu.gtceu.utils.GTUtil;
 import com.lowdragmc.lowdraglib.side.fluid.FluidStack;
 import com.prosbloom.cerestech.api.machine.trait.VoidMinerLogic;
 import net.minecraft.core.SectionPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
@@ -46,6 +48,10 @@ public class VoidMinerMachine extends WorkableElectricMultiblockMachine implemen
     private int tier;
     private final static FluidStack coolant = DrillingFluid.getFluid(20);
 
+    @Override
+    public int getTier() {
+        return tier;
+    }
 
     @Override
     protected RecipeLogic createRecipeLogic(Object... args) {
@@ -69,9 +75,9 @@ public class VoidMinerMachine extends WorkableElectricMultiblockMachine implemen
 
     public static Block getFrameState(int tier) {
         if (tier == GTValues.LuV)
-            return GTBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, GTMaterials.Europium).get();
-        if (tier == GTValues.ZPM)
             return GTBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, GTMaterials.NaquadahAlloy).get();
+        if (tier == GTValues.ZPM)
+            return GTBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, GTMaterials.Americium).get();
         if (tier == GTValues.UV)
             return GTBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, GTMaterials.Neutronium).get();
         return GTBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, GTMaterials.Steel).get();
@@ -101,5 +107,15 @@ public class VoidMinerMachine extends WorkableElectricMultiblockMachine implemen
             } else
                 this.recipeLogic.setStatus(RecipeLogic.Status.WORKING);
         }
+    }
+
+    public static ResourceLocation getBaseTexture(int tier) {
+        if (tier == GTValues.LuV)
+            return GTCEu.id("block/casings/voltage/luv/side");
+        if (tier == GTValues.ZPM)
+            return GTCEu.id("block/casings/voltage/zpm/side");
+        if (tier == GTValues.UV)
+            return GTCEu.id("block/casings/voltage/uv/side");
+        return GTCEu.id("block/casings/solid/machine_casing_solid_steel");
     }
 }

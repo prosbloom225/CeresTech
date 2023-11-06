@@ -5,20 +5,14 @@ import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
-import com.gregtechceu.gtceu.api.data.worldgen.bedrockore.BedrockOreVeinSavedData;
-import com.gregtechceu.gtceu.api.data.worldgen.bedrockore.OreVeinWorldEntry;
 import com.gregtechceu.gtceu.api.machine.feature.IRecipeLogicMachine;
 import com.gregtechceu.gtceu.api.machine.trait.RecipeLogic;
 import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.api.recipe.content.ContentModifier;
-import com.gregtechceu.gtceu.common.data.GTMaterials;
-import com.gregtechceu.gtceu.common.machine.multiblock.electric.BedrockOreMinerMachine;
 import com.gregtechceu.gtceu.config.ConfigHolder;
-import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
 import com.gregtechceu.gtceu.data.recipe.builder.GTRecipeBuilder;
 import com.gregtechceu.gtceu.utils.GTUtil;
 import com.prosbloom.cerestech.machines.multiblock.VoidMinerMachine;
-import net.minecraft.core.SectionPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
 
@@ -31,9 +25,9 @@ import static java.util.Map.entry;
 
 public class VoidMinerLogic extends RecipeLogic {
 
-    private final static int MAX_PROGRESS = 20;
+    private final static int BASE_TIME = 720;
     @Nullable
-    private static List<Map.Entry<Integer, Material>> veinMaterials = List.of(
+    private static final List<Map.Entry<Integer, Material>> veinMaterials = List.<Map.Entry<Integer, Material>>of(
             entry(6, Bauxite),
             entry(2, Ilmenite),
             entry(1, Aluminium),
@@ -153,17 +147,6 @@ public class VoidMinerLogic extends RecipeLogic {
     public void findAndHandleRecipe() {
         if (getMachine().getLevel() instanceof ServerLevel serverLevel) {
             lastRecipe = null;
-            var data = BedrockOreVeinSavedData.getOrCreate(serverLevel);
-            if (veinMaterials == null) {
-                this.veinMaterials = data.getOreInChunk(getChunkX(), getChunkZ());
-                if (this.veinMaterials == null) {
-                    if (subscription != null) {
-                        subscription.unsubscribe();
-                        subscription = null;
-                    }
-                    return;
-                }
-            }
             var match = getOreMinerRecipe();
             if (match != null) {
                 var copied = match.copy(new ContentModifier(match.duration, 0));
@@ -176,27 +159,24 @@ public class VoidMinerLogic extends RecipeLogic {
 
     @Nullable
     private GTRecipe getOreMinerRecipe() {
-        if (getMachine().getLevel() instanceof ServerLevel serverLevel && veinMaterials != null) {
-            var data = BedrockOreVeinSavedData.getOrCreate(serverLevel);
+        if (getMachine().getLevel() instanceof ServerLevel && veinMaterials != null) {
             Material material = veinMaterials.get(GTUtil.getRandomItem(veinMaterials, veinMaterials.size())).getValue();
-            ItemStack stack = ChemicalHelper.get(TagPrefix.get(ConfigHolder.INSTANCE.machines.bedrockOreDropTagPrefix), material, getOreToProduce(data.getOreVeinWorldEntry(getChunkX(), getChunkZ())));
-            if (stack.isEmpty()) stack = ChemicalHelper.get(TagPrefix.crushed, material, getOreToProduce(data.getOreVeinWorldEntry(getChunkX(), getChunkZ()))); // backup 1: crushed; if raw ore doesn't exist
-            if (stack.isEmpty()) stack = ChemicalHelper.get(TagPrefix.gem, material, getOreToProduce(data.getOreVeinWorldEntry(getChunkX(), getChunkZ()))); // backup 2: gem; if crushed ore doesn't exist
-            if (stack.isEmpty()) stack = ChemicalHelper.get(TagPrefix.ore, material, getOreToProduce(data.getOreVeinWorldEntry(getChunkX(), getChunkZ()))); // backup 3: just fallback to normal ore...
-            var recipe = GTRecipeBuilder.ofRaw()
-                    .duration(MAX_PROGRESS)
-                    .EUt(GTValues.VA[getMachine().getTier()])
-                    .outputItems(stack)
-                    .buildRawRecipe();
-            if (recipe.matchRecipe(getMachine()).isSuccess() && recipe.matchTickRecipe(getMachine()).isSuccess()) {
-                return recipe;
+            ItemStack stack = ChemicalHelper.get(TagPrefix.get(ConfigHolder.INSTANCE.machines.bedrockOreDropTagPrefix), material, getMachine().getTier());
+            if (stack.isEmpty()) stack = ChemicalHelper.get(TagPrefix.crushed, material, getMachine().getTier());
+            if (stack.isEmpty()) stack = ChemicalHelper.get(TagPrefix.gem, material, getMachine().getTier()); // backup 2: gem; if crushed ore doesn't exist
+            if (stack.isEmpty()) stack = ChemicalHelper.get(TagPrefix.ore, material, getMachine().getTier()); // backup 3: just fallback to normal ore...
+            if (!stack.isEmpty()) {
+                var recipe = GTRecipeBuilder.ofRaw()
+                        .duration((int) (BASE_TIME/(Math.pow(getMachine().getTier(), 2))))
+                        .EUt(GTValues.VA[getMachine().getTier()])
+                        .outputItems(stack)
+                        .buildRawRecipe();
+                if (recipe.matchRecipe(getMachine()).isSuccess() && recipe.matchTickRecipe(getMachine()).isSuccess()) {
+                    return recipe;
+                }
             }
         }
         return null;
-    }
-
-    private int getOreToProduce(OreVeinWorldEntry entry) {
-        return getMachine().getTier();
     }
 
 
@@ -219,15 +199,6 @@ public class VoidMinerLogic extends RecipeLogic {
         setStatus(Status.IDLE);
         progress = 0;
         duration = 0;
-    }
-
-
-    private int getChunkX() {
-        return SectionPos.blockToSectionCoord(getMachine().getPos().getX());
-    }
-
-    private int getChunkZ() {
-        return SectionPos.blockToSectionCoord(getMachine().getPos().getZ());
     }
 
 }

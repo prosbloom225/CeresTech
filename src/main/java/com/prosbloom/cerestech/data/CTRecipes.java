@@ -481,11 +481,11 @@ public class CTRecipes {
                 .duration(300).EUt(VA[EV])
                 .save(provider);
 
-        ASSEMBLER_RECIPES.recipeBuilder("chemical_plant")
+        ASSEMBLER_RECIPES.recipeBuilder("mega_chemical_reactor")
                 .inputItems(LARGE_CHEMICAL_REACTOR.getItem(), 64)
                 .inputFluids(SolderingAlloy.getFluid(9216))
                 .circuitMeta(2)
-                .outputItems(CHEMICAL_PLANT)
+                .outputItems(MEGA_CHEMICAL_REACTOR)
                 .duration(72000).EUt(VA[HV])
                 .save(provider);
     }

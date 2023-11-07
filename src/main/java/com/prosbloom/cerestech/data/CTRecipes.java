@@ -467,7 +467,6 @@ public class CTRecipes {
                 .inputItems(fuelPure, Uranium238, 1)
                 .inputItems(CustomTags.EV_CIRCUITS, 2)
                 .inputFluids(StainlessSteel.getFluid(576))
-                .inputFluids(TungstenCarbide.getFluid(144))
                 .outputItems(NEUTRON_ACTIVATOR)
                 .duration(600).EUt(VA[IV])
                 .save(provider);

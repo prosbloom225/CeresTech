@@ -488,6 +488,13 @@ public class CTRecipes {
                 .outputItems(MEGA_CHEMICAL_REACTOR)
                 .duration(72000).EUt(VA[HV])
                 .save(provider);
+        ASSEMBLER_RECIPES.recipeBuilder("mega_multi_smelter")
+                .inputItems(MULTI_SMELTER.getItem(), 64)
+                .inputFluids(SolderingAlloy.getFluid(9216))
+                .circuitMeta(2)
+                .outputItems(MEGA_MULTI_SMELTER)
+                .duration(72000).EUt(VA[HV])
+                .save(provider);
     }
 
     private static void registerChemicalReactorRecipes(Consumer<FinishedRecipe> provider) {

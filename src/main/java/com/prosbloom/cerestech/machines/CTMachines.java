@@ -539,7 +539,7 @@ public class CTMachines {
     public static MultiblockMachineDefinition MEGA_CHEMICAL_REACTOR = REGISTRATE.multiblock("mega_chemical_reactor", WorkableElectricMultiblockMachine::new)
             .langValue("Chemical Plant")
             .tooltips(Component.translatable("gtceu.multiblock.parallelizable.tooltip"))
-            .tooltips(Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", Component.translatable("gtceu.macerator")))
+            .tooltips(Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", Component.translatable("gtceu.chemical_reactor")))
             .rotationState(RotationState.NON_Y_AXIS)
             .appearanceBlock(CASING_PTFE_INERT)
             .recipeType(GTRecipeTypes.LARGE_CHEMICAL_RECIPES)
@@ -562,6 +562,42 @@ public class CTMachines {
                     .build())
             .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_inert_ptfe"),
                     GTCEu.id("block/multiblock/mega_chemical_reactor"), false)
+            .compassSections(GTCompassSections.TIER[IV])
+            .compassNodeSelf()
+            .register();
+
+    public static MultiblockMachineDefinition MEGA_MULTI_SMELTER = REGISTRATE.multiblock("mega_multi_smelter", CoilWorkableElectricMultiblockMachine::new)
+            .langValue("Mega Multi Smelter")
+            .tooltips(Component.translatable("gtceu.multiblock.parallelizable.tooltip"))
+            .rotationState(RotationState.NON_Y_AXIS)
+            .appearanceBlock(CASING_INVAR_HEATPROOF)
+            .recipeTypes(GTRecipeTypes.FURNACE_RECIPES, GTRecipeTypes.ALLOY_SMELTER_RECIPES, GTRecipeTypes.ARC_FURNACE_RECIPES)
+            .recipeModifier(GTRecipeModifiers.PARALLEL_HATCH.apply(OverclockingLogic.PERFECT_OVERCLOCK, (oc) -> GTRecipeModifiers::multiSmelterOverclock))
+            .pattern(definition -> FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.BACK, RelativeDirection.UP)
+                    .aisle("XXXSXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX")
+                    .aisle("GGGGGGG", "GCCCCCG", "GC###CG", "GC###CG", "GC###CG", "GCCCCCG", "GGGGGGG")
+                    .aisle("GGGGGGG", "GCCCCCG", "GC###CG", "GC###CG", "GC###CG", "GCCCCCG", "GGGGGGG")
+                    .aisle("GGGGGGG", "GCCCCCG", "GC###CG", "GC###CG", "GC###CG", "GCCCCCG", "GGGGGGG")
+                    .aisle("GGGGGGG", "GCCCCCG", "GC###CG", "GC###CG", "GC###CG", "GCCCCCG", "GGGGGGG")
+                    .aisle("GGGGGGG", "GCCCCCG", "GC###CG", "GC###CG", "GC###CG", "GCCCCCG", "GGGGGGG")
+                    .aisle("XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX")
+                    .where('S', controller(blocks(definition.getBlock())))
+                    .where('X', blocks(CASING_INVAR_HEATPROOF.get())
+                            .or(abilities(PartAbility.INPUT_ENERGY))
+                            .or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                            .or(autoAbilities(true, false, true)))
+                    .where('C', heatingCoils())
+                    .where('G', blocks(CASING_TEMPERED_GLASS.get()))
+                    .where('#', Predicates.air())
+                    .build())
+            .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_heatproof"),
+                    GTCEu.id("block/multiblock/mega_multi_smelter"), false)
+            .additionalDisplay((controller, components) -> {
+                if (controller instanceof CoilWorkableElectricMultiblockMachine coilMachine && controller.isFormed()) {
+                    components.add(Component.translatable("gtceu.multiblock.multi_furnace.heating_coil_level", coilMachine.getCoilType().getLevel()));
+                    components.add(Component.translatable("gtceu.multiblock.multi_furnace.heating_coil_discount", coilMachine.getCoilType().getEnergyDiscount()));
+                }
+            })
             .compassSections(GTCompassSections.TIER[IV])
             .compassNodeSelf()
             .register();

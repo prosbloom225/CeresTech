@@ -14,3 +14,5 @@
 - Neutron Activator
 - TJ Rare Earth Line
 - Void Ore Miners
+- Mega Multi Smelter
+- Mega Chemical Reactor

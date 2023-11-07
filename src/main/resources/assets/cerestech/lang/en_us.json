@@ -172,6 +172,8 @@
   "item.gtceu.waste_metal_group_c": "Metal Group C Waste",
   "item.gtceu.waste_nonmetal": "Nonmetal Waste",
   "item.gtceu.waste_metaloid": "Metaloid Waste",
+  "item.gtceu.uhv_electric_motor": "UHV Electric Motor",
+  "item.gtceu.uhv_emitter": "UHV Emitter",
 
 
   "material.coolant": "FLiBe Coolant",

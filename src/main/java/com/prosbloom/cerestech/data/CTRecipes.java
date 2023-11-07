@@ -25,6 +25,7 @@ import javax.swing.*;
 import java.util.function.Consumer;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
+import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconType.stickLong;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
 import static com.gregtechceu.gtceu.common.data.GCyMRecipeTypes.ALLOY_BLAST_RECIPES;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.CASING_LAMINATED_GLASS;
@@ -39,6 +40,8 @@ import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.PUMP;
 import static com.gregtechceu.gtceu.data.recipe.misc.MetaTileEntityLoader.registerMachineRecipe;
 import static com.prosbloom.cerestech.data.CTBlocks.*;
 import static com.prosbloom.cerestech.data.CTFluids.*;
+import static com.prosbloom.cerestech.data.CTItems.ELECTRIC_MOTOR_UHV;
+import static com.prosbloom.cerestech.data.CTItems.EMITTER_UHV;
 import static com.prosbloom.cerestech.data.CTMaterials.*;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.BACTERIAL_VAT_RECIPES;
 import static com.prosbloom.cerestech.data.CTTagPrefixes.dustOxide;
@@ -840,6 +843,103 @@ public class CTRecipes {
                 .outputItems(PCB_FACTORY)
                 .duration(6000).EUt(VA[UV])
                 .save(provider);
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("motor_uhv")
+                .inputItems(rod, NeodymiumMagnetic, 64)
+                .inputItems(rod, NeodymiumMagnetic, 64)
+                .inputItems(wireFine, TitaniumTungstenCarbide, 64)
+                .inputItems(wireFine, TitaniumTungstenCarbide, 64)
+                .inputItems(wireFine, TitaniumTungstenCarbide, 64)
+                .inputItems(wireFine, TitaniumTungstenCarbide, 64)
+                .inputItems(round, HSLASteel, 16)
+                .inputItems(ring, HSLASteel, 16)
+                .inputItems(rodLong, HSLASteel, 2)
+                .inputItems(cableGtQuadruple, Europium, 2)
+                .inputFluids(Lubricant.getFluid(3000))
+                .inputFluids(SolderingAlloy.getFluid(288))
+                .outputItems(ELECTRIC_MOTOR_UHV)
+                .duration(600).EUt(VA[UHV])
+                .save(provider);
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("conveyor_uhv")
+                .inputItems(plate, HSLASteel, 8)
+                .inputItems(gear, HSLASteel, 4)
+                .inputItems(rod, HSLASteel, 4)
+                .inputItems(ELECTRIC_MOTOR_UHV, 2)
+                .inputFluids(Polybenzimidazole.getFluid(144))
+                .inputFluids(Lubricant.getFluid(3000))
+                .outputItems(CONVEYOR_MODULE_UHV)
+                .duration(600).EUt(VA[UHV])
+                .save(provider);
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("piston_uhv")
+                .inputItems(plate, HSLASteel, 8)
+                .inputItems(gearSmall, HSLASteel, 8)
+                .inputItems(rod, HSLASteel, 4)
+                .inputItems(ingot, HSLASteel, 2)
+                .inputItems(cableGtSingle, Europium, 2)
+                .inputItems(ELECTRIC_MOTOR_UHV, 1)
+                .inputFluids(Polybenzimidazole.getFluid(144))
+                .inputFluids(Lubricant.getFluid(3000))
+                .outputItems(ELECTRIC_PISTON_UHV)
+                .duration(600).EUt(VA[UHV])
+                .save(provider);
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("pump_uhv")
+                .inputItems(pipeLargeFluid, Europium, 32)
+                .inputItems(ring, SiliconeRubber, 16)
+                .inputItems(screw, HSLASteel, 8)
+                .inputItems(rotor, HSLASteel, 2)
+                .inputItems(wireGtSingle, Europium, 2)
+                .inputItems(ELECTRIC_MOTOR_UHV, 1)
+                .inputFluids(Polybenzimidazole.getFluid(144))
+                .inputFluids(Lubricant.getFluid(3000))
+                .outputItems(ELECTRIC_PUMP_UHV)
+                .duration(600).EUt(VA[UHV])
+                .save(provider);
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("emitter_uhv")
+                .inputItems(foil, Osmiridium, 64)
+                .inputItems(dust, Caesium, 16)
+                .inputItems(cableGtSingle, Europium, 8)
+                .inputItems(GRAVI_STAR, 2)
+                .inputItems(CustomTags.UHV_CIRCUITS, 4)
+                .inputItems(frameGt, Adamantium, 1)
+                .inputFluids(SolderingAlloy.getFluid(288))
+                .outputItems(EMITTER_UHV)
+                .duration(600).EUt(VA[UHV])
+                .save(provider);
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("sensor_uhv")
+                .inputItems(foil, Osmiridium, 64)
+                .inputItems(dust, Scandium, 16)
+                .inputItems(cableGtSingle, Europium, 8)
+                .inputItems(GRAVI_STAR, 2)
+                .inputItems(CustomTags.UHV_CIRCUITS, 4)
+                .inputItems(frameGt, Adamantium, 1)
+                .inputFluids(SolderingAlloy.getFluid(288))
+                .outputItems(SENSOR_UHV)
+                .duration(600).EUt(VA[UHV])
+                .save(provider);
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("field_generator_uhv")
+                .inputItems(wireFine, Osmiridium, 64)
+                .inputItems(cableGtSingle, Europium, 4)
+                .inputItems(CustomTags.UHV_CIRCUITS, 4)
+                .inputItems(frameGt, Adamantium, 1)
+                .inputItems(GRAVI_STAR, 1)
+                .inputFluids(SolderingAlloy.getFluid(288))
+                .outputItems(FIELD_GENERATOR_UHV)
+                .duration(600).EUt(VA[UHV])
+                .save(provider);
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("robot_arm_uhv")
+                .inputItems(cableGtSingle, Europium, 16)
+                .inputItems(screw, HSLASteel, 16)
+                .inputItems(rod, HSLASteel, 16)
+                .inputItems(CustomTags.UHV_CIRCUITS, 8)
+                .inputItems(ELECTRIC_MOTOR_UHV, 2)
+                .inputItems(ingot, HSLASteel, 1)
+                .inputItems(ELECTRIC_PISTON_UHV, 1)
+                .inputFluids(SolderingAlloy.getFluid(288))
+                .inputFluids(Lubricant.getFluid(3000))
+                .outputItems(ROBOT_ARM_UHV)
+                .duration(600).EUt(VA[UHV])
+                .save(provider);
+
     }
 
     private static void registerMaceratorRecipes(Consumer<FinishedRecipe> provider) {

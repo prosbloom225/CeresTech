@@ -280,7 +280,7 @@ public class CTMaterials {
             .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
             .color(0xE2E2E2).iconSet(METALLIC)
             .blastTemp(7200, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.MV], 14400)
-            .appendFlags(EXT_METAL)
+            .appendFlags(EXT_METAL, GENERATE_FRAME)
             .buildAndRegister();
 
     public static Material ArtheriumSn = new Material.Builder("artherium_sn")
@@ -379,6 +379,7 @@ public class CTMaterials {
         Objects.requireNonNull(GTRegistries.MATERIALS.get("blue_alloy")).addFlags(GENERATE_FRAME);
         Objects.requireNonNull(GTRegistries.MATERIALS.get("incoloy_ma_956")).addFlags(GENERATE_GEAR);
         Objects.requireNonNull(GTRegistries.MATERIALS.get("americium")).addFlags(GENERATE_FRAME);
-
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("hsla_steel")).addFlags(GENERATE_GEAR, GENERATE_ROUND, GENERATE_RING, GENERATE_SMALL_GEAR, GENERATE_BOLT_SCREW, GENERATE_ROTOR);
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("titanium_tungsten_carbide")).addFlags(GENERATE_FINE_WIRE);
     }
 }

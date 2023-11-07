@@ -2,41 +2,27 @@ package com.prosbloom.cerestech.data;
 
 import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEItems;
-import appeng.parts.networking.CoveredCablePart;
-import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.UnificationEntry;
-import com.gregtechceu.gtceu.api.fluids.FluidState;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
-import com.gregtechceu.gtceu.common.data.GTMachines;
-import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 import com.gregtechceu.gtceu.data.recipe.CraftingComponent;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
 import com.prosbloom.cerestech.data.recipes.*;
-import com.prosbloom.cerestech.machines.multiblock.part.QuadFluidHatchPartMachine;
-import com.prosbloom.cerestech.machines.multiblock.part.RedoxPartMachine;
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.world.item.EnderpearlItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.SnowballItem;
 
-import javax.swing.*;
 import java.util.function.Consumer;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
-import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconType.stickLong;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
-import static com.gregtechceu.gtceu.common.data.GCyMRecipeTypes.ALLOY_BLAST_RECIPES;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.CASING_LAMINATED_GLASS;
 import static com.gregtechceu.gtceu.common.data.GTItems.*;
-import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.HULL;
+import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
 import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.*;
-import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.CABLE;
-import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.PUMP;
 import static com.gregtechceu.gtceu.data.recipe.misc.MetaTileEntityLoader.registerMachineRecipe;
 import static com.prosbloom.cerestech.data.CTBlocks.*;
 import static com.prosbloom.cerestech.data.CTFluids.*;
@@ -44,6 +30,7 @@ import static com.prosbloom.cerestech.data.CTItems.ELECTRIC_MOTOR_UHV;
 import static com.prosbloom.cerestech.data.CTItems.EMITTER_UHV;
 import static com.prosbloom.cerestech.data.CTMaterials.*;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.BACTERIAL_VAT_RECIPES;
+import static com.prosbloom.cerestech.data.CTRecipeTypes.STELLAR_FORGE_RECIPES;
 import static com.prosbloom.cerestech.data.CTTagPrefixes.dustOxide;
 import static com.prosbloom.cerestech.data.CTTagPrefixes.fuelPure;
 import static com.prosbloom.cerestech.data.recipes.HotCoolantTurbineRecipes.registerHotCoolantTurbineRecipes;
@@ -71,6 +58,7 @@ public class CTRecipes {
         registerPyrolyseOvenRecipes(provider);
         registerBacterialVatRecipes(provider);
         registerFusionCoilRecipes(provider);
+        registerImplosionCompressorRecipes(provider);
 
         IndustrialGreenhouseRecipes.registerIndustrialGreenhouseRecipes(provider);
         NuclearReactorRecipes.registerNuclearReactorRecipes(provider);
@@ -79,6 +67,7 @@ public class CTRecipes {
         HeatExchangerRecipes.registerHeatExchangerRecipes(provider);
         PcbFactoryRecipes.registerPcbFactoryRecipes(provider);
         NeutronActivatorRecipes.registerNeutronActivatorRecipes(provider);
+        StellarForgeRecipes.registerStellarForgeRecipes(provider);
     }
 
     private static void registerManualRecipes(Consumer<FinishedRecipe> provider) {
@@ -498,6 +487,36 @@ public class CTRecipes {
                 .outputItems(MEGA_MULTI_SMELTER)
                 .duration(72000).EUt(VA[HV])
                 .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("neutronium_charge")
+                .inputItems(bolt, Titanium, 4)
+                .inputItems(GELLED_TOLUENE, 4)
+                .inputItems(dust, Neutronium)
+                .inputItems(plate, Americium)
+                .inputItems(bolt, MolybdenumDisilicide)
+                .inputFluids(GlycerylTrinitrate.getFluid(2500))
+                .outputItems(NEUTRONIUM_CHARGE, 1)
+                .duration(200).EUt(VA[UV])
+                .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("enriched_naquadah_alloy_casing")
+                .inputItems(plate, EnrichedNaquadahAlloy, 6)
+                .inputItems(frameGt, EnrichedNaquadahAlloy, 1)
+                .circuitMeta(6)
+                .outputItems(CASING_ENRICHED_NAQUADAH)
+                .duration(200).EUt(VA[UV])
+                .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("stellar_containment_casing")
+                .inputItems(screw, Trinium, 8)
+                .inputItems(plate, HSLASteel, 6)
+                .inputItems(frameGt, HSLASteel, 1)
+                .inputItems(rod, EnrichedNaquadahAlloy, 1)
+                .inputFluids(SolderingAlloy.getFluid(576))
+                .circuitMeta(6)
+                .outputItems(CASING_STELLAR_CONTAINMENT, 4)
+                .duration(150).EUt(VA[UV])
+                .save(provider);
     }
 
     private static void registerChemicalReactorRecipes(Consumer<FinishedRecipe> provider) {
@@ -697,6 +716,14 @@ public class CTRecipes {
                 .inputFluids(SuperHeavyRadox.getFluid(1))
                 .outputFluids(HeavyRadox.getFluid(2))
                 .duration(60).EUt(VA[UV])
+                .save(provider);
+
+        CENTRIFUGE_RECIPES.recipeBuilder("black_plutonium_to_cosmic_neutronium")
+                .inputItems(dust, BlackPlutonium, 1)
+                .chancedOutput(dustTiny, CosmicNeutronium, 5000, 100)
+                .chancedOutput(dustTiny, CosmicNeutronium, 2000, 100)
+                .chancedOutput(dustTiny, CosmicNeutronium, 2000, 100)
+                .duration(1200).EUt(VA[EV])
                 .save(provider);
     }
 
@@ -940,6 +967,21 @@ public class CTRecipes {
                 .duration(600).EUt(VA[UHV])
                 .save(provider);
 
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("stellar_forge")
+                .inputItems(bolt, EnrichedNaquadahAlloy, 64)
+                .inputItems(plate, Trinium, 32)
+                .inputItems(screw, IncoloyMA956, 32)
+                .inputItems(rod, HSLASteel, 16)
+                .inputItems(gear, TitaniumTungstenCarbide, 16)
+                .inputItems(SENSOR_UV, 4)
+                .inputItems(EMITTER_UV, 4)
+                .inputItems(FIELD_GENERATOR_UV, 4)
+                .inputItems(CustomTags.UHV_CIRCUITS, 2)
+                .inputFluids(SolderingAlloy.getFluid(20736))
+                .outputItems(STELLAR_FORGE)
+                .duration(500).EUt(VA[UHV])
+                .save(provider);
+
     }
 
     private static void registerMaceratorRecipes(Consumer<FinishedRecipe> provider) {
@@ -1068,5 +1110,13 @@ public class CTRecipes {
                 .fusionStartEU(350000000)
                 .save(provider);
 
+    }
+
+    private static void registerImplosionCompressorRecipes(Consumer<FinishedRecipe> provider) {
+        IMPLOSION_RECIPES.recipeBuilder("cosmic_neutronium_nugget")
+                .inputItems(dustTiny, CosmicNeutronium, 9)
+                .outputItems(nugget, CosmicNeutronium, 1)
+                .duration(1).EUt(VA[UV])
+                .save(provider);
     }
 }

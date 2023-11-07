@@ -78,4 +78,9 @@ public class CTRecipeTypes {
             .setEUIO(IO.IN)
             .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.BATH);
+
+    public final static GTRecipeType STELLAR_FORGE_RECIPES = register("stellar_forge", MULTIBLOCK).setMaxIOSize(3, 2, 3, 2)
+            .setEUIO(IO.IN)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_FUSION, LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.REPLICATOR);
 }

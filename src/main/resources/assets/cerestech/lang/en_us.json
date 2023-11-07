@@ -27,6 +27,11 @@
   "gtceu.neutron_activator": "Neutron Activator",
   "block.gtceu.speeding_pipe_casing": "Speeding Pipe Casing",
 
+  "block.gtceu.enriched_naquadah_casing": "Enriched Naquadah Casing",
+  "block.gtceu.stellar_containment_casing": "Stellar Containment Casing",
+  "gtceu.stellar_forge": "Stellar Forge",
+  "block.gtceu.stellar_forge": "Stellar Forge",
+
   "block.gtceu.shielded_reactor_casing": "Shielded Reactor Casing",
   "block.gtceu.volcanus": "Volcanus",
   "block.gtceu.volcanus_casing": "Volcanus Casing",
@@ -148,6 +153,7 @@
   "block.gtceu.zpm_redox_cell": "Vanadium Redox Power Cell (Zpm)",
   "block.gtceu.uv_redox_cell": "Vanadium Redox Power Cell (UV)",
 
+  "block.gtceu.neutronium_charge": "Neutronium Charge",
 
   "tagprefix.depleted_fuel": "Depleted %s Fuel",
   "tagprefix.depleted_fuel_oxide": "%s Depleted Fuel Oxide",
@@ -249,6 +255,9 @@
   "material.cracked_radox": "Cracked Radox",
   "material.xenoxene": "Xenoxene",
   "material.fermented_bacterial_sludge": "Fermented Bacterial Sludge",
+  "material.black_plutonium": "Black Plutonium",
+  "material.cosmic_neutronium": "Cosmic Neutronium",
+  "material.enriched_naquadah_alloy": "Enriched Naquadah Alloy",
 
   "gtceu.multiblock.nuclear_reactor.fuel": "Fuel: %s",
   "gtceu.multiblock.nuclear_reactor.coolant_output": "Coolant Output: %d"

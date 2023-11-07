@@ -6,6 +6,7 @@ import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.*;
 import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
 import com.gregtechceu.gtceu.api.fluids.FluidState;
+import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKey;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import com.gregtechceu.gtceu.common.data.GTElements;
@@ -14,12 +15,14 @@ import com.prosbloom.cerestech.data.recipes.NaquadahReactorRecipes;
 
 import java.util.Objects;
 
+import static com.gregtechceu.gtceu.api.GTValues.MV;
+import static com.gregtechceu.gtceu.api.GTValues.VA;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
+import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGHEST;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey.DUST;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey.INGOT;
-import static com.gregtechceu.gtceu.common.data.GTElements.Ho;
-import static com.gregtechceu.gtceu.common.data.GTElements.Nq1;
+import static com.gregtechceu.gtceu.common.data.GTElements.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.prosbloom.cerestech.data.CTTagPrefixes.dustOxide;
 
@@ -265,7 +268,7 @@ public class CTMaterials {
             .ingot()
             .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
             .color(0x0F55DA).iconSet(METALLIC)
-            .blastTemp(9000, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.MV], 6000)
+            .blastTemp(9000, BlastProperty.GasTier.HIGH, VA[MV], 6000)
             .appendFlags(EXT_METAL, GENERATE_FOIL)
             .buildAndRegister();
 
@@ -279,7 +282,7 @@ public class CTMaterials {
             .ingot(3)
             .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
             .color(0xE2E2E2).iconSet(METALLIC)
-            .blastTemp(7200, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.MV], 14400)
+            .blastTemp(7200, BlastProperty.GasTier.HIGH, VA[MV], 14400)
             .appendFlags(EXT_METAL, GENERATE_FRAME)
             .buildAndRegister();
 
@@ -287,7 +290,7 @@ public class CTMaterials {
             .ingot(3)
             .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
             .color(0x5D34EE).iconSet(METALLIC)
-            .blastTemp(6500, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.ZPM], 500)
+            .blastTemp(6500, BlastProperty.GasTier.HIGH, VA[GTValues.ZPM], 500)
             .components(Adamantium, 12, Tin, 8, Arsenic, 7, Caesium, 4, Osmiridium, 3)
             .appendFlags(EXT_METAL)
             .buildAndRegister();
@@ -296,7 +299,7 @@ public class CTMaterials {
             .ingot(3)
             .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
             .color(0x7A9085).iconSet(METALLIC)
-            .blastTemp(7200, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.LuV], 7200)
+            .blastTemp(7200, BlastProperty.GasTier.HIGH, VA[GTValues.LuV], 7200)
             .components(HastelloyC276, 4, Naquadah, 2, Samarium, 1, Tungsten, 2, Aluminium, 3, Nickel, 4 )
             .appendFlags(EXT_METAL, GENERATE_FRAME)
             .buildAndRegister();
@@ -319,6 +322,30 @@ public class CTMaterials {
             .appendFlags(EXT_METAL)
             .buildAndRegister();
 
+    public static Material BlackPlutonium = new Material.Builder("black_plutonium")
+            .ingot(3)
+            .ore()
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x2B2B2B).iconSet(METALLIC)
+            .appendFlags(EXT_METAL)
+            .buildAndRegister();
+
+    public static Material CosmicNeutronium = new Material.Builder("cosmic_neutronium")
+            .ingot()
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x2B2B2B).iconSet(OPAL)
+            .appendFlags(STD_METAL)
+            .buildAndRegister();
+
+    public static Material EnrichedNaquadahAlloy = new Material.Builder("enriched_naquadah_alloy")
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x2B2B2B).iconSet(METALLIC)
+            .blastTemp(10000, HIGHEST, VA[MV], 24800)
+            .components(NaquadahEnriched, 4, Rhodium, 2, Ruthenium, 2, Rubidium, 2, Dubnium, 1, Einsteinium255, 1)
+            .appendFlags(EXT_METAL, GENERATE_FRAME, GENERATE_BOLT_SCREW)
+            .buildAndRegister();
+
     // Plasma
     // TODO - dont see a way to add plasma to fluids like you can with addFlags..making a plasma specific element for the time
     public static Material SilverPlasma = new Material.Builder("silver_plasma")
@@ -326,7 +353,6 @@ public class CTMaterials {
             .color(0xDCDCFF).iconSet(SHINY)
             .element(GTElements.Ag)
             .buildAndRegister();
-
 
     public static void init() {
 
@@ -380,6 +406,8 @@ public class CTMaterials {
         Objects.requireNonNull(GTRegistries.MATERIALS.get("incoloy_ma_956")).addFlags(GENERATE_GEAR);
         Objects.requireNonNull(GTRegistries.MATERIALS.get("americium")).addFlags(GENERATE_FRAME);
         Objects.requireNonNull(GTRegistries.MATERIALS.get("hsla_steel")).addFlags(GENERATE_GEAR, GENERATE_ROUND, GENERATE_RING, GENERATE_SMALL_GEAR, GENERATE_BOLT_SCREW, GENERATE_ROTOR);
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("titanium_tungsten_carbide")).addFlags(GENERATE_FINE_WIRE);
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("titanium_tungsten_carbide")).addFlags(GENERATE_FINE_WIRE, GENERATE_GEAR);
+
+
     }
 }

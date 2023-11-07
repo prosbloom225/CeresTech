@@ -42,6 +42,7 @@ import java.util.List;
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
 import static com.gregtechceu.gtceu.api.registry.GTRegistries.REGISTRATE;
+import static com.gregtechceu.gtceu.common.data.GCyMBlocks.CASING_ATOMIC;
 import static com.gregtechceu.gtceu.common.data.GCyMBlocks.HEAT_VENT;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
@@ -599,6 +600,44 @@ public class CTMachines {
                 }
             })
             .compassSections(GTCompassSections.TIER[IV])
+            .compassNodeSelf()
+            .register();
+
+    public static MultiblockMachineDefinition STELLAR_FORGE = REGISTRATE.multiblock("stellar_forge", WorkableElectricMultiblockMachine::new)
+            .langValue("Stellar Forge")
+            .rotationState(RotationState.NON_Y_AXIS)
+            .appearanceBlock(CASING_ENRICHED_NAQUADAH)
+            .recipeType(CTRecipeTypes.STELLAR_FORGE_RECIPES)
+            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .pattern(definition -> FactoryBlockPattern.start()
+                    .aisle("###############", "######CCC######", "######C#C######", "######C#C######", "######C#C######", "######C#C######", "######C#C######", "######CCC######", "###############")
+                    .aisle("######C#C######", "#####FFFFF#####", "###############", "###############", "###############", "###############", "###############", "#####FFFFF#####", "######C#C######")
+                    .aisle("######C#C######", "###FF#####FF###", "###############", "###############", "###############", "###############", "###############", "###FF#####FF###", "######C#C######")
+                    .aisle("######C#C######", "##F#########F##", "#####FFFFF#####", "###############", "###############", "###############", "#####FFFFF#####", "##F#########F##", "######C#C######")
+                    .aisle("######C#C######", "##F#########F##", "####F#XXX#F####", "######XXX######", "######XXX######", "######XXX######", "####F#XXX#F####", "##F#########F##", "######C#C######")
+                    .aisle("######C#C######", "#F###########F#", "###F#X###X#F###", "#####X###X#####", "#####X###X#####", "#####X###X#####", "###F#X###X#F###", "#F###########F#", "######C#C######")
+                    .aisle("#CCCCCCMCCCCCC#", "CF####XXX####FC", "C##FX#####XF##C", "C###X#####X###C", "C###X#####X###C", "C###X#####X###C", "C##FX#####XF##C", "CF####XXX####FC", "#CCCCCCMCCCCCC#")
+                    .aisle("######MMM######", "CF####XXX####FC", "###FX#####XF###", "####X#####X####", "####X#####X####", "####X#####X####", "###FX#####XF###", "CF####XXX####FC", "######MMM######")
+                    .aisle("#CCCCCCMCCCCCC#", "CF####XXX####FC", "C##FX#####XF##C", "C###X#####X###C", "C###X#####X###C", "C###X#####X###C", "C##FX#####XF##C", "CF####XXX####FC", "#CCCCCCMCCCCCC#")
+                    .aisle("######C#C######", "#F###########F#", "###F#X###X#F###", "#####X###X#####", "#####X###X#####", "#####X###X#####", "###F#X###X#F###", "#F###########F#", "######C#C######")
+                    .aisle("######C#C######", "##F#########F##", "####F#XXX#F####", "######XXX######", "######XXX######", "######XXX######", "####F#XXX#F####", "##F#########F##", "######C#C######")
+                    .aisle("######C#C######", "##F#########F##", "#####FFFFF#####", "###############", "###############", "###############", "#####FFFFF#####", "##F#########F##", "######C#C######")
+                    .aisle("######C#C######", "###FF#####FF###", "###############", "###############", "###############", "###############", "###############", "###FF#####FF###", "######C#C######")
+                    .aisle("######C#C######", "#####FFFFF#####", "###############", "###############", "###############", "###############", "###############", "#####FFFFF#####", "######C#C######")
+                    .aisle("###############", "######CSC######", "######C#C######", "######C#C######", "######C#C######", "######C#C######", "######C#C######", "######CCC######", "###############")
+                    .where('S', controller(blocks(definition.getBlock())))
+                    .where('X', blocks(CASING_STELLAR_CONTAINMENT.get()))
+                    .where('M', blocks(CASING_LAMINATED_GLASS.get()))
+                    .where('C', blocks(CASING_ENRICHED_NAQUADAH.get())
+                            .or(abilities(PartAbility.INPUT_ENERGY))
+                            .or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                            .or(autoAbilities(true, false, true)))
+                    .where('F', blocks(FUSION_CASING_MK2.get()))
+            .where('#', Predicates.any())
+                    .build())
+            .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_enriched_naquadah"),
+                    GTCEu.id("block/multiblock/stellar_forge"), false)
+            .compassSections(GTCompassSections.TIER[UHV])
             .compassNodeSelf()
             .register();
 }

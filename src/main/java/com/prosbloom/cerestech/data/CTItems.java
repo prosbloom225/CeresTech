@@ -21,4 +21,5 @@ public class CTItems {
     public static ItemEntry<Item> WASTE_METALOID = REGISTRATE.item("waste_metaloid", Item::new).lang("Metaloid Waste").register();
     public static ItemEntry<Item> ELECTRIC_MOTOR_UHV = REGISTRATE.item("uhv_electric_motor", Item::new).lang("UHV Electric Motor").register();
     public static ItemEntry<Item> EMITTER_UHV = REGISTRATE.item("uhv_emitter", Item::new).lang("UHV Emitter").register();
+
 }

@@ -187,6 +187,8 @@
   "item.gtceu.bio_processing_unit": "Bio Processing Unit",
   "item.gtceu.ultra_bio_mutated_circuit_board": "Ultra Bio Mutated Circuit Board",
   "item.gtceu.bio_circuit_board": "Bio Circuit Board",
+  "item.gtceu.seaweed_extract": "Seaweed Extract",
+  "item.gtceu.bio_cells": "Bio Cells",
 
   "material.coolant": "FLiBe Coolant",
   "material.coolant_hot": "Hot FLiBe Coolant",
@@ -264,6 +266,11 @@
   "material.black_plutonium": "Black Plutonium",
   "material.cosmic_neutronium": "Cosmic Neutronium",
   "material.enriched_naquadah_alloy": "Enriched Naquadah Alloy",
+  "material.infinity_catalyst": "Infinity Catalyst",
+  "material.sterilized_bio_catalyst_medium": "Sterilized Bio Catalyst Medium",
+  "material.raw_bio_catalyst_medium": "Raw Bio Catalyst Medium",
+  "material.raw_growth_catalyst_medium": "Raw Growth Catalyst Medium",
+  "material.fluxed_electrum": "Fluxed Electrum",
 
   "gtceu.multiblock.nuclear_reactor.fuel": "Fuel: %s",
   "gtceu.multiblock.nuclear_reactor.coolant_output": "Coolant Output: %d"

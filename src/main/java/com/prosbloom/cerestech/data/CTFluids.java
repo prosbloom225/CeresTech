@@ -168,6 +168,18 @@ public class CTFluids {
             .color(0x009414) .iconSet(MaterialIconSet.FLUID)
             .buildAndRegister();
 
+    public static Material SterilizedBioCatalystMedium = new Material.Builder("sterilized_bio_catalyst_medium")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x7CBE2C) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+    public static Material RawBioCatalystMedium = new Material.Builder("raw_bio_catalyst_medium")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x4C7027) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+    public static Material RawGrowthCatalystMedium= new Material.Builder("raw_growth_catalyst_medium")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xA26E4B) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
 
 
 

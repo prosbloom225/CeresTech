@@ -60,6 +60,8 @@ public class CTRecipes {
         registerBacterialVatRecipes(provider);
         registerFusionCoilRecipes(provider);
         registerImplosionCompressorRecipes(provider);
+        registerFluidHeaterRecipes(provider);
+        registerExtractorRecipes(provider);
 
         IndustrialGreenhouseRecipes.registerIndustrialGreenhouseRecipes(provider);
         NuclearReactorRecipes.registerNuclearReactorRecipes(provider);
@@ -687,6 +689,15 @@ public class CTRecipes {
                 .outputItems(ULTRA_BIO_MUTATED_CIRCUIT_BOARD)
                 .duration(3600).EUt(VA[EV])
                 .save(provider);
+
+        CHEMICAL_RECIPES.recipeBuilder("bio_cells")
+                .inputItems(STEM_CELLS, 32)
+                .inputItems(dust, CosmicNeutronium, 4)
+                .inputFluids(SterilizedBioCatalystMedium.getFluid(2000))
+                .outputItems(BIO_CELLS, 32)
+                .outputFluids(Mutagen.getFluid(2000))
+                .duration(3600).EUt(VA[EV])
+                .save(provider);
     }
     private static void registerCentrifugeRecipes(Consumer<FinishedRecipe> provider) {
         CENTRIFUGE_RECIPES.recipeBuilder("pahoehoe_small")
@@ -1040,10 +1051,10 @@ public class CTRecipes {
                 .inputItems(BIO_CELLS, 16)
                 .inputItems(GLASS_TUBE, 16)
                 .inputItems(pipeTinyFluid, Polybenzimidazole, 16)
-                .inputItems(plate, Electrum)
+                .inputItems(plate, FluxedElectrum)
                 .inputItems(foil, StyreneButadieneRubber, 64)
                 .inputFluids(Coolant.getFluid(2000))
-                .inputFluids(SterileGrowthMedium.getFluid(500))
+                .inputFluids(SterilizedBioCatalystMedium.getFluid(500))
                 .inputFluids(UUMatter.getFluid(500))
                 .outputItems(BIO_PROCESSING_UNIT)
                 .duration(600).EUt(VA[UV])
@@ -1062,7 +1073,7 @@ public class CTRecipes {
                 .inputItems(foil, StyreneButadieneRubber, 64)
                 .inputFluids(SolderingAlloy.getFluid(1440))
                 .inputFluids(Coolant.getFluid(10000))
-                .inputFluids(SterileGrowthMedium.getFluid(1440))
+                .inputFluids(SterilizedBioCatalystMedium.getFluid(1440))
                 .outputItems(BIOWARE_SUPERCOMPUTER_UHV)
                 .duration(4000).EUt(VA[UV])
                 .save(provider);
@@ -1079,6 +1090,9 @@ public class CTRecipes {
                 .inputItems(wireGtSingle, RutheniumTriniumAmericiumNeutronate, 64)
                 .inputItems(foil, StyreneButadieneRubber, 64)
                 .inputItems(foil, Polybenzimidazole, 64)
+                .inputFluids(SolderingAlloy.getFluid(2880))
+                .inputFluids(Coolant.getFluid(20000))
+                .inputFluids(SterilizedBioCatalystMedium.getFluid(2880))
                 .outputItems(BIO_MAINFRAME_UEV)
                 .duration(6000).EUt(VA[UHV])
                 .save(provider);
@@ -1199,6 +1213,67 @@ public class CTRecipes {
                 .outputFluids(Xenoxene.getFluid(20))
                 .duration(3600).EUt(VA[UEV])
                 .save(provider);
+
+        BACTERIAL_VAT_RECIPES.recipeBuilder("bacterial_vat_raw_bio_catalyst_medium")
+                .inputItems(STEM_CELLS, 64)
+                .inputItems(foil, Osmium, 16)
+                .inputItems(SEAWEED_EXTRACT, 4)
+                .inputItems(dust, Tritanium, 4)
+                .inputFluids(RawGrowthCatalystMedium.getFluid(8000))
+                .outputFluids(RawBioCatalystMedium.getFluid(2000))
+                .circuitMeta(14)
+                .duration(3600).EUt(VA[LuV])
+                .save(provider);
+        BACTERIAL_VAT_RECIPES.recipeBuilder("bacterial_vat_raw_bio_catalyst_medium_1")
+                .inputItems(STEM_CELLS, 16)
+                .inputItems(foil, Osmium, 16)
+                .inputItems(SEAWEED_EXTRACT, 8)
+                .inputItems(dustTiny, InfinityCatalyst, 4)
+                .inputFluids(RawGrowthCatalystMedium.getFluid(5000))
+                .outputFluids(RawBioCatalystMedium.getFluid(5000))
+                .circuitMeta(14)
+                .duration(3600).EUt(VA[ZPM])
+                .save(provider);
+        BACTERIAL_VAT_RECIPES.recipeBuilder("bacterial_vat_raw_bio_catalyst_medium_2")
+                .inputItems(BIO_CELLS, 8)
+                .inputItems(SEAWEED_EXTRACT, 16)
+                .inputItems(dust, InfinityCatalyst, 4)
+                .inputFluids(RawGrowthCatalystMedium.getFluid(5000))
+                .outputFluids(RawBioCatalystMedium.getFluid(10000))
+                .circuitMeta(13)
+                .duration(3600).EUt(VA[UV])
+                .save(provider);
+
+        BACTERIAL_VAT_RECIPES.recipeBuilder("bacterial_vat_raw_growth_catalyst_medium")
+                .inputItems(dust, Meat, 4)
+                .inputItems(dust, Salt, 4)
+                .inputItems(dust, Calcium, 4)
+                .inputItems(dust, Agar, 4)
+                .inputFluids(Bacteria.getFluid(4000))
+                .outputFluids(RawGrowthCatalystMedium.getFluid(1000))
+                .circuitMeta(14)
+                .duration(1200).EUt(VA[IV])
+                .save(provider);
+        BACTERIAL_VAT_RECIPES.recipeBuilder("bacterial_vat_raw_growth_catalyst_medium_1")
+                .inputItems(dust, Meat, 8)
+                .inputItems(dust, Salt, 8)
+                .inputItems(dust, Calcium, 8)
+                .inputItems(dust, Agar, 4)
+                .inputFluids(BacterialSludge.getFluid(4000))
+                .outputFluids(RawGrowthCatalystMedium.getFluid(2000))
+                .circuitMeta(14)
+                .duration(1200).EUt(VA[LuV])
+                .save(provider);
+        BACTERIAL_VAT_RECIPES.recipeBuilder("bacterial_vat_raw_growth_catalyst_medium_2")
+                .inputItems(dust, Meat, 12)
+                .inputItems(dust, Salt, 12)
+                .inputItems(dust, Calcium, 12)
+                .inputItems(dust, Agar, 4)
+                .inputFluids(Mutagen.getFluid(4000))
+                .outputFluids(RawGrowthCatalystMedium.getFluid(4000))
+                .circuitMeta(14)
+                .duration(1200).EUt(VA[ZPM])
+                .save(provider);
     }
 
     private static void registerFusionCoilRecipes(Consumer<FinishedRecipe> provider) {
@@ -1217,6 +1292,23 @@ public class CTRecipes {
                 .inputItems(dustTiny, CosmicNeutronium, 9)
                 .outputItems(nugget, CosmicNeutronium, 1)
                 .duration(1).EUt(VA[UV])
+                .save(provider);
+    }
+
+    private static void registerFluidHeaterRecipes(Consumer<FinishedRecipe> provider) {
+        FLUID_HEATER_RECIPES.recipeBuilder("sterilized_bio_catalyst_medium")
+                .inputFluids(RawBioCatalystMedium.getFluid(100))
+                .circuitMeta(1)
+                .outputFluids(SterilizedBioCatalystMedium.getFluid(100))
+                .duration(20).EUt(VA[LuV])
+                .save(provider);
+    }
+
+    private static void registerExtractorRecipes(Consumer<FinishedRecipe> provider) {
+        EXTRACTOR_RECIPES.recipeBuilder("seaweed_extract")
+                .inputItems(Items.KELP, 64)
+                .outputItems(SEAWEED_EXTRACT, 1)
+                .duration(3600).EUt(VA[UV])
                 .save(provider);
     }
 }

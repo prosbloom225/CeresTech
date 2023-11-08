@@ -3,28 +3,23 @@ package com.prosbloom.cerestech.data;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
-import com.gregtechceu.gtceu.api.data.chemical.material.properties.*;
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.DustProperty;
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.IngotProperty;
 import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
-import com.gregtechceu.gtceu.api.fluids.FluidState;
-import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKey;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import com.gregtechceu.gtceu.common.data.GTElements;
-import com.gregtechceu.gtceu.common.data.GTMaterials;
-import com.prosbloom.cerestech.data.recipes.NaquadahReactorRecipes;
 
 import java.util.Objects;
 
-import static com.gregtechceu.gtceu.api.GTValues.MV;
-import static com.gregtechceu.gtceu.api.GTValues.VA;
+import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGHEST;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey.DUST;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey.INGOT;
-import static com.gregtechceu.gtceu.common.data.GTElements.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
-import static com.prosbloom.cerestech.data.CTTagPrefixes.dustOxide;
 
 public class CTMaterials {
     public static Material LithiumFluoride= new Material.Builder("lithium_fluoride")
@@ -344,6 +339,19 @@ public class CTMaterials {
             .blastTemp(10000, HIGHEST, VA[MV], 24800)
             .components(NaquadahEnriched, 4, Rhodium, 2, Ruthenium, 2, Rubidium, 2, Dubnium, 1, Einsteinium255, 1)
             .appendFlags(EXT_METAL, GENERATE_FRAME, GENERATE_BOLT_SCREW)
+            .buildAndRegister();
+
+    public static Material FluxedElectrum = new Material.Builder("fluxed_electrum")
+            .ingot()
+            .color(0xF6F674).iconSet(METALLIC)
+            .blastTemp(9000, BlastProperty.GasTier.HIGH, VA[ZPM], 1080)
+            .components(RoseGold, 1, Gold, 1, Silver, 1, SterlingSilver, 1, SolderingAlloy, 1, RedSteel, 1, BlueSteel, 1, Naquadah, 1)
+            .appendFlags(EXT_METAL)
+            .buildAndRegister();
+
+    public static Material InfinityCatalyst = new Material.Builder("infinity_catalyst")
+            .dust()
+            .color(0xFFFFFF).iconSet(BRIGHT)
             .buildAndRegister();
 
     // Plasma

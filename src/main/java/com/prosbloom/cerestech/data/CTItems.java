@@ -6,8 +6,8 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.world.item.Item;
 
-import static com.gregtechceu.gtceu.api.registry.GTRegistries.REGISTRATE;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.compassNode;
+import static com.prosbloom.cerestech.api.machine.trait.CTRegistries.REGISTRATE;
 
 public class CTItems {
 
@@ -33,5 +33,6 @@ public class CTItems {
     public static ItemEntry<Item> ULTRA_BIO_MUTATED_CIRCUIT_BOARD = REGISTRATE.item("ultra_bio_mutated_circuit_board", Item::new).lang("Ultra Bio Mutated Circuit Board").register();
     public static ItemEntry<Item> BIO_CIRCUIT_BOARD = REGISTRATE.item("bio_circuit_board", Item::new).lang("Bio Circuit Board").register();
     public static ItemEntry<Item> BIO_CELLS = REGISTRATE.item("bio_cells", Item::new).lang("Biocells").register();
+    public static ItemEntry<Item> SEAWEED_EXTRACT = REGISTRATE.item("seaweed_extract", Item::new).lang("Seaweed Extract").register();
 
 }

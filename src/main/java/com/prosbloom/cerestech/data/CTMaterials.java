@@ -407,6 +407,7 @@ public class CTMaterials {
         Objects.requireNonNull(GTRegistries.MATERIALS.get("americium")).addFlags(GENERATE_FRAME);
         Objects.requireNonNull(GTRegistries.MATERIALS.get("hsla_steel")).addFlags(GENERATE_GEAR, GENERATE_ROUND, GENERATE_RING, GENERATE_SMALL_GEAR, GENERATE_BOLT_SCREW, GENERATE_ROTOR);
         Objects.requireNonNull(GTRegistries.MATERIALS.get("titanium_tungsten_carbide")).addFlags(GENERATE_FINE_WIRE, GENERATE_GEAR);
+        Objects.requireNonNull(GTRegistries.MATERIALS.get("neutronium")).addFlags(GENERATE_FOIL);
 
 
     }

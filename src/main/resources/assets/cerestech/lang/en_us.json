@@ -180,7 +180,13 @@
   "item.gtceu.waste_metaloid": "Metaloid Waste",
   "item.gtceu.uhv_electric_motor": "UHV Electric Motor",
   "item.gtceu.uhv_emitter": "UHV Emitter",
-
+  "item.gtceu.bio_processor": "Bioprocessor",
+  "item.gtceu.bioware_processor_assembly": "Bioware Processor Assembly",
+  "item.gtceu.bioware_supercomputer": "Bioware Supercomputer",
+  "item.gtceu.bio_mainframe": "Bio Mainframe",
+  "item.gtceu.bio_processing_unit": "Bio Processing Unit",
+  "item.gtceu.ultra_bio_mutated_circuit_board": "Ultra Bio Mutated Circuit Board",
+  "item.gtceu.bio_circuit_board": "Bio Circuit Board",
 
   "material.coolant": "FLiBe Coolant",
   "material.coolant_hot": "Hot FLiBe Coolant",

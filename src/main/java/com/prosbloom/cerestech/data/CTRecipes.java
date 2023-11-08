@@ -12,6 +12,7 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
+import java.util.Random;
 import java.util.function.Consumer;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
@@ -26,8 +27,7 @@ import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.*;
 import static com.gregtechceu.gtceu.data.recipe.misc.MetaTileEntityLoader.registerMachineRecipe;
 import static com.prosbloom.cerestech.data.CTBlocks.*;
 import static com.prosbloom.cerestech.data.CTFluids.*;
-import static com.prosbloom.cerestech.data.CTItems.ELECTRIC_MOTOR_UHV;
-import static com.prosbloom.cerestech.data.CTItems.EMITTER_UHV;
+import static com.prosbloom.cerestech.data.CTItems.*;
 import static com.prosbloom.cerestech.data.CTMaterials.*;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.BACTERIAL_VAT_RECIPES;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.STELLAR_FORGE_RECIPES;
@@ -43,6 +43,7 @@ public class CTRecipes {
         registerManualRecipes(provider);
         registerMixerRecipes(provider);
         registerAssemblerRecipes(provider);
+        registerCircuitAssemblerRecipes(provider);
         registerFormingPressRecipes(provider);
         registerChemicalReactorRecipes(provider);
         registerHotCoolantTurbineRecipes(provider);
@@ -519,6 +520,43 @@ public class CTRecipes {
                 .save(provider);
     }
 
+    private static void registerCircuitAssemblerRecipes(Consumer<FinishedRecipe> provider) {
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder("bio_circuit_board")
+                .inputItems(WETWARE_CIRCUIT_BOARD, 32)
+                .inputItems(PETRI_DISH, 8)
+                .inputItems(ELECTRIC_PUMP_UV)
+                .inputItems(SENSOR_LuV, 2)
+                .inputItems(CustomTags.UV_CIRCUITS)
+                .inputItems(foil, Neutronium, 32)
+                // TODO - should be Sterilized Bio Catalyst Medium
+                .inputFluids(SterileGrowthMedium.getFluid(16000))
+                .outputItems(BIO_CIRCUIT_BOARD, 32)
+                .duration(1200).EUt(VA[UV])
+                .save(provider);
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder("bio_processor")
+                .inputItems(BIO_PROCESSING_UNIT, 6)
+                .inputItems(RAW_CRYSTAL_CHIP, 6)
+                .inputItems(NANO_CENTRAL_PROCESSING_UNIT, 12)
+                .inputItems(ADVANCED_SMD_CAPACITOR, 64)
+                .inputItems(ADVANCED_SMD_TRANSISTOR, 64)
+                .inputItems(wireFine, NiobiumTitanium, 64)
+                .inputFluids(SolderingAlloy.getFluid(288))
+                .outputItems(BIO_PROCESSOR_ZPM, 1)
+                .duration(1200).EUt(VA[UV])
+                .save(provider);
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder("bioware_assembly")
+                .inputItems(ULTRA_BIO_MUTATED_CIRCUIT_BOARD, 6)
+                .inputItems(BIO_PROCESSOR_ZPM, 2)
+                .inputItems(ADVANCED_SMD_INDUCTOR, 64)
+                .inputItems(ADVANCED_SMD_CAPACITOR, 64)
+                .inputItems(RANDOM_ACCESS_MEMORY, 64)
+                .inputItems(wireFine, NiobiumTitanium, 64)
+                .inputFluids(SolderingAlloy.getFluid(288))
+                .outputItems(BIOWARE_PROCESSOR_ASSEMBLY_UV, 1)
+                .duration(1600).EUt(VA[UV])
+                .save(provider);
+    }
+
     private static void registerChemicalReactorRecipes(Consumer<FinishedRecipe> provider) {
         CHEMICAL_RECIPES.recipeBuilder("lithium_fluoried")
                 .inputItems(dust, Lithium)
@@ -633,6 +671,21 @@ public class CTRecipes {
                 .circuitMeta(2)
                 .outputFluids(Radox.getFluid(720))
                 .duration(600).EUt(VA[UV])
+                .save(provider);
+
+        CHEMICAL_RECIPES.recipeBuilder("ultra_bio_mutated_circuit_board")
+                .inputItems(BIO_CIRCUIT_BOARD)
+                .inputItems(foil, Neutronium, 24)
+                .inputFluids(SodiumPersulfate.getFluid(15000))
+                .outputItems(ULTRA_BIO_MUTATED_CIRCUIT_BOARD)
+                .duration(3600).EUt(VA[EV])
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("ultra_bio_mutated_circuit_board")
+                .inputItems(BIO_CIRCUIT_BOARD)
+                .inputItems(foil, Neutronium, 24)
+                .inputFluids(Iron3Chloride.getFluid(7500))
+                .outputItems(ULTRA_BIO_MUTATED_CIRCUIT_BOARD)
+                .duration(3600).EUt(VA[EV])
                 .save(provider);
     }
     private static void registerCentrifugeRecipes(Consumer<FinishedRecipe> provider) {
@@ -982,6 +1035,53 @@ public class CTRecipes {
                 .duration(500).EUt(VA[UHV])
                 .save(provider);
 
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("bio_processing_unit")
+                .inputItems(ULTRA_BIO_MUTATED_CIRCUIT_BOARD, 1)
+                .inputItems(BIO_CELLS, 16)
+                .inputItems(GLASS_TUBE, 16)
+                .inputItems(pipeTinyFluid, Polybenzimidazole, 16)
+                .inputItems(plate, Electrum)
+                .inputItems(foil, StyreneButadieneRubber, 64)
+                .inputFluids(Coolant.getFluid(2000))
+                .inputFluids(SterileGrowthMedium.getFluid(500))
+                .inputFluids(UUMatter.getFluid(500))
+                .outputItems(BIO_PROCESSING_UNIT)
+                .duration(600).EUt(VA[UV])
+                .save(provider);
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("bioware_supercomputer")
+                .inputItems(ULTRA_BIO_MUTATED_CIRCUIT_BOARD, 2)
+                .inputItems(BIOWARE_PROCESSOR_ASSEMBLY_UV, 2)
+                .inputItems(ADVANCED_SMD_TRANSISTOR, 16)
+                .inputItems(ADVANCED_SMD_RESISTOR, 16)
+                .inputItems(ADVANCED_SMD_CAPACITOR, 16)
+                .inputItems(ADVANCED_SMD_DIODE, 16)
+                .inputItems(NOR_MEMORY_CHIP, 32)
+                .inputItems(RANDOM_ACCESS_MEMORY, 64)
+                .inputItems(wireFine, NiobiumTitanium, 32)
+                .inputItems(foil, StyreneButadieneRubber, 64)
+                .inputFluids(SolderingAlloy.getFluid(1440))
+                .inputFluids(Coolant.getFluid(10000))
+                .inputFluids(SterileGrowthMedium.getFluid(1440))
+                .outputItems(BIOWARE_SUPERCOMPUTER_UHV)
+                .duration(4000).EUt(VA[UV])
+                .save(provider);
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("bio_mainframe")
+                .inputItems(frameGt, Tritanium, 4)
+                .inputItems(BIOWARE_SUPERCOMPUTER_UHV, 2)
+                .inputItems(ADVANCED_SMD_INDUCTOR, 24)
+                .inputItems(ADVANCED_SMD_TRANSISTOR, 24)
+                .inputItems(ADVANCED_SMD_RESISTOR, 24)
+                .inputItems(ADVANCED_SMD_CAPACITOR, 24)
+                .inputItems(ADVANCED_SMD_DIODE, 24)
+                .inputItems(RANDOM_ACCESS_MEMORY, 64)
+                .inputItems(wireGtSingle, RutheniumTriniumAmericiumNeutronate, 64)
+                .inputItems(foil, StyreneButadieneRubber, 64)
+                .inputItems(foil, Polybenzimidazole, 64)
+                .outputItems(BIO_MAINFRAME_UEV)
+                .duration(6000).EUt(VA[UHV])
+                .save(provider);
     }
 
     private static void registerMaceratorRecipes(Consumer<FinishedRecipe> provider) {

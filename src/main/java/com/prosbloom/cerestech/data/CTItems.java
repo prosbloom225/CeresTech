@@ -1,13 +1,10 @@
 package com.prosbloom.cerestech.data;
 
-import com.gregtechceu.gtceu.common.data.GTCompassSections;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.world.item.Item;
 
-import static com.gregtechceu.gtceu.common.data.GTBlocks.compassNode;
-import static com.prosbloom.cerestech.api.machine.trait.CTRegistries.REGISTRATE;
+import static com.gregtechceu.gtceu.api.registry.GTRegistries.REGISTRATE;
 
 public class CTItems {
 

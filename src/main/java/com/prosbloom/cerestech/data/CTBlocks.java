@@ -23,6 +23,7 @@ import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
 import static com.prosbloom.cerestech.api.machine.trait.CTRegistries.REGISTRATE;
+import static com.prosbloom.cerestech.machines.BlockHelper.createCasingBlock;
 
 @SuppressWarnings("deprecated")
 public class CTBlocks {
@@ -50,21 +51,5 @@ public class CTBlocks {
             .simpleItem()
             .register();
 
-    public static BlockEntry<Block> createCasingBlock(String name, ResourceLocation texture) {
-        return createCasingBlock(name, RendererBlock::new, texture, () -> Blocks.IRON_BLOCK, () -> RenderType::cutoutMipped);
-    }
-    private static BlockEntry<Block> createCasingBlock(String name, BiFunction<BlockBehaviour.Properties, IRenderer, ? extends RendererBlock> blockSupplier, ResourceLocation texture, NonNullSupplier<? extends Block> properties, Supplier<Supplier<RenderType>> type) {
-        return REGISTRATE.block(name, p -> (Block) blockSupplier.apply(p,
-                        Platform.isClient() ? new TextureOverrideRenderer(new ResourceLocation("block/cube_all"),
-                                Map.of("all", texture)) : null))
-                .initialProperties(properties)
-                .addLayer(type)
-                .blockstate(NonNullBiConsumer.noop())
-                .tag(GTToolType.WRENCH.harvestTag, BlockTags.MINEABLE_WITH_PICKAXE)
-                .item(RendererBlockItem::new)
-                .model(NonNullBiConsumer.noop())
-                .build()
-                .register();
-    }
 
 }

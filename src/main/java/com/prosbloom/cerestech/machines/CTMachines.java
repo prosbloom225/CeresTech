@@ -48,6 +48,7 @@ import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.PYROLYSE_RECIPES;
 import static com.prosbloom.cerestech.api.machine.trait.CTRegistries.REGISTRATE;
 import static com.prosbloom.cerestech.data.CTBlocks.*;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.NAQUADAH_REACTOR_RECIPES;
+import static com.prosbloom.cerestech.machines.BlockHelper.registerTieredMachines;
 import static net.minecraft.world.level.block.Blocks.DIRT;
 import static net.minecraft.world.level.block.Blocks.WATER;
 
@@ -232,7 +233,7 @@ public class CTMachines {
             .tooltips(Component.translatable("gtceu.machine.electric_blast_furnace.tooltip.1",
                     Component.translatable("gtceu.machine.electric_blast_furnace.tooltip.2"),
                     Component.translatable("gtceu.machine.electric_blast_furnace.tooltip.3"),
-                    Component.translatable("gtceu.machine.volcanus.tooltip")))
+                    Component.translatable("cerestech.machine.volcanus.tooltip")))
             .additionalDisplay((controller, components) -> {
                 if (controller instanceof CoilWorkableElectricMultiblockMachine coilMachine && controller.isFormed()) {
                     components.add(Component.translatable("gtceu.multiblock.blast_furnace.max_temperature",
@@ -260,8 +261,8 @@ public class CTMachines {
                     .build())
             .workableCasingRenderer(CTMod.id("block/casings/solid/machine_casing_cryogenic"),
                     CTMod.id("block/multiblock/cryogenic_freezer"), false)
-            .tooltips(Component.translatable("gtceu.machine.cryogenic_freezer.tooltip",
-                    "gtceu.machine.cryogenic_freezer.tooltip.1"))
+            .tooltips(Component.translatable("cerestech.machine.cryogenic_freezer.tooltip",
+                    "cerestech.machine.cryogenic_freezer.tooltip.1"))
             .compassSections(GTCompassSections.TIER[IV])
             .compassNodeSelf()
             .register();
@@ -389,7 +390,7 @@ public class CTMachines {
                     .langValue("Redox Cell")
                     .rotationState(RotationState.ALL)
                     .abilities(PartAbility.STEAM)
-                    .renderer(() -> new MachineRenderer(GTCEu.id("block/machine/redox_cell")))
+                    .renderer(() -> new MachineRenderer(CTMod.id("block/machine/redox_cell")))
                     .itemColor((s, t)-> ColorUtils.getRedoxColorFromTier(tier))
                     .paintingColor(ColorUtils.getRedoxColorFromTier(tier))
                     .register(),

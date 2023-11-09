@@ -49,4 +49,8 @@ public class CTAddon implements IGTAddon{
         return CTMod.MODID;
     }
 
+    @Override
+    public boolean requiresHighTier() {
+        return true;
+    }
 }

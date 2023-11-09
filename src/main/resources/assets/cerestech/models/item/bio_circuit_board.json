@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gtceu:item/bio_mainframe"
+    "layer0": "cerestech:item/bio_circuit_board"
   }
 }

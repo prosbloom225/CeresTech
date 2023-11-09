@@ -1,12 +1,19 @@
 package com.prosbloom.cerestech.data;
 
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
+import com.prosbloom.cerestech.api.machine.trait.CTCreativeModeTab;
+import com.prosbloom.cerestech.api.machine.trait.CTRegistries;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.world.item.Item;
 
-import static com.gregtechceu.gtceu.api.registry.GTRegistries.REGISTRATE;
+import static com.prosbloom.cerestech.api.machine.trait.CTRegistries.REGISTRATE;
+
 
 public class CTItems {
+
+    static {
+        REGISTRATE.creativeModeTab(()-> CTCreativeModeTab.CT);
+    }
 
     public static void init(){}
     public static ItemEntry<Item> WASTE_NUCLEAR = REGISTRATE.item("waste_nuclear", Item::new).lang("Waste Nuclear").register();

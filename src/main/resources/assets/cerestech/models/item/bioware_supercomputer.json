@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gtceu:item/bio_circuit_board"
+    "layer0": "cerestech:item/bioware_supercomputer"
   }
 }

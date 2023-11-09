@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gtceu:item/bio_processor"
+    "layer0": "cerestech:item/waste_nuclear"
   }
 }

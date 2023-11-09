@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gtceu:item/bioware_supercomputer"
+    "layer0": "cerestech:item/seaweed_extract"
   }
 }

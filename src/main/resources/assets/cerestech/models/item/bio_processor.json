@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gtceu:item/bioware_processor_assembly"
+    "layer0": "cerestech:item/bio_processor"
   }
 }

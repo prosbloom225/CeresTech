@@ -1,5 +1,5 @@
 {
     "ldlib": {
-        "connection": "gtceu:block/casings/solid/machine_casing_shielded_reactor_ctm"
+        "connection": "cerestech:block/casings/solid/machine_casing_shielded_reactor_ctm"
     }
 }

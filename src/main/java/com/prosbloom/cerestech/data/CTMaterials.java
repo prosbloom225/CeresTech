@@ -10,6 +10,8 @@ import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import com.gregtechceu.gtceu.common.data.GTElements;
+import com.gregtechceu.gtceu.common.data.GTMaterials;
+import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 
 import java.util.Objects;
 
@@ -363,59 +365,58 @@ public class CTMaterials {
             .buildAndRegister();
 
     public static void init() {
-
         // Isotopes
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("neptunium")).setProperty(INGOT, new IngotProperty());
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("curium")).setProperty(INGOT, new IngotProperty());
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("berkelium")).setProperty(INGOT, new IngotProperty());
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("californium")).setProperty(INGOT, new IngotProperty());
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("einsteinium")).setProperty(INGOT, new IngotProperty());
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("fermium")).setProperty(INGOT, new IngotProperty());
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("mendelevium")).setProperty(INGOT, new IngotProperty());
+        Neptunium.setProperty(INGOT, new IngotProperty());
+        Curium.setProperty(INGOT, new IngotProperty());
+        Berkelium.setProperty(INGOT, new IngotProperty());
+        Californium.setProperty(INGOT, new IngotProperty());
+        Einsteinium.setProperty(INGOT, new IngotProperty());
+        Fermium.setProperty(INGOT, new IngotProperty());
+        Mendelevium.setProperty(INGOT, new IngotProperty());
 
 
         // Lanthanides
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("dysprosium")).setProperty(DUST, new DustProperty(1,0));
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("holmium")).setProperty(DUST, new DustProperty(1,0));
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("erbium")).setProperty(DUST, new DustProperty(1,0));
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("thulium")).setProperty(DUST, new DustProperty(1,0));
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("ytterbium")).setProperty(DUST, new DustProperty(1,0));
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("praseodymium")).setProperty(DUST, new DustProperty(1,0));
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("promethium")).setProperty(DUST, new DustProperty(1,0));
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("gadolinium")).setProperty(DUST, new DustProperty(1,0));
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("terbium")).setProperty(DUST, new DustProperty(1,0));
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("rubidium")).setProperty(DUST, new DustProperty(1,0));
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("strontium")).setProperty(DUST, new DustProperty(1,0));
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("francium")).setProperty(DUST, new DustProperty(1,0));
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("radium")).setProperty(DUST, new DustProperty(1,0));
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("thallium")).setProperty(DUST, new DustProperty(1,0));
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("hafnium")).setProperty(DUST, new DustProperty(1,0));
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("polonium")).setProperty(DUST, new DustProperty(1,0));
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("technetium")).setProperty(DUST, new DustProperty(1,0));
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("zirconium")).setProperty(DUST, new DustProperty(1,0));
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("iodine")).setProperty(DUST, new DustProperty(1,0));
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("selenium")).setProperty(DUST, new DustProperty(1,0));
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("germanium")).setProperty(DUST, new DustProperty(1,0));
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("tellurium")).setProperty(DUST, new DustProperty(1,0));
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("astatine")).setProperty(DUST, new DustProperty(1,0));
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("actinium")).setProperty(DUST, new DustProperty(1,0));
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("scandium")).setProperty(DUST, new DustProperty(1,0));
+        Dysprosium.setProperty(DUST, new DustProperty(1,0));
+        Holmium.setProperty(DUST, new DustProperty(1,0));
+        Erbium.setProperty(DUST, new DustProperty(1,0));
+        Thulium.setProperty(DUST, new DustProperty(1,0));
+        Ytterbium.setProperty(DUST, new DustProperty(1,0));
+        Praseodymium.setProperty(DUST, new DustProperty(1,0));
+        Promethium.setProperty(DUST, new DustProperty(1,0));
+        Gadolinium.setProperty(DUST, new DustProperty(1,0));
+        Terbium.setProperty(DUST, new DustProperty(1,0));
+        Rubidium.setProperty(DUST, new DustProperty(1,0));
+        Strontium.setProperty(DUST, new DustProperty(1,0));
+        Francium.setProperty(DUST, new DustProperty(1,0));
+        Radium.setProperty(DUST, new DustProperty(1,0));
+        Thallium.setProperty(DUST, new DustProperty(1,0));
+        Hafnium.setProperty(DUST, new DustProperty(1,0));
+        Polonium.setProperty(DUST, new DustProperty(1,0));
+        Technetium.setProperty(DUST, new DustProperty(1,0));
+        Zirconium.setProperty(DUST, new DustProperty(1,0));
+        Iodine.setProperty(DUST, new DustProperty(1,0));
+        Selenium.setProperty(DUST, new DustProperty(1,0));
+        Germanium.setProperty(DUST, new DustProperty(1,0));
+        Tellurium.setProperty(DUST, new DustProperty(1,0));
+        Astatine.setProperty(DUST, new DustProperty(1,0));
+        Actinium.setProperty(DUST, new DustProperty(1,0));
+        Scandium.setProperty(DUST, new DustProperty(1,0));
 
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("lead")).addFlags(GENERATE_DENSE);
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("stainless_steel")).addFlags(GENERATE_DENSE);
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("hastelloy_x")).addFlags(GENERATE_DENSE, GENERATE_GEAR);
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("vanadium")).addFlags(GENERATE_ROD, GENERATE_FRAME);
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("titanium")).addFlags(GENERATE_DENSE);
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("iridium")).addFlags(GENERATE_DENSE);
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("naquadah")).addFlags(GENERATE_DENSE);
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("damascus_steel")).addFlags(GENERATE_FRAME);
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("steel")).addFlags(GENERATE_DENSE);
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("blue_alloy")).addFlags(GENERATE_FRAME);
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("incoloy_ma_956")).addFlags(GENERATE_GEAR);
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("americium")).addFlags(GENERATE_FRAME);
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("hsla_steel")).addFlags(GENERATE_GEAR, GENERATE_ROUND, GENERATE_RING, GENERATE_SMALL_GEAR, GENERATE_BOLT_SCREW, GENERATE_ROTOR);
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("titanium_tungsten_carbide")).addFlags(GENERATE_FINE_WIRE, GENERATE_GEAR);
-        Objects.requireNonNull(GTRegistries.MATERIALS.get("neutronium")).addFlags(GENERATE_FOIL);
+        Lead.addFlags(GENERATE_DENSE);
+        StainlessSteel.addFlags(GENERATE_DENSE);
+        HastelloyX.addFlags(GENERATE_DENSE, GENERATE_GEAR);
+        Vanadium.addFlags(GENERATE_ROD, GENERATE_FRAME);
+        Titanium.addFlags(GENERATE_DENSE);
+        Iridium.addFlags(GENERATE_DENSE);
+        Naquadah.addFlags(GENERATE_DENSE);
+        DamascusSteel.addFlags(GENERATE_FRAME);
+        Steel.addFlags(GENERATE_DENSE);
+        BlueAlloy.addFlags(GENERATE_FRAME);
+        IncoloyMA956.addFlags(GENERATE_GEAR);
+        Americium.addFlags(GENERATE_FRAME);
+        HSLASteel.addFlags(GENERATE_GEAR, GENERATE_ROUND, GENERATE_RING, GENERATE_SMALL_GEAR, GENERATE_BOLT_SCREW, GENERATE_ROTOR);
+        TitaniumTungstenCarbide.addFlags(GENERATE_FINE_WIRE, GENERATE_GEAR);
+        Neutronium.addFlags(GENERATE_FOIL);
 
 
     }

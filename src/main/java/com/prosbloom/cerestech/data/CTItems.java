@@ -1,12 +1,19 @@
 package com.prosbloom.cerestech.data;
 
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
+import com.prosbloom.cerestech.api.machine.trait.CTCreativeModeTab;
+import com.prosbloom.cerestech.api.machine.trait.CTRegistries;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.world.item.Item;
 
-import static com.gregtechceu.gtceu.api.registry.GTRegistries.REGISTRATE;
+import static com.prosbloom.cerestech.api.machine.trait.CTRegistries.REGISTRATE;
+
 
 public class CTItems {
+
+    static {
+        REGISTRATE.creativeModeTab(()-> CTCreativeModeTab.CT);
+    }
 
     public static void init(){}
     public static ItemEntry<Item> WASTE_NUCLEAR = REGISTRATE.item("waste_nuclear", Item::new).lang("Waste Nuclear").register();
@@ -31,5 +38,6 @@ public class CTItems {
     public static ItemEntry<Item> BIO_CIRCUIT_BOARD = REGISTRATE.item("bio_circuit_board", Item::new).lang("Bio Circuit Board").register();
     public static ItemEntry<Item> BIO_CELLS = REGISTRATE.item("bio_cells", Item::new).lang("Biocells").register();
     public static ItemEntry<Item> SEAWEED_EXTRACT = REGISTRATE.item("seaweed_extract", Item::new).lang("Seaweed Extract").register();
+    public static ItemEntry<Item> TEST_ITEM = REGISTRATE.item("test_item", Item::new).lang("Test Item").tag(CTCustomTags.TEST_TAG).register();
 
 }

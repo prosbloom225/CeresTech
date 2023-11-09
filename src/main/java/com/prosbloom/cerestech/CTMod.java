@@ -4,12 +4,15 @@ import com.gregtechceu.gtceu.api.addon.AddonFinder;
 import com.gregtechceu.gtceu.api.addon.GTAddon;
 import com.gregtechceu.gtceu.api.addon.forge.AddonFinderImpl;
 import com.gregtechceu.gtceu.api.registry.GTRegistries;
+import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.mojang.logging.LogUtils;
 import com.prosbloom.cerestech.addon.CTAddon;
+import com.prosbloom.cerestech.api.machine.trait.CTRegistries;
 import com.prosbloom.cerestech.data.CTBlocks;
 import com.prosbloom.cerestech.machines.CTMachines;
 import com.tterrag.registrate.Registrate;
 import net.minecraft.client.Minecraft;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -56,6 +59,10 @@ public class CTMod
     public static final RegistryObject<Item> EXAMPLE_BLOCK_ITEM = ITEMS.register("example_block", () -> new BlockItem(EXAMPLE_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
     public CTAddon ctAddon = new CTAddon();
 
+    public static ResourceLocation id(String path) {
+        return new ResourceLocation(MODID, FormattingUtil.toLowerCaseUnder(path));
+    }
+
     public CTMod()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -70,6 +77,7 @@ public class CTMod
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+        CTRegistries.REGISTRATE.registerRegistrate();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)

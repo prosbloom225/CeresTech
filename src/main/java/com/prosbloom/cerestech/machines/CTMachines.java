@@ -55,9 +55,9 @@ public class CTMachines {
 
     public static void init(){
     }
-    public final static MachineDefinition[] DEHYDRATOR= registerSimpleMachines("dehydrator", CTRecipeTypes.DEHYDRATOR_RECIPES);
-    public final static MachineDefinition[] DECAY_CHAMBER= registerSimpleMachines("decay_chamber", CTRecipeTypes.DECAY_CHAMBER_RECIPES);
-    public final static MachineDefinition[] NAQUADAH_REACTOR = registerSimpleGenerator("naquadah_reactor", NAQUADAH_REACTOR_RECIPES, defaultTankSizeFunction,
+    public final static MachineDefinition[] DEHYDRATOR= BlockHelper.registerSimpleMachines("dehydrator", CTRecipeTypes.DEHYDRATOR_RECIPES);
+    public final static MachineDefinition[] DECAY_CHAMBER= BlockHelper.registerSimpleMachines("decay_chamber", CTRecipeTypes.DECAY_CHAMBER_RECIPES);
+    public final static MachineDefinition[] NAQUADAH_REACTOR = BlockHelper.registerSimpleGenerator("naquadah_reactor", NAQUADAH_REACTOR_RECIPES, defaultTankSizeFunction,
             GTValues.EV, GTValues.IV, GTValues.LuV, GTValues.ZPM);
     public static MultiblockMachineDefinition INDUSTRIAL_GREENHOUSE = REGISTRATE.multiblock("industrial_greenhouse", WorkableElectricMultiblockMachine::new)
             .langValue("Industrial Greenhouse")
@@ -405,7 +405,7 @@ public class CTMachines {
             .pattern(definition -> FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.BACK, RelativeDirection.UP)
                     .aisle("FXXSXXF", "XPPPPPX", "XPPPPPX", "XPPPPPX", "XPPPPPX", "XPPPPPX", "FXXXXXF")
                     .aisle("FGGGGGF", "X#####X", "E#VVV#E", "E#VVV#E", "E#VVV#E", "X#####X", "FXXXXXF")
-                    .aisle("FGGGGGF", "X#####X", "E#####G", "E#####E", "E#####E", "X#####X", "FXXXXXF")
+                    .aisle("FGGGGGF", "X#####X", "E#####E", "E#####E", "E#####E", "X#####X", "FXXXXXF")
                     .aisle("FGGGGGF", "X#####X", "X#####X", "X#####X", "X#####X", "X#####X", "FXXXXXF")
                     .aisle("FFFFFFF", "XGGGGGX", "XGGGGGX", "XXXXXXX", "XXXXXXX", "XXXXXXX", "F#####F")
                     .aisle("#######", "F#####F", "F#####F", "FFFFFFF", "F#####F", "F#####F", "#######")

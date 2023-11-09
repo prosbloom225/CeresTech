@@ -1,36 +1,36 @@
 {
   "itemGroup.cerestech.cerestech": "Cerestech",
   "block.cerestech.nuclear_reactor": "Nuclear Reactor",
-  "cerestech.nuclear_reactor": "Nuclear Reactor",
+  "gtceu.nuclear_reactor": "Nuclear Reactor",
 
   "block.cerestech.industrial_greenhouse": "Industrial Greenhouse",
-  "cerestech.industrial_greenhouse": "Industrial Greenhouse",
+  "gtceu.industrial_greenhouse": "Industrial Greenhouse",
 
   "block.cerestech.hot_coolant_turbine": "Hot Coolant Turbine",
-  "cerestech.hot_coolant_turbine": "Hot Coolant Turbine(HCT)",
+  "gtceu.hot_coolant_turbine": "Hot Coolant Turbine(HCT)",
 
   "block.cerestech.gas_centrifuge": "Gas Centrifuge",
-  "cerestech.gas_centrifuge": "Gas Centrifuge",
+  "ctceu.gas_centrifuge": "Gas Centrifuge",
 
   "block.cerestech.large_heat_exchanger": "Large Heat Exchanger",
-  "cerestech.heat_exchanger": "Heat Exchanger",
+  "gtceu.heat_exchanger": "Heat Exchanger",
 
   "block.cerestech.industrial_coke_oven": "Industrial Coke Oven",
-  "cerestech.coke_oven": "Coke Oven",
+  "gtceu.coke_oven": "Coke Oven",
 
   "block.cerestech.pcb_factory": "PCB Factory",
-  "cerestech.pcb_factory": "PCB Factory",
+  "gtceu.pcb_factory": "PCB Factory",
 
   "block.cerestech.bacterial_vat": "Bacterial Vat",
-  "cerestech.bacterial_vat": "Bacterial Vat",
+  "gtceu.bacterial_vat": "Bacterial Vat",
 
   "block.cerestech.neutron_activator": "Neutron Activator",
-  "cerestech.neutron_activator": "Neutron Activator",
+  "gtceu.neutron_activator": "Neutron Activator",
   "block.cerestech.speeding_pipe_casing": "Speeding Pipe Casing",
 
   "block.cerestech.enriched_naquadah_casing": "Enriched Naquadah Casing",
   "block.cerestech.stellar_containment_casing": "Stellar Containment Casing",
-  "cerestech.stellar_forge": "Stellar Forge",
+  "gtceu.stellar_forge": "Stellar Forge",
   "block.cerestech.stellar_forge": "Stellar Forge",
 
   "block.cerestech.shielded_reactor_casing": "Shielded Reactor Casing",
@@ -70,6 +70,11 @@
   "block.cerestech.luv_dehydrator": "Elite Chemical Dehydrator II",
   "block.cerestech.zpm_dehydrator": "Elite Chemical Dehydrator III",
   "block.cerestech.uv_dehydrator": "Ultimate Chemical Dehydrator",
+  "block.cerestech.uhv_dehydrator": "Ultimate Chemical Dehydrator II",
+  "block.cerestech.uev_dehydrator": "Ultimate Chemical Dehydrator III",
+  "block.cerestech.uiv_dehydrator": "Ultimate Chemical Dehydrator IV",
+  "block.cerestech.uxv_dehydrator": "Ultimate Chemical Dehydrator V",
+  "block.cerestech.opv_dehydrator": "Legendary Chemical Dehydrator",
   "cerestech.dehydrator": "Chemical Dehydrator",
 
   "block.cerestech.lv_decay_chamber": "Basic Decay Chamber",
@@ -80,6 +85,11 @@
   "block.cerestech.luv_decay_chamber": "Elite Decay Chamber II",
   "block.cerestech.zpm_decay_chamber": "Elite Decay Chamber III",
   "block.cerestech.uv_decay_chamber": "Ultimate Decay Chamber",
+  "block.cerestech.uhv_decay_chamber": "Ultimate Decay Chamber II",
+  "block.cerestech.uev_decay_chamber": "Ultimate Decay Chamber III",
+  "block.cerestech.uiv_decay_chamber": "Ultimate Decay Chamber IV",
+  "block.cerestech.uxv_decay_chamber": "Ultimate Decay Chamber V",
+  "block.cerestech.opv_decay_chamber": "Legendary Decay Chamber",
   "cerestech.decay_chamber": "Decay Chamber",
 
   "block.cerestech.ulv_quad_input_hatch": "ULV Quad Input Hatch",
@@ -147,6 +157,8 @@
 
   "block.cerestech.power_station": "Power Station Controller",
   "block.cerestech.power_station_casing": "Power Station Casing",
+
+  "block.cerestech.photolithographic_Casing": "Photolithographic Casing",
 
   "block.cerestech.ev_redox_cell": "Vanadium Redox Power Cell (EV)",
   "block.cerestech.iv_redox_cell": "Vanadium Redox Power Cell (IV)",

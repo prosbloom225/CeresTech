@@ -417,6 +417,7 @@ public class CTMaterials {
         HSLASteel.addFlags(GENERATE_GEAR, GENERATE_ROUND, GENERATE_RING, GENERATE_SMALL_GEAR, GENERATE_BOLT_SCREW, GENERATE_ROTOR);
         TitaniumTungstenCarbide.addFlags(GENERATE_FINE_WIRE, GENERATE_GEAR);
         Neutronium.addFlags(GENERATE_FOIL);
+        MolybdenumDisilicide.addFlags(GENERATE_BOLT_SCREW);
 
 
     }

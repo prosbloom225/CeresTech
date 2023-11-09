@@ -49,6 +49,7 @@ import static com.prosbloom.cerestech.api.machine.trait.CTRegistries.REGISTRATE;
 import static com.prosbloom.cerestech.data.CTBlocks.*;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.NAQUADAH_REACTOR_RECIPES;
 import static com.prosbloom.cerestech.machines.BlockHelper.registerTieredMachines;
+import static com.prosbloom.cerestech.machines.BlockHelper.registerTieredMultis;
 import static net.minecraft.world.level.block.Blocks.DIRT;
 import static net.minecraft.world.level.block.Blocks.WATER;
 

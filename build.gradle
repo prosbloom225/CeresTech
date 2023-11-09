@@ -172,11 +172,13 @@ dependencies {
     implementation fg.deobf("com.simibubi.create:create-1.19.2:0.5.1.c-36:all") { transitive = false }
     implementation fg.deobf("curse.maven:configuration-444699:4519560") {transitive = false}
     implementation fg.deobf("curse.maven:applied-energistics-223794:4733119") {transitive = false}
+    implementation fg.deobf("curse.maven:avariia-reforged-623969:4752155") {transitive = false}
 
     compileOnly fg.deobf("com.tterrag.registrate:Registrate:MC1.19-1.1.5")
     jarJar(group: 'com.tterrag.registrate', name: 'Registrate', version: "[MC1.19,MC1.19.2)")
 
-    implementation fg.deobf("curse.maven:jade-324717:4719987")
+    //implementation fg.deobf("curse.maven:jade-324717:4800904") {transitive = false}
+    implementation fg.deobf("curse.maven:top-245211:3965693") {transitive = false}
     runtimeOnly "curse.maven:shutup-experimental-settings-407174:3759881"
 }
 

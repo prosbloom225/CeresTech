@@ -155,8 +155,8 @@ public class CTRecipes {
                 'O', new UnificationEntry(plateDense, RhodiumPlatedPalladium));
 
         VanillaRecipeHelper.addShapedRecipe(provider, true, "bacterial_vat", BACTERIAL_VAT.asStack(),
-                "GCG", "WHW", "GCG",
-                'G', CASING_LAMINATED_GLASS,
+                "PCP", "WHW", "PCP",
+                'P', ELECTRIC_PUMP_EV,
                 'C', CustomTags.EV_CIRCUITS,
                 'W', new UnificationEntry(wireGtOctal, Silver),
                 'H', HULL[HV]);

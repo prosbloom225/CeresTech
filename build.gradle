@@ -167,8 +167,8 @@ dependencies {
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 
     implementation fg.deobf("mezz.jei:jei-1.19.2-forge:11.6.0.1018")
-    implementation fg.deobf("com.lowdragmc.ldlib:ldlib-forge-1.19.2:1.0.20.a") { transitive = false }
-    implementation fg.deobf("com.gregtechceu.gtceu:gtceu-forge-1.19.2:1.0.14.a") { transitive = false }
+    implementation fg.deobf("com.lowdragmc.ldlib:ldlib-forge-1.19.2:1.0.21.a") { transitive = false }
+    implementation fg.deobf("com.gregtechceu.gtceu:gtceu-forge-1.19.2:1.0.15.a") { transitive = false }
     implementation fg.deobf("com.simibubi.create:create-1.19.2:0.5.1.c-36:all") { transitive = false }
     implementation fg.deobf("curse.maven:configuration-444699:4519560") {transitive = false}
     implementation fg.deobf("curse.maven:applied-energistics-223794:4733119") {transitive = false}

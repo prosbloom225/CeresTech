@@ -180,7 +180,64 @@ public class CTFluids {
             .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
             .color(0xA26E4B) .iconSet(MaterialIconSet.FLUID)
             .buildAndRegister();
+    public static Material LiquidCrystalKevlar = new Material.Builder("liquid_crystal_kevlar")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xB3B35C) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+    public static Material PolyurethaneResin = new Material.Builder("polyurethane_resin")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xB3B35C) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
 
+    public static Material NMethyl2Pyrrolidone = new Material.Builder("n_methyl_2_pyrrolidone")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xFFFFFF) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
 
+    public static Material Aniline = new Material.Builder("aniline")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x4D4D1B) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+    public static Material DimethylTerephthalate = new Material.Builder("dimethyl_terephthalate")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xFFFFFF) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+    public static Material ThionylChloride = new Material.Builder("thionyl_chloride")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xFFFFFF) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+    public static Material SulfurDichloride = new Material.Builder("sulfur_dichloride")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x970505) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
+    public static Material PropionicAcid = new Material.Builder("propionic_acid")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xFFFFFF) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+    public static Material NickelTetracarbonyl = new Material.Builder("nickel_tetracarbonyl")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xFFFFFF) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
+    public static Material Formaldehyde = new Material.Builder("formaldehyde")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x7A447A) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
+    public static Material DiphenylmethaneDiisocyanateMixture= new Material.Builder("diphenylmethane_diisocyanate_mixture")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xBEAC29) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
+    public static Material DiaminodiphenylmethaneMixture = new Material.Builder("diaminodiphenylmethane_mixture")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xBEAC29) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
+    public static Material Phosgene = new Material.Builder("phosgene")
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x157A18) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
 
 }

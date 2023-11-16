@@ -12,6 +12,8 @@ import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import com.gregtechceu.gtceu.common.data.GTElements;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
+import com.tterrag.registrate.util.entry.ItemEntry;
+import net.minecraft.world.item.Item;
 
 import java.util.Objects;
 
@@ -22,6 +24,7 @@ import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastP
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey.DUST;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey.INGOT;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
+import static com.prosbloom.cerestech.api.machine.trait.CTRegistries.REGISTRATE;
 
 public class CTMaterials {
     public static Material LithiumFluoride= new Material.Builder("lithium_fluoride")
@@ -355,6 +358,31 @@ public class CTMaterials {
             .dust()
             .color(0xFFFFFF).iconSet(BRIGHT)
             .buildAndRegister();
+
+    public static Material ParaPhenylenediamine = new Material.Builder("para_phenylenediamine")
+            .dust()
+            .color(0xE5D855).iconSet(BRIGHT)
+            .buildAndRegister();
+    public static Material TerephthaloylChloride = new Material.Builder("terephthaloyl_chloride")
+            .dust()
+            .color(0x00E60B).iconSet(BRIGHT)
+            .buildAndRegister();
+
+    public static Material PolyurethaneCatalyst = new Material.Builder("polyurethane_catalyst")
+            .dust()
+            .color(0x000000).iconSet(METALLIC)
+            .buildAndRegister();
+
+    public static Material Pentaerythritol = new Material.Builder("pentaerythritol")
+            .dust()
+            .color(0xFFFFFF).iconSet(METALLIC)
+            .buildAndRegister();
+
+    public static Material DiphenylmethaneDiisocyanate = new Material.Builder("diphenylmethane_diisocyanate")
+            .dust()
+            .color(0xBEAC29).iconSet(METALLIC)
+            .buildAndRegister();
+
 
     // Plasma
     // TODO - dont see a way to add plasma to fluids like you can with addFlags..making a plasma specific element for the time

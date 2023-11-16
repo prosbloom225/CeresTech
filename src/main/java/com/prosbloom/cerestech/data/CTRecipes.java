@@ -2,6 +2,7 @@ package com.prosbloom.cerestech.data;
 
 import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEItems;
+import appeng.entity.TinyTNTPrimedEntity;
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.UnificationEntry;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.data.recipe.CraftingComponent;
@@ -62,6 +63,7 @@ public class CTRecipes {
         registerImplosionCompressorRecipes(provider);
         registerFluidHeaterRecipes(provider);
         registerExtractorRecipes(provider);
+        registerFluidSolidifierRecipes(provider);
 
         IndustrialGreenhouseRecipes.registerIndustrialGreenhouseRecipes(provider);
         NuclearReactorRecipes.registerNuclearReactorRecipes(provider);
@@ -520,6 +522,28 @@ public class CTRecipes {
                 .outputItems(CASING_STELLAR_CONTAINMENT, 4)
                 .duration(150).EUt(VA[UV])
                 .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("woven_kevlar")
+                .inputItems(KEVLAR_FIBER, 8)
+                .circuitMeta(8)
+                .outputItems(WOVEN_KEVLAR)
+                .duration(300).EUt(VA[EV])
+                .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("spinneret")
+                .inputItems(ELECTRIC_MOTOR_EV, 4)
+                .inputItems(FIELD_GENERATOR_EV, 4)
+                .inputItems(plate, IncoloyMA956, 4)
+                .inputItems(screw, Titanium, 16)
+                .inputItems(ring, StainlessSteel, 16)
+                .inputItems(cableGtSingle, Aluminium, 2)
+                .inputItems(pipeTinyFluid, Polytetrafluoroethylene, 4)
+                .inputItems(CustomTags.EV_CIRCUITS, 4)
+                .inputItems(SHAPE_EXTRUDER_WIRE, 16)
+                .inputFluids(SolderingAlloy.getFluid(144))
+                .outputItems(SPINNERET)
+                .duration(2400).EUt(VA[EV])
+                .save(provider);
     }
 
     private static void registerCircuitAssemblerRecipes(Consumer<FinishedRecipe> provider) {
@@ -697,6 +721,151 @@ public class CTRecipes {
                 .outputItems(BIO_CELLS, 32)
                 .outputFluids(Mutagen.getFluid(2000))
                 .duration(3600).EUt(VA[EV])
+                .save(provider);
+
+        CHEMICAL_RECIPES.recipeBuilder("liquid_crystal_kevlar")
+                .inputItems(dust, CalciumChloride, 1)
+                .inputItems(dust, ParaPhenylenediamine, 9)
+                .inputItems(dust, TerephthaloylChloride, 9)
+                .inputFluids(NMethyl2Pyrrolidone.getFluid(1000))
+                .circuitMeta(1)
+                .outputFluids(LiquidCrystalKevlar.getFluid(9000))
+                .outputFluids(DilutedHydrochloricAcid.getFluid(2000))
+                .duration(600).EUt(VA[UV])
+                .save(provider);
+
+        CHEMICAL_RECIPES.recipeBuilder("n_methyl_2_pyrrolidone")
+                .inputFluids(Dimethylamine.getFluid(1000))
+                .inputFluids(Butadiene.getFluid(1000))
+                .outputFluids(NMethyl2Pyrrolidone.getFluid(1000))
+                .duration(600).EUt(VA[IV])
+                .save(provider);
+
+        CHEMICAL_RECIPES.recipeBuilder("para_phenylenediamine_dust")
+                .inputItems(dust, Palladium, 1)
+                .inputFluids(NitrogenDioxide.getFluid(100))
+                .inputFluids(Hydrogen.getFluid(6000))
+                .inputFluids(Aniline.getFluid(6000))
+                .circuitMeta(1)
+                .outputItems(dust, ParaPhenylenediamine, 16)
+                .outputFluids(Water.getFluid(2000))
+                .duration(600).EUt(VA[UV])
+                .save(provider);
+
+        CHEMICAL_RECIPES.recipeBuilder("aniline")
+                .inputItems(dust, Palladium, 1)
+                .inputFluids(Nitrobenzene.getFluid(9000))
+                .circuitMeta(1)
+                .inputFluids(Hydrogen.getFluid(54000))
+                .outputFluids(Aniline.getFluid(9000))
+                .outputFluids(Water.getFluid(18000))
+                .duration(600).EUt(VA[UV])
+                .save(provider);
+
+        CHEMICAL_RECIPES.recipeBuilder("terepthaloyl_chloride")
+                .inputFluids(ThionylChloride.getFluid(18000))
+                .inputFluids(DimethylTerephthalate.getFluid(5000))
+                .inputFluids(CarbonDioxide.getFluid(6000))
+                .circuitMeta(1)
+                .outputItems(dust, TerephthaloylChloride, 64)
+                .outputItems(dust, TerephthaloylChloride, 48)
+                .outputFluids(SulfurDioxide.getFluid(18000))
+                .outputFluids(DilutedHydrochloricAcid.getFluid(22000))
+                .duration(600).EUt(VA[EV])
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("thionyl_chloride")
+                .inputFluids(SulfurDichloride.getFluid(1000))
+                .inputFluids(SulfurTrioxide.getFluid(1000))
+                .outputFluids(ThionylChloride.getFluid(1000))
+                .outputFluids(SulfurDioxide.getFluid(1000))
+                .duration(150).EUt(VA[HV])
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("sulfur_dichloride")
+                .inputFluids(Chlorine.getFluid(16000))
+                .inputItems(dust, Sulfur, 8)
+                .circuitMeta(2)
+                .outputFluids(SulfurDichloride.getFluid(8000))
+                .duration(800).EUt(VA[LV])
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("dimethyl_terephthalate")
+                .inputFluids(PhthalicAcid.getFluid(1000))
+                .inputFluids(Methanol.getFluid(2000))
+                .inputFluids(SulfuricAcid.getFluid(2000))
+                .outputFluids(DilutedSulfuricAcid.getFluid(2000))
+                .outputFluids(DimethylTerephthalate.getFluid(1000))
+                .duration(250).EUt(VA[EV])
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("polyurethane_resin")
+                .inputItems(dust, PolyurethaneCatalyst, 1)
+                .inputItems(dust, Pentaerythritol, 1)
+                .inputItems(dust,DiphenylmethaneDiisocyanate, 5)
+                .inputFluids(Ethylene.getFluid(4000))
+                .inputFluids(Silicon.getFluid(1000))
+                .circuitMeta(1)
+                .outputFluids(PolyurethaneResin.getFluid(1000))
+                .duration(200).EUt(VA[UV])
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("polyurethane_catalyst")
+                .inputItems(dust, Tin, 1)
+                .inputFluids(Butyraldehyde.getFluid(2000))
+                .inputFluids(PropionicAcid.getFluid(1000))
+                .inputFluids(Iron3Chloride.getFluid(100))
+                .circuitMeta(1)
+                .outputItems(dust, PolyurethaneCatalyst, 1)
+                .duration(600).EUt(VA[EV])
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("propionic_acid")
+                .inputFluids(Ethylene.getFluid(1000))
+                .inputFluids(CarbonMonoxide.getFluid(1000))
+                .inputFluids(NickelTetracarbonyl.getFluid(100))
+                .inputFluids(Water.getFluid(1000))
+                .circuitMeta(1)
+                .outputFluids(PropionicAcid.getFluid(1000))
+                .duration(200).EUt(VA[EV])
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("nickel_tetracarbonyl")
+                .inputItems(dust, Nickel, 1)
+                .inputFluids(CarbonMonoxide.getFluid(4000))
+                .outputFluids(NickelTetracarbonyl.getFluid(1000))
+                .duration(400).EUt(VA[EV])
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("pentaerythritol")
+                .inputItems(dust, SodiumHydroxide, 1)
+                .inputFluids(AceticAcid.getFluid(1000))
+                .inputFluids(Formaldehyde.getFluid(4000))
+                .outputItems(dust, Pentaerythritol, 21)
+                .duration(600).EUt(VA[HV])
+                .save(provider);
+        // TODO - move to chemical plant
+        CHEMICAL_RECIPES.recipeBuilder("formaldehyde")
+                .inputItems(dust, Vanadium, 1)
+                .inputItems(dust, Iron, 1)
+                .inputFluids(Oxygen.getFluid(32000))
+                .inputFluids(Methanol.getFluid(32000))
+                .circuitMeta(21)
+                .outputFluids(Formaldehyde.getFluid(32000))
+                .duration(600).EUt(VA[HV])
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("diphenylmethane_diisocyanate_mixture")
+                .inputFluids(DiaminodiphenylmethaneMixture.getFluid(1000))
+                .inputFluids(Phosgene.getFluid(2000))
+                .outputFluids(DiphenylmethaneDiisocyanateMixture.getFluid(1000))
+                .duration(1200).EUt(VA[EV])
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("diaminodiphenylmethane_mixture")
+                .inputFluids(Formaldehyde.getFluid(1000))
+                .inputFluids(Aniline.getFluid(2000))
+                .inputFluids(HydrochloricAcid.getFluid(2000))
+                .circuitMeta(1)
+                .outputFluids(DiaminodiphenylmethaneMixture.getFluid(1000))
+                .duration(1200).EUt(VA[EV])
+                .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("phosgene")
+                .inputFluids(CarbonMonoxide.getFluid(1000))
+                .inputFluids(Chlorine.getFluid(2000))
+                .circuitMeta(2)
+                .outputFluids(Phosgene.getFluid(1000))
+                .duration(50).EUt(VA[HV])
                 .save(provider);
     }
     private static void registerCentrifugeRecipes(Consumer<FinishedRecipe> provider) {
@@ -1124,6 +1293,12 @@ public class CTRecipes {
                 .outputItems(dust, Blizz, 1)
                 .duration(400).EUt(VA[HV])
                 .save(provider);
+        CHEMICAL_BATH_RECIPES.recipeBuilder("kevlar_plate")
+                .inputItems(WOVEN_KEVLAR, 1)
+                .inputFluids(PolyurethaneResin.getFluid(1000))
+                .outputItems(plate, Kevlar)
+                .duration(1200).EUt(VA[LV])
+                .save(provider);
     }
 
     private static void registerDistillationTowerRecipes(Consumer<FinishedRecipe> provider) {
@@ -1156,6 +1331,13 @@ public class CTRecipes {
                 .inputFluids(FermentedBacterialSludge.getFluid(10))
                 .outputFluids(Mutagen.getFluid(1))
                 .duration(60).EUt(VA[EV])
+                .save(provider);
+
+        DISTILLATION_RECIPES.recipeBuilder("diphenylmethane_diisocyanate")
+                .inputFluids(DiphenylmethaneDiisocyanateMixture.getFluid(1000))
+                .outputItems(dust, DiphenylmethaneDiisocyanate, 29)
+                .outputFluids(HydrochloricAcid.getFluid(5000))
+                .duration(2500).EUt(VA[EV])
                 .save(provider);
     }
     private static void registerPyrolyseOvenRecipes(Consumer<FinishedRecipe> provider) {
@@ -1309,6 +1491,15 @@ public class CTRecipes {
                 .inputItems(Items.KELP, 64)
                 .outputItems(SEAWEED_EXTRACT, 1)
                 .duration(3600).EUt(VA[UV])
+                .save(provider);
+    }
+
+    private static void registerFluidSolidifierRecipes(Consumer<FinishedRecipe> provider) {
+        FLUID_SOLIDFICATION_RECIPES.recipeBuilder("kevlar_fiber")
+                .notConsumable(SPINNERET)
+                .inputFluids(LiquidCrystalKevlar.getFluid(18))
+                .outputItems(KEVLAR_FIBER)
+                .duration(100).EUt(VA[EV])
                 .save(provider);
     }
 }

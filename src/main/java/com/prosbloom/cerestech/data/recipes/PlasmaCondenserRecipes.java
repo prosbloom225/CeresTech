@@ -18,6 +18,7 @@ public class PlasmaCondenserRecipes {
     public static void registerPlasmaCondenserRecipes(Consumer<FinishedRecipe> provider) {
         PLASMA_CONDENSER_RECIPES.recipeBuilder("dubnium_plasma_to_ingot")
                 .inputFluids(DubniumPlasma.getFluid(FluidStorageKeys.PLASMA, 144))
+                .inputFluids(Helium.getFluid(1000))
                 .notConsumable(SHAPE_MOLD_INGOT)
                 .outputItems(ingot, Dubnium, 1)
                 .EUt(VA[EV])

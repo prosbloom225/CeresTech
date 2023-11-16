@@ -1,146 +1,74 @@
 package com.prosbloom.cerestech.data.recipes;
 
+import com.gregtechceu.gtceu.api.data.chemical.material.Material;
+import com.gregtechceu.gtceu.data.recipe.builder.GTRecipeBuilder;
+import com.lowdragmc.lowdraglib.side.fluid.FluidStack;
+import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.world.item.Item;
 
+import java.util.List;
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.foil;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.plate;
 import static com.gregtechceu.gtceu.common.data.GTItems.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
-import static com.prosbloom.cerestech.data.CTFluids.*;
+import static com.prosbloom.cerestech.data.CTFluids.SterilizedBioCatalystMedium;
+import static com.prosbloom.cerestech.data.CTItems.BIO_CIRCUIT_BOARD;
+import static com.prosbloom.cerestech.data.CTItems.ULTRA_BIO_MUTATED_CIRCUIT_BOARD;
 import static com.prosbloom.cerestech.data.CTMaterials.*;
-import static com.prosbloom.cerestech.data.CTRecipeTypes.HEAT_EXCHANGER_RECIPES;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.PCB_FACTORY_RECIPES;
 
 public class PcbFactoryRecipes {
+    private static final List<Material> boards = List.of(Polyethylene, PolyvinylChloride, Polytetrafluoroethylene, Epoxy, ReinforcedEpoxyResin, Kevlar, Radox);
+    private static class CircuitBoard {
+        public ItemEntry output;
+        public List<Material> boards;
+        public Material foil;
+        public Material foil2;
+        public int tier;
+        public Material fluid;
+
+        public CircuitBoard(ItemEntry output, List<Material> boards, Material foil, Material foil2, int tier, Material fluid) {
+            this.output = output;
+            this.boards = boards;
+            this.foil = foil;
+            this.foil2 = foil2;
+            this.tier = tier;
+            this.fluid = fluid;
+        }
+
+
+    }
+
+    private static final List<CircuitBoard> CircuitBoards = List.of(
+            new CircuitBoard(PLASTIC_CIRCUIT_BOARD, List.of(Polyethylene, PolyvinylChloride, Polytetrafluoroethylene, Epoxy, ReinforcedEpoxyResin, Polybenzimidazole, Kevlar, Radox), Copper, AnnealedCopper, LV, null),
+            new CircuitBoard(ADVANCED_CIRCUIT_BOARD, List.of(Epoxy, ReinforcedEpoxyResin, Polybenzimidazole, Kevlar, Radox), Gold, Electrum, MV, null),
+            new CircuitBoard(EXTREME_CIRCUIT_BOARD, List.of(Epoxy, ReinforcedEpoxyResin, Polybenzimidazole, Kevlar, Radox), Aluminium, Electrum, HV, null),
+            new CircuitBoard(ELITE_CIRCUIT_BOARD, List.of(ReinforcedEpoxyResin, Polybenzimidazole, Kevlar, Radox), Palladium, Platinum, EV, null),
+            new CircuitBoard(WETWARE_CIRCUIT_BOARD, List.of(ReinforcedEpoxyResin, Polybenzimidazole, Kevlar, Radox), EnrichedHolmium, NiobiumTitanium, IV, SterileGrowthMedium),
+            new CircuitBoard(ULTRA_BIO_MUTATED_CIRCUIT_BOARD, List.of(Polybenzimidazole, Kevlar, Radox), Neutronium, EnrichedNaquadahTriniumEuropiumDuranide, LuV, SterilizedBioCatalystMedium)
+    );
     public static void registerPcbFactoryRecipes(Consumer<FinishedRecipe> provider) {
-        // PVC
-        PCB_FACTORY_RECIPES.recipeBuilder("pcb_plastic_1_pvc")
-                .inputItems(plate, PolyvinylChloride, 1)
-                .inputItems(foil, AnnealedCopper, 72)
-                .inputItems(foil, Copper, 24)
-                .inputFluids(SulfuricAcid.getFluid(700))
-                .inputFluids(Iron3Chloride.getFluid(350))
-                .circuitMeta(1)
-                .outputItems(PLASTIC_CIRCUIT_BOARD, 12)
-                .EUt(VA[MV])
-                .duration(500)
-                .save(provider);
-
-        // Epoxy
-        PCB_FACTORY_RECIPES.recipeBuilder("pcb_epoxy_1_epoxy")
-                .inputItems(plate, Epoxy, 1)
-                .inputItems(foil, Electrum, 96)
-                .inputItems(foil, Gold, 48)
-                .inputFluids(SulfuricAcid.getFluid(700))
-                .inputFluids(Iron3Chloride.getFluid(700))
-                .circuitMeta(1)
-                .outputItems(ADVANCED_CIRCUIT_BOARD, 12)
-                .EUt(VA[HV])
-                .duration(500)
-                .save(provider);
-
-        // Reinforced Expoxy Resin
-        PCB_FACTORY_RECIPES.recipeBuilder("pcb_fiber_reinforced_1")
-                .inputItems(plate, ReinforcedEpoxyResin, 1)
-                .inputItems(foil, Electrum, 96)
-                .inputItems(foil, Gold, 48)
-                .inputFluids(SulfuricAcid.getFluid(700))
-                .inputFluids(Iron3Chloride.getFluid(700))
-                .circuitMeta(1)
-                .outputItems(EXTREME_CIRCUIT_BOARD, 12)
-                .EUt(VA[EV])
-                .duration(500)
-                .save(provider);
-
-        // PBI
-        PCB_FACTORY_RECIPES.recipeBuilder("pcb_multi_layer_1")
-                .inputItems(plate, Polybenzimidazole, 1)
-                .inputItems(foil, Platinum, 96)
-                .inputItems(foil, Palladium, 48)
-                .inputFluids(SulfuricAcid.getFluid(700))
-                .inputFluids(Iron3Chloride.getFluid(700))
-                .circuitMeta(1)
-                .outputItems(ELITE_CIRCUIT_BOARD, 12)
-                .EUt(VA[IV])
-                .duration(500)
-                .save(provider);
-
-        // Kevlar
-        PCB_FACTORY_RECIPES.recipeBuilder("pcb_wetware_1")
-                .inputItems(plate, Kevlar, 1)
-                .inputItems(foil, EnrichedHolmium, 96)
-                .inputItems(foil, NiobiumTitanium, 48)
-                .inputFluids(SterileGrowthMedium.getFluid(700))
-                .inputFluids(SulfuricAcid.getFluid(700))
-                .inputFluids(Iron3Chloride.getFluid(700))
-                .circuitMeta(1)
-                .outputItems(WETWARE_CIRCUIT_BOARD, 12)
-                .EUt(VA[IV])
-                .duration(500)
-                .save(provider);
-
-
-
-        // Radox
-        PCB_FACTORY_RECIPES.recipeBuilder("pcb_plastic_1_radox")
-                .inputItems(plate, Radox, 1)
-                .inputItems(foil, AnnealedCopper, 72)
-                .inputItems(foil, Copper, 24)
-                .inputFluids(SulfuricAcid.getFluid(700))
-                .inputFluids(Iron3Chloride.getFluid(350))
-                .circuitMeta(1)
-                .outputItems(PLASTIC_CIRCUIT_BOARD, 96)
-                .EUt(VA[UV])
-                .duration(200)
-                .save(provider);
-        PCB_FACTORY_RECIPES.recipeBuilder("pcb_epoxy_1_radox")
-                .inputItems(plate, Radox, 1)
-                .inputItems(foil, Electrum, 96)
-                .inputItems(foil, Gold, 48)
-                .inputFluids(SulfuricAcid.getFluid(700))
-                .inputFluids(Iron3Chloride.getFluid(700))
-                .circuitMeta(1)
-                .outputItems(ADVANCED_CIRCUIT_BOARD, 64)
-                .EUt(VA[UV])
-                .duration(200)
-                .save(provider);
-        PCB_FACTORY_RECIPES.recipeBuilder("pcb_fiber_reinforced_1_radox")
-                .inputItems(plate, Radox, 1)
-                .inputItems(foil, Electrum, 96)
-                .inputItems(foil, Gold, 48)
-                .inputFluids(SulfuricAcid.getFluid(700))
-                .inputFluids(Iron3Chloride.getFluid(700))
-                .circuitMeta(1)
-                .outputItems(EXTREME_CIRCUIT_BOARD, 48)
-                .EUt(VA[UV])
-                .duration(200)
-                .save(provider);
-        PCB_FACTORY_RECIPES.recipeBuilder("pcb_multi_layer_1_radox")
-                .inputItems(plate, Radox, 1)
-                .inputItems(foil, Platinum, 96)
-                .inputItems(foil, Palladium, 48)
-                .inputFluids(SulfuricAcid.getFluid(700))
-                .inputFluids(Iron3Chloride.getFluid(700))
-                .circuitMeta(1)
-                .outputItems(ELITE_CIRCUIT_BOARD, 32)
-                .EUt(VA[UV])
-                .duration(200)
-                .save(provider);
-        PCB_FACTORY_RECIPES.recipeBuilder("pcb_wetware_1_radox")
-                .inputItems(plate, Radox, 1)
-                .inputItems(foil, EnrichedHolmium, 96)
-                .inputItems(foil, NiobiumTitanium, 48)
-                .inputFluids(SterileGrowthMedium.getFluid(700))
-                .inputFluids(SulfuricAcid.getFluid(700))
-                .inputFluids(Iron3Chloride.getFluid(700))
-                .circuitMeta(1)
-                .outputItems(WETWARE_CIRCUIT_BOARD, 32)
-                .EUt(VA[UV])
-                .duration(200)
-                .save(provider);
-
+        for (CircuitBoard circuit : CircuitBoards) {
+            int count = 0;
+            for (Material board : circuit.boards) {
+                GTRecipeBuilder recipe = PCB_FACTORY_RECIPES.recipeBuilder(String.format("pcb_%s_%s_1", circuit.output.get().toString(), board.getUnlocalizedName()))
+                        .inputItems(plate, board, 1)
+                        .inputItems(foil, circuit.foil, 16 + count*8)
+                        .inputItems(foil, circuit.foil2, 16 + count*8)
+                        .inputFluids(Iron3Chloride.getFluid(250))
+                        .inputFluids(SulfuricAcid.getFluid(500))
+                        .circuitMeta(1)
+                        .outputItems((Item)circuit.output.get(), 8 * ++count)
+                        .EUt(VA[circuit.tier]).duration(500);
+                if (circuit.fluid != null)
+                    recipe.inputFluids(circuit.fluid.getFluid(2000));
+                recipe.save(provider);
+            }
+        }
     }
 }

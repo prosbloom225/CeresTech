@@ -1271,6 +1271,7 @@ public class CTRecipes {
                 .inputItems(ELECTRIC_PUMP_LuV, 2)
                 .inputItems(CustomTags.LuV_CIRCUITS, 2)
                 .inputItems(SENSOR_LuV)
+                .inputFluids(SolderingAlloy.getFluid(1440))
                 .outputItems(PLASMA_CONDENSER)
                 .duration(300).EUt(VA[IV])
                 .save(provider);

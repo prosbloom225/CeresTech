@@ -454,6 +454,7 @@ public class CTMaterials {
         TitaniumTungstenCarbide.addFlags(GENERATE_FINE_WIRE, GENERATE_GEAR);
         Neutronium.addFlags(GENERATE_FOIL);
         MolybdenumDisilicide.addFlags(GENERATE_BOLT_SCREW);
+        IncoloyMA956.addFlags(GENERATE_BOLT_SCREW);
 
 
     }

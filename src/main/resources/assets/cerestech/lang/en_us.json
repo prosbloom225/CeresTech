@@ -310,6 +310,7 @@
   "material.diphenylmethane_diisocyanate_mixture": "Diphenylmethane Diisocyanate Mixture",
   "material.phosgene": "Phosgene",
   "material.diaminodiphenylmethane_mixture": "DiaminoDiphenylmethane Mixture",
+  "material.dubnium_plasma": "Dubnium",
 
   "cerestech.multiblock.nuclear_reactor.fuel": "Fuel: %s",
   "cerestech.multiblock.nuclear_reactor.coolant_output": "Coolant Output: %d"

@@ -51,6 +51,10 @@
   "block.cerestech.uv_void_miner": "Void Miner Mk III",
   "cerestech.machine.void_miner.tooltip": "Requires 20mb/s of Drilling Fluid",
 
+  "block.cerestech.luv_void_quarry": "Void Quarry Mk I",
+  "block.cerestech.zpm_void_quarry": "Void Quarry Mk II",
+  "block.cerestech.uv_void_quarry": "Void Quarry Mk III",
+
   "block.cerestech.chemical_plant": "Chemical Plant",
   "block.cerestech.mega_chemical_reactor": "Mega Chemical Reactor",
   "block.cerestech.mega_multi_smelter": "Mega Multi Smelter",

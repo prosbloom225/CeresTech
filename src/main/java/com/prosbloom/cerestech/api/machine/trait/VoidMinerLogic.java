@@ -27,7 +27,7 @@ public class VoidMinerLogic extends RecipeLogic {
 
     private final static int BASE_TIME = 720;
     @Nullable
-    private static final List<Map.Entry<Integer, Material>> veinMaterials = List.<Map.Entry<Integer, Material>>of(
+    protected static final List<Map.Entry<Integer, Material>> veinMaterials = List.<Map.Entry<Integer, Material>>of(
             entry(6, Bauxite),
             entry(2, Ilmenite),
             entry(1, Aluminium),
@@ -158,7 +158,7 @@ public class VoidMinerLogic extends RecipeLogic {
     }
 
     @Nullable
-    private GTRecipe getOreMinerRecipe() {
+    protected GTRecipe getOreMinerRecipe() {
         if (getMachine().getLevel() instanceof ServerLevel && veinMaterials != null) {
             Material material = veinMaterials.get(GTUtil.getRandomItem(veinMaterials, veinMaterials.size())).getValue();
             ItemStack stack = ChemicalHelper.get(TagPrefix.get(ConfigHolder.INSTANCE.machines.bedrockOreDropTagPrefix), material, getMachine().getTier());

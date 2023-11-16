@@ -2,7 +2,6 @@ package com.prosbloom.cerestech.data;
 
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.prosbloom.cerestech.api.machine.trait.CTCreativeModeTab;
-import com.prosbloom.cerestech.api.machine.trait.CTRegistries;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.world.item.Item;
 
@@ -41,5 +40,10 @@ public class CTItems {
     public static ItemEntry<Item> KEVLAR_FIBER = REGISTRATE.item("kevlar_fiber", Item::new).lang("Kevlar Fiber").register();
     public static ItemEntry<Item> WOVEN_KEVLAR = REGISTRATE.item("woven_kevlar", Item::new).lang("Woven Kevlar").register();
     public static ItemEntry<Item> SPINNERET = REGISTRATE.item("spinneret", Item::new).lang("Spinneret").register();
+    // Stone
+    public static ItemEntry<Item> STONE_MOON = REGISTRATE.item("stone_moon", Item::new).lang("Moon Stone").register();
+    public static ItemEntry<Item> STONE_DEIMOS = REGISTRATE.item("stone_deimos", Item::new).lang("Deimos Stone").register();
+    public static ItemEntry<Item> STONE_PHOBOS= REGISTRATE.item("stone_phobos", Item::new).lang("Phobos Stone").register();
+    public static ItemEntry<Item> STONE_MARS = REGISTRATE.item("stone_mars", Item::new).lang("Mars Stone").register();
 
 }

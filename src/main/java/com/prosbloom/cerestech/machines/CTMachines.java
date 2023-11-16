@@ -514,6 +514,29 @@ public class CTMachines {
             .register(),
     LuV, ZPM, UV);
 
+    public static  MultiblockMachineDefinition[] VOID_QUARRY = registerTieredMultis("void_quarry", VoidQuarryMachine::new, (tier, builder) -> builder
+                    .rotationState(RotationState.NON_Y_AXIS)
+                    .langValue("%s Void Quarry %s".formatted(VLVH[tier], VLVT[tier]))
+                    .recipeType(new GTRecipeType(GTCEu.id("void_quarry"), "dummy"))
+                    .tooltips(
+                            Component.translatable("cerestech.machine.void_miner.tooltip"))
+                    .appearanceBlock(() -> VoidQuarryMachine.getCasingState(tier))
+                    .pattern((definition) -> FactoryBlockPattern.start()
+                            .aisle("XXX", "#F#", "#F#", "#F#", "###", "###", "###")
+                            .aisle("XXX", "FCF", "FCF", "FCF", "#F#", "#F#", "#F#")
+                            .aisle("XSX", "#F#", "#F#", "#F#", "###", "###", "###")
+                            .where('S', controller(blocks(definition.get())))
+                            .where('X', blocks(VoidMinerMachine.getCasingState(tier)).setMinGlobalLimited(3)
+                                    .or(abilities(PartAbility.INPUT_ENERGY, PartAbility.IMPORT_FLUIDS).setMinGlobalLimited(1).setMaxGlobalLimited(3))
+                                    .or(abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(1)))
+                            .where('C', blocks(VoidQuarryMachine.getCasingState(tier)))
+                            .where('F', blocks(VoidQuarryMachine.getFrameState(tier)))
+                            .where('#', any())
+                            .build())
+                    .workableCasingRenderer(VoidQuarryMachine.getBaseTexture(tier), GTCEu.id("block/multiblock/bedrock_ore_miner"), false)
+                    .register(),
+            LuV, ZPM, UV);
+
     public static MultiblockMachineDefinition BACTERIAL_VAT = REGISTRATE.multiblock("bacterial_vat", WorkableElectricMultiblockMachine::new)
             .langValue("Bacterial Vat")
             .rotationState(RotationState.NON_Y_AXIS)

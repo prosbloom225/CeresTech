@@ -384,7 +384,6 @@ public class CTMaterials {
             .color(0xBEAC29).iconSet(METALLIC)
             .buildAndRegister();
 
-
     // Plasma
     // TODO - dont see a way to add plasma to fluids like you can with addFlags..making a plasma specific element for the time
     public static Material SilverPlasma = new Material.Builder("silver_plasma")

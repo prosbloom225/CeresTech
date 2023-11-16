@@ -2,14 +2,12 @@ package com.prosbloom.cerestech.data.recipes;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.data.recipe.builder.GTRecipeBuilder;
-import com.lowdragmc.lowdraglib.side.fluid.FluidStack;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Item;
 
 import java.util.List;
 import java.util.function.Consumer;
-import java.util.stream.Stream;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.foil;
@@ -17,7 +15,6 @@ import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.plate;
 import static com.gregtechceu.gtceu.common.data.GTItems.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.prosbloom.cerestech.data.CTFluids.SterilizedBioCatalystMedium;
-import static com.prosbloom.cerestech.data.CTItems.BIO_CIRCUIT_BOARD;
 import static com.prosbloom.cerestech.data.CTItems.ULTRA_BIO_MUTATED_CIRCUIT_BOARD;
 import static com.prosbloom.cerestech.data.CTMaterials.*;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.PCB_FACTORY_RECIPES;

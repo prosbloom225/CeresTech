@@ -158,7 +158,7 @@ public class CTRecipes {
                 'P', ELECTRIC_PUMP_EV,
                 'C', CustomTags.EV_CIRCUITS,
                 'W', new UnificationEntry(wireGtOctal, Silver),
-                'H', HULL[HV]);
+                'H', HULL[HV].asStack());
 
 
         registerMachineRecipe(provider, DEHYDRATOR, "WCW", "WMW", "PRP", 'M', CraftingComponent.HULL, 'R', ROBOT_ARM, 'P', PLATE, 'C', CIRCUIT, 'W', CABLE);

@@ -41,6 +41,7 @@ import java.util.List;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
+import static com.gregtechceu.gtceu.common.data.GCyMBlocks.CASING_REACTION_SAFE;
 import static com.gregtechceu.gtceu.common.data.GCyMBlocks.HEAT_VENT;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
@@ -639,6 +640,33 @@ public class CTMachines {
             .workableCasingRenderer(CTMod.id("block/casings/solid/machine_casing_enriched_naquadah"),
                     CTMod.id("block/multiblock/stellar_forge"), false)
             .compassSections(GTCompassSections.TIER[UHV])
+            .compassNodeSelf()
+            .register();
+
+    public static MultiblockMachineDefinition PLASMA_CONDENSER = REGISTRATE.multiblock("plasma_condenser", WorkableElectricMultiblockMachine::new)
+            .langValue("Plasma Condenser")
+            .rotationState(RotationState.NON_Y_AXIS)
+            .appearanceBlock(CASING_REACTION_SAFE)
+            .recipeType(CTRecipeTypes.PLASMA_CONDENSER_RECIPES)
+            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .pattern(definition -> FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.BACK, RelativeDirection.UP)
+                    .aisle("#####", "#XXX#", "#XXX#", "#XXX#", "#####")
+                    .aisle("#XXX#", "XG#GX", "X#P#X", "XG#GX", "#XXX#")
+                    .aisle("#XSX#", "X#P#X", "XPPPX", "X#P#X", "#XXX#")
+                    .aisle("#XXX#", "XG#GX", "X#P#X", "XG#GX", "#XXX#")
+                    .aisle("#####", "#XXX#", "#XXX#", "#XXX#", "#####")
+                    .where('S', controller(blocks(definition.getBlock())))
+                    .where('X', blocks(CASING_REACTION_SAFE.get())
+                            .or(abilities(PartAbility.INPUT_ENERGY))
+                            .or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                            .or(autoAbilities(true, false, true)))
+                    .where('G', blocks(CASING_STEEL_GEARBOX.get()))
+                    .where('P', blocks(CASING_TUNGSTENSTEEL_PIPE.get()))
+                    .where('#', Predicates.air())
+                    .build())
+            .workableCasingRenderer(GTCEu.id("block/casings/gcym/reaction_safe_mixing_casing"),
+                    CTMod.id("block/multiblock/plasma_condenser"), false)
+            .compassSections(GTCompassSections.TIER[LuV])
             .compassNodeSelf()
             .register();
 }

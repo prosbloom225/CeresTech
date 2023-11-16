@@ -69,6 +69,7 @@ public class CTRecipes {
         PcbFactoryRecipes.registerPcbFactoryRecipes(provider);
         NeutronActivatorRecipes.registerNeutronActivatorRecipes(provider);
         StellarForgeRecipes.registerStellarForgeRecipes(provider);
+        PlasmaCondenserRecipes.registerPlasmaCondenserRecipes(provider);
     }
 
     private static void registerManualRecipes(Consumer<FinishedRecipe> provider) {
@@ -1261,6 +1262,18 @@ public class CTRecipes {
                 .outputItems(BIO_MAINFRAME_UEV)
                 .duration(6000).EUt(VA[UHV])
                 .save(provider);
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("plasma_condenser")
+                .inputItems(screw, IncoloyMA956, 16)
+                .inputItems(plate, RhodiumPlatedPalladium, 8)
+                .inputItems(gear, TungstenCarbide, 4)
+                .inputItems(ELECTRIC_MOTOR_LuV, 2)
+                .inputItems(ELECTRIC_PUMP_LuV, 2)
+                .inputItems(CustomTags.LuV_CIRCUITS, 2)
+                .inputItems(SENSOR_LuV)
+                .outputItems(PLASMA_CONDENSER)
+                .duration(300).EUt(VA[IV])
+                .save(provider);
     }
 
     private static void registerMaceratorRecipes(Consumer<FinishedRecipe> provider) {
@@ -1461,6 +1474,13 @@ public class CTRecipes {
                 .outputFluids(SilverPlasma.getFluid(FluidStorageKeys.PLASMA, 144))
                 .duration(16).EUt(VA[ZPM])
                 .fusionStartEU(350000000)
+                .save(provider);
+        FUSION_RECIPES.recipeBuilder("dubnium_plasma")
+                .inputFluids(Neon.getFluid(288))
+                .inputFluids(Americium.getFluid(288))
+                .outputFluids(DubniumPlasma.getFluid(FluidStorageKeys.PLASMA, 288))
+                .duration(16).EUt(VA[ZPM])
+                .fusionStartEU(200000000)
                 .save(provider);
 
     }

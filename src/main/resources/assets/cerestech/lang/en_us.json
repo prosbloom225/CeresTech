@@ -24,6 +24,9 @@
   "block.cerestech.bacterial_vat": "Bacterial Vat",
   "gtceu.bacterial_vat": "Bacterial Vat",
 
+  "block.plasma_condenser.bacterial_vat": "Plasma Condenser",
+  "gtceu.plasma_condenser": "Plasma Condenser",
+
   "block.cerestech.neutron_activator": "Neutron Activator",
   "gtceu.neutron_activator": "Neutron Activator",
   "block.cerestech.speeding_pipe_casing": "Speeding Pipe Casing",

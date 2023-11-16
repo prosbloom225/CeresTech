@@ -87,4 +87,9 @@ public class CTRecipeTypes {
             .setEUIO(IO.IN)
             .setProgressBar(GuiTextures.PROGRESS_BAR_FUSION, LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.REPLICATOR);
+
+    public final static GTRecipeType PLASMA_CONDENSER_RECIPES = register("plasma_condenser", MULTIBLOCK).setMaxIOSize(2, 2, 2, 2)
+            .setEUIO(IO.IN)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_CRYSTALLIZATION, LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.COOLING);
 }

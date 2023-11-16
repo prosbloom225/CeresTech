@@ -436,7 +436,7 @@ public class CTMaterials {
         Astatine.setProperty(DUST, new DustProperty(1,0));
         Actinium.setProperty(DUST, new DustProperty(1,0));
         Scandium.setProperty(DUST, new DustProperty(1,0));
-        Dubnium.setProperty(DUST, new DustProperty(1,0));
+        Dubnium.setProperty(INGOT, new IngotProperty());
 
         Lead.addFlags(GENERATE_DENSE);
         StainlessSteel.addFlags(GENERATE_DENSE);

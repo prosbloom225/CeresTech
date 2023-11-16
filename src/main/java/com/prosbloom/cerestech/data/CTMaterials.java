@@ -331,7 +331,7 @@ public class CTMaterials {
             .buildAndRegister();
 
     public static Material CosmicNeutronium = new Material.Builder("cosmic_neutronium")
-            .ingot()
+            .dust()
             .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
             .color(0x2B2B2B).iconSet(OPAL)
             .appendFlags(STD_METAL)
@@ -356,6 +356,7 @@ public class CTMaterials {
 
     public static Material InfinityCatalyst = new Material.Builder("infinity_catalyst")
             .dust()
+            .ore()
             .color(0xFFFFFF).iconSet(BRIGHT)
             .buildAndRegister();
 
@@ -390,6 +391,12 @@ public class CTMaterials {
             .plasma()
             .color(0xDCDCFF).iconSet(SHINY)
             .element(GTElements.Ag)
+            .buildAndRegister();
+
+    public static Material DubniumPlasma = new Material.Builder("dubnium_plasma")
+            .plasma()
+            .color(0x9CB9BB).iconSet(SHINY)
+            .element(GTElements.Db)
             .buildAndRegister();
 
     public static void init() {
@@ -429,6 +436,7 @@ public class CTMaterials {
         Astatine.setProperty(DUST, new DustProperty(1,0));
         Actinium.setProperty(DUST, new DustProperty(1,0));
         Scandium.setProperty(DUST, new DustProperty(1,0));
+        Dubnium.setProperty(DUST, new DustProperty(1,0));
 
         Lead.addFlags(GENERATE_DENSE);
         StainlessSteel.addFlags(GENERATE_DENSE);

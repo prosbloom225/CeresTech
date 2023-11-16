@@ -161,6 +161,9 @@ repositories {
     maven {
         url = "https://modmaven.dev/"
     }
+    maven {
+        url = 'https://maven.nova-committee.cn/releases'
+    }
 }
 dependencies {
     minecraft "net.minecraftforge:forge:1.19.2-43.2.21"

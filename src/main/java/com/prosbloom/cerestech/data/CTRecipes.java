@@ -2,7 +2,6 @@ package com.prosbloom.cerestech.data;
 
 import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEItems;
-import appeng.entity.TinyTNTPrimedEntity;
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.UnificationEntry;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.data.recipe.CraftingComponent;
@@ -13,12 +12,10 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
-import java.util.Random;
 import java.util.function.Consumer;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
-import static com.gregtechceu.gtceu.common.data.GTBlocks.CASING_LAMINATED_GLASS;
 import static com.gregtechceu.gtceu.common.data.GTItems.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.HULL;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
@@ -31,7 +28,6 @@ import static com.prosbloom.cerestech.data.CTFluids.*;
 import static com.prosbloom.cerestech.data.CTItems.*;
 import static com.prosbloom.cerestech.data.CTMaterials.*;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.BACTERIAL_VAT_RECIPES;
-import static com.prosbloom.cerestech.data.CTRecipeTypes.STELLAR_FORGE_RECIPES;
 import static com.prosbloom.cerestech.data.CTTagPrefixes.dustOxide;
 import static com.prosbloom.cerestech.data.CTTagPrefixes.fuelPure;
 import static com.prosbloom.cerestech.data.recipes.HotCoolantTurbineRecipes.registerHotCoolantTurbineRecipes;
@@ -1470,11 +1466,6 @@ public class CTRecipes {
     }
 
     private static void registerImplosionCompressorRecipes(Consumer<FinishedRecipe> provider) {
-        IMPLOSION_RECIPES.recipeBuilder("cosmic_neutronium_nugget")
-                .inputItems(dustTiny, CosmicNeutronium, 9)
-                .outputItems(nugget, CosmicNeutronium, 1)
-                .duration(1).EUt(VA[UV])
-                .save(provider);
     }
 
     private static void registerFluidHeaterRecipes(Consumer<FinishedRecipe> provider) {

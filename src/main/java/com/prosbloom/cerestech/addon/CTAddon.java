@@ -4,6 +4,7 @@ import com.gregtechceu.gtceu.api.addon.GTAddon;
 import com.gregtechceu.gtceu.api.addon.IGTAddon;
 import com.mojang.logging.LogUtils;
 import com.prosbloom.cerestech.CTMod;
+import com.prosbloom.cerestech.compat.CTRecipeCompat;
 import com.prosbloom.cerestech.data.*;
 import com.prosbloom.cerestech.machines.CTMachines;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -42,6 +43,7 @@ public class CTAddon implements IGTAddon{
     @Override
     public void addRecipes(Consumer<FinishedRecipe> provider) {
         CTRecipes.init(provider);
+        CTRecipeCompat.init(provider);
 
     }
     @Override

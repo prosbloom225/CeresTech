@@ -50,5 +50,21 @@ public class CTItems {
     public static ItemEntry<Item> STONE_CERES = REGISTRATE.item("stone_ceres", Item::new).lang("Ceres Stone").register();
     public static ItemEntry<Item> STONE_CALLISTO = REGISTRATE.item("stone_callisto", Item::new).lang("Callisto Stone").register();
     public static ItemEntry<Item> STONE_EUROPA = REGISTRATE.item("stone_europa", Item::new).lang("Europa Stone").register();
-
+    public static ItemEntry<Item> STONE_IO= REGISTRATE.item("stone_io", Item::new).lang("Io Stone").register();
+    public static ItemEntry<Item> STONE_MERCURY= REGISTRATE.item("stone_mercury", Item::new).lang("Mercury Stone").register();
+    public static ItemEntry<Item> STONE_VENUS= REGISTRATE.item("stone_venus", Item::new).lang("Venus Stone").register();
+    public static ItemEntry<Item> STONE_ENCELADUS= REGISTRATE.item("stone_enceladus", Item::new).lang("Venus Stone").register();
+    public static ItemEntry<Item> STONE_MIRANDA= REGISTRATE.item("stone_miranda", Item::new).lang("Miranda Stone").register();
+    public static ItemEntry<Item> STONE_TITAN= REGISTRATE.item("stone_titan", Item::new).lang("Titan Stone").register();
+    public static ItemEntry<Item> STONE_OBERON= REGISTRATE.item("stone_oberon", Item::new).lang("Oberon Stone").register();
+    public static ItemEntry<Item> STONE_TRITON = REGISTRATE.item("stone_triton", Item::new).lang("Triton Stone").register();
+    public static ItemEntry<Item> STONE_PROTEUS = REGISTRATE.item("stone_proteus", Item::new).lang("Proteus Stone").register();
+    public static ItemEntry<Item> STONE_HAUMEA= REGISTRATE.item("stone_haumea", Item::new).lang("Haumea Stone").register();
+    public static ItemEntry<Item> STONE_MAKEMAKE= REGISTRATE.item("stone_makemake", Item::new).lang("Makemake Stone").register();
+    public static ItemEntry<Item> STONE_PLUTO = REGISTRATE.item("stone_pluto", Item::new).lang("Pluto Stone").register();
+    public static ItemEntry<Item> STONE_CENTAURI_B= REGISTRATE.item("stone_centauri_b", Item::new).lang("Centauri-B Stone").register();
+    public static ItemEntry<Item> STONE_BARNARDA_F = REGISTRATE.item("stone_barnarda_f", Item::new).lang("Barnarda-F Stone").register();
+    public static ItemEntry<Item> STONE_VEGA_B = REGISTRATE.item("stone_vega_b", Item::new).lang("Vega-B Stone").register();
+    public static ItemEntry<Item> STONE_TCETI_E = REGISTRATE.item("stone_tceti_e", Item::new).lang("TCeti-E Stone").register();
+    public static ItemEntry<Item> STONE_BARNARDA_E = REGISTRATE.item("stone_barnarda_e", Item::new).lang("Barnarda-E Stone").register();
 }

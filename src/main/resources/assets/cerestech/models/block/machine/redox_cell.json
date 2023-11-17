@@ -1,19 +1,19 @@
 {
   "parent": "gtceu:block/cube_2_layer_tintindex",
   "textures": {
-    "particle": "gtceu:block/machines/redox/side",
-    "bot_down": "gtceu:block/machines/redox/bottom",
-    "bot_up": "gtceu:block/machines/redox/top",
-    "bot_north": "gtceu:block/machines/redox/side",
-    "bot_east": "gtceu:block/machines/redox/side",
-    "bot_south": "gtceu:block/machines/redox/side",
-    "bot_west": "gtceu:block/machines/redox/side",
-    "top_down": "gtceu:block/machines/redox_top/bottom",
-    "top_up": "gtceu:block/machines/redox_top/top",
-    "top_north": "gtceu:block/machines/redox_top/side",
-    "top_east": "gtceu:block/machines/redox_top/side",
-    "top_south": "gtceu:block/machines/redox_top/side",
-    "top_west": "gtceu:block/machines/redox_top/side"
+    "particle": "cerestech:block/machines/redox/side",
+    "bot_down": "cerestech:block/machines/redox/bottom",
+    "bot_up": "cerestech:block/machines/redox/top",
+    "bot_north": "cerestech:block/machines/redox/side",
+    "bot_east": "cerestech:block/machines/redox/side",
+    "bot_south": "cerestech:block/machines/redox/side",
+    "bot_west": "cerestech:block/machines/redox/side",
+    "top_down": "cerestech:block/machines/redox_top/bottom",
+    "top_up": "cerestech:block/machines/redox_top/top",
+    "top_north": "cerestech:block/machines/redox_top/side",
+    "top_east": "cerestech:block/machines/redox_top/side",
+    "top_south": "cerestech:block/machines/redox_top/side",
+    "top_west": "cerestech:block/machines/redox_top/side"
   }
 }
 

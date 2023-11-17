@@ -1,5 +1,6 @@
 package com.prosbloom.cerestech.compat;
 
+import com.prosbloom.cerestech.CTMod;
 import net.minecraft.data.recipes.FinishedRecipe;
 
 import java.util.function.Consumer;
@@ -19,15 +20,17 @@ public class CTRecipeCompat {
         registerImplosionCompressorRecipes(provider);
     }
     private static void registerImplosionCompressorRecipes(Consumer<FinishedRecipe> provider) {
-        IMPLOSION_RECIPES.recipeBuilder("cosmic_neutronium_nugget")
-                .inputItems(dustTiny, CosmicNeutronium, 9)
-                .outputItems(neutron_nugget)
-                .duration(1).EUt(VA[UEV])
-                .save(provider);
-        IMPLOSION_RECIPES.recipeBuilder("infinity_catalyst")
-                .inputItems(dust, InfinityCatalyst, 64)
-                .outputItems(infinity_catalyst)
-                .duration(1).EUt(VA[UHV])
-                .save(provider);
+        if (CTMod.isAvariaLoaded()) {
+            IMPLOSION_RECIPES.recipeBuilder("cosmic_neutronium_nugget")
+                    .inputItems(dustTiny, CosmicNeutronium, 9)
+                    .outputItems(neutron_nugget)
+                    .duration(1).EUt(VA[UEV])
+                    .save(provider);
+            IMPLOSION_RECIPES.recipeBuilder("infinity_catalyst")
+                    .inputItems(dust, InfinityCatalyst, 64)
+                    .outputItems(infinity_catalyst)
+                    .duration(1).EUt(VA[UHV])
+                    .save(provider);
+        }
     }
 }

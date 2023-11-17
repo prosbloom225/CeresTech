@@ -5,8 +5,10 @@ import com.gregtechceu.gtceu.api.addon.GTAddon;
 import com.gregtechceu.gtceu.api.addon.forge.AddonFinderImpl;
 import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
+import com.lowdragmc.lowdraglib.LDLib;
 import com.mojang.logging.LogUtils;
 import com.prosbloom.cerestech.addon.CTAddon;
+import com.prosbloom.cerestech.api.CTValues;
 import com.prosbloom.cerestech.api.machine.trait.CTRegistries;
 import com.prosbloom.cerestech.data.CTBlocks;
 import com.prosbloom.cerestech.machines.CTMachines;
@@ -107,4 +109,6 @@ public class CTMod
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
     }
+
+    public static boolean isAvariaLoaded() { return LDLib.isModLoaded(CTValues.MODID_AVARITIA);}
 }

@@ -435,7 +435,7 @@ public class CTMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .appearanceBlock(CASING_STAINLESS_CLEAN)
             .recipeType(CTRecipeTypes.NEUTRON_ACTIVATOR_RECIPES)
-            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .recipeModifier(GTRecipeModifiers.PARALLEL_HATCH.apply(OverclockingLogic.PERFECT_OVERCLOCK, GTRecipeModifiers.ELECTRIC_OVERCLOCK))
             .pattern(definition -> FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.BACK, RelativeDirection.UP)
                     .aisle("XXSXX", "XXXXX", "XXXXX", "XXXXX", "XXXXX")
                     .aisle("F###F", "#GGG#", "#GPG#", "#GGG#", "F###F")

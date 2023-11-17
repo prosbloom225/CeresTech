@@ -22,7 +22,7 @@ public class NeutronActivatorRecipes {
                 .outputFluids(EnrichedNaquadahWaste.getFluid(2000))
                 .outputFluids(Fluorine.getFluid(2000))
                 .EUt(VA[LuV])
-                .duration(200)
+                .duration(70)
                 .save(provider);
         NEUTRON_ACTIVATOR_RECIPES.recipeBuilder("acidic_naquadria_to_sulfate")
                 .inputFluids(AcidicNaquadriaSolution.getFluid(3000))
@@ -31,7 +31,7 @@ public class NeutronActivatorRecipes {
                 .outputFluids(NaquadriaWaste.getFluid(2000))
                 .outputFluids(Fluorine.getFluid(2000))
                 .EUt(VA[LuV])
-                .duration(200)
+                .duration(70)
                 .save(provider);
     }
 }

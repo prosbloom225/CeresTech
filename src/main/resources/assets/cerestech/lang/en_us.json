@@ -51,9 +51,14 @@
   "block.cerestech.uv_void_miner": "Void Miner Mk III",
   "cerestech.machine.void_miner.tooltip": "Requires 20mb/s of Drilling Fluid",
 
-  "block.cerestech.luv_void_quarry": "Void Quarry Mk I",
-  "block.cerestech.zpm_void_quarry": "Void Quarry Mk II",
-  "block.cerestech.uv_void_quarry": "Void Quarry Mk III",
+  "block.cerestech.ev_void_quarry": "Void Quarry",
+  "block.cerestech.iv_void_quarry": "Elite Void Quarry Mk I",
+  "block.cerestech.luv_void_quarry": "Elite Void Quarry Mk II",
+  "block.cerestech.zpm_void_quarry": "Elite Void Quarry Mk III",
+  "block.cerestech.uv_void_quarry": "Ultimate Void Quarry",
+  "block.cerestech.uhv_void_quarry": "Epic Void Quarry Mk I",
+  "block.cerestech.uev_void_quarry": "Epic Void Quarry Mk II",
+  "block.cerestech.uiv_void_quarry": "Epic Void Quarry MK III",
 
   "block.cerestech.chemical_plant": "Chemical Plant",
   "block.cerestech.mega_chemical_reactor": "Mega Chemical Reactor",
@@ -342,6 +347,9 @@
   "material.diaminodiphenylmethane_mixture": "DiaminoDiphenylmethane Mixture",
   "material.dubnium_plasma": "Dubnium",
   "material.attuned_tengam": "Attuned Tengam",
+  "material.infinity": "Infinity",
+  "material.draconium": "Draconium",
+  "material.mysterious_crystal": "Mysterious Crystal",
 
   "cerestech.multiblock.nuclear_reactor.fuel": "Fuel: %s",
   "cerestech.multiblock.nuclear_reactor.coolant_output": "Coolant Output: %d"

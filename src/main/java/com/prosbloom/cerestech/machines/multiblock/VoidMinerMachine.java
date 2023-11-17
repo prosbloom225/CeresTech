@@ -27,6 +27,7 @@ import com.gregtechceu.gtceu.utils.GTUtil;
 import com.lowdragmc.lowdraglib.side.fluid.FluidStack;
 import com.prosbloom.cerestech.api.machine.trait.VoidMinerLogic;
 import net.minecraft.core.SectionPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
@@ -45,7 +46,7 @@ import static com.prosbloom.cerestech.data.CTFluids.Pyrotheum;
 import static java.util.Map.entry;
 
 public class VoidMinerMachine extends WorkableElectricMultiblockMachine implements ITieredMachine {
-    private int tier;
+    private final int tier;
     private final static FluidStack coolant = DrillingFluid.getFluid(20);
 
     @Override
@@ -64,12 +65,22 @@ public class VoidMinerMachine extends WorkableElectricMultiblockMachine implemen
     }
 
     public static Block getCasingState(int tier) {
+        if (tier == GTValues.EV)
+            return MACHINE_CASING_EV.get();
+        if (tier == GTValues.IV)
+            return MACHINE_CASING_IV.get();
         if (tier == GTValues.LuV)
             return MACHINE_CASING_LuV.get();
         if (tier == GTValues.ZPM)
             return MACHINE_CASING_ZPM.get();
         if (tier == GTValues.UV)
             return MACHINE_CASING_UV.get();
+        if (tier == GTValues.UHV)
+            return MACHINE_CASING_UHV.get();
+        if (tier == GTValues.UEV)
+            return MACHINE_CASING_UEV.get();
+        if (tier == GTValues.UIV)
+            return MACHINE_CASING_UEV.get();
         return GTBlocks.CASING_STEEL_SOLID.get();
     }
 
@@ -110,12 +121,22 @@ public class VoidMinerMachine extends WorkableElectricMultiblockMachine implemen
     }
 
     public static ResourceLocation getBaseTexture(int tier) {
+        if (tier == GTValues.EV)
+            return GTCEu.id("block/casings/voltage/ev/side");
+        if (tier == GTValues.IV)
+            return GTCEu.id("block/casings/voltage/iv/side");
         if (tier == GTValues.LuV)
             return GTCEu.id("block/casings/voltage/luv/side");
         if (tier == GTValues.ZPM)
             return GTCEu.id("block/casings/voltage/zpm/side");
         if (tier == GTValues.UV)
             return GTCEu.id("block/casings/voltage/uv/side");
+        if (tier == GTValues.UHV)
+            return GTCEu.id("block/casings/voltage/uhv/side");
+        if (tier == GTValues.UEV)
+            return GTCEu.id("block/casings/voltage/uev/side");
+        if (tier == GTValues.UIV)
+            return GTCEu.id("block/casings/voltage/uIv/side");
         return GTCEu.id("block/casings/solid/machine_casing_solid_steel");
     }
 }

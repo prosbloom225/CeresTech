@@ -9,11 +9,11 @@ import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.prosbloom.cerestech.api.machine.trait.VoidQuarryLogic;
 import net.minecraft.world.level.block.Block;
 
-import static com.gregtechceu.gtceu.common.data.GTMaterials.Titanium;
-import static com.gregtechceu.gtceu.common.data.GTMaterials.TungstenSteel;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.prosbloom.cerestech.data.CTMaterials.*;
 
 public class VoidQuarryMachine extends VoidMinerMachine {
+
 
     public VoidQuarryMachine(IMachineBlockEntity holder, Integer tier) {
         super(holder, tier);
@@ -32,9 +32,9 @@ public class VoidQuarryMachine extends VoidMinerMachine {
         if (tier == GTValues.LuV)
             return GTBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, Adamantium).get();
         if (tier == GTValues.ZPM)
-            return GTBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, GTMaterials.Americium).get();
+            return GTBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, Americium).get();
         if (tier == GTValues.UV)
-            return GTBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, GTMaterials.Neutronium).get();
+            return GTBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, Neutronium).get();
         if (tier == GTValues.UHV)
             return GTBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, FluxedElectrum).get();
         if (tier == GTValues.UEV)

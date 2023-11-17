@@ -27,20 +27,18 @@ import static java.util.Map.entry;
 
 public class VoidQuarryLogic extends VoidMinerLogic {
 
-    private final static int BASE_TIME = 720;
+    private final static int BASE_TIME = 2160;
     @Nullable
-    private static List<Map.Entry<Integer, Item>> veinMaterials;
+    private List<Map.Entry<Integer, Item>> veinMaterials;
 
     public VoidQuarryLogic(IRecipeLogicMachine machine) {
         super(machine);
-        if (veinMaterials == null)
-            initVeinMaterials();
     }
 
     private void initVeinMaterials() {
         veinMaterials = new ArrayList<>();
         StoneCentrifugeRecipes.stones.stream()
-                .filter(s->getMachine().getTier() > s.tier())
+                .filter(s->getMachine().getTier()-2 > s.tier())
                 .forEach(s->veinMaterials.add(new AbstractMap.SimpleEntry<>(10-s.tier(), s.stone())));
     }
     @Override
@@ -54,15 +52,17 @@ public class VoidQuarryLogic extends VoidMinerLogic {
         if (veinMaterials == null)
             initVeinMaterials();
         if (getMachine().getLevel() instanceof ServerLevel && veinMaterials != null) {
-            ItemStack stack = new ItemStack(veinMaterials.get(GTUtil.getRandomItem(veinMaterials, veinMaterials.size())).getValue());
-            if (!stack.isEmpty()) {
-                var recipe = GTRecipeBuilder.ofRaw()
-                        .duration((int) (BASE_TIME/(Math.pow(getMachine().getTier(), 2))))
-                        .EUt(GTValues.VA[getMachine().getTier()])
-                        .outputItems(stack)
-                        .buildRawRecipe();
-                if (recipe.matchRecipe(getMachine()).isSuccess() && recipe.matchTickRecipe(getMachine()).isSuccess()) {
-                    return recipe;
+            if (!veinMaterials.isEmpty()) {
+                ItemStack stack = new ItemStack(veinMaterials.get(GTUtil.getRandomItem(veinMaterials, veinMaterials.size())).getValue());
+                if (!stack.isEmpty()) {
+                    var recipe = GTRecipeBuilder.ofRaw()
+                            .duration((int) (BASE_TIME / (Math.pow(getMachine().getTier(), 3))))
+                            .EUt(GTValues.VA[getMachine().getTier()])
+                            .outputItems(stack)
+                            .buildRawRecipe();
+                    if (recipe.matchRecipe(getMachine()).isSuccess() && recipe.matchTickRecipe(getMachine()).isSuccess()) {
+                        return recipe;
+                    }
                 }
             }
         }

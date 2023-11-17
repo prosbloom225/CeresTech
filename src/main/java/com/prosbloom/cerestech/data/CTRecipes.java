@@ -8,6 +8,7 @@ import com.gregtechceu.gtceu.data.recipe.CraftingComponent;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
 import com.prosbloom.cerestech.data.recipes.*;
+import com.prosbloom.cerestech.machines.CTMachines;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -1049,6 +1050,102 @@ public class CTRecipes {
     }
 
     private static void registerAssemblyLineRecipes(Consumer<FinishedRecipe> provider) {
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("void_quarry_ev")
+                .inputItems(LARGE_MINER[EV])
+                .inputItems(frameGt, Titanium, 9)
+                .inputItems(plate, Tungsten, 3)
+                .inputItems(ELECTRIC_MOTOR_EV, 9)
+                .inputItems(EMITTER_EV, 9)
+                .inputItems(FIELD_GENERATOR_EV, 9)
+                .inputItems(screw, Titanium, 36)
+                .inputFluids(Neon.getFluid(20000))
+                .inputFluids(SolderingAlloy.getFluid(1440))
+                .outputItems(VOID_QUARRY[EV])
+                .duration(6000).EUt(VA[EV])
+                .save(provider);
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("void_quarry_iv")
+                .inputItems(LARGE_MINER[IV])
+                .inputItems(frameGt, TungstenSteel, 9)
+                .inputItems(plate, TungstenSteel, 3)
+                .inputItems(ELECTRIC_MOTOR_IV, 9)
+                .inputItems(EMITTER_IV, 9)
+                .inputItems(FIELD_GENERATOR_IV, 9)
+                .inputItems(screw, TungstenSteel, 36)
+                .inputFluids(Neon.getFluid(20000))
+                .inputFluids(SolderingAlloy.getFluid(1440))
+                .outputItems(VOID_QUARRY[IV])
+                .duration(6000).EUt(VA[IV])
+                .save(provider);
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("void_quarry_luv")
+                .inputItems(LARGE_MINER[LuV])
+                .inputItems(frameGt, Adamantium, 9)
+                .inputItems(plate, RhodiumPlatedPalladium, 3)
+                .inputItems(ELECTRIC_MOTOR_LuV, 9)
+                .inputItems(EMITTER_LuV, 9)
+                .inputItems(FIELD_GENERATOR_LuV, 9)
+                .inputItems(screw, RhodiumPlatedPalladium, 36)
+                .inputFluids(Neon.getFluid(20000))
+                .inputFluids(SolderingAlloy.getFluid(1440))
+                .outputItems(VOID_QUARRY[LuV])
+                .duration(6000).EUt(VA[LuV])
+                .save(provider);
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("void_quarry_uv")
+                .inputItems(VOID_MINER[UV])
+                .inputItems(frameGt, Neutronium, 9)
+                .inputItems(plate, Neutronium, 3)
+                .inputItems(ELECTRIC_MOTOR_UV, 9)
+                .inputItems(EMITTER_UV, 9)
+                .inputItems(FIELD_GENERATOR_UV, 9)
+                .inputItems(screw, Neutronium, 36)
+                .inputFluids(Neon.getFluid(20000))
+                .inputFluids(SolderingAlloy.getFluid(1440))
+                .outputItems(VOID_QUARRY[UV])
+                .duration(6000).EUt(VA[UV])
+                .save(provider);
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("void_quarry_uhv")
+                .inputItems(VOID_MINER[UV])
+                .inputItems(frameGt, CosmicNeutronium, 9)
+                .inputItems(plate, CosmicNeutronium, 3)
+                .inputItems(ELECTRIC_MOTOR_UHV, 9)
+                .inputItems(EMITTER_UHV, 9)
+                .inputItems(FIELD_GENERATOR_UHV, 9)
+                .inputItems(screw, CosmicNeutronium, 36)
+                .inputFluids(Neon.getFluid(20000))
+                .inputFluids(SolderingAlloy.getFluid(1440))
+                .outputItems(VOID_QUARRY[UHV])
+                .duration(6000).EUt(VA[UHV])
+                .save(provider);
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("void_quarry_uev")
+                .inputItems(VOID_MINER[UV])
+                .inputItems(frameGt, AttunedTengam, 9)
+                .inputItems(plate, AttunedTengam, 3)
+                .inputItems(ELECTRIC_MOTOR_UHV, 9)
+                .inputItems(EMITTER_UHV, 9)
+                .inputItems(FIELD_GENERATOR_UEV, 9)
+                .inputItems(screw, AttunedTengam, 36)
+                .inputFluids(Neon.getFluid(20000))
+                .inputFluids(SolderingAlloy.getFluid(1440))
+                .outputItems(VOID_QUARRY[UEV])
+                .duration(6000).EUt(VA[UEV])
+                .save(provider);
+        // TODO - UIV Components
+        /*
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("void_quarry_uiv")
+                .inputItems(VOID_MINER[UV])
+                .inputItems(frameGt, Infinity, 9)
+                .inputItems(plate, Infinity, 3)
+                .inputItems(MOTOR_UIV, 9)
+                .inputItems(EMITTER_UIV, 9)
+                .inputItems(FIELD_GENERATOR_UIV, 9)
+                .inputItems(screw, Infinity, 36)
+                .inputFluids(Neon.getFluid(20000))
+                .inputFluids(SolderingAlloy.getFluid(1440))
+                .outputItems(VOID_QUARRY[UIV])
+                .duration(6000).EUt(VA[UIV])
+                .save(provider);
+         */
+
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder("void_miner_luv")
                 .inputItems(LARGE_MINER[LuV])
                 .inputItems(frameGt, Tritanium, 9)

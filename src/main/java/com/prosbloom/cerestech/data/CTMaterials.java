@@ -367,6 +367,25 @@ public class CTMaterials {
             .appendFlags(EXT_METAL, GENERATE_FRAME, GENERATE_BOLT_SCREW)
             .buildAndRegister();
 
+    public static Material Infinity = new Material.Builder("infinity")
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xFFFFFF).iconSet(BRIGHT)
+            .appendFlags(EXT_METAL, GENERATE_FRAME, GENERATE_BOLT_SCREW)
+            .buildAndRegister();
+    public static Material Draconium = new Material.Builder("draconium")
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xFFFFFF).iconSet(BRIGHT)
+            .appendFlags(EXT_METAL)
+            .buildAndRegister();
+    public static Material MysteriousCrystal = new Material.Builder("mysterious_crystal")
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x158068).iconSet(BRIGHT)
+            .appendFlags(EXT_METAL)
+            .buildAndRegister();
+
     public static Material ParaPhenylenediamine = new Material.Builder("para_phenylenediamine")
             .dust()
             .color(0xE5D855).iconSet(BRIGHT)

@@ -535,7 +535,7 @@ public class CTMachines {
                             .build())
                     .workableCasingRenderer(VoidQuarryMachine.getBaseTexture(tier), GTCEu.id("block/multiblock/bedrock_ore_miner"), false)
                     .register(),
-            LuV, ZPM, UV);
+            EV, IV, LuV, ZPM, UV, UHV, UEV, UIV);
 
     public static MultiblockMachineDefinition BACTERIAL_VAT = REGISTRATE.multiblock("bacterial_vat", WorkableElectricMultiblockMachine::new)
             .langValue("Bacterial Vat")

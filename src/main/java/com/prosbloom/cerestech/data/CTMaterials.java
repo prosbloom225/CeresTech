@@ -334,7 +334,7 @@ public class CTMaterials {
             .dust()
             .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
             .color(0x2B2B2B).iconSet(OPAL)
-            .appendFlags(STD_METAL)
+            .appendFlags(STD_METAL, GENERATE_FRAME)
             .buildAndRegister();
 
     public static Material EnrichedNaquadahAlloy = new Material.Builder("enriched_naquadah_alloy")
@@ -351,13 +351,20 @@ public class CTMaterials {
             .color(0xF6F674).iconSet(METALLIC)
             .blastTemp(9000, BlastProperty.GasTier.HIGH, VA[ZPM], 1080)
             .components(RoseGold, 1, Gold, 1, Silver, 1, SterlingSilver, 1, SolderingAlloy, 1, RedSteel, 1, BlueSteel, 1, Naquadah, 1)
-            .appendFlags(EXT_METAL)
+            .appendFlags(EXT_METAL, GENERATE_FRAME)
             .buildAndRegister();
 
     public static Material InfinityCatalyst = new Material.Builder("infinity_catalyst")
             .dust()
             .ore()
             .color(0xFFFFFF).iconSet(BRIGHT)
+            .buildAndRegister();
+
+    public static Material AttunedTengam = new Material.Builder("attuned_tengam")
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x9FBF60).iconSet(BRIGHT)
+            .appendFlags(EXT_METAL, GENERATE_FRAME, GENERATE_BOLT_SCREW)
             .buildAndRegister();
 
     public static Material ParaPhenylenediamine = new Material.Builder("para_phenylenediamine")

@@ -334,7 +334,7 @@ public class CTMaterials {
             .dust()
             .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
             .color(0x2B2B2B).iconSet(OPAL)
-            .appendFlags(STD_METAL, GENERATE_FRAME)
+            .appendFlags(STD_METAL, GENERATE_FRAME, GENERATE_BOLT_SCREW)
             .buildAndRegister();
 
     public static Material EnrichedNaquadahAlloy = new Material.Builder("enriched_naquadah_alloy")

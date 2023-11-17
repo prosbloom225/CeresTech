@@ -175,7 +175,7 @@ dependencies {
     implementation fg.deobf("com.simibubi.create:create-1.19.2:0.5.1.c-36:all") { transitive = false }
     implementation fg.deobf("curse.maven:configuration-444699:4519560") {transitive = false}
     implementation fg.deobf("curse.maven:applied-energistics-223794:4733119") {transitive = false}
-    compileOnly fg.deobf("curse.maven:avaritia-reforged-623969:4752155") {transitive = false}
+    implementation fg.deobf("curse.maven:avaritia-reforged-623969:4752155") {transitive = false}
 
     compileOnly fg.deobf("com.tterrag.registrate:Registrate:MC1.19-1.1.5")
     jarJar(group: 'com.tterrag.registrate', name: 'Registrate', version: "[MC1.19,MC1.19.2)")

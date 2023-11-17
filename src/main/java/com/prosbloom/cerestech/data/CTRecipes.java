@@ -70,6 +70,7 @@ public class CTRecipes {
         NeutronActivatorRecipes.registerNeutronActivatorRecipes(provider);
         StellarForgeRecipes.registerStellarForgeRecipes(provider);
         PlasmaCondenserRecipes.registerPlasmaCondenserRecipes(provider);
+        StoneCentrifugeRecipes.registerStoneCentrifugeRecipes(provider);
     }
 
     private static void registerManualRecipes(Consumer<FinishedRecipe> provider) {

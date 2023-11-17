@@ -45,5 +45,10 @@ public class CTItems {
     public static ItemEntry<Item> STONE_DEIMOS = REGISTRATE.item("stone_deimos", Item::new).lang("Deimos Stone").register();
     public static ItemEntry<Item> STONE_PHOBOS= REGISTRATE.item("stone_phobos", Item::new).lang("Phobos Stone").register();
     public static ItemEntry<Item> STONE_MARS = REGISTRATE.item("stone_mars", Item::new).lang("Mars Stone").register();
+    public static ItemEntry<Item> STONE_ASTEROID = REGISTRATE.item("stone_asteroid", Item::new).lang("Asteroid Stone").register();
+    public static ItemEntry<Item> STONE_GANYMEDE = REGISTRATE.item("stone_ganymede", Item::new).lang("Ganymede Stone").register();
+    public static ItemEntry<Item> STONE_CERES = REGISTRATE.item("stone_ceres", Item::new).lang("Ceres Stone").register();
+    public static ItemEntry<Item> STONE_CALLISTO = REGISTRATE.item("stone_callisto", Item::new).lang("Callisto Stone").register();
+    public static ItemEntry<Item> STONE_EUROPA = REGISTRATE.item("stone_europa", Item::new).lang("Europa Stone").register();
 
 }

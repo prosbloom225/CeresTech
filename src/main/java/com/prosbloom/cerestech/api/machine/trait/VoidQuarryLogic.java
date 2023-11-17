@@ -31,14 +31,14 @@ public class VoidQuarryLogic extends VoidMinerLogic {
             // T2
             entry(2, STONE_DEIMOS.get()),
             entry(2, STONE_PHOBOS.get()),
-            entry(2, STONE_MARS.get())
-            /*
+            entry(2, STONE_MARS.get()),
             // T3
-            entry(2, AsteroidStone),
-            entry(2, GanymedeStone),
-            entry(2, CeresStone),
-            entry(2, CallistoStone),
-            entry(2, EuropaStone),
+            entry(2, STONE_ASTEROID.get()),
+            entry(2, STONE_GANYMEDE.get()),
+            entry(2, STONE_CERES.get()),
+            entry(2, STONE_CALLISTO.get()),
+            entry(2, STONE_EUROPA.get())
+            /*
             // T4
             entry(2, IoStone),
             entry(2, MercuryStone),

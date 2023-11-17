@@ -14,5 +14,11 @@
 - Neutron Activator
 - TJ Rare Earth Line
 - Void Ore Miners
+- Void Quarry Miners
 - Mega Multi Smelter
 - Mega Chemical Reactor
+- PCB Factory
+- Radox Line
+- Kevlar Line
+- Bioprocessor Circuits
+- Stellar Forge

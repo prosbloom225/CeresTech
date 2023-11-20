@@ -348,6 +348,7 @@ public class CTMaterials {
 
     public static Material FluxedElectrum = new Material.Builder("fluxed_electrum")
             .ingot()
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
             .color(0xF6F674).iconSet(METALLIC)
             .blastTemp(9000, BlastProperty.GasTier.HIGH, VA[ZPM], 1080)
             .components(RoseGold, 1, Gold, 1, Silver, 1, SterlingSilver, 1, SolderingAlloy, 1, RedSteel, 1, BlueSteel, 1, Naquadah, 1)

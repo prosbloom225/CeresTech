@@ -9,6 +9,7 @@ import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
 import com.prosbloom.cerestech.data.recipes.*;
 import com.prosbloom.cerestech.machines.CTMachines;
+import com.prosbloom.cerestech.machines.multiblock.VoidQuarryMachine;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -1064,7 +1065,7 @@ public class CTRecipes {
                 .duration(6000).EUt(VA[EV])
                 .save(provider);
         ASSEMBLY_LINE_RECIPES.recipeBuilder("void_quarry_iv")
-                .inputItems(LARGE_MINER[IV])
+                .inputItems(VOID_QUARRY[EV])
                 .inputItems(frameGt, TungstenSteel, 9)
                 .inputItems(plate, TungstenSteel, 3)
                 .inputItems(ELECTRIC_MOTOR_IV, 9)
@@ -1077,7 +1078,7 @@ public class CTRecipes {
                 .duration(6000).EUt(VA[IV])
                 .save(provider);
         ASSEMBLY_LINE_RECIPES.recipeBuilder("void_quarry_luv")
-                .inputItems(LARGE_MINER[LuV])
+                .inputItems(VOID_QUARRY[IV])
                 .inputItems(frameGt, Adamantium, 9)
                 .inputItems(plate, RhodiumPlatedPalladium, 3)
                 .inputItems(ELECTRIC_MOTOR_LuV, 9)
@@ -1090,7 +1091,7 @@ public class CTRecipes {
                 .duration(6000).EUt(VA[LuV])
                 .save(provider);
         ASSEMBLY_LINE_RECIPES.recipeBuilder("void_quarry_zpm")
-                .inputItems(VOID_MINER[ZPM])
+                .inputItems(VOID_QUARRY[LuV])
                 .inputItems(frameGt, NaquadahAlloy, 9)
                 .inputItems(plate, Europium, 3)
                 .inputItems(ELECTRIC_MOTOR_ZPM, 9)
@@ -1103,7 +1104,7 @@ public class CTRecipes {
                 .duration(6000).EUt(VA[ZPM])
                 .save(provider);
         ASSEMBLY_LINE_RECIPES.recipeBuilder("void_quarry_uv")
-                .inputItems(VOID_MINER[UV])
+                .inputItems(VOID_QUARRY[ZPM])
                 .inputItems(frameGt, Neutronium, 9)
                 .inputItems(plate, Neutronium, 3)
                 .inputItems(ELECTRIC_MOTOR_UV, 9)
@@ -1116,7 +1117,7 @@ public class CTRecipes {
                 .duration(6000).EUt(VA[UV])
                 .save(provider);
         ASSEMBLY_LINE_RECIPES.recipeBuilder("void_quarry_uhv")
-                .inputItems(VOID_MINER[UV])
+                .inputItems(VOID_QUARRY[UV])
                 .inputItems(frameGt, CosmicNeutronium, 9)
                 .inputItems(plate, CosmicNeutronium, 3)
                 .inputItems(ELECTRIC_MOTOR_UHV, 9)
@@ -1129,7 +1130,7 @@ public class CTRecipes {
                 .duration(6000).EUt(VA[UHV])
                 .save(provider);
         ASSEMBLY_LINE_RECIPES.recipeBuilder("void_quarry_uev")
-                .inputItems(VOID_MINER[UV])
+                .inputItems(VOID_QUARRY[UHV])
                 .inputItems(frameGt, AttunedTengam, 9)
                 .inputItems(plate, AttunedTengam, 3)
                 .inputItems(ELECTRIC_MOTOR_UHV, 9)
@@ -1144,7 +1145,7 @@ public class CTRecipes {
         // TODO - UIV Components
         /*
         ASSEMBLY_LINE_RECIPES.recipeBuilder("void_quarry_uiv")
-                .inputItems(VOID_MINER[UV])
+                .inputItems(VOID_QUARRY[UEV])
                 .inputItems(frameGt, Infinity, 9)
                 .inputItems(plate, Infinity, 3)
                 .inputItems(MOTOR_UIV, 9)

@@ -19,10 +19,11 @@ import java.util.Map;
 public class CTRecipeModifiers {
     public static GTRecipe volcanusParallel(MetaMachine machine, @Nonnull GTRecipe recipe, int maxParallel, boolean modifyDuration) {
         recipe = ebfOverclock(machine, recipe);
-        if (machine instanceof IRecipeCapabilityHolder holder) {
+        if (machine instanceof IRecipeCapabilityHolder holder && recipe != null) {
             recipe = tryParallel(holder, recipe, 1, maxParallel, modifyDuration, false);
-            recipe = RecipeHelper.applyOverclock(OverclockingLogic.PERFECT_OVERCLOCK, recipe,
-                    ((IOverclockMachine)machine).getOverclockVoltage());
+            if (recipe != null)
+                recipe = RecipeHelper.applyOverclock(OverclockingLogic.PERFECT_OVERCLOCK, recipe,
+                        ((IOverclockMachine)machine).getOverclockVoltage());
             return recipe;
         }
         return null;
@@ -36,7 +37,7 @@ public class CTRecipeModifiers {
         return null;
     }
 
-    private static GTRecipe tryParallel(IRecipeCapabilityHolder holder, GTRecipe original, int min, int max, boolean modifyDuration, boolean modifyVoltage) {
+    private static GTRecipe tryParallel(IRecipeCapabilityHolder holder, @Nonnull GTRecipe original, int min, int max, boolean modifyDuration, boolean modifyVoltage) {
         if (min > max) return null;
         int mid = (min + max) / 2;
         GTRecipe copied = original.copy(ContentModifier.multiplier(mid), modifyDuration);

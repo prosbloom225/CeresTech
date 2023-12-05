@@ -1,6 +1,0 @@
-{
-  "parent": "gtceu:block/cube_all",
-  "textures": {
-    "all": "cerestech:block/neutronium_charge"
-  }
-}

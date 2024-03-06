@@ -7,7 +7,7 @@ import com.gregtechceu.gtceu.api.capability.recipe.ItemRecipeCapability;
 import com.gregtechceu.gtceu.api.gui.GuiTextures;
 import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.recipe.ingredient.FluidIngredient;
-import com.gregtechceu.gtceu.api.recipe.ingredient.forge.SizedIngredientImpl;
+import com.gregtechceu.gtceu.api.recipe.ingredient.SizedIngredient;
 import com.gregtechceu.gtceu.common.item.IntCircuitBehaviour;
 import com.gregtechceu.gtceu.common.machine.multiblock.steam.LargeBoilerMachine;
 import com.lowdragmc.lowdraglib.gui.texture.IGuiTexture;
@@ -35,12 +35,12 @@ public class ReactorMachine extends LargeBoilerMachine {
             if (getOffsetTimer() % 10 == 0) {
                 // Determine the fuel ingredient
                 if (recipeLogic.getLastRecipe() != null) {
-                    fuel = ((SizedIngredientImpl) recipeLogic.getLastRecipe().getInputContents(ItemRecipeCapability.CAP).get(0).content).getInner().getItems()[0].getItem().toString();
+                    fuel = ((SizedIngredient) recipeLogic.getLastRecipe().getInputContents(ItemRecipeCapability.CAP).get(0).content).getInner().getItems()[0].getItem().toString();
                     // find the circuit value
                     ItemStack circuit = (recipeLogic.getLastRecipe().getInputContents(ItemRecipeCapability.CAP))
                             .stream()
-                            .filter(i->(IntCircuitBehaviour.isIntegratedCircuit(((SizedIngredientImpl)i.content).getItems()[0])))
-                            .map(i->((SizedIngredientImpl) i.content).getItems()[0])
+                            .filter(i->(IntCircuitBehaviour.isIntegratedCircuit(((SizedIngredient)i.content).getItems()[0])))
+                            .map(i->((SizedIngredient) i.content).getItems()[0])
                             .findAny().orElse(null);
                     if (circuit == null)
                         return;

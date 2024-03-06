@@ -6,5 +6,5 @@ import net.minecraft.world.item.Item;
 
 public class CTCustomTags {
 
-    public static final TagKey<Item> TEST_TAG = TagUtil.createPlatformItemTag("test/tag", "test_tag");
+    //public static final TagKey<Item> TEST_TAG = TagUtil.createPlatformItemTag("test/tag", "test_tag");
 }

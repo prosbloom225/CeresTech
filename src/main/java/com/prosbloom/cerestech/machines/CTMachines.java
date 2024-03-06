@@ -6,6 +6,7 @@ import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.data.RotationState;
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
+import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
 import com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine;
@@ -23,6 +24,7 @@ import com.gregtechceu.gtceu.common.data.*;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.lowdragmc.lowdraglib.side.fluid.FluidHelper;
 import com.prosbloom.cerestech.CTMod;
+import com.prosbloom.cerestech.api.machine.trait.NotifiableFluidTankMulti;
 import com.prosbloom.cerestech.data.CTRecipeModifiers;
 import com.prosbloom.cerestech.data.CTRecipeTypes;
 import com.prosbloom.cerestech.machines.multiblock.*;
@@ -45,6 +47,7 @@ import static com.gregtechceu.gtceu.common.data.GCyMBlocks.CASING_REACTION_SAFE;
 import static com.gregtechceu.gtceu.common.data.GCyMBlocks.HEAT_VENT;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
+import static com.gregtechceu.gtceu.common.data.GTMachines.ALL_TIERS;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.PYROLYSE_RECIPES;
 import static com.prosbloom.cerestech.api.machine.trait.CTRegistries.REGISTRATE;
 import static com.prosbloom.cerestech.data.CTBlocks.*;
@@ -288,58 +291,6 @@ public class CTMachines {
             .compassSections(GTCompassSections.TIER[EV])
             .compassNodeSelf()
             .register();
-
-
-    public final static MachineDefinition[] QUAD_INPUT_HATCH = registerTieredMachines("quad_input_hatch",
-            (holder, tier) -> new QuadFluidHatchPartMachine(holder, tier, IO.IN),
-            (tier, builder) -> builder
-                    .langValue(VNF[tier] + " Quad Input Hatch")
-                    .rotationState(RotationState.ALL)
-                    .abilities(PartAbility.IMPORT_FLUIDS)
-                    .overlayTieredHullRenderer("fluid_hatch.import")
-                    .tooltips(Component.translatable("gtceu.machine.fluid_hatch.import.tooltip"),
-                            Component.translatable("gtceu.universal.tooltip.fluid_storage_capacity", (8 * FluidHelper.getBucket()) * (1L << Math.min(9, tier))))
-                    .compassNode("fluid_hatch")
-                    .register(),
-            ALL_TIERS);
-    public final static MachineDefinition[] QUAD_OUTPUT_HATCH = registerTieredMachines("quad_output_hatch",
-            (holder, tier) -> new QuadFluidHatchPartMachine(holder, tier, IO.OUT),
-            (tier, builder) -> builder
-                    .langValue(VNF[tier] + " Quad Output Hatch")
-                    .rotationState(RotationState.ALL)
-                    .abilities(PartAbility.IMPORT_FLUIDS)
-                    .overlayTieredHullRenderer("fluid_hatch.export")
-                    .tooltips(Component.translatable("gtceu.machine.fluid_hatch.export.tooltip"),
-                            Component.translatable("gtceu.universal.tooltip.fluid_storage_capacity", (8 * FluidHelper.getBucket()) * (1L << Math.min(9, tier))))
-                    .compassNode("fluid_hatch")
-                    .register(),
-            ALL_TIERS);
-
-    public final static MachineDefinition[] NONUPLE_INPUT_HATCH = registerTieredMachines("nonuple_input_hatch",
-            (holder, tier) -> new NonupleFluidHatchPartMachine(holder, tier, IO.IN),
-            (tier, builder) -> builder
-                    .langValue(VNF[tier] + " Nonuple Input Hatch")
-                    .rotationState(RotationState.ALL)
-                    .abilities(PartAbility.IMPORT_FLUIDS)
-                    .overlayTieredHullRenderer("fluid_hatch.import")
-                    .tooltips(Component.translatable("gtceu.machine.fluid_hatch.import.tooltip"),
-                            Component.translatable("gtceu.universal.tooltip.fluid_storage_capacity", (8 * FluidHelper.getBucket()) * (1L << Math.min(9, tier))))
-                    .compassNode("fluid_hatch")
-                    .register(),
-            ALL_TIERS);
-    public final static MachineDefinition[] NONUPLE_OUTPUT_HATCH = registerTieredMachines("nonuple_output_hatch",
-            (holder, tier) -> new NonupleFluidHatchPartMachine(holder, tier, IO.OUT),
-            (tier, builder) -> builder
-                    .langValue(VNF[tier] + " Nonuple Output Hatch")
-                    .rotationState(RotationState.ALL)
-                    .abilities(PartAbility.IMPORT_FLUIDS)
-                    .overlayTieredHullRenderer("fluid_hatch.export")
-                    .tooltips(Component.translatable("gtceu.machine.fluid_hatch.export.tooltip"),
-                            Component.translatable("gtceu.universal.tooltip.fluid_storage_capacity", (8 * FluidHelper.getBucket()) * (1L << Math.min(9, tier))))
-                    .compassNode("fluid_hatch")
-                    .register(),
-            ALL_TIERS);
-
 
     public final static MachineDefinition[] ME_OUTPUT_BUS = registerTieredMachines("me_output_bus",
             (holder, tier) -> new MEItemPartMachine(holder, tier, IO.OUT),

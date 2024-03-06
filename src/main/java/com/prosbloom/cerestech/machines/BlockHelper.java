@@ -55,7 +55,7 @@ public class BlockHelper {
                 .initialProperties(properties)
                 .addLayer(type)
                 .blockstate(NonNullBiConsumer.noop())
-                .tag(GTToolType.WRENCH.harvestTag, BlockTags.MINEABLE_WITH_PICKAXE)
+                .tag(GTToolType.WRENCH.harvestTags.get(0), BlockTags.MINEABLE_WITH_PICKAXE)
                 .item(RendererBlockItem::new)
                 .model(NonNullBiConsumer.noop())
                 .build()

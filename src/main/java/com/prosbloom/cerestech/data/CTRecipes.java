@@ -234,45 +234,6 @@ public class CTRecipes {
     }
 
     private static void registerAssemblerRecipes(Consumer<FinishedRecipe> provider) {
-        for (int i = 0; i < QUAD_INPUT_HATCH.length; i++)
-            if (QUAD_INPUT_HATCH[i] != null)
-                ASSEMBLER_RECIPES.recipeBuilder("quad_input_hatch_" + QUAD_INPUT_HATCH[i].getTier())
-                        .inputItems(pipeQuadrupleFluid, Titanium, 1)
-                        .circuitMeta(1)
-                        .inputItems(HULL[i].asStack())
-                        .outputItems(QUAD_INPUT_HATCH[i].asStack())
-                        .duration(600).EUt(VA[EV])
-                        .save(provider);
-
-        for (int i = 0; i < QUAD_OUTPUT_HATCH.length; i++)
-            if (QUAD_OUTPUT_HATCH[i] != null)
-                ASSEMBLER_RECIPES.recipeBuilder("quad_output_hatch_" + QUAD_OUTPUT_HATCH[i].getTier())
-                        .inputItems(pipeQuadrupleFluid, Titanium, 1)
-                        .circuitMeta(2)
-                        .inputItems(HULL[i].asStack())
-                        .outputItems(QUAD_OUTPUT_HATCH[i].asStack())
-                        .duration(600).EUt(VA[EV])
-                        .save(provider);
-
-        for (int i = 0; i < NONUPLE_INPUT_HATCH.length; i++)
-            if (NONUPLE_INPUT_HATCH[i] != null)
-                ASSEMBLER_RECIPES.recipeBuilder("nonuple_input_hatch_" + NONUPLE_INPUT_HATCH[i].getTier())
-                        .inputItems(pipeNonupleFluid, Titanium, 1)
-                        .circuitMeta(1)
-                        .inputItems(HULL[i].asStack())
-                        .outputItems(NONUPLE_INPUT_HATCH[i].asStack())
-                        .duration(600).EUt(VA[EV])
-                        .save(provider);
-
-        for (int i = 0; i < NONUPLE_OUTPUT_HATCH.length; i++)
-            if (NONUPLE_OUTPUT_HATCH[i] != null)
-                ASSEMBLER_RECIPES.recipeBuilder("nonuple_output_hatch_" + NONUPLE_OUTPUT_HATCH[i].getTier())
-                        .inputItems(pipeNonupleFluid, Titanium, 1)
-                        .circuitMeta(2)
-                        .inputItems(HULL[i].asStack())
-                        .outputItems(NONUPLE_OUTPUT_HATCH[i].asStack())
-                        .duration(600).EUt(VA[EV])
-                        .save(provider);
 
         for (int i = 0; i < ME_OUTPUT_BUS.length; i++)
             if (ME_OUTPUT_BUS[i] != null)
@@ -286,7 +247,7 @@ public class CTRecipes {
         for (int i = 0; i < ME_OUTPUT_HATCH.length; i++)
             if (ME_OUTPUT_HATCH[i] != null)
                 ASSEMBLER_RECIPES.recipeBuilder("me_output_hatch"+ME_OUTPUT_HATCH[i].getTier())
-                        .inputItems(QUAD_OUTPUT_HATCH[i])
+                        .inputItems(FLUID_IMPORT_HATCH_4X[i])
                         .inputItems(AEBlocks.INTERFACE.asItem())
                         .outputItems(ME_OUTPUT_HATCH[i].asStack())
                         .duration(600).EUt(VA[i])

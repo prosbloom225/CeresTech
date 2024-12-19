@@ -1,10 +1,6 @@
 package com.prosbloom.cerestech.machines.multiblock.part;
 
-import appeng.api.networking.*;
 import appeng.block.AEBaseEntityBlock;
-import appeng.helpers.iface.PatternProviderLogic;
-import appeng.me.helpers.BlockEntityNodeListener;
-import appeng.me.helpers.IGridConnectedBlockEntity;
 import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.gui.GuiTextures;
 import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
@@ -15,13 +11,9 @@ import com.lowdragmc.lowdraglib.gui.widget.Widget;
 import com.lowdragmc.lowdraglib.gui.widget.WidgetGroup;
 import com.lowdragmc.lowdraglib.syncdata.annotation.Persisted;
 import com.lowdragmc.lowdraglib.syncdata.field.ManagedFieldHolder;
-import com.prosbloom.cerestech.machines.CTMachines;
-import net.minecraft.core.Direction;
+import net.minecraft.world.Container;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.EnumSet;
 
 public class MEPatternPartMachine extends TieredIOPartMachine {//implements IInWorldGridNodeHost, IGridConnectedBlockEntity {
 
@@ -76,7 +68,9 @@ public class MEPatternPartMachine extends TieredIOPartMachine {//implements IInW
         int index = 0;
         for (int y = 0; y < colSize; y++) {
             for (int x = 0; x < rowSize; x++) {
-                container.addWidget(new SlotWidget(inventory.storage, index++, 4 + x * 18, 4 + y * 18, true, io.support(IO.IN))
+
+
+                container.addWidget(new SlotWidget((Container) inventory.storage, index++, 4 + x * 18, 4 + y * 18, true, io.support(IO.IN))
                         .setBackgroundTexture(GuiTextures.SLOT));
             }
         }

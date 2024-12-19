@@ -108,15 +108,15 @@ public class MEFluidHatchPartMachine extends MEPartMachine {
     public Widget createUIWidget() {
         var group = new WidgetGroup(0, 0, 89, 79);
         group.addWidget(new ImageWidget(4, 4, 81, 70, GuiTextures.DISPLAY))
-                .addWidget(new TankWidget(tanks.storages[0], 15, 10, true, io.support(IO.IN)) .setBackground(GuiTextures.FLUID_SLOT))
-                .addWidget(new TankWidget(tanks.storages[1], 35, 10, true, io.support(IO.IN)) .setBackground(GuiTextures.FLUID_SLOT))
-                .addWidget(new TankWidget(tanks.storages[2], 55, 10, true, io.support(IO.IN)) .setBackground(GuiTextures.FLUID_SLOT))
-                .addWidget(new TankWidget(tanks.storages[3], 15, 30, true, io.support(IO.IN)) .setBackground(GuiTextures.FLUID_SLOT))
-                .addWidget(new TankWidget(tanks.storages[4], 35, 30, true, io.support(IO.IN)) .setBackground(GuiTextures.FLUID_SLOT))
-                .addWidget(new TankWidget(tanks.storages[5], 55, 30, true, io.support(IO.IN)) .setBackground(GuiTextures.FLUID_SLOT))
-                .addWidget(new TankWidget(tanks.storages[6], 15, 50, true, io.support(IO.IN)) .setBackground(GuiTextures.FLUID_SLOT))
-                .addWidget(new TankWidget(tanks.storages[7], 35, 50, true, io.support(IO.IN)) .setBackground(GuiTextures.FLUID_SLOT))
-                .addWidget(new TankWidget(tanks.storages[8], 55, 50, true, io.support(IO.IN)) .setBackground(GuiTextures.FLUID_SLOT));
+                .addWidget(new TankWidget(tanks.getStorages()[0], 15, 10, true, io.support(IO.IN)) .setBackground(GuiTextures.FLUID_SLOT))
+                .addWidget(new TankWidget(tanks.getStorages()[1], 35, 10, true, io.support(IO.IN)) .setBackground(GuiTextures.FLUID_SLOT))
+                .addWidget(new TankWidget(tanks.getStorages()[2], 55, 10, true, io.support(IO.IN)) .setBackground(GuiTextures.FLUID_SLOT))
+                .addWidget(new TankWidget(tanks.getStorages()[3], 15, 30, true, io.support(IO.IN)) .setBackground(GuiTextures.FLUID_SLOT))
+                .addWidget(new TankWidget(tanks.getStorages()[4], 35, 30, true, io.support(IO.IN)) .setBackground(GuiTextures.FLUID_SLOT))
+                .addWidget(new TankWidget(tanks.getStorages()[5], 55, 30, true, io.support(IO.IN)) .setBackground(GuiTextures.FLUID_SLOT))
+                .addWidget(new TankWidget(tanks.getStorages()[6], 15, 50, true, io.support(IO.IN)) .setBackground(GuiTextures.FLUID_SLOT))
+                .addWidget(new TankWidget(tanks.getStorages()[7], 35, 50, true, io.support(IO.IN)) .setBackground(GuiTextures.FLUID_SLOT))
+                .addWidget(new TankWidget(tanks.getStorages()[8], 55, 50, true, io.support(IO.IN)) .setBackground(GuiTextures.FLUID_SLOT));
                 //.addWidget(new TankWidget(tanks.storages[3], 57, 28, true, io.support(IO.IN)) .setBackground(GuiTextures.FLUID_SLOT));
         group.setBackground(GuiTextures.BACKGROUND_INVERSE);
         return group;

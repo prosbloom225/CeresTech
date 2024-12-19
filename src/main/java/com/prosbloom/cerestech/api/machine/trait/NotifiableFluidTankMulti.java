@@ -17,19 +17,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class NotifiableFluidTankMulti extends NotifiableFluidTank {
-    public NotifiableFluidTankMulti(MetaMachine machine, int slots, long capacity, IO io) {
+    public NotifiableFluidTankMulti(MetaMachine machine, int slots, int capacity, IO io) {
         super(machine, slots, capacity, io);
     }
 
-
     @Override
     public long fill(int tank, FluidStack resource, boolean simulate, boolean notifyChanges) {
-        if (tank >= 0 && tank < storages.length && canCapInput()) {
-            if(!Arrays.stream(storages)
-                    .filter(s->!s.equals(storages[tank]))
+        if (tank >= 0 && tank < getStorages().length && canCapInput()) {
+            if(!Arrays.stream(getStorages())
+                    .filter(s->!s.equals(getStorages()[tank]))
                     .map(FluidStorage::getFluid)
                     .anyMatch(f->f.isFluidEqual(resource)))
-                return storages[tank].fill(resource, simulate, notifyChanges);
+                return getStorages()[tank].fill(resource, simulate, notifyChanges);
         }
         return 0;
     }
@@ -48,7 +47,7 @@ public class NotifiableFluidTankMulti extends NotifiableFluidTank {
             var copied = resource.copy();
             FluidStorage existingStorage = null;
             if (!allowSameFluids) {
-                for (var storage : storages) {
+                for (var storage : getStorages()) {
                     if (!storage.getFluid().isEmpty() && storage.getFluid().isFluidEqual(resource)) {
                         existingStorage = storage;
                         break;
@@ -56,7 +55,7 @@ public class NotifiableFluidTankMulti extends NotifiableFluidTank {
                 }
             }
             if (existingStorage == null) {
-                for (var storage : storages) {
+                for (var storage : getStorages()) {
                     var filled = storage.fill(copied.copy(), simulate);
                     if (filled > 0) {
                         copied.shrink(filled);
@@ -76,14 +75,14 @@ public class NotifiableFluidTankMulti extends NotifiableFluidTank {
 
     @Override
     public void setFluidInTank(int tank, @NotNull FluidStack fluidStack) {
-        storages[tank].setFluid(fluidStack);
+        getStorages()[tank].setFluid(fluidStack);
     }
 
 
     @Override
     public List<FluidIngredient> handleRecipeInner(IO io, GTRecipe recipe, List<FluidIngredient> left, @Nullable String slotName, boolean simulate) {
         if (io != this.handlerIO) return left;
-        var capabilities = simulate ? Arrays.stream(storages).map(FluidStorage::copy).toArray(FluidStorage[]::new) : storages;
+        var capabilities = simulate ? Arrays.stream(getStorages()).map(FluidStorage::copy).toArray(FluidStorage[]::new) : getStorages();
 
 
         for (FluidStorage capability : capabilities) {

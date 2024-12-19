@@ -221,11 +221,6 @@ public class CTFluids {
             .color(0xFFFFFF) .iconSet(MaterialIconSet.FLUID)
             .buildAndRegister();
 
-    public static Material Formaldehyde = new Material.Builder(CTMod.id("formaldehyde"))
-            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
-            .color(0x7A447A) .iconSet(MaterialIconSet.FLUID)
-            .buildAndRegister();
-
     public static Material DiphenylmethaneDiisocyanateMixture= new Material.Builder(CTMod.id("diphenylmethane_diisocyanate_mixture"))
             .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
             .color(0xBEAC29) .iconSet(MaterialIconSet.FLUID)

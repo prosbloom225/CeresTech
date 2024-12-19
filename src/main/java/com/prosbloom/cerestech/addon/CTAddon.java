@@ -5,7 +5,7 @@ import com.gregtechceu.gtceu.api.addon.IGTAddon;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import com.mojang.logging.LogUtils;
 import com.prosbloom.cerestech.CTMod;
-import com.prosbloom.cerestech.api.machine.trait.CTRegistries;
+import com.prosbloom.cerestech.registry.CTRegistries;
 import com.prosbloom.cerestech.compat.CTRecipeCompat;
 import com.prosbloom.cerestech.data.*;
 import com.prosbloom.cerestech.machines.CTMachines;

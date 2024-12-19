@@ -11,8 +11,12 @@ import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
 import com.gregtechceu.gtceu.api.recipe.RecipeHelper;
 import com.gregtechceu.gtceu.api.recipe.content.Content;
 import com.gregtechceu.gtceu.api.recipe.content.ContentModifier;
+import com.gregtechceu.gtceu.api.recipe.logic.OCParams;
+import com.gregtechceu.gtceu.api.recipe.logic.OCResult;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Map;
 
@@ -28,6 +32,25 @@ public class CTRecipeModifiers {
         }
         return null;
     }
+        public static GTRecipe modifyRecipe(MetaMachine machine, @Nonnull GTRecipe recipe) {
+            var EUt = RecipeHelper.getOutputEUt(recipe); // get the recipe's EU/t
+            if (EUt > 0) {
+                var maxParallel = (int) (Math.min(
+                        ((IOverclockMachine)machine).getOverclockVoltage(),
+                        GTValues.V[((IOverclockMachine)machine).getMaxOverclockTier()]
+                ) / EUt);
+                while (maxParallel > 0) {
+                    var copied = recipe.copy(ContentModifier.multiplier(maxParallel));
+                    if (copied.matchRecipe(this)) {
+                        copied.duration = copied.duration / maxParallel;
+
+                        return copied;
+                    }
+                    maxParallel /= 2;
+                }
+            }
+            return null;
+        }
     public static GTRecipe parallelOverclock(MetaMachine machine, @Nonnull GTRecipe recipe, int maxParallel, boolean modifyDuration) {
         if (machine instanceof IRecipeCapabilityHolder holder) {
             recipe = tryParallel(holder, recipe, 1, maxParallel, modifyDuration, false);

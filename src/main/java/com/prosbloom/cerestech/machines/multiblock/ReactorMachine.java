@@ -25,7 +25,7 @@ import static com.prosbloom.cerestech.data.recipes.NuclearReactorRecipes.reactor
 public class ReactorMachine extends LargeBoilerMachine {
     private String fuel;
     private int maxDrain;
-    private int coolantScaler = 30;
+    private final int coolantScaler = 30;
     public ReactorMachine(IMachineBlockEntity holder, int maxTemperature, int heatSpeed, Object... args) {
         super(holder, maxTemperature, heatSpeed, args);
     }
@@ -107,8 +107,9 @@ public class ReactorMachine extends LargeBoilerMachine {
     }
 
     @Override
-    public void onWorking() {
+    public boolean onWorking() {
         generateCoolant();
+        return true;
     }
 
     @Override

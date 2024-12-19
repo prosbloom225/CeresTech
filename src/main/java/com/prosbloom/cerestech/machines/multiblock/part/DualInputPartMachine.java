@@ -42,7 +42,7 @@ public class DualInputPartMachine extends TieredIOPartMachine implements IDistin
 
     public DualInputPartMachine(IMachineBlockEntity holder, int tier, IO io, Object... args) {
         super(holder, tier, io);
-        tanks = new NotifiableFluidTankMulti(this, getTankSize(), 16000L * tier, io);
+        tanks = new NotifiableFluidTankMulti(this, getTankSize(), 16000 * tier, io);
         inventory = new NotifiableItemStackHandler(this, getInventorySize(), io);
     }
 
@@ -108,7 +108,7 @@ public class DualInputPartMachine extends TieredIOPartMachine implements IDistin
         int index = 0;
         for (int i = 0; i < rows; i++)
             for (int x = 0; x < 4; x++)
-                group.addWidget(new TankWidget(tanks.storages[index++], 15 + 20 * x, (i + 1) * 18, true, io.support(IO.IN)).setBackground(GuiTextures.FLUID_SLOT));
+                group.addWidget(new TankWidget(tanks.getStorages()[index++], 15 + 20 * x, (i + 1) * 18, true, io.support(IO.IN)).setBackground(GuiTextures.FLUID_SLOT));
         index = 0;
         for (int y = 0; y < rows+1; y++)
             for (int x = 0; x < 4; x++)

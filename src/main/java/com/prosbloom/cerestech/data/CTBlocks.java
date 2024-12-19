@@ -1,29 +1,15 @@
 package com.prosbloom.cerestech.data;
 
 import com.gregtechceu.gtceu.GTCEu;
-import com.gregtechceu.gtceu.api.block.RendererBlock;
-import com.gregtechceu.gtceu.api.item.RendererBlockItem;
 import com.gregtechceu.gtceu.api.item.tool.GTToolType;
-import com.gregtechceu.gtceu.client.renderer.block.TextureOverrideRenderer;
-import com.lowdragmc.lowdraglib.Platform;
-import com.lowdragmc.lowdraglib.client.renderer.IRenderer;
 import com.prosbloom.cerestech.CTMod;
 import com.tterrag.registrate.util.entry.BlockEntry;
-import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
-import com.tterrag.registrate.util.nullness.NonNullSupplier;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 
-import java.util.Map;
-import java.util.function.BiFunction;
-import java.util.function.Supplier;
-
-import static com.prosbloom.cerestech.api.machine.trait.CTRegistries.REGISTRATE;
-import static com.prosbloom.cerestech.machines.BlockHelper.createCasingBlock;
+import static com.gregtechceu.gtceu.common.data.GTBlocks.createCasingBlock;
+import static com.prosbloom.cerestech.registry.CTRegistries.REGISTRATE;
 
 @SuppressWarnings("deprecated")
 public class CTBlocks {

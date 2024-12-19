@@ -1,12 +1,12 @@
 package com.prosbloom.cerestech.machines;
 
 import com.gregtechceu.gtceu.GTCEu;
+import com.gregtechceu.gtceu.api.GTCEuAPI;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.data.RotationState;
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
-import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
 import com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine;
@@ -22,9 +22,7 @@ import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
 import com.gregtechceu.gtceu.client.renderer.machine.MachineRenderer;
 import com.gregtechceu.gtceu.common.data.*;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
-import com.lowdragmc.lowdraglib.side.fluid.FluidHelper;
 import com.prosbloom.cerestech.CTMod;
-import com.prosbloom.cerestech.api.machine.trait.NotifiableFluidTankMulti;
 import com.prosbloom.cerestech.data.CTRecipeModifiers;
 import com.prosbloom.cerestech.data.CTRecipeTypes;
 import com.prosbloom.cerestech.machines.multiblock.*;
@@ -43,13 +41,12 @@ import java.util.List;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
-import static com.gregtechceu.gtceu.common.data.GCyMBlocks.CASING_REACTION_SAFE;
-import static com.gregtechceu.gtceu.common.data.GCyMBlocks.HEAT_VENT;
+import static com.gregtechceu.gtceu.common.data.GCYMBlocks.CASING_REACTION_SAFE;
+import static com.gregtechceu.gtceu.common.data.GCYMBlocks.HEAT_VENT;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
-import static com.gregtechceu.gtceu.common.data.GTMachines.ALL_TIERS;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.PYROLYSE_RECIPES;
-import static com.prosbloom.cerestech.api.machine.trait.CTRegistries.REGISTRATE;
+import static com.prosbloom.cerestech.registry.CTRegistries.REGISTRATE;
 import static com.prosbloom.cerestech.data.CTBlocks.*;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.NAQUADAH_REACTOR_RECIPES;
 import static com.prosbloom.cerestech.machines.BlockHelper.registerTieredMachines;
@@ -173,7 +170,6 @@ public class CTMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(PYROLYSE_RECIPES)
             // TODO - parallel isnt working, seems like upstream issue
-            .recipeModifier(GTRecipeModifiers.PARALLEL_HATCH.apply(OverclockingLogic.PERFECT_OVERCLOCK, GTRecipeModifiers.ELECTRIC_OVERCLOCK))
             .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
             .appearanceBlock(CASING_INVAR_HEATPROOF)
             .pattern(definition -> FactoryBlockPattern.start()
@@ -196,7 +192,9 @@ public class CTMachines {
     public final static MultiblockMachineDefinition VOLCANUS = REGISTRATE.multiblock("volcanus", VolcanusMachine::new)
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTRecipeTypes.BLAST_RECIPES)
-            .recipeModifier((machine, recipe) -> CTRecipeModifiers.volcanusParallel(machine, recipe, 8, false))
+            .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH)
+            // TODO - fix parallels overclock
+            //.recipeModifier((machine, recipe) -> CTRecipeModifiers.volcanusParallel(machine, recipe, 8, false))
             .appearanceBlock(CASING_VOLCANUS)
             .pattern(definition -> FactoryBlockPattern.start()
                     .aisle("XXX", "CCC", "CCC", "XXX")
@@ -227,7 +225,7 @@ public class CTMachines {
                         .where('D', FLUID_EXPORT_HATCH[GTValues.LV], Direction.EAST)
                         .where('H', MUFFLER_HATCH[GTValues.LV], Direction.UP)
                         .where('M', MAINTENANCE_HATCH, Direction.NORTH);
-                ALL_COILS.entrySet().stream()
+                GTCEuAPI.HEATING_COILS.entrySet().stream()
                         .sorted(Comparator.comparingInt(entry -> entry.getKey().getTier()))
                         .forEach(coil -> shapeInfo.add(builder.where('C', coil.getValue().get()).build()));
                 return shapeInfo;
@@ -252,7 +250,9 @@ public class CTMachines {
     public final static MultiblockMachineDefinition CRYOGENIC_FREEZER = REGISTRATE.multiblock("cryogenic_freezer", CryogenicFreezerMachine::new)
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTRecipeTypes.VACUUM_RECIPES)
-            .recipeModifier((machine, recipe) -> CTRecipeModifiers.parallelOverclock(machine, recipe, 8, false))
+            .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH)
+            // TODO - fix parallels overclock
+            //.recipeModifier((machine, recipe) -> CTRecipeModifiers.parallelOverclock(machine, recipe, 8, false))
             .appearanceBlock(CASING_VOLCANUS)
             .pattern(definition -> FactoryBlockPattern.start()
                     .aisle("XXX", "XXX", "XXX")
@@ -386,7 +386,7 @@ public class CTMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .appearanceBlock(CASING_STAINLESS_CLEAN)
             .recipeType(CTRecipeTypes.NEUTRON_ACTIVATOR_RECIPES)
-            .recipeModifier(GTRecipeModifiers.PARALLEL_HATCH.apply(OverclockingLogic.PERFECT_OVERCLOCK, GTRecipeModifiers.ELECTRIC_OVERCLOCK))
+            .recipeModifier(GTRecipeModifiers.PARALLEL_HATCH)
             .pattern(definition -> FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.BACK, RelativeDirection.UP)
                     .aisle("XXSXX", "XXXXX", "XXXXX", "XXXXX", "XXXXX")
                     .aisle("F###F", "#GGG#", "#GPG#", "#GGG#", "F###F")
@@ -415,7 +415,9 @@ public class CTMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .appearanceBlock(CASING_TUNGSTENSTEEL_ROBUST)
             .recipeType(GTRecipeTypes.LARGE_CHEMICAL_RECIPES)
-            .recipeModifier((machine, recipe) -> CTRecipeModifiers.parallelOverclock(machine, recipe, 8, false))
+            // TODO - fix parallels overclock
+            .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH)
+            //.recipeModifier((machine, recipe) -> CTRecipeModifiers.parallelOverclock(machine, recipe, 8, false))
             .pattern(definition -> FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.BACK, RelativeDirection.UP)
                     .aisle("XXXSXXX", "XHHHHHX", "XHHHHHX", "XHHHHHX", "XHHHHHX", "XHHHHHX", "XXXXXXX")
                     .aisle("X#####X", "#HHHHH#", "#HCCCH#", "#HCCCH#", "#HCCCH#", "#HHHHH#", "X#####X")
@@ -520,7 +522,7 @@ public class CTMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .appearanceBlock(CASING_PTFE_INERT)
             .recipeType(GTRecipeTypes.LARGE_CHEMICAL_RECIPES)
-            .recipeModifier(GTRecipeModifiers.PARALLEL_HATCH.apply(OverclockingLogic.PERFECT_OVERCLOCK, GTRecipeModifiers.ELECTRIC_OVERCLOCK))
+            .recipeModifier(GTRecipeModifiers.PARALLEL_HATCH)
             .pattern(definition -> FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.BACK, RelativeDirection.UP)
                     .aisle("XXXXX", "XPXPX", "XPXPX", "XPXPX", "XPXPX", "XPXPX", "XPXPX", "XPXPX", "XXXXX")
                     .aisle("XGGGX", "#G#G#", "#G#G#", "#G#G#", "#G#G#", "#G#G#", "#G#G#", "#G#G#", "XXXXX")
@@ -549,7 +551,7 @@ public class CTMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .appearanceBlock(CASING_INVAR_HEATPROOF)
             .recipeTypes(GTRecipeTypes.FURNACE_RECIPES, GTRecipeTypes.ALLOY_SMELTER_RECIPES, GTRecipeTypes.ARC_FURNACE_RECIPES)
-            .recipeModifier(GTRecipeModifiers.PARALLEL_HATCH.apply(OverclockingLogic.PERFECT_OVERCLOCK, (oc) -> GTRecipeModifiers::multiSmelterOverclock))
+            .recipeModifier(GTRecipeModifiers.PARALLEL_HATCH)
             .pattern(definition -> FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.BACK, RelativeDirection.UP)
                     .aisle("XXXSXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX")
                     .aisle("GGGGGGG", "GCCCCCG", "GC###CG", "GC###CG", "GC###CG", "GCCCCCG", "GGGGGGG")

@@ -2,6 +2,7 @@ package com.prosbloom.cerestech.api.machine.trait;
 
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.capability.recipe.IO;
+import com.gregtechceu.gtceu.api.capability.recipe.RecipeCapability;
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
@@ -13,6 +14,7 @@ import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.gregtechceu.gtceu.data.recipe.builder.GTRecipeBuilder;
 import com.gregtechceu.gtceu.utils.GTUtil;
 import com.prosbloom.cerestech.machines.multiblock.VoidMinerMachine;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
 
@@ -185,7 +187,7 @@ public class VoidMinerLogic extends RecipeLogic {
         machine.afterWorking();
         if (lastRecipe != null) {
             lastRecipe.postWorking(this.machine);
-            lastRecipe.handleRecipeIO(IO.OUT, this.machine);
+            lastRecipe.handleRecipeIO(IO.OUT, this.machine, this.chanceCaches);
         }
         // try it again
         var match = getOreMinerRecipe();

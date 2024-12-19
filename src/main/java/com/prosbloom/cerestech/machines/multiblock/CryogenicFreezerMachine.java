@@ -4,19 +4,13 @@ import com.gregtechceu.gtceu.api.capability.recipe.FluidRecipeCapability;
 import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.capability.recipe.IRecipeHandler;
 import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
-import com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine;
-import com.gregtechceu.gtceu.api.machine.multiblock.MultiblockControllerMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.machine.trait.NotifiableFluidTank;
 import com.gregtechceu.gtceu.api.machine.trait.RecipeLogic;
-import com.gregtechceu.gtceu.api.recipe.ingredient.FluidIngredient;
-import com.lowdragmc.lowdraglib.misc.FluidStorage;
-import com.lowdragmc.lowdraglib.side.fluid.FluidStack;
-import com.prosbloom.cerestech.data.CTFluids;
-import com.prosbloom.cerestech.data.CTMaterials;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,7 +22,7 @@ public class CryogenicFreezerMachine extends WorkableElectricMultiblockMachine {
         super(holder);
     }
     @Override
-    public void onWorking() {
+    public boolean onWorking() {
         super.onWorking();
         if (getOffsetTimer() %20 ==0) {
             List<IRecipeHandler<?>> inputTanks = new ArrayList<>();
@@ -36,13 +30,13 @@ public class CryogenicFreezerMachine extends WorkableElectricMultiblockMachine {
                 inputTanks.addAll(Objects.requireNonNull(getCapabilitiesProxy().get(IO.IN, FluidRecipeCapability.CAP)));
             if (getCapabilitiesProxy().contains(IO.BOTH, FluidRecipeCapability.CAP))
                 inputTanks.addAll(Objects.requireNonNull(getCapabilitiesProxy().get(IO.BOTH, FluidRecipeCapability.CAP)));
-            var fluidDrained = FluidStack.empty();
+            var fluidDrained = FluidStack.EMPTY;
             for (IRecipeHandler<?> tank : inputTanks)
                 if (tank instanceof NotifiableFluidTank) {
-                    for (int i=0;i<((NotifiableFluidTank) tank).storages.length;i++){
-                        fluidDrained = ((NotifiableFluidTank) tank).storages[i].drain(coolant, false);
+                    for (int i=0;i<((NotifiableFluidTank) tank).getStorages().length;i++){
+                        fluidDrained = ((NotifiableFluidTank) tank).getStorages()[i].drain(coolant, IFluidHandler.FluidAction.EXECUTE);
                         if (!fluidDrained.isEmpty())
-                            return;
+                            return false;
                     }
                 }
             // TODO - probably a more elegant way of doing this so you dont have to manually restart machines when out of cryo..
@@ -51,5 +45,6 @@ public class CryogenicFreezerMachine extends WorkableElectricMultiblockMachine {
             } else
                 this.recipeLogic.setStatus(RecipeLogic.Status.WORKING);
         }
+        return true;
     }
 }

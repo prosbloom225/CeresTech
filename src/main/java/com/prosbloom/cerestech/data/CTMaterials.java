@@ -8,15 +8,8 @@ import com.gregtechceu.gtceu.api.data.chemical.material.properties.DustProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.IngotProperty;
 import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
-import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import com.gregtechceu.gtceu.common.data.GTElements;
-import com.gregtechceu.gtceu.common.data.GTMaterials;
-import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 import com.prosbloom.cerestech.CTMod;
-import com.tterrag.registrate.util.entry.ItemEntry;
-import net.minecraft.world.item.Item;
-
-import java.util.Objects;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
@@ -25,7 +18,6 @@ import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastP
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey.DUST;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey.INGOT;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
-import static com.prosbloom.cerestech.api.machine.trait.CTRegistries.REGISTRATE;
 
 public class CTMaterials {
     public static Material LithiumFluoride= new Material.Builder(CTMod.id("lithium_fluoride"))

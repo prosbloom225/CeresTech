@@ -89,10 +89,6 @@ public class MEPartMachine extends TieredIOPartMachine implements IInWorldGridNo
         return mainNode;
     }
 
-    @Override
-    public void securityBreak() {
-
-    }
 
     @Override
     public void saveChanges() {

@@ -2,10 +2,10 @@ package com.prosbloom.cerestech.data.recipes;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.data.recipe.builder.GTRecipeBuilder;
-import com.lowdragmc.lowdraglib.side.fluid.FluidStack;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.util.Tuple;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.fluids.FluidStack;
 
 import java.util.AbstractMap;
 import java.util.List;

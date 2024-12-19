@@ -5,45 +5,26 @@ import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.capability.recipe.FluidRecipeCapability;
 import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.capability.recipe.IRecipeHandler;
-import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
-import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
-import com.gregtechceu.gtceu.api.data.worldgen.bedrockore.BedrockOreVeinSavedData;
-import com.gregtechceu.gtceu.api.data.worldgen.bedrockore.OreVeinWorldEntry;
 import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.feature.ITieredMachine;
-import com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.machine.trait.NotifiableFluidTank;
 import com.gregtechceu.gtceu.api.machine.trait.RecipeLogic;
-import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.common.data.GTBlocks;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
-import com.gregtechceu.gtceu.common.machine.multiblock.electric.BedrockOreMinerMachine;
-import com.gregtechceu.gtceu.common.machine.trait.BedrockOreMinerLogic;
-import com.gregtechceu.gtceu.config.ConfigHolder;
-import com.gregtechceu.gtceu.data.recipe.builder.GTRecipeBuilder;
-import com.gregtechceu.gtceu.utils.GTUtil;
-import com.lowdragmc.lowdraglib.side.fluid.FluidStack;
 import com.prosbloom.cerestech.api.machine.trait.VoidMinerLogic;
-import net.minecraft.core.SectionPos;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
-import org.openjdk.nashorn.internal.objects.annotations.Getter;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.DrillingFluid;
-import static com.prosbloom.cerestech.data.CTFluids.Pyrotheum;
-import static java.util.Map.entry;
 
 public class VoidMinerMachine extends WorkableElectricMultiblockMachine implements ITieredMachine {
     private final int tier;
@@ -95,7 +76,7 @@ public class VoidMinerMachine extends WorkableElectricMultiblockMachine implemen
     }
 
     @Override
-    public void onWorking() {
+    public boolean onWorking() {
         super.onWorking();
         if (getOffsetTimer() %20 ==0) {
             List<IRecipeHandler<?>> inputTanks = new ArrayList<>();
@@ -103,13 +84,13 @@ public class VoidMinerMachine extends WorkableElectricMultiblockMachine implemen
                 inputTanks.addAll(Objects.requireNonNull(getCapabilitiesProxy().get(IO.IN, FluidRecipeCapability.CAP)));
             if (getCapabilitiesProxy().contains(IO.BOTH, FluidRecipeCapability.CAP))
                 inputTanks.addAll(Objects.requireNonNull(getCapabilitiesProxy().get(IO.BOTH, FluidRecipeCapability.CAP)));
-            var fluidDrained = FluidStack.empty();
+            var fluidDrained = FluidStack.EMPTY;
             for (IRecipeHandler<?> tank : inputTanks)
                 if (tank instanceof NotifiableFluidTank) {
-                    for (int i=0;i<((NotifiableFluidTank) tank).storages.length;i++){
-                        fluidDrained = ((NotifiableFluidTank) tank).storages[i].drain(coolant, false);
+                    for (int i=0;i<((NotifiableFluidTank) tank).getStorages().length;i++){
+                        fluidDrained = ((NotifiableFluidTank) tank).getStorages()[i].drain(coolant, IFluidHandler.FluidAction.EXECUTE);
                         if (!fluidDrained.isEmpty())
-                            return;
+                            return false;
                     }
                 }
             // TODO - probably a more elegant way of doing this so you dont have to manually restart machines when out of cryo..
@@ -118,6 +99,7 @@ public class VoidMinerMachine extends WorkableElectricMultiblockMachine implemen
             } else
                 this.recipeLogic.setStatus(RecipeLogic.Status.WORKING);
         }
+        return true;
     }
 
     public static ResourceLocation getBaseTexture(int tier) {

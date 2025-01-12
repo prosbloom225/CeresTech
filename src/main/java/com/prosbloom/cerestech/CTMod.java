@@ -12,10 +12,7 @@ import com.lowdragmc.lowdraglib.LDLib;
 import com.mojang.logging.LogUtils;
 import com.prosbloom.cerestech.addon.CTAddon;
 import com.prosbloom.cerestech.api.CTValues;
-import com.prosbloom.cerestech.data.CTFluids;
-import com.prosbloom.cerestech.data.CTItems;
-import com.prosbloom.cerestech.data.CTMaterials;
-import com.prosbloom.cerestech.data.CTRecipeTypes;
+import com.prosbloom.cerestech.data.*;
 import com.prosbloom.cerestech.machines.CTMachines;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -57,8 +54,7 @@ public class CTMod
         modEventBus.addGenericListener(MachineDefinition.class, this::registerMachines);
         modEventBus.addGenericListener(CoverDefinition.class, this::registerCovers);
 
-        // TODO - datagen
-        //CTDatagen.init();
+        CTDatagen.init();
 
         MinecraftForge.EVENT_BUS.register(this);
     }

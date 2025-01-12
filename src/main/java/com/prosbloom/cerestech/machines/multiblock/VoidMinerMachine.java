@@ -11,6 +11,7 @@ import com.gregtechceu.gtceu.api.machine.feature.ITieredMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.machine.trait.NotifiableFluidTank;
 import com.gregtechceu.gtceu.api.machine.trait.RecipeLogic;
+import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.common.data.GTBlocks;
 import com.gregtechceu.gtceu.common.data.GTMaterialBlocks;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
@@ -19,6 +20,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,7 +81,6 @@ public class VoidMinerMachine extends WorkableElectricMultiblockMachine implemen
 
     @Override
     public boolean onWorking() {
-        super.onWorking();
         if (getOffsetTimer() %20 ==0) {
             List<IRecipeHandler<?>> inputTanks = new ArrayList<>();
             if (getCapabilitiesProxy().contains(IO.IN, FluidRecipeCapability.CAP))
@@ -92,7 +93,7 @@ public class VoidMinerMachine extends WorkableElectricMultiblockMachine implemen
                     for (int i=0;i<((NotifiableFluidTank) tank).getStorages().length;i++){
                         fluidDrained = ((NotifiableFluidTank) tank).getStorages()[i].drain(coolant, IFluidHandler.FluidAction.EXECUTE);
                         if (!fluidDrained.isEmpty())
-                            return false;
+                            break;
                     }
                 }
             // TODO - probably a more elegant way of doing this so you dont have to manually restart machines when out of cryo..
@@ -101,6 +102,7 @@ public class VoidMinerMachine extends WorkableElectricMultiblockMachine implemen
             } else
                 this.recipeLogic.setStatus(RecipeLogic.Status.WORKING);
         }
+        super.onWorking();
         return true;
     }
 

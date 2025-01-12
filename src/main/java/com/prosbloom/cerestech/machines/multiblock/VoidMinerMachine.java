@@ -44,6 +44,7 @@ public class VoidMinerMachine extends WorkableElectricMultiblockMachine implemen
     public VoidMinerMachine(IMachineBlockEntity holder, Integer tier) {
         super(holder);
         this.tier = tier;
+        coolant = DrillingFluid.getFluid(20);
     }
 
     public static Block getCasingState(int tier) {

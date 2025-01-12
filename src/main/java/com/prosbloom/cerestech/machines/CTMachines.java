@@ -259,25 +259,6 @@ public class CTMachines {
             .tooltips(Component.translatable("cerestech.machine.cryogenic_freezer.tooltip",
                     "cerestech.machine.cryogenic_freezer.tooltip.1"))
             .register();
-
-    public static MultiblockMachineDefinition POWER_STATION = REGISTRATE.multiblock("power_station", PowerStationMachine::new)
-            .langValue("Power Station")
-            .rotationState(RotationState.NON_Y_AXIS)
-            .appearanceBlock(CASING_POWER_STATION)
-            .pattern(definition -> FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.BACK, RelativeDirection.UP)
-                    .aisle("XSXX", "XXXX", "XXXX", "XXXX")
-                    .aisle("XXXX", "X##X", "X##X", "XXXX").setRepeatable(1, 255)
-                    .aisle("XXXX", "XXXX", "XXXX", "XXXX")
-                    .where('S', controller(blocks(definition.getBlock())))
-                    .where('X', blocks(CASING_POWER_STATION.get())
-                            .or(abilities(PartAbility.INPUT_ENERGY, PartAbility.OUTPUT_ENERGY, PartAbility.INPUT_LASER, PartAbility.OUTPUT_LASER))
-                            .or(autoAbilities(true, false, false)))
-                    .where('#', abilities(PartAbility.STEAM))
-                    .build())
-            .workableCasingRenderer(CTMod.id("block/casings/solid/machine_casing_power_station"),
-                    CTMod.id("block/multiblock/industrial_coke_oven"), false)
-            .register();
-
     public final static MachineDefinition[] ME_OUTPUT_BUS = registerTieredMachines("me_output_bus",
             (holder, tier) -> new MEItemPartMachine(holder, tier, IO.OUT),
             (tier, builder) -> builder
@@ -318,19 +299,6 @@ public class CTMachines {
                     .overlayTieredHullRenderer("item_bus.import")
                     .register(),
             IV, LuV, ZPM);
-
-    public final static MachineDefinition[] REDOX_CELL = registerTieredMachines("redox_cell",
-            (holder, tier) -> new TieredIOPartMachine(holder, tier, IO.OUT),
-            (tier, builder) -> builder
-                    .langValue("Redox Cell")
-                    .rotationState(RotationState.ALL)
-                    .abilities(PartAbility.STEAM)
-                    .renderer(() -> new MachineRenderer(CTMod.id("block/machine/redox_cell")))
-                    .itemColor((s, t)-> ColorUtils.getRedoxColorFromTier(tier))
-                    .paintingColor(ColorUtils.getRedoxColorFromTier(tier))
-                    .register(),
-            EV, IV, LuV, ZPM, UV);
-
 
     public static MultiblockMachineDefinition PCB_FACTORY = REGISTRATE.multiblock("pcb_factory", WorkableElectricMultiblockMachine::new)
             .langValue("PCB Factory")

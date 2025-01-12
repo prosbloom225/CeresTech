@@ -24,11 +24,6 @@ public class CTItems {
     public static ItemEntry<Item> WASTE_METAL_GROUP_C = REGISTRATE.item("waste_metal_group_c", Item::new).lang("Metal Group C Waste").register();
     public static ItemEntry<Item> WASTE_NONMETAL = REGISTRATE.item("waste_nonmetal", Item::new).lang("Nonmetal Waste").register();
     public static ItemEntry<Item> WASTE_METALOID = REGISTRATE.item("waste_metaloid", Item::new).lang("Metaloid Waste").register();
-
-    // TODO - uhv motor/emitter missing from gtceu...remove these when upstream implements
-    //public static ItemEntry<Item> ELECTRIC_MOTOR_UHV = REGISTRATE.item("uhv_electric_motor", Item::new).lang("UHV Electric Motor").register();
-    public static ItemEntry<Item> EMITTER_UHV = REGISTRATE.item("uhv_emitter", Item::new).lang("UHV Emitter").register();
-
     public static ItemEntry<Item> BIO_PROCESSOR_ZPM = REGISTRATE.item("bio_processor", Item::new).lang("BioProcessor").tag(CustomTags.ZPM_CIRCUITS).register();
     public static ItemEntry<Item> BIOWARE_PROCESSOR_ASSEMBLY_UV = REGISTRATE.item("bioware_processor_assembly", Item::new).lang("Bioware Processor Assembly").tag(CustomTags.UV_CIRCUITS).register();
     public static ItemEntry<Item> BIOWARE_SUPERCOMPUTER_UHV = REGISTRATE.item("bioware_supercomputer", Item::new).lang("Bioware Supercomputer").tag(CustomTags.UHV_CIRCUITS).register();

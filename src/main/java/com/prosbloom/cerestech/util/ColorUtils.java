@@ -3,7 +3,7 @@ package com.prosbloom.cerestech.util;
 import static com.gregtechceu.gtceu.api.GTValues.*;
 
 public class ColorUtils {
-    public static int getRedoxColorFromTier(int tier) {
+    public static int getColorFromTier(int tier) {
         switch (tier) {
             case EV:
                 return 0x5E5560;

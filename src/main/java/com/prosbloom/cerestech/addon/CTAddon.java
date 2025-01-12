@@ -27,21 +27,17 @@ public class CTAddon implements IGTAddon{
     @Override
     public void initializeAddon() {
         CTItems.init();
-        CTElements.init();
         CTRecipeTypes.init();
         CTBlocks.init();
         CTMachines.init();
         LOGGER.info("CTAddon init!");
     }
 
-
-
     @Override
-    public void registerMaterials() {
-        CTMaterials.init();
-        CTFluids.init();
+    public void registerElements() {
+        IGTAddon.super.registerElements();
+        CTElements.init();
     }
-
 
     @Override
     public void registerTagPrefixes() {

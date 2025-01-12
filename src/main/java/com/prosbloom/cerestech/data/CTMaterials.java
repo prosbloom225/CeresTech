@@ -317,7 +317,8 @@ public class CTMaterials {
 
     public static Material BlackPlutonium = new Material.Builder(CTMod.id("black_plutonium"))
             .ingot(3)
-            .ore()
+            // TODO - .ore() seems to have changed/broken - this breaks stellar forge outputs
+            //.ore()
             .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
             .color(0x2B2B2B).iconSet(METALLIC)
             .appendFlags(EXT_METAL)
@@ -350,7 +351,7 @@ public class CTMaterials {
 
     public static Material InfinityCatalyst = new Material.Builder(CTMod.id("infinity_catalyst"))
             .dust()
-            .ore()
+            //.ore()
             .color(0xFFFFFF).iconSet(BRIGHT)
             .buildAndRegister();
 
@@ -448,7 +449,7 @@ public class CTMaterials {
         Polonium.setProperty(DUST, new DustProperty(1,0));
         Technetium.setProperty(DUST, new DustProperty(1,0));
         Zirconium.setProperty(DUST, new DustProperty(1,0));
-        Iodine.setProperty(DUST, new DustProperty(1,0));
+        //Iodine.setProperty(DUST, new DustProperty(1,0));
         Selenium.setProperty(DUST, new DustProperty(1,0));
         Germanium.setProperty(DUST, new DustProperty(1,0));
         Tellurium.setProperty(DUST, new DustProperty(1,0));

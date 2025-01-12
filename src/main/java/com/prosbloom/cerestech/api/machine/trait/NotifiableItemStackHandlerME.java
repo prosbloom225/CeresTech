@@ -11,13 +11,6 @@ import java.util.function.Function;
 
 public class NotifiableItemStackHandlerME extends NotifiableItemStackHandler {
     public NotifiableItemStackHandlerME(MetaMachine machine, int slots, IO handlerIO, IO capabilityIO, Function<Integer, ItemStackTransfer> transferFactory) {
-        super(machine, slots, handlerIO, capabilityIO, transferFactory);
+        super(machine, slots, handlerIO, capabilityIO);
     }
-
-    @NotNull
-    @Override
-    public ItemStack insertItem(int slot, @NotNull ItemStack stack, boolean simulate, boolean notifyChange) {
-        return null;
-    }
-
 }

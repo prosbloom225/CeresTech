@@ -24,6 +24,7 @@ import static com.gregtechceu.gtceu.common.data.GTMachines.HULL;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
+import static com.gregtechceu.gtceu.common.data.machines.GTMultiMachines.*;
 import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.*;
 import static com.gregtechceu.gtceu.data.recipe.misc.MetaTileEntityLoader.registerMachineRecipe;
 import static com.prosbloom.cerestech.data.CTBlocks.*;
@@ -168,6 +169,7 @@ public class CTRecipes {
         registerMachineRecipe(provider, DEHYDRATOR, "WCW", "WMW", "PRP", 'M', CraftingComponent.HULL, 'R', ROBOT_ARM, 'P', PLATE, 'C', CIRCUIT, 'W', CABLE);
         registerMachineRecipe(provider, DECAY_CHAMBER, "RCR", "EHE", "WCW", 'R', STICK_RADIOACTIVE, 'E', EMITTER, 'H', CraftingComponent.HULL, 'C', CIRCUIT, 'W', CABLE);
 
+        /*
         VanillaRecipeHelper.addShapedRecipe(provider, true, "naquadah_reactor_ev", NAQUADAH_REACTOR[EV].asStack(), "RCR", "FHF", "WCW", 'R',
                 new UnificationEntry(rod, Uranium238), 'F', FIELD_GENERATOR_EV, 'H', HULL[EV].asStack(), 'C', CustomTags.IV_CIRCUITS, 'W', new UnificationEntry(cableGtQuadruple, Aluminium));
         VanillaRecipeHelper.addShapedRecipe(provider, true, "naquadah_reactor_iv", NAQUADAH_REACTOR[IV].asStack(), "RCR", "FHF", "WCW", 'R',
@@ -176,6 +178,8 @@ public class CTRecipes {
                 new UnificationEntry(rod, Europium), 'F', FIELD_GENERATOR_LuV, 'H', HULL[LuV].asStack(), 'C', CustomTags.ZPM_CIRCUITS, 'W', new UnificationEntry(cableGtQuadruple, HSSG));
         VanillaRecipeHelper.addShapedRecipe(provider, true, "naquadah_reactor_zpm", NAQUADAH_REACTOR[ZPM].asStack(), "RCR", "FHF", "WCW", 'R',
                 new UnificationEntry(rod, Americium), 'F', FIELD_GENERATOR_ZPM, 'H', HULL[ZPM].asStack(), 'C', CustomTags.UV_CIRCUITS, 'W', new UnificationEntry(cableGtQuadruple, Naquadah));
+
+         */
 
 
 
@@ -652,6 +656,8 @@ public class CTRecipes {
                 .outputItems(AEItems.CERTUS_QUARTZ_CRYSTAL_CHARGED.asItem())
                 .duration(600).EUt(VA[LV])
                 .save(provider);
+        // TODO - fix radox polymer recipe - fluid is missing
+        /*
         CHEMICAL_RECIPES.recipeBuilder("molten_radox_polymer")
                 .inputFluids(RadoxGas.getFluid(2160))
                 .inputFluids(Oxygen.getFluid(FluidStorageKeys.PLASMA, 7500))
@@ -660,6 +666,8 @@ public class CTRecipes {
                 .outputFluids(Radox.getFluid(720))
                 .duration(600).EUt(VA[UV])
                 .save(provider);
+
+         */
 
         CHEMICAL_RECIPES.recipeBuilder("ultra_bio_mutated_circuit_board")
                 .inputItems(BIO_CIRCUIT_BOARD)

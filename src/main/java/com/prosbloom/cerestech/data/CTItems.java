@@ -9,12 +9,9 @@ import static com.prosbloom.cerestech.registry.CTRegistries.REGISTRATE;
 
 public class CTItems {
 
-    /*
     static {
-        REGISTRATE.creativeModeTab(()-> CTCreativeModeTab.CT);
+        REGISTRATE.creativeModeTab(() -> CreativeModeTabs.CERESTECH_TAB);
     }
-
-     */
 
     public static void init(){}
     public static ItemEntry<Item> WASTE_NUCLEAR = REGISTRATE.item("waste_nuclear", Item::new).lang("Waste Nuclear").register();

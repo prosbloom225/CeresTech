@@ -5,6 +5,7 @@ import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.trait.RecipeLogic;
 import com.gregtechceu.gtceu.common.data.GTBlocks;
+import com.gregtechceu.gtceu.common.data.GTMaterialBlocks;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.prosbloom.cerestech.api.machine.trait.VoidQuarryLogic;
 import net.minecraft.world.level.block.Block;
@@ -26,21 +27,21 @@ public class VoidQuarryMachine extends VoidMinerMachine {
 
     public static Block getFrameState(int tier) {
         if (tier == GTValues.EV)
-            return GTBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, Titanium).get();
+            return GTMaterialBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, Titanium).get();
         if (tier == GTValues.IV)
-            return GTBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, TungstenSteel).get();
+            return GTMaterialBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, TungstenSteel).get();
         if (tier == GTValues.LuV)
-            return GTBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, Adamantium).get();
+            return GTMaterialBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, Adamantium).get();
         if (tier == GTValues.ZPM)
-            return GTBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, Americium).get();
+            return GTMaterialBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, Americium).get();
         if (tier == GTValues.UV)
-            return GTBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, Neutronium).get();
+            return GTMaterialBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, Neutronium).get();
         if (tier == GTValues.UHV)
-            return GTBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, FluxedElectrum).get();
+            return GTMaterialBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, FluxedElectrum).get();
         if (tier == GTValues.UEV)
-            return GTBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, CosmicNeutronium).get();
+            return GTMaterialBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, CosmicNeutronium).get();
         if (tier == GTValues.UIV)
-            return GTBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, AttunedTengam).get();
-        return GTBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, GTMaterials.Steel).get();
+            return GTMaterialBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, AttunedTengam).get();
+        return GTMaterialBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, GTMaterials.Steel).get();
     }
 }

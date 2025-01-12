@@ -23,7 +23,6 @@ import com.gregtechceu.gtceu.client.renderer.machine.MachineRenderer;
 import com.gregtechceu.gtceu.common.data.*;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.prosbloom.cerestech.CTMod;
-import com.prosbloom.cerestech.data.CTRecipeModifiers;
 import com.prosbloom.cerestech.data.CTRecipeTypes;
 import com.prosbloom.cerestech.machines.multiblock.*;
 import com.prosbloom.cerestech.machines.multiblock.part.*;
@@ -46,6 +45,8 @@ import static com.gregtechceu.gtceu.common.data.GCYMBlocks.HEAT_VENT;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.PYROLYSE_RECIPES;
+import static com.gregtechceu.gtceu.common.data.machines.GTMachineUtils.HIGH_TIERS;
+import static com.gregtechceu.gtceu.common.data.machines.GTMachineUtils.defaultTankSizeFunction;
 import static com.prosbloom.cerestech.registry.CTRegistries.REGISTRATE;
 import static com.prosbloom.cerestech.data.CTBlocks.*;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.NAQUADAH_REACTOR_RECIPES;
@@ -84,8 +85,6 @@ public class CTMachines {
                     .build())
             .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_frost_proof"),
                     CTMod.id("block/multiblock/industrial_greenhouse"), false)
-            .compassSections(GTCompassSections.TIER[HV])
-            .compassNodeSelf()
             .register();
 
     public static MultiblockMachineDefinition NUCLEAR_REACTOR = REGISTRATE.multiblock("nuclear_reactor", holder-> new ReactorMachine(holder, 1, 1))
@@ -107,12 +106,10 @@ public class CTMachines {
                     .build())
             .workableCasingRenderer(CTMod.id("block/casings/solid/machine_casing_shielded_reactor"),
                     CTMod.id("block/multiblock/nuclear_reactor"), false)
-            .compassSections(GTCompassSections.TIER[EV])
-            .compassNodeSelf()
             .register();
 
 
-    public final static MultiblockMachineDefinition HOT_COOLANT_TURBINE = GTMachines.registerLargeTurbine("hot_coolant_turbine", IV,
+    public final static MultiblockMachineDefinition HOT_COOLANT_TURBINE = BlockHelper.registerLargeTurbine("hot_coolant_turbine", IV,
             CTRecipeTypes.HOT_COOLANT_TURBINE_RECIPES,
             CASING_TUNGSTENSTEEL_TURBINE, CASING_TUNGSTENSTEEL_GEARBOX,
             GTCEu.id("block/casings/solid/machine_casing_robust_tungstensteel"),
@@ -140,8 +137,6 @@ public class CTMachines {
                     .build())
             .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_clean_stainless_steel"),
                     CTMod.id("block/multiblock/gas_centrifuge"), false)
-            .compassSections(GTCompassSections.TIER[EV])
-            .compassNodeSelf()
             .register();
 
     public static MultiblockMachineDefinition LARGE_HEAT_EXCHANGER = REGISTRATE.multiblock("large_heat_exchanger", WorkableElectricMultiblockMachine::new)
@@ -161,8 +156,6 @@ public class CTMachines {
                     .build())
             .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_stable_titanium"),
                     CTMod.id("block/multiblock/large_heat_exchanger"), false)
-            .compassSections(GTCompassSections.TIER[EV])
-            .compassNodeSelf()
             .register();
 
     public static MultiblockMachineDefinition INDUSTRIAL_COKE_OVEN = REGISTRATE.multiblock("industrial_coke_oven", WorkableElectricMultiblockMachine::new)
@@ -185,8 +178,6 @@ public class CTMachines {
                     .build())
             .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_heatproof"),
                     CTMod.id("block/multiblock/industrial_coke_oven"), false)
-            .compassSections(GTCompassSections.TIER[EV])
-            .compassNodeSelf()
             .register();
 
     public final static MultiblockMachineDefinition VOLCANUS = REGISTRATE.multiblock("volcanus", VolcanusMachine::new)
@@ -195,6 +186,7 @@ public class CTMachines {
             .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH)
             // TODO - fix parallels overclock
             //.recipeModifier((machine, recipe) -> CTRecipeModifiers.volcanusParallel(machine, recipe, 8, false))
+            .recipeModifier(GTRecipeModifiers.OC_NON_PERFECT)
             .appearanceBlock(CASING_VOLCANUS)
             .pattern(definition -> FactoryBlockPattern.start()
                     .aisle("XXX", "CCC", "CCC", "XXX")
@@ -230,7 +222,7 @@ public class CTMachines {
                         .forEach(coil -> shapeInfo.add(builder.where('C', coil.getValue().get()).build()));
                 return shapeInfo;
             })
-            .recoveryItems(() -> new ItemLike[]{GTItems.MATERIAL_ITEMS.get(TagPrefix.dustTiny, GTMaterials.Ash).get()})
+            .recoveryItems(() -> new ItemLike[]{GTMaterialItems.MATERIAL_ITEMS.get(TagPrefix.dustTiny, GTMaterials.Ash).get()})
             .workableCasingRenderer(CTMod.id("block/casings/solid/machine_casing_volcanus"),
                     GTCEu.id("block/multiblock/electric_blast_furnace"), false)
             .tooltips(Component.translatable("gtceu.machine.electric_blast_furnace.tooltip.1",
@@ -243,8 +235,6 @@ public class CTMachines {
                             Component.translatable(FormattingUtil.formatNumbers(coilMachine.getCoilType().getCoilTemperature() + 100L * Math.max(0, coilMachine.getTier() - GTValues.MV)) + "K").setStyle(Style.EMPTY.withColor(ChatFormatting.RED))));
                 }
             })
-            .compassSections(GTCompassSections.TIER[EV])
-            .compassNodeSelf()
             .register();
 
     public final static MultiblockMachineDefinition CRYOGENIC_FREEZER = REGISTRATE.multiblock("cryogenic_freezer", CryogenicFreezerMachine::new)
@@ -268,8 +258,6 @@ public class CTMachines {
                     CTMod.id("block/multiblock/cryogenic_freezer"), false)
             .tooltips(Component.translatable("cerestech.machine.cryogenic_freezer.tooltip",
                     "cerestech.machine.cryogenic_freezer.tooltip.1"))
-            .compassSections(GTCompassSections.TIER[IV])
-            .compassNodeSelf()
             .register();
 
     public static MultiblockMachineDefinition POWER_STATION = REGISTRATE.multiblock("power_station", PowerStationMachine::new)
@@ -288,8 +276,6 @@ public class CTMachines {
                     .build())
             .workableCasingRenderer(CTMod.id("block/casings/solid/machine_casing_power_station"),
                     CTMod.id("block/multiblock/industrial_coke_oven"), false)
-            .compassSections(GTCompassSections.TIER[EV])
-            .compassNodeSelf()
             .register();
 
     public final static MachineDefinition[] ME_OUTPUT_BUS = registerTieredMachines("me_output_bus",
@@ -299,7 +285,6 @@ public class CTMachines {
                     .rotationState(RotationState.ALL)
                     .abilities(PartAbility.EXPORT_ITEMS)
                     .overlayTieredHullRenderer("item_bus.export")
-                    .compassNode("me_output_bus")
                     .register(),
             HIGH_TIERS);
 
@@ -310,7 +295,6 @@ public class CTMachines {
                     .rotationState(RotationState.ALL)
                     .abilities(PartAbility.EXPORT_FLUIDS)
                     .overlayTieredHullRenderer("fluid_hatch.export")
-                    .compassNode("me_output_hatch")
                     .register(),
             HIGH_TIERS);
 
@@ -321,7 +305,6 @@ public class CTMachines {
                     .rotationState(RotationState.ALL)
                     .abilities(PartAbility.IMPORT_ITEMS)
                     .overlayTieredHullRenderer("item_bus.import")
-                    .compassNode("me_input_bus")
                     .register(),
             LuV);
 
@@ -333,7 +316,6 @@ public class CTMachines {
                     .rotationState(RotationState.ALL)
                     .abilities(PartAbility.IMPORT_ITEMS, PartAbility.IMPORT_FLUIDS)
                     .overlayTieredHullRenderer("item_bus.import")
-                    .compassNode("dual_input_bus")
                     .register(),
             IV, LuV, ZPM);
 
@@ -377,8 +359,6 @@ public class CTMachines {
                     .build())
             .workableCasingRenderer(CTMod.id("block/casings/solid/machine_casing_photolithographic"),
                     CTMod.id("block/multiblock/pcb_factory"), false)
-            .compassSections(GTCompassSections.TIER[ZPM])
-            .compassNodeSelf()
             .register();
 
     public static MultiblockMachineDefinition NEUTRON_ACTIVATOR = REGISTRATE.multiblock("neutron_activator", WorkableElectricMultiblockMachine::new)
@@ -406,8 +386,6 @@ public class CTMachines {
                     .build())
             .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_clean_stainless_steel"),
                     CTMod.id("block/multiblock/neutron_activator"), false)
-            .compassSections(GTCompassSections.TIER[IV])
-            .compassNodeSelf()
             .register();
 
     public static MultiblockMachineDefinition CHEMICAL_PLANT = REGISTRATE.multiblock("chemical_plant", WorkableElectricMultiblockMachine::new)
@@ -439,16 +417,14 @@ public class CTMachines {
                     .build())
             .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_robust_tungstensteel"),
                     CTMod.id("block/multiblock/chemical_plant"), false)
-            .compassSections(GTCompassSections.TIER[IV])
-            .compassNodeSelf()
             .register();
 
 
    public static  MultiblockMachineDefinition[] VOID_MINER = registerTieredMultis("void_miner", VoidMinerMachine::new, (tier, builder) -> builder
             .rotationState(RotationState.NON_Y_AXIS)
             .langValue("%s Void Ore Miner %s".formatted(VLVH[tier], VLVT[tier]))
-            .recipeType(new GTRecipeType(GTCEu.id("void_miner"), "dummy"))
-            .tooltips(
+                   .recipeType(GTRecipeTypes.MACERATOR_RECIPES)
+                   .tooltips(
             Component.translatable("cerestech.machine.void_miner.tooltip"))
             .appearanceBlock(() -> VoidMinerMachine.getCasingState(tier))
             .pattern((definition) -> FactoryBlockPattern.start()
@@ -470,7 +446,7 @@ public class CTMachines {
     public static  MultiblockMachineDefinition[] VOID_QUARRY = registerTieredMultis("void_quarry", VoidQuarryMachine::new, (tier, builder) -> builder
                     .rotationState(RotationState.NON_Y_AXIS)
                     .langValue("%s Void Quarry %s".formatted(VLVH[tier], VLVT[tier]))
-                    .recipeType(new GTRecipeType(GTCEu.id("void_quarry"), "dummy"))
+                    .recipeType(GTRecipeTypes.MACERATOR_RECIPES)
                     .tooltips(
                             Component.translatable("cerestech.machine.void_miner.tooltip"))
                     .appearanceBlock(() -> VoidQuarryMachine.getCasingState(tier))
@@ -511,8 +487,6 @@ public class CTMachines {
                     .build())
             .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_clean_stainless_steel"),
                     CTMod.id("block/multiblock/bacterial_vat"), false)
-            .compassSections(GTCompassSections.TIER[IV])
-            .compassNodeSelf()
             .register();
 
     public static MultiblockMachineDefinition MEGA_CHEMICAL_REACTOR = REGISTRATE.multiblock("mega_chemical_reactor", WorkableElectricMultiblockMachine::new)
@@ -541,8 +515,6 @@ public class CTMachines {
                     .build())
             .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_inert_ptfe"),
                     CTMod.id("block/multiblock/mega_chemical_reactor"), false)
-            .compassSections(GTCompassSections.TIER[IV])
-            .compassNodeSelf()
             .register();
 
     public static MultiblockMachineDefinition MEGA_MULTI_SMELTER = REGISTRATE.multiblock("mega_multi_smelter", CoilWorkableElectricMultiblockMachine::new)
@@ -577,8 +549,6 @@ public class CTMachines {
                     components.add(Component.translatable("gtceu.multiblock.multi_furnace.heating_coil_discount", coilMachine.getCoilType().getEnergyDiscount()));
                 }
             })
-            .compassSections(GTCompassSections.TIER[IV])
-            .compassNodeSelf()
             .register();
 
     public static MultiblockMachineDefinition STELLAR_FORGE = REGISTRATE.multiblock("stellar_forge", WorkableElectricMultiblockMachine::new)
@@ -615,8 +585,6 @@ public class CTMachines {
                     .build())
             .workableCasingRenderer(CTMod.id("block/casings/solid/machine_casing_enriched_naquadah"),
                     CTMod.id("block/multiblock/stellar_forge"), false)
-            .compassSections(GTCompassSections.TIER[UHV])
-            .compassNodeSelf()
             .register();
 
     public static MultiblockMachineDefinition PLASMA_CONDENSER = REGISTRATE.multiblock("plasma_condenser", WorkableElectricMultiblockMachine::new)
@@ -642,7 +610,5 @@ public class CTMachines {
                     .build())
             .workableCasingRenderer(GTCEu.id("block/casings/gcym/reaction_safe_mixing_casing"),
                     CTMod.id("block/multiblock/plasma_condenser"), false)
-            .compassSections(GTCompassSections.TIER[LuV])
-            .compassNodeSelf()
             .register();
 }

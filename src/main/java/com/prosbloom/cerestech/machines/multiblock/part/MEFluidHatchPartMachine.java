@@ -5,14 +5,13 @@ import appeng.api.stacks.AEFluidKey;
 import appeng.api.storage.StorageHelper;
 import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.gui.GuiTextures;
+import com.gregtechceu.gtceu.api.gui.widget.TankWidget;
 import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.multiblock.part.TieredIOPartMachine;
 import com.lowdragmc.lowdraglib.gui.widget.ImageWidget;
-import com.lowdragmc.lowdraglib.gui.widget.TankWidget;
 import com.lowdragmc.lowdraglib.gui.widget.Widget;
 import com.lowdragmc.lowdraglib.gui.widget.WidgetGroup;
 import com.lowdragmc.lowdraglib.side.fluid.FluidHelper;
-import com.lowdragmc.lowdraglib.side.fluid.FluidStack;
 import com.lowdragmc.lowdraglib.syncdata.ISubscription;
 import com.lowdragmc.lowdraglib.syncdata.annotation.Persisted;
 import com.lowdragmc.lowdraglib.syncdata.field.ManagedFieldHolder;
@@ -24,6 +23,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.fluids.FluidStack;
 
 public class MEFluidHatchPartMachine extends MEPartMachine {
     protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(MEFluidHatchPartMachine.class, TieredIOPartMachine.MANAGED_FIELD_HOLDER);
@@ -61,7 +61,7 @@ public class MEFluidHatchPartMachine extends MEPartMachine {
     }
 
     protected NotifiableFluidTankMulti createTank() {
-        return new NotifiableFluidTankMulti(this, numTanks, getTankCapacity(), io);
+        return new NotifiableFluidTankMulti(this, numTanks, (int) getTankCapacity(), io);
     }
 
     public void updateTankSubscription() {
@@ -73,6 +73,7 @@ public class MEFluidHatchPartMachine extends MEPartMachine {
         }
     }
 
+    /*
     protected void autoIO() {
         if (getOffsetTimer() %5 ==0) {
             if (isWorkingEnabled() && ((io == IO.OUT && !tanks.isEmpty()) || io == IO.IN) && mainNode != null) {
@@ -91,6 +92,21 @@ public class MEFluidHatchPartMachine extends MEPartMachine {
                     }
                 }
             }
+        }
+    }
+
+     */
+    protected void autoIO() {
+        // TODO - fix autoio
+        if (getOffsetTimer() % 5 == 0) {
+            if (isWorkingEnabled()) {
+                if (io == IO.OUT) {
+                    tanks.exportToNearby(getFrontFacing());
+                } else if (io == IO.IN) {
+                    tanks.importFromNearby(getFrontFacing());
+                }
+            }
+            updateTankSubscription();
         }
     }
 

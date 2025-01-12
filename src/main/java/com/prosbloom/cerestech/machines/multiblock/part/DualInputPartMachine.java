@@ -13,6 +13,7 @@ import com.gregtechceu.gtceu.api.machine.trait.NotifiableItemStackHandler;
 import com.gregtechceu.gtceu.common.machine.multiblock.part.FluidHatchPartMachine;
 import com.lowdragmc.lowdraglib.gui.widget.*;
 import com.lowdragmc.lowdraglib.side.fluid.FluidTransferHelper;
+import com.lowdragmc.lowdraglib.side.fluid.IFluidStorage;
 import com.lowdragmc.lowdraglib.side.item.ItemTransferHelper;
 import com.lowdragmc.lowdraglib.syncdata.ISubscription;
 import com.lowdragmc.lowdraglib.syncdata.annotation.Persisted;
@@ -21,6 +22,7 @@ import com.prosbloom.cerestech.api.machine.trait.NotifiableFluidTankMulti;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.TickTask;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
@@ -108,11 +110,11 @@ public class DualInputPartMachine extends TieredIOPartMachine implements IDistin
         int index = 0;
         for (int i = 0; i < rows; i++)
             for (int x = 0; x < 4; x++)
-                group.addWidget(new TankWidget(tanks.getStorages()[index++], 15 + 20 * x, (i + 1) * 18, true, io.support(IO.IN)).setBackground(GuiTextures.FLUID_SLOT));
+                group.addWidget(new TankWidget((IFluidStorage) tanks.getStorages()[index++], 15 + 20 * x, (i + 1) * 18, true, io.support(IO.IN)).setBackground(GuiTextures.FLUID_SLOT));
         index = 0;
         for (int y = 0; y < rows+1; y++)
             for (int x = 0; x < 4; x++)
-                group.addWidget(new SlotWidget(inventory.storage, index++, 18 + x * 18, 18 * rows + 24 + y * 18, true, io.support(IO.IN))
+                group.addWidget(new SlotWidget((Container) inventory.storage, index++, 18 + x * 18, 18 * rows + 24 + y * 18, true, io.support(IO.IN))
                         .setBackgroundTexture(GuiTextures.SLOT));
         group.setBackground(GuiTextures.BACKGROUND_INVERSE);
         return group;
@@ -128,8 +130,16 @@ public class DualInputPartMachine extends TieredIOPartMachine implements IDistin
         inventory.setDistinct(isDistinct);
     }
 
+    /*
     @Override
     public void onDrops(List<ItemStack> drops, Player entity) {
         MetaMachine.clearInventory(drops, inventory);
+    }
+
+     */
+
+    @Override
+    public void onDrops(List<ItemStack> list) {
+        // TODO - added in 1.6.2
     }
 }

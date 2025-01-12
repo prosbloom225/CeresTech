@@ -45,7 +45,7 @@ public class NuclearReactorRecipes {
                 // fuelOxide + fuelPure
                 int finalI = i;
                 reactorFuels.forEach(f->
-                        NUCLEAR_REACTOR_RECIPES.recipeBuilder(r.isotopeFuelOxide.getName() + "_reactor_pure_" + f.isotopeFuelPure + finalI)
+                        NUCLEAR_REACTOR_RECIPES.recipeBuilder(r.isotopeFuelOxide.getName() + "_reactor_pure_" + f.isotopeFuelPure.getName() + finalI)
                                 .inputItems(fuelOxide, r.isotopeFuelOxide, finalI)
                                 .inputItems(fuelPure, f.isotopeFuelPure, 9)
                                 .circuitMeta(finalI)

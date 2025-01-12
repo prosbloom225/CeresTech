@@ -12,6 +12,7 @@ import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMa
 import com.gregtechceu.gtceu.api.machine.trait.NotifiableFluidTank;
 import com.gregtechceu.gtceu.api.machine.trait.RecipeLogic;
 import com.gregtechceu.gtceu.common.data.GTBlocks;
+import com.gregtechceu.gtceu.common.data.GTMaterialBlocks;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.prosbloom.cerestech.api.machine.trait.VoidMinerLogic;
 import net.minecraft.resources.ResourceLocation;
@@ -28,7 +29,7 @@ import static com.gregtechceu.gtceu.common.data.GTMaterials.DrillingFluid;
 
 public class VoidMinerMachine extends WorkableElectricMultiblockMachine implements ITieredMachine {
     private final int tier;
-    private final static FluidStack coolant = DrillingFluid.getFluid(20);
+    private static FluidStack coolant;// = DrillingFluid.getFluid(20);
 
     @Override
     public int getTier() {
@@ -67,12 +68,12 @@ public class VoidMinerMachine extends WorkableElectricMultiblockMachine implemen
 
     public static Block getFrameState(int tier) {
         if (tier == GTValues.LuV)
-            return GTBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, GTMaterials.NaquadahAlloy).get();
+            return GTMaterialBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, GTMaterials.NaquadahAlloy).get();
         if (tier == GTValues.ZPM)
-            return GTBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, GTMaterials.Americium).get();
+            return GTMaterialBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, GTMaterials.Americium).get();
         if (tier == GTValues.UV)
-            return GTBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, GTMaterials.Neutronium).get();
-        return GTBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, GTMaterials.Steel).get();
+            return GTMaterialBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, GTMaterials.Neutronium).get();
+        return GTMaterialBlocks.MATERIAL_BLOCKS.get(TagPrefix.frameGt, GTMaterials.Steel).get();
     }
 
     @Override

@@ -1,26 +1,25 @@
 package com.prosbloom.cerestech.api.machine.trait;
 
 import com.gregtechceu.gtceu.api.capability.recipe.IO;
+import com.gregtechceu.gtceu.api.fluids.store.FluidStorage;
 import com.gregtechceu.gtceu.api.machine.MetaMachine;
 import com.gregtechceu.gtceu.api.machine.trait.NotifiableFluidTank;
 import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.api.recipe.ingredient.FluidIngredient;
-import com.lowdragmc.lowdraglib.misc.FluidStorage;
-import com.lowdragmc.lowdraglib.side.fluid.FluidStack;
-import net.minecraft.world.level.material.Fluid;
+import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class NotifiableFluidTankMulti extends NotifiableFluidTank {
     public NotifiableFluidTankMulti(MetaMachine machine, int slots, int capacity, IO io) {
         super(machine, slots, capacity, io);
     }
 
+    /*
     @Override
     public long fill(int tank, FluidStack resource, boolean simulate, boolean notifyChanges) {
         if (tank >= 0 && tank < getStorages().length && canCapInput()) {
@@ -143,4 +142,6 @@ public class NotifiableFluidTankMulti extends NotifiableFluidTank {
         }
         return left.isEmpty() ? null : left;
     }
+
+     */
 }

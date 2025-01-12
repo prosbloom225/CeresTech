@@ -22,6 +22,7 @@ import java.util.Objects;
 
 import static com.prosbloom.cerestech.data.recipes.NuclearReactorRecipes.reactorFuels;
 
+@SuppressWarnings("unchecked")
 public class ReactorMachine extends LargeBoilerMachine {
     private String fuel;
     private int maxDrain;

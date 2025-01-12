@@ -70,7 +70,6 @@ public class BlockHelper {
                 .register();
     }
 
-
     public static MachineDefinition[] registerSimpleMachines(String name,
                                                              GTRecipeType recipeType,
                                                              Int2IntFunction tankScalingFunction,
@@ -96,7 +95,6 @@ public class BlockHelper {
     public static MachineDefinition[] registerSimpleMachines(String name, GTRecipeType recipeType) {
         return registerSimpleMachines(name, recipeType, defaultTankSizeFunction);
     }
-
 
     public static MachineDefinition[] registerTieredMachines(String name,
                                                              BiFunction<IMachineBlockEntity, Integer, MetaMachine> factory,
@@ -132,7 +130,6 @@ public class BlockHelper {
                         .register(),
                 tiers);
     }
-
 
     public static MultiblockMachineDefinition[] registerTieredMultis(String name,
                                                                      BiFunction<IMachineBlockEntity, Integer, MultiblockControllerMachine> factory,

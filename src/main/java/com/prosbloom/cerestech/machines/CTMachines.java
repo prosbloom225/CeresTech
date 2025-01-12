@@ -414,7 +414,8 @@ public class CTMachines {
     public static  MultiblockMachineDefinition[] VOID_QUARRY = registerTieredMultis("void_quarry", VoidQuarryMachine::new, (tier, builder) -> builder
                     .rotationState(RotationState.NON_Y_AXIS)
                     .langValue("%s Void Quarry %s".formatted(VLVH[tier], VLVT[tier]))
-                    .recipeType(GTRecipeTypes.MACERATOR_RECIPES)
+                    //.recipeType(GTRecipeTypes.MACERATOR_RECIPES)
+                    .recipeType(CTRecipeTypes.QUARRY_RECIPES_DUMMY)
                     .tooltips(
                             Component.translatable("cerestech.machine.void_miner.tooltip"))
                     .appearanceBlock(() -> VoidQuarryMachine.getCasingState(tier))

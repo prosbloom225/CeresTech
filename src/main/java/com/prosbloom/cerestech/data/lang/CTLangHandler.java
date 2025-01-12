@@ -42,5 +42,6 @@ public class CTLangHandler {
         provider.add("gtceu.plasma_condenser", "Bacterial Vat");
         provider.add("gtceu.neutron_activator", "Neutron Activator");
         provider.add("gtceu.stellar_forge", "Stellar Forge");
+        provider.add("gtceu.quarry", "Stone Quarry");
     }
 }

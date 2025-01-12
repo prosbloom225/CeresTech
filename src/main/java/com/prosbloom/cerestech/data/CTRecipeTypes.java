@@ -92,4 +92,8 @@ public class CTRecipeTypes {
             .setEUIO(IO.IN)
             .setProgressBar(GuiTextures.PROGRESS_BAR_CRYSTALLIZATION, LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.COOLING);
+
+    public final static GTRecipeType QUARRY_RECIPES_DUMMY = register("quarry", MULTIBLOCK).setMaxIOSize(0, 9, 0, 0)
+            .setEUIO(IO.IN)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, LEFT_TO_RIGHT);
 }

@@ -75,6 +75,7 @@ public class CTRecipes {
         StellarForgeRecipes.registerStellarForgeRecipes(provider);
         PlasmaCondenserRecipes.registerPlasmaCondenserRecipes(provider);
         StoneCentrifugeRecipes.registerStoneCentrifugeRecipes(provider);
+        StoneCentrifugeRecipes.registerQuarryRecipesDummy(provider);
     }
 
     private static void registerManualRecipes(Consumer<FinishedRecipe> provider) {

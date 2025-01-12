@@ -38,7 +38,7 @@ public class VoidQuarryLogic extends VoidMinerLogic {
     private void initVeinMaterials() {
         veinMaterials = new ArrayList<>();
         StoneCentrifugeRecipes.stones.stream()
-                .filter(s->getMachine().getTier()-2 > s.tier())
+                .filter(s->getMachine().getTier() >= s.tier())
                 .forEach(s->veinMaterials.add(new AbstractMap.SimpleEntry<>(10-s.tier(), s.stone())));
     }
     @Override

@@ -1,0 +1,417 @@
+[12Jan2025 09:34:44.543] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, MOD_DEV, --assetIndex, 5, --assetsDir, C:\Users\prosb\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.3.12, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mixin.config, ct-common.mixins.json]
+[12Jan2025 09:34:44.548] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.9 by Eclipse Adoptium; OS Windows 11 arch amd64 version 10.0
+[12Jan2025 09:34:44.667] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: Loading ImmediateWindowProvider fmlearlywindow
+[12Jan2025 09:34:44.714] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.6
+[12Jan2025 09:34:44.865] [main/INFO] [EARLYDISPLAY/]: Requested GL version 4.6 got version 4.6
+[12Jan2025 09:34:44.919] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/prosb/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23132!/ Service=ModLauncher Env=CLIENT
+[12Jan2025 09:34:44.964] [pool-2-thread-1/INFO] [EARLYDISPLAY/]: GL info: NVIDIA GeForce RTX 3080/PCIe/SSE2 GL version 4.6.0 NVIDIA 566.36, NVIDIA Corporation
+[12Jan2025 09:34:45.203] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\prosb\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.3.12\f6b9f7f45e33548b47f78d9f54c7b4eb1e94e9bd\javafmllanguage-1.20.1-47.3.12.jar is missing mods.toml file
+[12Jan2025 09:34:45.205] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\prosb\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.3.12\81de74e1180787af25604b6ecb3728fc485bd3c7\lowcodelanguage-1.20.1-47.3.12.jar is missing mods.toml file
+[12Jan2025 09:34:45.206] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\prosb\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.3.12\1ff4ed058e0774b82d8da352d9e051e6d2a154eb\mclanguage-1.20.1-47.3.12.jar is missing mods.toml file
+[12Jan2025 09:34:45.208] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\prosb\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.3.12\9a4d9f99e106aa2358cdbe6777921855d353371\fmlcore-1.20.1-47.3.12.jar is missing mods.toml file
+[12Jan2025 09:34:45.440] [main/WARN] [net.minecraftforge.jarjar.selection.JarSelector/]: Attempted to select a dependency jar for JarJar which was passed in as source: configuration. Using Mod File: C:\Users\prosb\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\configuration-444699\4608425_mapped_parchment_2023.09.03-1.20.1\configuration-444699-4608425_mapped_parchment_2023.09.03-1.20.1.jar
+[12Jan2025 09:34:45.440] [main/WARN] [net.minecraftforge.jarjar.selection.JarSelector/]: Attempted to select a dependency jar for JarJar which was passed in as source: ldlib. Using Mod File: C:\Users\prosb\.gradle\caches\forge_gradle\deobf_dependencies\com\lowdragmc\ldlib\ldlib-forge-1.20.1\1.0.33.b_mapped_parchment_2023.09.03-1.20.1\ldlib-forge-1.20.1-1.0.33.b_mapped_parchment_2023.09.03-1.20.1.jar
+[12Jan2025 09:34:45.441] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 3 dependencies adding them to mods collection
+[12Jan2025 09:34:46.900] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[12Jan2025 09:34:46.912] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, MOD_DEV, --gameDir, ., --assetsDir, C:\Users\prosb\.gradle\caches\forge_gradle\assets, --assetIndex, 5]
+[12Jan2025 09:34:47.269] [main/INFO] [mixin/]: Remapping refMap configuration.refmap.json using C:\osieckim\projects\CeresTech\build\createSrgToMcp\output.srg
+[12Jan2025 09:34:47.270] [main/INFO] [mixin/]: Remapping refMap avaritia.refmap.json using C:\osieckim\projects\CeresTech\build\createSrgToMcp\output.srg
+[12Jan2025 09:34:47.273] [main/INFO] [mixin/]: Remapping refMap ldlib-common-1.20.1-ldlib-common-refmap.json using C:\osieckim\projects\CeresTech\build\createSrgToMcp\output.srg
+[12Jan2025 09:34:47.274] [main/INFO] [mixin/]: Remapping refMap ldlib-forge-1.20.1-ldlib-forge-refmap.json using C:\osieckim\projects\CeresTech\build\createSrgToMcp\output.srg
+[12Jan2025 09:34:47.276] [main/INFO] [mixin/]: Remapping refMap gtceu.refmap.json using C:\osieckim\projects\CeresTech\build\createSrgToMcp\output.srg
+[12Jan2025 09:34:47.279] [main/INFO] [mixin/]: Remapping refMap ae2.mixins.refmap.json using C:\osieckim\projects\CeresTech\build\createSrgToMcp\output.srg
+[12Jan2025 09:34:47.500] [main/WARN] [mixin/]: Error loading class: journeymap/client/ui/fullscreen/Fullscreen (java.lang.ClassNotFoundException: journeymap.client.ui.fullscreen.Fullscreen)
+[12Jan2025 09:34:47.501] [main/WARN] [mixin/]: @Mixin target journeymap.client.ui.fullscreen.Fullscreen was not found gtceu.mixins.json:journeymap.FullscreenMixin
+[12Jan2025 09:34:47.501] [main/WARN] [mixin/]: Error loading class: xaero/map/gui/GuiMap (java.lang.ClassNotFoundException: xaero.map.gui.GuiMap)
+[12Jan2025 09:34:47.501] [main/WARN] [mixin/]: @Mixin target xaero.map.gui.GuiMap was not found gtceu.mixins.json:xaeroworldmap.GuiMapMixin
+[12Jan2025 09:34:47.502] [main/WARN] [mixin/]: Error loading class: xaero/map/element/MapElementRenderHandler$Builder (java.lang.ClassNotFoundException: xaero.map.element.MapElementRenderHandler$Builder)
+[12Jan2025 09:34:47.502] [main/WARN] [mixin/]: @Mixin target xaero.map.element.MapElementRenderHandler$Builder was not found gtceu.mixins.json:xaeroworldmap.MapElementRenderHandlerBuilderMixin
+[12Jan2025 09:34:47.502] [main/WARN] [mixin/]: Error loading class: xaero/common/minimap/highlight/HighlighterRegistry (java.lang.ClassNotFoundException: xaero.common.minimap.highlight.HighlighterRegistry)
+[12Jan2025 09:34:47.503] [main/WARN] [mixin/]: @Mixin target xaero.common.minimap.highlight.HighlighterRegistry was not found gtceu.mixins.json:xaerominimap.HighlighterRegistryMixin
+[12Jan2025 09:34:47.503] [main/WARN] [mixin/]: Error loading class: xaero/common/minimap/render/MinimapFBORenderer (java.lang.ClassNotFoundException: xaero.common.minimap.render.MinimapFBORenderer)
+[12Jan2025 09:34:47.503] [main/WARN] [mixin/]: @Mixin target xaero.common.minimap.render.MinimapFBORenderer was not found gtceu.mixins.json:xaerominimap.MinimapFBORendererMixin
+[12Jan2025 09:34:47.504] [main/WARN] [mixin/]: Error loading class: xaero/map/WorldMapSession (java.lang.ClassNotFoundException: xaero.map.WorldMapSession)
+[12Jan2025 09:34:47.504] [main/WARN] [mixin/]: @Mixin target xaero.map.WorldMapSession was not found gtceu.mixins.json:xaeroworldmap.WorldMapSessionMixin
+[12Jan2025 09:34:47.740] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.3.5).
+[12Jan2025 09:34:50.727] [Datafixer Bootstrap/INFO] [com.mojang.datafixers.DataFixerBuilder/]: 188 Datafixer optimizations took 101 milliseconds
+[12Jan2025 09:34:51.594] [pool-4-thread-1/WARN] [AE2:C/]: Unable to find class com.simibubi.create.foundation.ponder.PonderWorld. Integration with PonderJS disabled.
+[12Jan2025 09:34:51.960] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/prosb/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/assets/.mcassetsroot' uses unexpected schema
+[12Jan2025 09:34:51.960] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/prosb/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/data/.mcassetsroot' uses unexpected schema
+[12Jan2025 09:34:51.984] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[12Jan2025 09:34:51.990] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
+[12Jan2025 09:34:52.074] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.3.1 build 7
+[12Jan2025 09:34:52.309] [modloading-worker-0/INFO] [LowDragLib/]: LowDragLib is initializing on platform: Forge
+[12Jan2025 09:34:52.309] [modloading-worker-0/INFO] [GregTechCEu/]: GregTechCEu is initializing on platform: Forge
+[12Jan2025 09:34:52.339] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.3.12, for MC 1.20.1 with MCP 20230612.114412
+[12Jan2025 09:34:52.339] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.3.12 Initialized
+[12Jan2025 09:34:52.450] [modloading-worker-0/INFO] [Configuration/FileWatching]: Registered configuration config for auto-sync function
+[12Jan2025 09:34:52.457] [modloading-worker-0/INFO] [Configuration/FileWatching]: Registered gtceu config for auto-sync function
+[12Jan2025 09:34:52.466] [modloading-worker-0/INFO] [GregTechCEu/]: High-Tier is Enabled.
+[12Jan2025 09:34:52.724] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager...
+[12Jan2025 09:34:52.728] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager took 3.276 ms
+[12Jan2025 09:34:52.928] [Render thread/INFO] [GregTechCEu/]: GTCEu common proxy init!
+[12Jan2025 09:34:52.958] [Render thread/INFO] [GregTechCEu/]: Registering material registries
+[12Jan2025 09:34:52.958] [Render thread/INFO] [GregTechCEu/]: Registering GTCEu Materials
+[12Jan2025 09:34:53.059] [Render thread/INFO] [GregTechCEu/]: Registering addon Materials
+[12Jan2025 09:34:53.151] [Render thread/WARN] [GregTechCEu/]: FluidStorageKey{gtceu:liquid} already has an associated fluid for material gtceu:water
+[12Jan2025 09:34:53.210] [Render thread/WARN] [GregTechCEu/]: FluidStorageKey{gtceu:liquid} already has an associated fluid for material gtceu:lava
+[12Jan2025 09:34:53.210] [Render thread/WARN] [GregTechCEu/]: FluidStorageKey{gtceu:liquid} already has an associated fluid for material gtceu:milk
+[12Jan2025 09:34:54.202] [Render thread/INFO] [com.prosbloom.cerestech.addon.CTAddon/]: CTAddon init!
+[12Jan2025 09:34:54.223] [Render thread/INFO] [GregTechCEu/]: Registering KeyBinds
+[12Jan2025 09:34:54.224] [Render thread/WARN] [net.minecraftforge.fml.DeferredWorkQueue/LOADING]: Mod 'gtceu' took 1.295 s to run a deferred task.
+[12Jan2025 09:34:55.340] [Render thread/INFO] [net.minecraftforge.gametest.ForgeGameTestHooks/]: Enabled Gametest Namespaces: [cerestech]
+[12Jan2025 09:34:55.480] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: vanilla, mod_resources, gtceu:dynamic_assets, ldlib
+[12Jan2025 09:34:55.604] [Worker-Main-1/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_all_no_pua-15.0.06.hex, loading
+[12Jan2025 09:34:55.607] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [configuration] Starting version check at https://raw.githubusercontent.com/Toma1O6/UpdateSchemas/master/configuration-forge.json
+[12Jan2025 09:34:55.918] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [configuration] Found status: OUTDATED Current: 2.2.0 Target: 2.2.1
+[12Jan2025 09:34:55.918] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
+[12Jan2025 09:34:56.053] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: OUTDATED Current: 47.3.12 Target: 47.3.22
+[12Jan2025 09:34:56.123] [Render thread/INFO] [GregTechCEu/]: GregTech Model loading took 600ms
+[12Jan2025 09:34:57.002] [Worker-Main-8/WARN] [net.minecraft.client.resources.model.ModelBakery/]: Exception loading blockstate definition: 'gtceu:blockstates/shielded_reactor_casing.json' missing model for variant: 'gtceu:shielded_reactor_casing#'
+[12Jan2025 09:34:57.002] [Worker-Main-8/WARN] [net.minecraft.client.resources.model.ModelBakery/]: Exception loading blockstate definition: 'gtceu:blockstates/volcanus_casing.json' missing model for variant: 'gtceu:volcanus_casing#'
+[12Jan2025 09:34:57.002] [Worker-Main-8/WARN] [net.minecraft.client.resources.model.ModelBakery/]: Exception loading blockstate definition: 'gtceu:blockstates/cryogenic_casing.json' missing model for variant: 'gtceu:cryogenic_casing#'
+[12Jan2025 09:34:57.002] [Worker-Main-8/WARN] [net.minecraft.client.resources.model.ModelBakery/]: Exception loading blockstate definition: 'gtceu:blockstates/power_station_casing.json' missing model for variant: 'gtceu:power_station_casing#'
+[12Jan2025 09:34:57.002] [Worker-Main-8/WARN] [net.minecraft.client.resources.model.ModelBakery/]: Exception loading blockstate definition: 'gtceu:blockstates/photolithographic_casing.json' missing model for variant: 'gtceu:photolithographic_casing#'
+[12Jan2025 09:34:57.002] [Worker-Main-8/WARN] [net.minecraft.client.resources.model.ModelBakery/]: Exception loading blockstate definition: 'gtceu:blockstates/speeding_pipe_casing.json' missing model for variant: 'gtceu:speeding_pipe_casing#'
+[12Jan2025 09:34:57.002] [Worker-Main-8/WARN] [net.minecraft.client.resources.model.ModelBakery/]: Exception loading blockstate definition: 'gtceu:blockstates/enriched_naquadah_casing.json' missing model for variant: 'gtceu:enriched_naquadah_casing#'
+[12Jan2025 09:34:57.002] [Worker-Main-8/WARN] [net.minecraft.client.resources.model.ModelBakery/]: Exception loading blockstate definition: 'gtceu:blockstates/stellar_containment_casing.json' missing model for variant: 'gtceu:stellar_containment_casing#'
+[12Jan2025 09:34:57.063] [Worker-Main-8/WARN] [net.minecraft.client.resources.model.ModelBakery/]: gtceu:shielded_reactor_casing#inventory
+java.io.FileNotFoundException: gtceu:models/item/shielded_reactor_casing.json
+	at net.minecraft.client.resources.model.ModelBakery.loadBlockModel(ModelBakery.java:417) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.loadModel(ModelBakery.java:266) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.getModel(ModelBakery.java:243) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.loadTopLevel(ModelBakery.java:384) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.<init>(ModelBakery.java:150) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelManager.lambda$reload$0(ModelManager.java:83) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at java.util.concurrent.CompletableFuture.biApply(CompletableFuture.java:1311) ~[?:?]
+	at java.util.concurrent.CompletableFuture$BiApply.tryFire(CompletableFuture.java:1280) ~[?:?]
+	at java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[?:?]
+[12Jan2025 09:34:57.064] [Worker-Main-8/WARN] [net.minecraft.client.resources.model.ModelBakery/]: gtceu:volcanus_casing#inventory
+java.io.FileNotFoundException: gtceu:models/item/volcanus_casing.json
+	at net.minecraft.client.resources.model.ModelBakery.loadBlockModel(ModelBakery.java:417) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.loadModel(ModelBakery.java:266) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.getModel(ModelBakery.java:243) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.loadTopLevel(ModelBakery.java:384) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.<init>(ModelBakery.java:150) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelManager.lambda$reload$0(ModelManager.java:83) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at java.util.concurrent.CompletableFuture.biApply(CompletableFuture.java:1311) ~[?:?]
+	at java.util.concurrent.CompletableFuture$BiApply.tryFire(CompletableFuture.java:1280) ~[?:?]
+	at java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[?:?]
+[12Jan2025 09:34:57.065] [Worker-Main-8/WARN] [net.minecraft.client.resources.model.ModelBakery/]: gtceu:cryogenic_casing#inventory
+java.io.FileNotFoundException: gtceu:models/item/cryogenic_casing.json
+	at net.minecraft.client.resources.model.ModelBakery.loadBlockModel(ModelBakery.java:417) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.loadModel(ModelBakery.java:266) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.getModel(ModelBakery.java:243) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.loadTopLevel(ModelBakery.java:384) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.<init>(ModelBakery.java:150) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelManager.lambda$reload$0(ModelManager.java:83) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at java.util.concurrent.CompletableFuture.biApply(CompletableFuture.java:1311) ~[?:?]
+	at java.util.concurrent.CompletableFuture$BiApply.tryFire(CompletableFuture.java:1280) ~[?:?]
+	at java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[?:?]
+[12Jan2025 09:34:57.066] [Worker-Main-8/WARN] [net.minecraft.client.resources.model.ModelBakery/]: gtceu:power_station_casing#inventory
+java.io.FileNotFoundException: gtceu:models/item/power_station_casing.json
+	at net.minecraft.client.resources.model.ModelBakery.loadBlockModel(ModelBakery.java:417) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.loadModel(ModelBakery.java:266) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.getModel(ModelBakery.java:243) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.loadTopLevel(ModelBakery.java:384) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.<init>(ModelBakery.java:150) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelManager.lambda$reload$0(ModelManager.java:83) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at java.util.concurrent.CompletableFuture.biApply(CompletableFuture.java:1311) ~[?:?]
+	at java.util.concurrent.CompletableFuture$BiApply.tryFire(CompletableFuture.java:1280) ~[?:?]
+	at java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[?:?]
+[12Jan2025 09:34:57.067] [Worker-Main-8/WARN] [net.minecraft.client.resources.model.ModelBakery/]: gtceu:photolithographic_casing#inventory
+java.io.FileNotFoundException: gtceu:models/item/photolithographic_casing.json
+	at net.minecraft.client.resources.model.ModelBakery.loadBlockModel(ModelBakery.java:417) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.loadModel(ModelBakery.java:266) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.getModel(ModelBakery.java:243) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.loadTopLevel(ModelBakery.java:384) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.<init>(ModelBakery.java:150) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelManager.lambda$reload$0(ModelManager.java:83) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at java.util.concurrent.CompletableFuture.biApply(CompletableFuture.java:1311) ~[?:?]
+	at java.util.concurrent.CompletableFuture$BiApply.tryFire(CompletableFuture.java:1280) ~[?:?]
+	at java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[?:?]
+[12Jan2025 09:34:57.067] [Worker-Main-8/WARN] [net.minecraft.client.resources.model.ModelBakery/]: gtceu:speeding_pipe_casing#inventory
+java.io.FileNotFoundException: gtceu:models/item/speeding_pipe_casing.json
+	at net.minecraft.client.resources.model.ModelBakery.loadBlockModel(ModelBakery.java:417) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.loadModel(ModelBakery.java:266) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.getModel(ModelBakery.java:243) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.loadTopLevel(ModelBakery.java:384) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.<init>(ModelBakery.java:150) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelManager.lambda$reload$0(ModelManager.java:83) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at java.util.concurrent.CompletableFuture.biApply(CompletableFuture.java:1311) ~[?:?]
+	at java.util.concurrent.CompletableFuture$BiApply.tryFire(CompletableFuture.java:1280) ~[?:?]
+	at java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[?:?]
+[12Jan2025 09:34:57.068] [Worker-Main-8/WARN] [net.minecraft.client.resources.model.ModelBakery/]: gtceu:enriched_naquadah_casing#inventory
+java.io.FileNotFoundException: gtceu:models/item/enriched_naquadah_casing.json
+	at net.minecraft.client.resources.model.ModelBakery.loadBlockModel(ModelBakery.java:417) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.loadModel(ModelBakery.java:266) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.getModel(ModelBakery.java:243) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.loadTopLevel(ModelBakery.java:384) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.<init>(ModelBakery.java:150) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelManager.lambda$reload$0(ModelManager.java:83) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at java.util.concurrent.CompletableFuture.biApply(CompletableFuture.java:1311) ~[?:?]
+	at java.util.concurrent.CompletableFuture$BiApply.tryFire(CompletableFuture.java:1280) ~[?:?]
+	at java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[?:?]
+[12Jan2025 09:34:57.068] [Worker-Main-8/WARN] [net.minecraft.client.resources.model.ModelBakery/]: gtceu:stellar_containment_casing#inventory
+java.io.FileNotFoundException: gtceu:models/item/stellar_containment_casing.json
+	at net.minecraft.client.resources.model.ModelBakery.loadBlockModel(ModelBakery.java:417) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.loadModel(ModelBakery.java:266) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.getModel(ModelBakery.java:243) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.loadTopLevel(ModelBakery.java:384) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.<init>(ModelBakery.java:150) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelManager.lambda$reload$0(ModelManager.java:83) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at java.util.concurrent.CompletableFuture.biApply(CompletableFuture.java:1311) ~[?:?]
+	at java.util.concurrent.CompletableFuture$BiApply.tryFire(CompletableFuture.java:1280) ~[?:?]
+	at java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[?:?]
+[12Jan2025 09:34:57.155] [Worker-Main-8/WARN] [net.minecraft.client.resources.model.ModelBakery/]: gtceu:block/cube_2_layer_tintindex
+java.io.FileNotFoundException: gtceu:models/block/cube_2_layer_tintindex.json
+	at net.minecraft.client.resources.model.ModelBakery.loadBlockModel(ModelBakery.java:417) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.loadModel(ModelBakery.java:262) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.getModel(ModelBakery.java:243) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelBakery.<init>(ModelBakery.java:159) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.resources.model.ModelManager.lambda$reload$0(ModelManager.java:83) ~[forge-1.20.1-47.3.12_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at java.util.concurrent.CompletableFuture.biApply(CompletableFuture.java:1311) ~[?:?]
+	at java.util.concurrent.CompletableFuture$BiApply.tryFire(CompletableFuture.java:1280) ~[?:?]
+	at java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[?:?]
+[12Jan2025 09:34:57.327] [Worker-Main-5/WARN] [net.minecraft.client.renderer.texture.atlas.sources.SingleFile/]: Missing sprite: gtceu:textures/block/casings/voltage/u_iv/side.png
+[12Jan2025 09:34:58.882] [Worker-Main-15/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model gtceu:invar_lighter#inventory:
+    minecraft:textures/atlas/blocks.png:gtceu:items/invar_lighter
+[12Jan2025 09:34:58.882] [Worker-Main-15/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model gtceu:platinum_lighter#inventory:
+    minecraft:textures/atlas/blocks.png:gtceu:items/platinum_lighter
+[12Jan2025 09:34:59.619] [Render thread/INFO] [GregTechCEu/]: TheOneProbe found. Enabling integration...
+[12Jan2025 09:35:00.494] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
+[12Jan2025 09:35:00.494] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[12Jan2025 09:35:00.511] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device OpenAL Soft on Main Out 1/2 (3- Studio 24c)
+[12Jan2025 09:35:00.512] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
+[12Jan2025 09:35:00.596] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 2048x1024x4 minecraft:textures/atlas/blocks.png-atlas
+[12Jan2025 09:35:00.609] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
+[12Jan2025 09:35:00.610] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[12Jan2025 09:35:00.610] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[12Jan2025 09:35:00.610] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
+[12Jan2025 09:35:00.612] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
+[12Jan2025 09:35:00.613] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[12Jan2025 09:35:00.613] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[12Jan2025 09:35:00.613] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[12Jan2025 09:35:00.682] [Render thread/WARN] [net.minecraft.client.renderer.ShaderInstance/]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[12Jan2025 09:35:00.715] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
+[12Jan2025 09:35:00.717] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[12Jan2025 09:35:00.717] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[12Jan2025 09:35:00.717] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 jei:textures/atlas/gui.png-atlas
+[12Jan2025 09:35:00.845] [Realms Notification Availability checker #1/INFO] [com.mojang.realmsclient.client.RealmsClient/]: Could not authorize you against Realms server: Invalid session id
+[12Jan2025 09:35:06.221] [Render thread/WARN] [GregTechCEu/]: Trying to add more outputs than RecipeType can support, id: gtceu:ammonia_diuranate_solution, Max fluidOutputs: 2
+[12Jan2025 09:35:06.221] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:liquid_crystal_kevlar, Max itemInputs: 2
+[12Jan2025 09:35:06.221] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:liquid_crystal_kevlar, Max itemInputs: 2
+[12Jan2025 09:35:06.221] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:polyurethane_resin, Max itemInputs: 2
+[12Jan2025 09:35:06.221] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:polyurethane_resin, Max itemInputs: 2
+[12Jan2025 09:35:06.222] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:propionic_acid, Max fluidInputs: 3
+[12Jan2025 09:35:06.222] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:formaldehyde, Max itemInputs: 2
+[12Jan2025 09:35:06.225] [Render thread/WARN] [GregTechCEu/]: Trying to add more outputs than RecipeType can support, id: gtceu:farm_oak, Max itemOutputs: 2
+[12Jan2025 09:35:06.237] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:uranium_235_depleted_fuel_nitrate, Max itemInputs: 2
+[12Jan2025 09:35:06.237] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:uranium_depleted_fuel_nitrate_pure, Max itemInputs: 2
+[12Jan2025 09:35:06.238] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:neptunium_237_depleted_fuel_nitrate, Max itemInputs: 2
+[12Jan2025 09:35:06.238] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:neptunium_239_depleted_fuel_nitrate_pure, Max itemInputs: 2
+[12Jan2025 09:35:06.238] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:plutonium_241_depleted_fuel_nitrate, Max itemInputs: 2
+[12Jan2025 09:35:06.238] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:plutonium_244_depleted_fuel_nitrate_pure, Max itemInputs: 2
+[12Jan2025 09:35:06.238] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:americium_243_depleted_fuel_nitrate, Max itemInputs: 2
+[12Jan2025 09:35:06.239] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:americium_245_depleted_fuel_nitrate_pure, Max itemInputs: 2
+[12Jan2025 09:35:06.239] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:curium_247_depleted_fuel_nitrate, Max itemInputs: 2
+[12Jan2025 09:35:06.239] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:curium_250_depleted_fuel_nitrate_pure, Max itemInputs: 2
+[12Jan2025 09:35:06.239] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:berkelium_249_depleted_fuel_nitrate, Max itemInputs: 2
+[12Jan2025 09:35:06.239] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:berkelium_251_depleted_fuel_nitrate_pure, Max itemInputs: 2
+[12Jan2025 09:35:06.239] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:californium_253_depleted_fuel_nitrate, Max itemInputs: 2
+[12Jan2025 09:35:06.240] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:californium_252_depleted_fuel_nitrate_pure, Max itemInputs: 2
+[12Jan2025 09:35:06.240] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:einsteinium_255_depleted_fuel_nitrate, Max itemInputs: 2
+[12Jan2025 09:35:06.240] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:einsteinium_257_depleted_fuel_nitrate_pure, Max itemInputs: 2
+[12Jan2025 09:35:06.240] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:fermium_259_depleted_fuel_nitrate, Max itemInputs: 2
+[12Jan2025 09:35:06.240] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:fermium_258_depleted_fuel_nitrate_pure, Max itemInputs: 2
+[12Jan2025 09:35:06.240] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:mendelevium_261_depleted_fuel_nitrate, Max itemInputs: 2
+[12Jan2025 09:35:06.241] [Render thread/WARN] [GregTechCEu/]: Trying to add more inputs than RecipeType can support, id: gtceu:mendelevium_263_depleted_fuel_nitrate_pure, Max itemInputs: 2
+[12Jan2025 09:35:06.247] [Render thread/ERROR] [GregTechCEu/]: Tried to set output item stack that doesn't exist, TagPrefix: stone, Material: cerestech:black_plutonium
+[12Jan2025 09:35:06.247] [Render thread/ERROR] [GregTechCEu/]: Output items is empty, id: gtceu:black_plutonium_ore
+[12Jan2025 09:35:06.247] [Render thread/ERROR] [GregTechCEu/]: Tried to set output item stack that doesn't exist, TagPrefix: stone, Material: cerestech:infinity_catalyst
+[12Jan2025 09:35:06.247] [Render thread/ERROR] [GregTechCEu/]: Output items is empty, id: gtceu:infinity_catalyst
+[12Jan2025 09:35:06.252] [Render thread/INFO] [GregTechCEu/]: Registering dungeon loot...
+[12Jan2025 09:35:06.262] [Render thread/INFO] [GregTechCEu/]: GregTech Data loading took 942ms
+[12Jan2025 09:35:06.304] [Render thread/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: Injecting existing registry data into this CLIENT instance
+[12Jan2025 09:35:09.087] [Render thread/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 83 recipes
+[12Jan2025 09:35:09.202] [Render thread/WARN] [GregTechCEu/]: Recipe duplicate or conflict found in GTRecipeType gtceu:cutter and was not added. See next lines for details
+[12Jan2025 09:35:09.202] [Render thread/WARN] [GregTechCEu/]: Attempted to add GTRecipe: gtceu:cutter/cut_stoneslab_into_button_distilled_water
+[12Jan2025 09:35:09.202] [Render thread/WARN] [GregTechCEu/]: Which conflicts with: gtceu:cutter/stone_pressure_plate_distilled_water
+[12Jan2025 09:35:09.202] [Render thread/WARN] [GregTechCEu/]: Recipe duplicate or conflict found in GTRecipeType gtceu:cutter and was not added. See next lines for details
+[12Jan2025 09:35:09.202] [Render thread/WARN] [GregTechCEu/]: Attempted to add GTRecipe: gtceu:cutter/stone_pressure_plate_water
+[12Jan2025 09:35:09.203] [Render thread/WARN] [GregTechCEu/]: Which conflicts with: gtceu:cutter/cut_stoneslab_into_button_water
+[12Jan2025 09:35:09.206] [Render thread/WARN] [GregTechCEu/]: Recipe duplicate or conflict found in GTRecipeType gtceu:cutter and was not added. See next lines for details
+[12Jan2025 09:35:09.206] [Render thread/WARN] [GregTechCEu/]: Attempted to add GTRecipe: gtceu:cutter/stone_pressure_plate
+[12Jan2025 09:35:09.206] [Render thread/WARN] [GregTechCEu/]: Which conflicts with: gtceu:cutter/cut_stoneslab_into_button
+[12Jan2025 09:35:09.331] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 1722 advancements
+[12Jan2025 09:35:09.415] [Render thread/INFO] [committee.nova.mods.avaritia.Static/]: Skipping loading Singularity avaritia:aluminum as its conditions were not met!
+[12Jan2025 09:35:09.417] [Render thread/INFO] [committee.nova.mods.avaritia.Static/]: Loaded 18 singularity type(s) in 14 ms
+[12Jan2025 09:35:10.045] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Starting integrated minecraft server version 1.20.1
+[12Jan2025 09:35:10.045] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
+[12Jan2025 09:35:10.262] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
+[12Jan2025 09:35:10.829] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[12Jan2025 09:35:10.829] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[12Jan2025 09:35:11.294] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 71%
+[12Jan2025 09:35:11.412] [Server thread/INFO] [net.minecraftforge.server.permission.PermissionAPI/]: Successfully initialized permission handler forge:default_handler
+[12Jan2025 09:35:11.419] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 1142 ms
+[12Jan2025 09:35:11.420] [Server thread/INFO] [AE2:S/]: Scanning class appeng.server.testplots.TestPlots for plots
+[12Jan2025 09:35:11.421] [Server thread/INFO] [AE2:S/]: Scanning class appeng.server.testplots.AutoCraftingTestPlots for plots
+[12Jan2025 09:35:11.421] [Server thread/INFO] [AE2:S/]: Scanning class appeng.server.testplots.InscriberTestPlots for plots
+[12Jan2025 09:35:11.423] [Server thread/INFO] [AE2:S/]: Scanning class appeng.server.testplots.P2PTestPlots for plots
+[12Jan2025 09:35:11.423] [Server thread/INFO] [AE2:S/]: Scanning class appeng.server.testplots.ItemP2PTestPlots for plots
+[12Jan2025 09:35:11.423] [Server thread/INFO] [AE2:S/]: Scanning class appeng.server.testplots.MemoryCardTestPlots for plots
+[12Jan2025 09:35:11.423] [Server thread/INFO] [AE2:S/]: Scanning class appeng.server.testplots.PatternProviderLockModePlots for plots
+[12Jan2025 09:35:11.423] [Server thread/INFO] [AE2:S/]: Scanning class appeng.server.testplots.PatternProviderPlots for plots
+[12Jan2025 09:35:11.423] [Server thread/INFO] [AE2:S/]: Scanning class appeng.server.testplots.SpatialTestPlots for plots
+[12Jan2025 09:35:11.424] [Server thread/INFO] [AE2:S/]: Scanning class appeng.server.testplots.QnbTestPlots for plots
+[12Jan2025 09:35:11.424] [Server thread/INFO] [AE2:S/]: Scanning class appeng.server.testplots.GuidebookPlot for plots
+[12Jan2025 09:35:11.424] [Server thread/INFO] [AE2:S/]: Scanning class appeng.server.testplots.SubnetPlots for plots
+[12Jan2025 09:35:11.424] [Server thread/INFO] [AE2:S/]: Scanning class appeng.server.testplots.AnnihilationPlaneTests for plots
+[12Jan2025 09:35:11.498] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing view distance to 12, from 10
+[12Jan2025 09:35:11.499] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing simulation distance to 12, from 0
+[12Jan2025 09:35:11.602] [Render thread/WARN] [io.netty.util.internal.SystemPropertyUtil/]: Unable to parse the boolean system property 'java.net.preferIPv6Addresses':system - using the default value: false
+[12Jan2025 09:35:11.983] [Netty Local Client IO #0/INFO] [net.minecraftforge.network.NetworkHooks/]: Connected to a modded server.
+[12Jan2025 09:35:12.021] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Dev[local:E:810fe756] logged in with entity id 13 at (1.5572625041929677, -60.0, 1.8278783970518249)
+[12Jan2025 09:35:12.111] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev joined the game
+[12Jan2025 09:35:12.398] [Render thread/INFO] [mezz.jei.forge.startup.StartEventObserver/]: JEI StartEventObserver received class net.minecraftforge.client.event.ClientPlayerNetworkEvent$LoggingIn
+[12Jan2025 09:35:12.398] [Render thread/INFO] [mezz.jei.forge.startup.StartEventObserver/]: JEI StartEventObserver transitioning state from DISABLED to ENABLED
+[12Jan2025 09:35:12.411] [Render thread/INFO] [committee.nova.mods.avaritia.Static/]: Loaded 18 singularities from the server
+[12Jan2025 09:35:12.449] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: ae2:charger/ae2:charger/charged_certus_quartz_crystal
+[12Jan2025 09:35:12.460] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: avaritia:compressor_recipe/avaritia:diamond_singularity
+[12Jan2025 09:35:12.461] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: avaritia:compressor_recipe/avaritia:coal_singularity
+[12Jan2025 09:35:12.465] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: avaritia:extreme_craft_recipe/avaritia:ultimate_stew
+[12Jan2025 09:35:12.466] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: avaritia:compressor_recipe/avaritia:steel_singularity
+[12Jan2025 09:35:12.468] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: avaritia:compressor_recipe/avaritia:copper_singularity
+[12Jan2025 09:35:12.472] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: avaritia:compressor_recipe/avaritia:silver_singularity
+[12Jan2025 09:35:12.484] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: ae2:charger/ae2:charger/meteorite_compass
+[12Jan2025 09:35:12.485] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: avaritia:compressor_recipe/avaritia:nickel_singularity
+[12Jan2025 09:35:12.492] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: avaritia:compressor_recipe/avaritia:redstone_singularity
+[12Jan2025 09:35:12.501] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: avaritia:compressor_recipe/avaritia:gold_singularity
+[12Jan2025 09:35:12.505] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: avaritia:compressor_recipe/avaritia:lapis_lazuli_singularity
+[12Jan2025 09:35:12.511] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: avaritia:compressor_recipe/avaritia:tin_singularity
+[12Jan2025 09:35:12.514] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: avaritia:extreme_craft_recipe/avaritia:infinity_ingot
+[12Jan2025 09:35:12.517] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: avaritia:compressor_recipe/avaritia:bronze_singularity
+[12Jan2025 09:35:12.526] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: avaritia:compressor_recipe/avaritia:lead_singularity
+[12Jan2025 09:35:12.531] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: avaritia:compressor_recipe/avaritia:iron_singularity
+[12Jan2025 09:35:12.536] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: avaritia:compressor_recipe/avaritia:electrum_singularity
+[12Jan2025 09:35:12.536] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: avaritia:compressor_recipe/avaritia:platinum_singularity
+[12Jan2025 09:35:12.539] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: ae2:charger/ae2:charger/guide
+[12Jan2025 09:35:12.539] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: avaritia:compressor_recipe/avaritia:glowstone_singularity
+[12Jan2025 09:35:12.547] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: avaritia:compressor_recipe/avaritia:invar_singularity
+[12Jan2025 09:35:12.573] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: avaritia:extreme_craft_recipe/avaritia:infinity_catalyst
+[12Jan2025 09:35:12.575] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: avaritia:extreme_craft_recipe/avaritia:cosmic_meatballs
+[12Jan2025 09:35:12.585] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: avaritia:compressor_recipe/avaritia:emerald_singularity
+[12Jan2025 09:35:13.360] [Render thread/INFO] [mezz.jei.forge.startup.StartEventObserver/]: JEI StartEventObserver received class net.minecraftforge.client.event.RecipesUpdatedEvent
+[12Jan2025 09:35:13.380] [Render thread/INFO] [mezz.jei.forge.startup.StartEventObserver/]: JEI StartEventObserver received class net.minecraftforge.event.TagsUpdatedEvent
+[12Jan2025 09:35:13.380] [Render thread/INFO] [mezz.jei.forge.startup.StartEventObserver/]: JEI StartEventObserver transitioning state from ENABLED to JEI_STARTED
+[12Jan2025 09:35:13.381] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Starting JEI...
+[12Jan2025 09:35:13.385] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering item subtypes...
+[12Jan2025 09:35:13.387] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering item subtypes took 1.954 ms
+[12Jan2025 09:35:13.387] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering fluid subtypes...
+[12Jan2025 09:35:13.388] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering fluid subtypes took 811.6 ?s
+[12Jan2025 09:35:13.389] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering ingredients...
+[12Jan2025 09:35:13.415] [Render thread/WARN] [mezz.jei.library.plugins.vanilla.ingredients.ItemStackListFactory/]: Item Group has no display items and no search tab display items. Items from this group will be missing from the JEI ingredient list. Operator Utilities
+[12Jan2025 09:35:13.439] [Render thread/WARN] [mezz.jei.library.plugins.vanilla.ingredients.ItemStackListFactory/]: 224 duplicate items were found in 'GregTechCEu Decoration Blocks' creative tab's: displayItems
+This may indicate that these types of item need a subtype interpreter added to JEI:
+[pink_lamp, lime_lamp, yellow_lamp, magenta_lamp, red_lamp, purple_lamp, blue_lamp, magenta_borderless_lamp, purple_borderless_lamp, orange_lamp, brown_borderless_lamp, black_borderless_lamp, cyan_borderless_lamp, cyan_lamp, light_blue_borderless_lamp, pink_borderless_lamp, gray_borderless_lamp, light_gray_lamp, gray_lamp, light_blue_lamp, lime_borderless_lamp, blue_borderless_lamp, light_gray_borderless_lamp, red_borderless_lamp, black_lamp, green_borderless_lamp, white_borderless_lamp, white_lamp, yellow_borderless_lamp, brown_lamp, orange_borderless_lamp, green_lamp]
+[12Jan2025 09:35:13.457] [Render thread/WARN] [mezz.jei.library.plugins.vanilla.ingredients.ItemStackListFactory/]: 85 duplicate items were found in 'GregTechCEu Items' creative tab's: displayItems
+This may indicate that these types of item need a subtype interpreter added to JEI:
+[portable_scanner, nanomuscle_chestplate, nanomuscle_leggings, lv_sodium_battery, uv_naquadria_battery, ev_power_unit, hv_power_unit, quarktech_boots, zpm_naquadria_battery, avanced_nanomuscle_chestplate, iv_vanadium_battery, energy_module, portable_debug_scanner, luv_vanadium_battery, lapotron_crystal, ev_vanadium_battery, hv_item_magnet, nightvision_goggles, hv_lithium_battery, iv_power_unit, hv_sodium_battery, lv_cadmium_battery, nano_saber, nanomuscle_helmet, mv_lithium_battery, zero_point_module, quarktech_leggings, mv_power_unit, nanomuscle_boots, electric_jetpack, advanced_electric_jetpack, mv_sodium_battery, energy_cluster, max_battery, lv_lithium_battery, prospector.luv, hv_cadmium_battery, prospector.lv, lv_power_unit, mv_cadmium_battery, facade_cover, tantalum_capacitor, quarktech_helmet, lv_item_magnet, quarktech_chestplate, prospector.hv, lapotronic_energy_orb_cluster, turbine_rotor, advanced_quarktech_chestplate, lapotronic_energy_orb, energy_crystal]
+[12Jan2025 09:35:13.471] [Render thread/WARN] [mezz.jei.library.plugins.vanilla.ingredients.ItemStackListFactory/]: 20 duplicate items were found in 'Applied Energistics 2' creative tab's: displayItems
+This may indicate that these types of item need a subtype interpreter added to JEI:
+[EntropyManipulatorItem[entropy_manipulator], MatterCannonItem[matter_cannon], PortableCellItem[portable_fluid_cell_4k], energy_cell, WirelessTerminalItem[wireless_terminal], PortableCellItem[portable_fluid_cell_64k], PortableCellItem[portable_item_cell_4k], PortableCellItem[portable_item_cell_256k], AnnihilationPlanePartItem[annihilation_plane], WirelessCraftingTerminalItem[wireless_crafting_terminal], PortableCellItem[portable_item_cell_64k], PortableCellItem[portable_fluid_cell_256k], PortableCellItem[portable_fluid_cell_1k], PortableCellItem[portable_item_cell_1k], dense_energy_cell, PortableCellItem[portable_fluid_cell_16k], ChargedStaffItem[charged_staff], ColorApplicatorItem[color_applicator], PortableCellItem[portable_item_cell_16k]]
+[12Jan2025 09:35:13.522] [Render thread/INFO] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Registering ingredients: jei:minecraft took 133.2 milliseconds
+[12Jan2025 09:35:13.523] [Render thread/INFO] [GregTechCEu/]: JEI register ingredients
+[12Jan2025 09:35:13.523] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering ingredients took 133.7 ms
+[12Jan2025 09:35:13.523] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering extra ingredients...
+[12Jan2025 09:35:13.524] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering extra ingredients took 656.3 ?s
+[12Jan2025 09:35:13.525] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering search ingredient aliases...
+[12Jan2025 09:35:13.526] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering search ingredient aliases took 451.6 ?s
+[12Jan2025 09:35:13.551] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering categories...
+[12Jan2025 09:35:13.590] [Render thread/INFO] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Registering categories: jei:minecraft took 38.09 milliseconds
+[12Jan2025 09:35:13.598] [Render thread/INFO] [GregTechCEu/]: JEI register categories
+[12Jan2025 09:35:13.698] [Render thread/INFO] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Registering categories: gtceu:jei_plugin took 99.91 milliseconds
+[12Jan2025 09:35:13.719] [Render thread/INFO] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Registering categories: ae2:core took 20.46 milliseconds
+[12Jan2025 09:35:13.729] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering categories took 178.1 ms
+[12Jan2025 09:35:13.731] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering vanilla category extensions...
+[12Jan2025 09:35:13.738] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering vanilla category extensions took 6.472 ms
+[12Jan2025 09:35:13.740] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering recipe catalysts...
+[12Jan2025 09:35:13.745] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering recipe catalysts took 4.997 ms
+[12Jan2025 09:35:13.745] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Building recipe registry...
+[12Jan2025 09:35:13.776] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Building recipe registry took 29.87 ms
+[12Jan2025 09:35:13.778] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering advanced plugins...
+[12Jan2025 09:35:13.779] [Render thread/INFO] [mezz.jei.library.load.registration.AdvancedRegistration/]: Added recipe manager plugin: class appeng.integration.modules.jei.FacadeRegistryPlugin
+[12Jan2025 09:35:13.779] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering advanced plugins took 1.355 ms
+[12Jan2025 09:35:13.780] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering recipes...
+[12Jan2025 09:35:14.335] [Render thread/INFO] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Registering recipes: jei:minecraft took 553.8 milliseconds
+[12Jan2025 09:35:14.379] [Render thread/INFO] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Registering recipes: ldlib:jei_plugin took 37.91 milliseconds
+[12Jan2025 09:35:14.379] [Render thread/INFO] [GregTechCEu/]: JEI register
+[12Jan2025 09:35:18.561] [Render thread/INFO] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Registering recipes: gtceu:jei_plugin took 4.183 seconds
+[12Jan2025 09:35:18.591] [Render thread/INFO] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Registering recipes: ae2:core took 29.68 milliseconds
+[12Jan2025 09:35:18.721] [Render thread/INFO] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Registering recipes: jei:internal took 129.7 milliseconds
+[12Jan2025 09:35:18.721] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering recipes took 4.941 s
+[12Jan2025 09:35:18.738] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering recipes transfer handlers...
+[12Jan2025 09:35:18.745] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering recipes transfer handlers took 7.031 ms
+[12Jan2025 09:35:18.746] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Building runtime...
+[12Jan2025 09:35:18.753] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering gui handlers...
+[12Jan2025 09:35:18.767] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering gui handlers took 13.70 ms
+[12Jan2025 09:35:18.774] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering Runtime...
+[12Jan2025 09:35:18.776] [Render thread/INFO] [mezz.jei.gui.startup.JeiGuiStarter/]: Starting JEI GUI
+[12Jan2025 09:35:18.777] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Building ingredient list...
+[12Jan2025 09:35:18.866] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Building ingredient list took 89.16 ms
+[12Jan2025 09:35:18.866] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Building ingredient filter...
+[12Jan2025 09:35:18.922] [Render thread/INFO] [mezz.jei.gui.ingredients.IngredientFilter/]: Adding 15547 ingredients
+[12Jan2025 09:35:19.718] [Render thread/INFO] [mezz.jei.gui.ingredients.IngredientFilter/]: Added 15547 ingredients
+[12Jan2025 09:35:19.719] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Building ingredient filter took 853.3 ms
+[12Jan2025 09:35:19.841] [Render thread/INFO] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Registering Runtime: jei:forge_gui took 1.067 seconds
+[12Jan2025 09:35:19.841] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering Runtime took 1.067 s
+[12Jan2025 09:35:19.842] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Building runtime took 1.096 s
+[12Jan2025 09:35:19.842] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Sending Runtime...
+[12Jan2025 09:35:19.843] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Sending Runtime took 658.9 ?s
+[12Jan2025 09:35:19.843] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Starting JEI took 6.462 s
+[12Jan2025 09:35:19.897] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 2 advancements

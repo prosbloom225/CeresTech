@@ -76,6 +76,7 @@ public class CTRecipes {
         PlasmaCondenserRecipes.registerPlasmaCondenserRecipes(provider);
         StoneCentrifugeRecipes.registerStoneCentrifugeRecipes(provider);
         StoneCentrifugeRecipes.registerQuarryRecipesDummy(provider);
+        BioReactorRecipes.registerBioReactorRecipes(provider);
     }
 
     private static void registerManualRecipes(Consumer<FinishedRecipe> provider) {
@@ -443,6 +444,15 @@ public class CTRecipes {
                 .inputFluids(SolderingAlloy.getFluid(144))
                 .outputItems(SPINNERET)
                 .duration(2400).EUt(VA[EV])
+                .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("biologically_sterile_casing")
+                .inputItems(plate, NaquadahAlloy, 4)
+                .inputItems(screw, Dubnium, 4)
+                .inputItems(frameGt, HSSS, 1)
+                .inputFluids(SolderingAlloy.getFluid(144))
+                .outputItems(CASING_BIOLOGICALLY_STERILE, 2)
+                .duration(150).EUt(VA[ZPM])
                 .save(provider);
     }
 
@@ -1290,6 +1300,23 @@ public class CTRecipes {
                 .inputFluids(SolderingAlloy.getFluid(1440))
                 .outputItems(PLASMA_CONDENSER)
                 .duration(300).EUt(VA[IV])
+                .save(provider);
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("bio_reactor")
+                .inputItems(bolt, HastelloyX,  32)
+                .inputItems(bolt, IncoloyMA956,  32)
+                .inputItems(screw, EnrichedNaquadahAlloy,  16)
+                .inputItems(plate, Nitinol60,  16)
+                .inputItems(plate, HSSS,  8)
+                .inputItems(CustomTags.ZPM_CIRCUITS,  8)
+                .inputItems(gear,  HastelloyX, 8)
+                .inputItems(SENSOR_LuV, 2)
+                .inputItems(ELECTRIC_PUMP_LuV, 2)
+                .inputItems(ROBOT_ARM_LuV, 2)
+                .inputItems(EMITTER_LuV, 2)
+                .inputFluids(SolderingAlloy.getFluid(1296))
+                .outputItems(BIO_REACTOR)
+                .duration(500).EUt(VA[LuV])
                 .save(provider);
     }
 

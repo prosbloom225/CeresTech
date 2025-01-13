@@ -23,6 +23,7 @@ public class CTBlocks {
     public static final BlockEntry<Block> CASING_SPEEDING_PIPE = createCasingBlock("speeding_pipe_casing", CTMod.id("block/casings/solid/machine_casing_speeding_pipe"));
     public static final BlockEntry<Block> CASING_ENRICHED_NAQUADAH = createCasingBlock("enriched_naquadah_casing", CTMod.id("block/casings/solid/machine_casing_enriched_naquadah"));
     public static final BlockEntry<Block> CASING_STELLAR_CONTAINMENT = createCasingBlock("stellar_containment_casing", CTMod.id("block/casings/solid/machine_casing_enriched_naquadah"));
+    public static final BlockEntry<Block> CASING_BIOLOGICALLY_STERILE = createCasingBlock("biologically_sterile_casing", CTMod.id("block/casings/solid/machine_casing_enriched_naquadah"));
 
     public static final BlockEntry<Block> NEUTRONIUM_CHARGE = REGISTRATE
             .block("neutronium_charge", Block::new)

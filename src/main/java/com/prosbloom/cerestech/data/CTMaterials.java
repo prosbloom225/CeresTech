@@ -297,6 +297,15 @@ public class CTMaterials {
             .appendFlags(EXT_METAL, GENERATE_FRAME)
             .buildAndRegister();
 
+    public static Material Nitinol60 = new Material.Builder(CTMod.id("nitinol_60"))
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x9985B3).iconSet(METALLIC)
+            .blastTemp(1941, BlastProperty.GasTier.HIGH, VA[GTValues.LuV], 7200)
+            .components(Titanium, 3, Nickel, 2)
+            .appendFlags(EXT_METAL, GENERATE_FRAME)
+            .buildAndRegister();
+
     public static Material GelidCryotheum = new Material.Builder(CTMod.id("gelid_cryotheum"))
             .dust()
             .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
@@ -374,6 +383,14 @@ public class CTMaterials {
             .color(0xFFFFFF).iconSet(BRIGHT)
             .appendFlags(EXT_METAL)
             .buildAndRegister();
+
+    public static Material AwakenedDraconium = new Material.Builder(CTMod.id("awakened_draconium"))
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xDF4E00).iconSet(BRIGHT)
+            .appendFlags(EXT_METAL)
+            .buildAndRegister();
+
     public static Material MysteriousCrystal = new Material.Builder(CTMod.id("mysterious_crystal"))
             .ingot(3)
             .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())

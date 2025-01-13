@@ -7,6 +7,7 @@ import java.util.function.Consumer;
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.prosbloom.cerestech.data.CTFluids.Coolant;
 import static com.prosbloom.cerestech.data.CTFluids.CoolantHot;
+import static com.prosbloom.cerestech.data.CTMaterials.AwakenedDraconium;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.HOT_COOLANT_TURBINE_RECIPES;
 
 public class HotCoolantTurbineRecipes {

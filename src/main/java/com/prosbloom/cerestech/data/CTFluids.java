@@ -236,4 +236,9 @@ public class CTFluids {
             .color(0x157A18) .iconSet(MaterialIconSet.FLUID)
             .buildAndRegister();
 
+    public static Material DraconicStemCell = new Material.Builder(CTMod.id("draconic_stem_cell"))
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xA11010) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
 }

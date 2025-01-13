@@ -580,4 +580,28 @@ public class CTMachines {
             .workableCasingRenderer(GTCEu.id("block/casings/gcym/reaction_safe_mixing_casing"),
                     CTMod.id("block/multiblock/plasma_condenser"), false)
             .register();
+
+    public static MultiblockMachineDefinition BIO_REACTOR = REGISTRATE.multiblock("bio_reactor", WorkableElectricMultiblockMachine::new)
+            .langValue("Bio Reactor (BR)")
+            .rotationState(RotationState.NON_Y_AXIS)
+            .recipeType(CTRecipeTypes.BIO_REACTOR_RECIPES)
+            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .appearanceBlock(CASING_BIOLOGICALLY_STERILE)
+            .pattern(definition -> FactoryBlockPattern.start()
+                    .aisle("XXXXX", "XTTTX", "XTTTX", "XTTTX", "XXXXX")
+                    .aisle("XXXXX", "X###X", "XTTTX", "X###X", "XXXXX")
+                    .aisle("XXXXX", "X###X", "XTTTX", "X###X", "XXXXX")
+                    .aisle("XXXXX", "X###X", "XTTTX", "X###X", "XXXXX")
+                    .aisle("XXSXX", "XTTTX", "XTTTX", "XTTTX", "XXXXX")
+                    .where('S', controller(blocks(definition.getBlock())))
+                    .where('T', blocks(CASING_TEMPERED_GLASS.get()))
+                    .where('#', Predicates.air())
+                    .where('X', blocks(CASING_BIOLOGICALLY_STERILE.get()).setMinGlobalLimited(14)
+                            .or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                            .or(Predicates.autoAbilities(true, false, false)))
+                    .where('#', Predicates.air())
+                    .build())
+            .workableCasingRenderer(CTMod.id("block/casings/solid/machine_casing_enriched_naquadah"),
+                    CTMod.id("block/multiblock/bio_reactor"), false)
+            .register();
 }

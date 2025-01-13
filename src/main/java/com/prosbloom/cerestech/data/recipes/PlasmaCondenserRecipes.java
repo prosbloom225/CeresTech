@@ -10,6 +10,7 @@ import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.ingot;
 import static com.gregtechceu.gtceu.common.data.GTItems.SHAPE_MOLD_INGOT;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.prosbloom.cerestech.data.CTFluids.*;
+import static com.prosbloom.cerestech.data.CTMaterials.AwakenedDraconium;
 import static com.prosbloom.cerestech.data.CTMaterials.DubniumPlasma;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.HEAT_EXCHANGER_RECIPES;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.PLASMA_CONDENSER_RECIPES;

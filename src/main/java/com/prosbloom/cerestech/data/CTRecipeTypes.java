@@ -96,4 +96,9 @@ public class CTRecipeTypes {
     public final static GTRecipeType QUARRY_RECIPES_DUMMY = register("quarry", MULTIBLOCK).setMaxIOSize(0, 9, 0, 0)
             .setEUIO(IO.IN)
             .setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, LEFT_TO_RIGHT);
+
+    public final static GTRecipeType BIO_REACTOR_RECIPES = register("bio_reactor", MULTIBLOCK).setMaxIOSize(3, 3, 5, 2)
+            .setEUIO(IO.IN)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_CRYSTALLIZATION, LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.COOLING);
 }

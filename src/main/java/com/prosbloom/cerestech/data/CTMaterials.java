@@ -335,7 +335,7 @@ public class CTMaterials {
             .ingot(3)
             .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
             .color(0x2B2B2B).iconSet(METALLIC)
-            .blastTemp(10000, HIGHEST, VA[MV], 24800)
+            .blastTemp(10000, HIGHEST, VA[IV], 24800)
             .components(NaquadahEnriched, 4, Rhodium, 2, Ruthenium, 2, Rubidium, 2, Dubnium, 1, Einsteinium255, 1)
             .appendFlags(EXT_METAL, GENERATE_FRAME, GENERATE_BOLT_SCREW)
             .buildAndRegister();

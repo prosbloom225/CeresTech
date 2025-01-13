@@ -6,6 +6,7 @@ import java.util.function.Consumer;
 
 import static com.gregtechceu.gtceu.api.GTValues.UHV;
 import static com.gregtechceu.gtceu.api.GTValues.VA;
+import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.dust;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.ore;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.Naquadah;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.Plutonium239;
@@ -16,17 +17,17 @@ import static com.prosbloom.cerestech.data.CTRecipeTypes.STELLAR_FORGE_RECIPES;
 
 public class StellarForgeRecipes {
     public static void registerStellarForgeRecipes(Consumer<FinishedRecipe> provider) {
-        STELLAR_FORGE_RECIPES.recipeBuilder("black_plutonium_ore")
+        STELLAR_FORGE_RECIPES.recipeBuilder("black_plutonium_dust")
                 .inputItems(ore, Plutonium239)
                 .inputItems(NEUTRONIUM_CHARGE.asStack())
-                .outputItems(ore, BlackPlutonium, 1)
+                .outputItems(dust, BlackPlutonium, 1)
                 .EUt(VA[UHV])
                 .duration(5)
                 .save(provider);
-        STELLAR_FORGE_RECIPES.recipeBuilder("infinity_catalyst")
+        STELLAR_FORGE_RECIPES.recipeBuilder("infinity_catalyst_dust")
                 .inputItems(ore, Naquadah)
                 .inputItems(NEUTRONIUM_CHARGE.asStack())
-                .outputItems(ore, InfinityCatalyst, 1)
+                .outputItems(dust, InfinityCatalyst, 1)
                 .EUt(VA[UHV])
                 .duration(5)
                 .save(provider);

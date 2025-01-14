@@ -25,6 +25,7 @@ import com.gregtechceu.gtceu.common.data.GTModels;
 import com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
 import com.gregtechceu.gtceu.common.machine.multiblock.generator.LargeTurbineMachine;
 import com.lowdragmc.lowdraglib.utils.BlockInfo;
+import com.prosbloom.cerestech.CTMod;
 import com.tterrag.registrate.providers.RegistrateLangProvider;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
@@ -85,7 +86,7 @@ public class BlockHelper {
                             .editableUI(SimpleTieredMachine.EDITABLE_UI_CREATOR.apply(GTCEu.id(name), recipeType))
                             .rotationState(RotationState.NON_Y_AXIS)
                             .recipeType(recipeType)
-                            .workableTieredHullRenderer(GTCEu.id("block/machines/" + name))
+                            .workableTieredHullRenderer(CTMod.id("block/machines/" + name))
                             .tooltips(workableTiered(tier, GTValues.V[tier], GTValues.V[tier] * 64, recipeType,
                                     tankScalingFunction.apply(tier), true))
                             .register();

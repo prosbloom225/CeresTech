@@ -1,5 +1,6 @@
 package com.prosbloom.cerestech.data;
 
+import appeng.block.misc.MysteriousCubeBlock;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
@@ -355,7 +356,8 @@ public class CTMaterials {
             .color(0xF6F674).iconSet(METALLIC)
             .blastTemp(9000, BlastProperty.GasTier.HIGH, VA[ZPM], 1080)
             .components(RoseGold, 1, Gold, 1, Silver, 1, SterlingSilver, 1, SolderingAlloy, 1, RedSteel, 1, BlueSteel, 1, Naquadah, 1)
-            .appendFlags(EXT_METAL, GENERATE_FRAME)
+            .appendFlags(EXT_METAL, GENERATE_FRAME, GENERATE_FOIL)
+            .cableProperties(V[UV], 3, 2)
             .buildAndRegister();
 
     public static Material InfinityCatalyst = new Material.Builder(CTMod.id("infinity_catalyst"))
@@ -375,19 +377,44 @@ public class CTMaterials {
             .ingot(3)
             .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
             .color(0xFFFFFF).iconSet(BRIGHT)
-            .appendFlags(EXT_METAL, GENERATE_FRAME, GENERATE_BOLT_SCREW)
+            .appendFlags(EXT_METAL, GENERATE_FRAME, GENERATE_BOLT_SCREW, GENERATE_FOIL)
+            .cableProperties(V[MAX], 8192, 0, true)
             .buildAndRegister();
     public static Material Draconium = new Material.Builder(CTMod.id("draconium"))
             .ingot(3)
             .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
             .color(0xFFFFFF).iconSet(BRIGHT)
             .appendFlags(EXT_METAL)
+            .cableProperties(V[UEV], 8, 32)
             .buildAndRegister();
 
     public static Material AwakenedDraconium = new Material.Builder(CTMod.id("awakened_draconium"))
             .ingot(3)
             .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
             .color(0xDF4E00).iconSet(BRIGHT)
+            .appendFlags(EXT2_METAL)
+            .cableProperties(V[MAX], 1, 16)
+            .buildAndRegister();
+
+    public static Material Hypogen = new Material.Builder(CTMod.id("hypogen"))
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xAE6342).iconSet(BRIGHT)
+            .appendFlags(EXT2_METAL, GENERATE_FOIL)
+            .cableProperties(V[UIV], 8, 0, true)
+            .buildAndRegister();
+
+    public static Material DragonBlood = new Material.Builder(CTMod.id("dragon_blood"))
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xBE2A1A).iconSet(BRIGHT)
+            .appendFlags(EXT_METAL)
+            .buildAndRegister();
+
+    public static Material Rhugnor = new Material.Builder(CTMod.id("rhugnor"))
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xA509DB).iconSet(BRIGHT)
             .appendFlags(EXT_METAL)
             .buildAndRegister();
 
@@ -397,6 +424,15 @@ public class CTMaterials {
             .color(0x158068).iconSet(BRIGHT)
             .appendFlags(EXT_METAL)
             .buildAndRegister();
+    public static Material Quantum = new Material.Builder(CTMod.id("quantum"))
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xFFFFFF).iconSet(BRIGHT)
+            .components(Stellite100, 3, MysteriousCrystal, 1, Silicon, 1, Gallium, 1, Americium, 1, Palladium, 1, Bismuth, 1, Germanium, 1)
+            .blastTemp(9000, BlastProperty.GasTier.HIGH, VA[UEV], 1080)
+            .appendFlags(EXT_METAL)
+            .buildAndRegister();
+
 
     public static Material ParaPhenylenediamine = new Material.Builder(CTMod.id("para_phenylenediamine"))
             .dust()
@@ -430,6 +466,7 @@ public class CTMaterials {
             .element(GTElements.Ag)
             .buildAndRegister();
 
+    // TODO - really need to figure out how to add plasma to an existing gt material
     public static Material DubniumPlasma = new Material.Builder(CTMod.id("dubnium_plasma"))
             .plasma()
             .color(0x9CB9BB).iconSet(SHINY)

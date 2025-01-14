@@ -11,8 +11,10 @@ import com.prosbloom.cerestech.data.recipes.*;
 import com.prosbloom.cerestech.machines.CTMachines;
 import com.prosbloom.cerestech.machines.multiblock.VoidQuarryMachine;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.world.item.EggItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.DragonEggBlock;
 
 import java.util.function.Consumer;
 
@@ -224,6 +226,15 @@ public class CTRecipes {
                 .inputItems(dust, Blizz, 1)
                 .outputItems(dust, GelidCryotheum, 1)
                 .duration(300).EUt(VA[LV])
+                .save(provider);
+        MIXER_RECIPES.recipeBuilder("dragon_blood")
+                .inputItems(dust, AwakenedDraconium, 64)
+                .inputItems(dust, AwakenedDraconium, 64)
+                .inputItems(Items.DRAGON_EGG, 1 )
+                .inputFluids(DubniumPlasma.getFluid(FluidStorageKeys.PLASMA, 144))
+                .outputItems(dust, Ash, 8)
+                .outputFluids(DragonBlood.getFluid(288))
+                .duration(14000).EUt(VA[UHV])
                 .save(provider);
     }
 
@@ -445,7 +456,6 @@ public class CTRecipes {
                 .outputItems(SPINNERET)
                 .duration(2400).EUt(VA[EV])
                 .save(provider);
-
         ASSEMBLER_RECIPES.recipeBuilder("biologically_sterile_casing")
                 .inputItems(plate, NaquadahAlloy, 4)
                 .inputItems(screw, Dubnium, 4)
@@ -453,6 +463,22 @@ public class CTRecipes {
                 .inputFluids(SolderingAlloy.getFluid(144))
                 .outputItems(CASING_BIOLOGICALLY_STERILE, 2)
                 .duration(150).EUt(VA[ZPM])
+                .save(provider);
+        ASSEMBLER_RECIPES.recipeBuilder("awakened_draconium_coil_block")
+                .inputItems(wireGtDouble, AwakenedDraconium, 8)
+                .inputItems(foil, FluxedElectrum, 48)
+                .inputFluids(FluxedElectrum.getFluid(144))
+                .outputItems(COIL_AWAKENED_DRACONIUM, 1)
+                .circuitMeta(3)
+                .duration(1200).EUt(VA[UHV])
+                .save(provider);
+        ASSEMBLER_RECIPES.recipeBuilder("fluxed_electrum_coil_block")
+                .inputItems(wireGtDouble, FluxedElectrum, 8)
+                .inputItems(foil, Trinium, 44)
+                .inputFluids(Trinium.getFluid(144))
+                .outputItems(COIL_ELECTRUM_FLUX, 1)
+                .circuitMeta(3)
+                .duration(1200).EUt(VA[UV])
                 .save(provider);
     }
 
@@ -1318,6 +1344,28 @@ public class CTRecipes {
                 .outputItems(BIO_REACTOR)
                 .duration(500).EUt(VA[LuV])
                 .save(provider);
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("infinity_coil")
+                .inputItems(CustomTags.UHV_CIRCUITS, 1)
+                .inputItems(wireGtDouble, Infinity,  8)
+                .inputItems(screw, AwakenedDraconium,  8)
+                .inputItems(foil, AwakenedDraconium,  64)
+                .inputItems(foil, AwakenedDraconium,  64)
+                .inputItems(foil, AwakenedDraconium,  64)
+                .inputFluids(AwakenedDraconium.getFluid(576))
+                .outputItems(COIL_INFINITY)
+                .duration(1200).EUt(VA[UHV])
+                .save(provider);
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("hypogen_coil")
+                .inputItems(CustomTags.UEV_CIRCUITS, 1)
+                .inputItems(wireGtDouble, Hypogen,  8)
+                .inputItems(screw, Hypogen,  8)
+                .inputItems(foil, Infinity,  64)
+                .inputItems(foil, Infinity,  64)
+                .inputItems(foil, Infinity,  64)
+                .inputFluids(Infinity.getFluid(576))
+                .outputItems(COIL_HYPOGEN)
+                .duration(1200).EUt(VA[UIV])
+                .save(provider);
     }
 
     private static void registerMaceratorRecipes(Consumer<FinishedRecipe> provider) {
@@ -1524,6 +1572,20 @@ public class CTRecipes {
                 .inputFluids(Americium.getFluid(288))
                 .outputFluids(DubniumPlasma.getFluid(FluidStorageKeys.PLASMA, 288))
                 .duration(16).EUt(VA[ZPM])
+                .fusionStartEU(200000000)
+                .save(provider);
+        FUSION_RECIPES.recipeBuilder("hypogen")
+                .inputFluids(DragonBlood.getFluid(144))
+                .inputFluids(Rhugnor.getFluid(288))
+                .outputFluids(Hypogen.getFluid(36))
+                .duration(8192).EUt(VA[UHV])
+                .fusionStartEU(200000000)
+                .save(provider);
+        FUSION_RECIPES.recipeBuilder("rhugnor")
+                .inputFluids(Infinity.getFluid(144))
+                .inputFluids(Quantum.getFluid(144))
+                .outputFluids(Rhugnor.getFluid(36))
+                .duration(8192).EUt(VA[UHV])
                 .fusionStartEU(200000000)
                 .save(provider);
 

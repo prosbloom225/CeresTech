@@ -46,7 +46,8 @@ public class CTBlocks {
     public static enum CTCoilType implements StringRepresentable, ICoilType {
         ELECTRUM_FLUX("electrum_flux", 9901, 12, 8, CTMaterials.FluxedElectrum, CTMod.id("block/casings/coils/machine_coil_electrum_flux")),
         AWAKENED_DRACONIUM("awakened_draconium", 10801, 18, 12, CTMaterials.AwakenedDraconium, CTMod.id("block/casings/coils/machine_coil_awakened_draconium")),
-        INFINITY("infinity", 11701, 22, 16, CTMaterials.Infinity, CTMod.id("block/casings/coils/machine_coil_infinity"));
+        INFINITY("infinity", 11701, 22, 16, CTMaterials.Infinity, CTMod.id("block/casings/coils/machine_coil_infinity")),
+        HYPOGEN("hypogen", 12601, 24, 18, CTMaterials.Hypogen, CTMod.id("block/casings/coils/machine_coil_hypogen"));
 
         private final @NotNull String name;
         private final int coilTemperature;
@@ -106,6 +107,7 @@ public class CTBlocks {
     public static final BlockEntry<CoilBlock> COIL_ELECTRUM_FLUX = createCoilBlock(CTCoilType.ELECTRUM_FLUX);
     public static final BlockEntry<CoilBlock> COIL_AWAKENED_DRACONIUM = createCoilBlock(CTCoilType.AWAKENED_DRACONIUM);
     public static final BlockEntry<CoilBlock> COIL_INFINITY = createCoilBlock(CTCoilType.INFINITY);
+    public static final BlockEntry<CoilBlock> COIL_HYPOGEN = createCoilBlock(CTCoilType.HYPOGEN);
 
 
 }

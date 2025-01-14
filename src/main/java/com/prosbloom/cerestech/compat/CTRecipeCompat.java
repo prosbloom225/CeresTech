@@ -1,5 +1,6 @@
 package com.prosbloom.cerestech.compat;
 
+import com.gregtechceu.gtceu.api.recipe.RecipeHelper;
 import com.prosbloom.cerestech.CTMod;
 import net.minecraft.data.recipes.FinishedRecipe;
 
@@ -29,7 +30,7 @@ public class CTRecipeCompat {
             IMPLOSION_RECIPES.recipeBuilder("infinity_catalyst")
                     .inputItems(dust, InfinityCatalyst, 64)
                     .outputItems(infinity_catalyst)
-                    .duration(1).EUt(VA[UHV])
+                    .duration(1).EUt(VA[UIV])
                     .save(provider);
         }
     }

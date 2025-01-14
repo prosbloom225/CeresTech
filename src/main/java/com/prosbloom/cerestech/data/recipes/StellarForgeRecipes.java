@@ -20,7 +20,7 @@ public class StellarForgeRecipes {
                 .inputItems(ore, Plutonium239)
                 .inputItems(NEUTRONIUM_CHARGE.asStack())
                 .outputItems(dust, BlackPlutonium, 1)
-                .EUt(VA[UHV])
+                .EUt(VA[UV])
                 .duration(5)
                 .save(provider);
         STELLAR_FORGE_RECIPES.recipeBuilder("infinity_catalyst_dust")

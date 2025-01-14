@@ -164,11 +164,16 @@ dependencies {
     //implementation fg.deobf("com.jozufozu.flywheel:Flywheel-Forge-1.20.1:0.6.9-5") { transitive = false }
 
     implementation fg.deobf("curse.maven:configuration-444699:4608425") {transitive = false}
+
     implementation fg.deobf("curse.maven:applied-energistics-223794:5989151") {transitive = false}
     implementation fg.deobf("curse.maven:avaritia-reforged-623969:5114105") {transitive = false}
+    implementation fg.deobf("curse.maven:codechicken-lib-1-8-242818:5753868")
+    implementation fg.deobf("curse.maven:brandons-core-231382:5422013")
+    implementation fg.deobf("curse.maven:draconic-evolution-223565:6065044") {transitive = false}
 
     compileOnly fg.deobf("com.tterrag.registrate:Registrate:MC1.20-1.3.11")
     //jarJar(group: 'com.tterrag.registrate', name: 'Registrate', version: "[MC1.20)")
+
 
     implementation fg.deobf("curse.maven:top-245211:5159287") {transitive = false}
 }

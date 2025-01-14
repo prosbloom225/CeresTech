@@ -50,6 +50,7 @@ public class CTAddon implements IGTAddon{
         CTRecipeCompat.init(provider);
 
     }
+
     @Override
     public String addonModId() {
         return CTMod.MODID;

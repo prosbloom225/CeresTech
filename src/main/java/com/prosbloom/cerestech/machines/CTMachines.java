@@ -21,6 +21,8 @@ import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
 import com.gregtechceu.gtceu.client.renderer.machine.MachineRenderer;
 import com.gregtechceu.gtceu.common.data.*;
+import com.gregtechceu.gtceu.common.registry.GTRegistration;
+import com.gregtechceu.gtceu.integration.ae2.machine.MEStockingBusPartMachine;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.prosbloom.cerestech.CTMod;
 import com.prosbloom.cerestech.data.CTRecipeTypes;
@@ -47,11 +49,10 @@ import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.PYROLYSE_RECIPES;
 import static com.gregtechceu.gtceu.common.data.machines.GTMachineUtils.HIGH_TIERS;
 import static com.gregtechceu.gtceu.common.data.machines.GTMachineUtils.defaultTankSizeFunction;
+import static com.prosbloom.cerestech.machines.BlockHelper.*;
 import static com.prosbloom.cerestech.registry.CTRegistries.REGISTRATE;
 import static com.prosbloom.cerestech.data.CTBlocks.*;
 import static com.prosbloom.cerestech.data.CTRecipeTypes.NAQUADAH_REACTOR_RECIPES;
-import static com.prosbloom.cerestech.machines.BlockHelper.registerTieredMachines;
-import static com.prosbloom.cerestech.machines.BlockHelper.registerTieredMultis;
 import static net.minecraft.world.level.block.Blocks.DIRT;
 import static net.minecraft.world.level.block.Blocks.WATER;
 
@@ -59,8 +60,8 @@ public class CTMachines {
 
     public static void init(){
     }
-    public final static MachineDefinition[] DEHYDRATOR= BlockHelper.registerSimpleMachines("dehydrator", CTRecipeTypes.DEHYDRATOR_RECIPES);
-    public final static MachineDefinition[] DECAY_CHAMBER= BlockHelper.registerSimpleMachines("decay_chamber", CTRecipeTypes.DECAY_CHAMBER_RECIPES);
+    public final static MachineDefinition[] DEHYDRATOR= registerSimpleMachines("dehydrator", CTRecipeTypes.DEHYDRATOR_RECIPES);
+    public final static MachineDefinition[] DECAY_CHAMBER= registerSimpleMachines("decay_chamber", CTRecipeTypes.DECAY_CHAMBER_RECIPES);
     public final static MachineDefinition[] NAQUADAH_REACTOR = BlockHelper.registerSimpleGenerator("naquadah_reactor", NAQUADAH_REACTOR_RECIPES, defaultTankSizeFunction,
             GTValues.EV, GTValues.IV, GTValues.LuV, GTValues.ZPM);
     public static MultiblockMachineDefinition INDUSTRIAL_GREENHOUSE = REGISTRATE.multiblock("industrial_greenhouse", WorkableElectricMultiblockMachine::new)
@@ -242,7 +243,7 @@ public class CTMachines {
             .recipeType(GTRecipeTypes.VACUUM_RECIPES)
             .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH)
             // TODO - fix parallels overclock
-            //.recipeModifier((machine, recipe) -> CTRecipeModifiers.parallelOverclock(machine, recipe, 8, false))
+            .recipeModifiers(GTRecipeModifiers.OC_NON_PERFECT_SUBTICK)
             .appearanceBlock(CASING_VOLCANUS)
             .pattern(definition -> FactoryBlockPattern.start()
                     .aisle("XXX", "XXX", "XXX")
@@ -299,6 +300,23 @@ public class CTMachines {
                     .overlayTieredHullRenderer("item_bus.import")
                     .register(),
             IV, LuV, ZPM);
+
+
+    public final static MachineDefinition SORTED_STOCKING_IMPORT_BUS_ME = REGISTRATE
+            .machine("me_sorted_stocking_input_bus", MESortedStockingBusPartMachine::new)
+            .langValue("ME Stocking Input Bus (Sorted)")
+            .tier(LuV)
+            .rotationState(RotationState.ALL)
+            .abilities(PartAbility.IMPORT_ITEMS)
+            .overlayTieredHullRenderer("me_item_bus.import")
+            .tooltips(
+                    Component.translatable("gtceu.machine.item_bus.import.tooltip"),
+                    Component.translatable("gtceu.machine.me.stocking_item.tooltip.0"),
+                    Component.translatable("gtceu.machine.me_import_item_hatch.configs.tooltip"),
+                    Component.translatable("gtceu.machine.me.copy_paste.tooltip"),
+                    Component.translatable("gtceu.machine.me.stocking_item.tooltip.1"),
+                    Component.translatable("gtceu.universal.enabled"))
+            .register();
 
     public static MultiblockMachineDefinition PCB_FACTORY = REGISTRATE.multiblock("pcb_factory", WorkableElectricMultiblockMachine::new)
             .langValue("PCB Factory")
@@ -363,7 +381,7 @@ public class CTMachines {
             .recipeType(GTRecipeTypes.LARGE_CHEMICAL_RECIPES)
             // TODO - fix parallels overclock
             .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH)
-            //.recipeModifier((machine, recipe) -> CTRecipeModifiers.parallelOverclock(machine, recipe, 8, false))
+            .recipeModifiers(GTRecipeModifiers.OC_NON_PERFECT_SUBTICK)
             .pattern(definition -> FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.BACK, RelativeDirection.UP)
                     .aisle("XXXSXXX", "XHHHHHX", "XHHHHHX", "XHHHHHX", "XHHHHHX", "XHHHHHX", "XXXXXXX")
                     .aisle("X#####X", "#HHHHH#", "#HCCCH#", "#HCCCH#", "#HCCCH#", "#HHHHH#", "X#####X")
@@ -466,6 +484,7 @@ public class CTMachines {
             .appearanceBlock(CASING_PTFE_INERT)
             .recipeType(GTRecipeTypes.LARGE_CHEMICAL_RECIPES)
             .recipeModifier(GTRecipeModifiers.PARALLEL_HATCH)
+            .recipeModifiers(GTRecipeModifiers.OC_NON_PERFECT_SUBTICK)
             .pattern(definition -> FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.BACK, RelativeDirection.UP)
                     .aisle("XXXXX", "XPXPX", "XPXPX", "XPXPX", "XPXPX", "XPXPX", "XPXPX", "XPXPX", "XXXXX")
                     .aisle("XGGGX", "#G#G#", "#G#G#", "#G#G#", "#G#G#", "#G#G#", "#G#G#", "#G#G#", "XXXXX")
@@ -493,6 +512,7 @@ public class CTMachines {
             .appearanceBlock(CASING_INVAR_HEATPROOF)
             .recipeTypes(GTRecipeTypes.FURNACE_RECIPES, GTRecipeTypes.ALLOY_SMELTER_RECIPES, GTRecipeTypes.ARC_FURNACE_RECIPES)
             .recipeModifier(GTRecipeModifiers.PARALLEL_HATCH)
+            .recipeModifiers(GTRecipeModifiers::multiSmelterParallel)
             .pattern(definition -> FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.BACK, RelativeDirection.UP)
                     .aisle("XXXSXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX")
                     .aisle("GGGGGGG", "GCCCCCG", "GC###CG", "GC###CG", "GC###CG", "GCCCCCG", "GGGGGGG")

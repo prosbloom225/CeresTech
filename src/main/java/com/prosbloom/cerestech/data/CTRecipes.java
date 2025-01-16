@@ -26,6 +26,7 @@ import static com.gregtechceu.gtceu.common.data.GTMachines.HULL;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
+import static com.gregtechceu.gtceu.common.data.machines.GTAEMachines.STOCKING_IMPORT_BUS_ME;
 import static com.gregtechceu.gtceu.common.data.machines.GTMultiMachines.*;
 import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.*;
 import static com.gregtechceu.gtceu.data.recipe.misc.MetaTileEntityLoader.registerMachineRecipe;
@@ -294,6 +295,12 @@ public class CTRecipes {
                 .inputItems(CONVEYOR_MODULE_ZPM)
                 .outputItems(DUAL_INPUT_BUS[ZPM].asStack())
                 .duration(600).EUt(VA[ZPM])
+                .save(provider);
+        ASSEMBLER_RECIPES.recipeBuilder("sorted_stocking_input_bus")
+                .inputItems(STOCKING_IMPORT_BUS_ME, 1)
+                .inputItems(SMART_ITEM_FILTER, 1)
+                .outputItems(SORTED_STOCKING_IMPORT_BUS_ME.asStack())
+                .duration(600).EUt(VA[IV])
                 .save(provider);
         ASSEMBLER_RECIPES.recipeBuilder("ev_energy_output_hatch_16a")
                 .inputItems(TRANSFORMER[EV])

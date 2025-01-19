@@ -159,7 +159,7 @@ dependencies {
 
     implementation fg.deobf("mezz.jei:jei-1.20.1-forge:15.20.0.105")
     implementation fg.deobf("com.lowdragmc.ldlib:ldlib-forge-1.20.1:1.0.33.b") { transitive = false }
-    implementation fg.deobf("com.gregtechceu.gtceu:gtceu-1.20.1:1.6.2") { transitive = false }
+    implementation fg.deobf("com.gregtechceu.gtceu:gtceu-1.20.1:1.6.3") { transitive = false }
     //implementation fg.deobf("com.simibubi.create:create-1.20.1:0.5.1.d-9:all") { transitive = false }
     //implementation fg.deobf("com.jozufozu.flywheel:Flywheel-Forge-1.20.1:0.6.9-5") { transitive = false }
 

@@ -44,6 +44,7 @@ public class CTBlocks {
             .register();
 
     public static enum CTCoilType implements StringRepresentable, ICoilType {
+        // TODO - fix the energyDiscount
         ELECTRUM_FLUX("electrum_flux", 9901, 12, 8, CTMaterials.FluxedElectrum, CTMod.id("block/casings/coils/machine_coil_electrum_flux")),
         AWAKENED_DRACONIUM("awakened_draconium", 10801, 18, 12, CTMaterials.AwakenedDraconium, CTMod.id("block/casings/coils/machine_coil_awakened_draconium")),
         INFINITY("infinity", 11701, 22, 16, CTMaterials.Infinity, CTMod.id("block/casings/coils/machine_coil_infinity")),

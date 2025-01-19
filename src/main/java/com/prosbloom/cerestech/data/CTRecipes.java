@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.DragonEggBlock;
 
 import java.util.function.Consumer;
 
+import static appeng.api.ids.AEItemIds.SKY_DUST;
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
 import static com.gregtechceu.gtceu.common.data.GTItems.*;
@@ -236,6 +237,12 @@ public class CTRecipes {
                 .outputItems(dust, Ash, 8)
                 .outputFluids(DragonBlood.getFluid(288))
                 .duration(14000).EUt(VA[UHV])
+                .save(provider);
+        MIXER_RECIPES.recipeBuilder("sky_stone")
+                .inputItems(dust, CertusQuartz, 1)
+                .inputItems(dust, Stone, 1)
+                .outputItems(AEItems.SKY_DUST.asItem(), 2)
+                .duration(200).EUt(VA[LV])
                 .save(provider);
     }
 

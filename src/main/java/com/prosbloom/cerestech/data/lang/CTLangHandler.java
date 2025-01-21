@@ -44,5 +44,8 @@ public class CTLangHandler {
         provider.add("gtceu.stellar_forge", "Stellar Forge");
         provider.add("gtceu.quarry", "Stone Quarry");
         provider.add("gtceu.bio_reactor", "Bio-Reactor");
+        provider.add("gtceu.matter_fabricator", "Matter Fabricator");
+        provider.add("gtceu.matter_amplifier", "Matter Amplifier");
+        provider.add("gtceu.mass_fabricator", "Mass Fabricator");
     }
 }

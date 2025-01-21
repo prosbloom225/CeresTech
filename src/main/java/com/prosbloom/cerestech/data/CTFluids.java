@@ -241,4 +241,9 @@ public class CTFluids {
             .color(0xA11010) .iconSet(MaterialIconSet.FLUID)
             .buildAndRegister();
 
+    public static Material UUAMatter = new Material.Builder(CTMod.id("uua_matter"))
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xC03EB5) .iconSet(MaterialIconSet.FLUID)
+            .buildAndRegister();
+
 }

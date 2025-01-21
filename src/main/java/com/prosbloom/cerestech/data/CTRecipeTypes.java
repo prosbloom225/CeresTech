@@ -101,4 +101,13 @@ public class CTRecipeTypes {
             .setEUIO(IO.IN)
             .setProgressBar(GuiTextures.PROGRESS_BAR_CRYSTALLIZATION, LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.COOLING);
+    public final static GTRecipeType MASS_FABRICATOR_RECIPES = register("mass_fabricator", MULTIBLOCK).setMaxIOSize(1, 0, 1, 1)
+            .setEUIO(IO.IN)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_CRYSTALLIZATION, LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.REPLICATOR);
+
+    public final static GTRecipeType MATTER_AMPLIFIER_RECIPES = register("matter_amplifier", MULTIBLOCK).setMaxIOSize(1, 0, 0, 1)
+            .setEUIO(IO.IN)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_CRYSTALLIZATION, LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.MIXER);
 }

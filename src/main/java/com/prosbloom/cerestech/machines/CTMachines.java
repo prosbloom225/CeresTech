@@ -64,6 +64,9 @@ public class CTMachines {
     public final static MachineDefinition[] DECAY_CHAMBER= registerSimpleMachines("decay_chamber", CTRecipeTypes.DECAY_CHAMBER_RECIPES);
     public final static MachineDefinition[] NAQUADAH_REACTOR = BlockHelper.registerSimpleGenerator("naquadah_reactor", NAQUADAH_REACTOR_RECIPES, defaultTankSizeFunction,
             GTValues.EV, GTValues.IV, GTValues.LuV, GTValues.ZPM);
+
+    public final static MachineDefinition[] MASS_FABRICATOR = registerSimpleMachines("mass_fabricator", CTRecipeTypes.MASS_FABRICATOR_RECIPES);
+    public final static MachineDefinition[] MATTER_AMPLIFIER = registerSimpleMachines("matter_amplifier", CTRecipeTypes.MATTER_AMPLIFIER_RECIPES);
     public static MultiblockMachineDefinition INDUSTRIAL_GREENHOUSE = REGISTRATE.multiblock("industrial_greenhouse", WorkableElectricMultiblockMachine::new)
             .langValue("Industrial Greenhouse")
             .rotationState(RotationState.NON_Y_AXIS)

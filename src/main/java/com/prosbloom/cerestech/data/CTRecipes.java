@@ -81,6 +81,8 @@ public class CTRecipes {
         StoneCentrifugeRecipes.registerStoneCentrifugeRecipes(provider);
         StoneCentrifugeRecipes.registerQuarryRecipesDummy(provider);
         BioReactorRecipes.registerBioReactorRecipes(provider);
+        MassFabricatorRecipes.registerMassFabricatorRecipes(provider);
+        MatterAmplifierRecipes.registerMatterAmplifierRecipes(provider);
     }
 
     private static void registerManualRecipes(Consumer<FinishedRecipe> provider) {

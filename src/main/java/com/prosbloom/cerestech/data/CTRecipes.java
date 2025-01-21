@@ -30,6 +30,7 @@ import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
 import static com.gregtechceu.gtceu.common.data.machines.GTAEMachines.STOCKING_IMPORT_BUS_ME;
 import static com.gregtechceu.gtceu.common.data.machines.GTMultiMachines.*;
 import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.*;
+import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.PUMP;
 import static com.gregtechceu.gtceu.data.recipe.misc.MetaTileEntityLoader.registerMachineRecipe;
 import static com.prosbloom.cerestech.data.CTBlocks.*;
 import static com.prosbloom.cerestech.data.CTFluids.*;
@@ -163,6 +164,8 @@ public class CTRecipes {
 
         registerMachineRecipe(provider, DEHYDRATOR, "WCW", "WMW", "PRP", 'M', CraftingComponent.HULL, 'R', ROBOT_ARM, 'P', PLATE, 'C', CIRCUIT, 'W', CABLE);
         registerMachineRecipe(provider, DECAY_CHAMBER, "RCR", "EHE", "WCW", 'R', STICK_RADIOACTIVE, 'E', EMITTER, 'H', CraftingComponent.HULL, 'C', CIRCUIT, 'W', CABLE);
+        registerMachineRecipe(provider, MATTER_AMPLIFIER, "WPW", "PHP", "CPC", 'P', PUMP, 'H', HULL, 'C', CIRCUIT, 'W', CABLE);
+        registerMachineRecipe(provider, MASS_FABRICATOR, "CFC", "WHW", "CFC", 'F', FIELD_GENERATOR, 'H', HULL, 'C', CIRCUIT, 'W', CABLE);
 
         /*
         VanillaRecipeHelper.addShapedRecipe(provider, true, "naquadah_reactor_ev", NAQUADAH_REACTOR[EV].asStack(), "RCR", "FHF", "WCW", 'R',

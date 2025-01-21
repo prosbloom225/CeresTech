@@ -10,6 +10,7 @@ import com.prosbloom.cerestech.compat.CTRecipeCompat;
 import com.prosbloom.cerestech.data.*;
 import com.prosbloom.cerestech.machines.CTMachines;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 
 import java.util.function.Consumer;

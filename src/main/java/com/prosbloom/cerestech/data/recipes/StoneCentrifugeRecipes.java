@@ -72,7 +72,7 @@ public class StoneCentrifugeRecipes {
                     .chancedOutput(dust, stone.materials[3], 4, 750, 0)
                     .chancedOutput(dust, stone.materials[4], 4, 500, 0)
                     .chancedOutput(dust, stone.materials[5], 4, 250, 0)
-                    .duration(stone.duration).EUt(VA[stone.tier]);
+                    .duration(stone.duration).EUt(VA[stone.tier-2]);
             if (stone.fluid != null)
                 recipe.outputFluids(stone.fluid);
             recipe.save(provider);

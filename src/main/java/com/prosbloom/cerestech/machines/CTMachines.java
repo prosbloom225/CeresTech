@@ -477,7 +477,7 @@ public class CTMachines {
             .register();
 
     public static MultiblockMachineDefinition MEGA_CHEMICAL_REACTOR = REGISTRATE.multiblock("mega_chemical_reactor", WorkableElectricMultiblockMachine::new)
-            .langValue("Chemical Plant")
+            .langValue("Mega Chemical Reactor")
             .tooltips(Component.translatable("gtceu.multiblock.parallelizable.tooltip"))
             .tooltips(Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", Component.translatable("gtceu.chemical_reactor")))
             .rotationState(RotationState.NON_Y_AXIS)

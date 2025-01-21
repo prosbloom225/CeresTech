@@ -79,5 +79,11 @@ public class IndustrialGreenhouseRecipes {
                 .outputItems(new ItemStack(Items.PUMPKIN, 4))
                 .duration(60).EUt(96)
                 .save(provider);
+        INDUSTRIAL_GREENHOUSE_RECIPES.recipeBuilder("kelp")
+                .inputItems(Items.KELP, 1)
+                .inputFluids(Water.getFluid(100))
+                .outputItems(new ItemStack(Items.KELP, 4))
+                .duration(60).EUt(96)
+                .save(provider);
     }
 }

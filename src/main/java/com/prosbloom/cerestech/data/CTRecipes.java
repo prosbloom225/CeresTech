@@ -249,6 +249,17 @@ public class CTRecipes {
                 .outputItems(AEItems.SKY_DUST.asItem(), 2)
                 .duration(200).EUt(VA[LV])
                 .save(provider);
+        MIXER_RECIPES.recipeBuilder("damascus_steel")
+                .inputItems(dust, Steel, 9)
+                .inputItems(dust, Manganese, 4)
+                .inputItems(dust, Chromium, 4)
+                .inputItems(dust, Coal, 1)
+                .inputItems(dust, Silicon, 1)
+                .inputItems(dust, Vanadium, 1)
+                .outputItems(dust, DamascusSteel, 18)
+                .circuitMeta(9)
+                .duration(225).EUt(VA[EV])
+                .save(provider);
     }
 
     private static void registerAssemblerRecipes(Consumer<FinishedRecipe> provider) {

@@ -257,7 +257,7 @@ public class CTRecipes {
                 .inputItems(dust, Silicon, 1)
                 .inputItems(dust, Vanadium, 1)
                 .outputItems(dust, DamascusSteel, 18)
-                .circuitMeta(9)
+                .circuitMeta(3)
                 .duration(225).EUt(VA[EV])
                 .save(provider);
     }

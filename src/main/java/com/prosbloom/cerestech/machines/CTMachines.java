@@ -627,4 +627,34 @@ public class CTMachines {
             .workableCasingRenderer(CTMod.id("block/casings/solid/machine_casing_enriched_naquadah"),
                     CTMod.id("block/multiblock/bio_reactor"), false)
             .register();
+
+    public static MultiblockMachineDefinition COMPACT_FUSION_MK1 = REGISTRATE.multiblock("compact_fusion_mk1", CompactFusionReactorMachine::new)
+            .langValue("Compact Fusion (MK1)")
+            .rotationState(RotationState.ALL)
+            .recipeType(GTRecipeTypes.FUSION_RECIPES)
+            .recipeModifier(GTRecipeModifiers.PARALLEL_HATCH)
+            .appearanceBlock(CASING_BIOLOGICALLY_STERILE)
+            .pattern(definition -> FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.BACK, RelativeDirection.UP)
+                    .aisle(CompactFusionReactorMachine.L0)
+                    .aisle(CompactFusionReactorMachine.L1)
+                    .aisle(CompactFusionReactorMachine.L2)
+                    .aisle(CompactFusionReactorMachine.L3)
+                    .aisle(CompactFusionReactorMachine.L4)
+                    .aisle(CompactFusionReactorMachine.L5)
+                    .aisle(CompactFusionReactorMachine.L6)
+                    .where('H', blocks(FUSION_COIL.get())) // coils
+                    .where('C', blocks(MACHINE_CASING_LuV.get())) // casing
+                    .where('B', blocks(CASING_TEMPERED_GLASS.get()))// glass
+                    .where('I', blocks(CASING_TEMPERED_GLASS.get())
+                            .or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                            .or(Predicates.autoAbilities(false, false, true)))
+                    .where('E', abilities(PartAbility.INPUT_ENERGY))
+                    .where('F', frames(GTMaterials.NaquadahAlloy))
+                    .where('S', controller(blocks(definition.getBlock())))
+                    //.where(' ', Predicates.air())
+                    .build())
+            .workableCasingRenderer(CTMod.id("block/casings/solid/machine_casing_enriched_naquadah"),
+                    CTMod.id("block/multiblock/bio_reactor"), false)
+            .register();
+
 }

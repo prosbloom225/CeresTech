@@ -435,6 +435,15 @@ public class CTMaterials {
             .appendFlags(EXT_METAL)
             .buildAndRegister();
 
+    public static Material MARCEM200 = new Material.Builder(CTMod.id("mar-ce-m200"))
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0xFFFFFF).iconSet(BRIGHT)
+            .components(Niobium, 2, Chromium, 9, Aluminium, 5, Titanium, 2, Cobalt, 10, Tungsten, 13, Nickel, 18, Cerium, 1)
+            .blastTemp(5000, BlastProperty.GasTier.MID, VA[MV], 7500)
+            .appendFlags(EXT_METAL)
+            .buildAndRegister();
+
 
     public static Material ParaPhenylenediamine = new Material.Builder(CTMod.id("para_phenylenediamine"))
             .dust()

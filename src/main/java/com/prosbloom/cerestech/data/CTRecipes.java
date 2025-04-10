@@ -4,6 +4,7 @@ import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEItems;
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.UnificationEntry;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
+import com.gregtechceu.gtceu.common.machine.multiblock.electric.FusionReactorMachine;
 import com.gregtechceu.gtceu.data.recipe.CraftingComponent;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
@@ -509,6 +510,19 @@ public class CTRecipes {
                 .outputItems(COIL_ELECTRUM_FLUX, 1)
                 .circuitMeta(3)
                 .duration(1200).EUt(VA[UV])
+                .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("compact_fusion_mk1")
+                .inputItems(FUSION_REACTOR[LuV], 48)
+                .inputItems(CustomTags.LuV_CIRCUITS, 8)
+                .inputItems(plate, MARCEM200, 32)
+                .inputItems(CustomTags.LuV_CIRCUITS, 8)
+                .inputItems(HIGH_POWER_INTEGRATED_CIRCUIT_WAFER, 16)
+                .inputItems(FIELD_GENERATOR_LuV, 4)
+                .inputItems(rodLong, MARCEM200, 8)
+                .inputFluids(Adamantium.getFluid(9216))
+                .outputItems(COMPACT_FUSION[LuV])
+                .duration(120).EUt(VA[LuV])
                 .save(provider);
     }
 
@@ -1395,6 +1409,25 @@ public class CTRecipes {
                 .inputFluids(Infinity.getFluid(576))
                 .outputItems(COIL_HYPOGEN)
                 .duration(1200).EUt(VA[UIV])
+                .save(provider);
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("compact_fusion_mk2")
+                .inputItems(FUSION_REACTOR[ZPM], 48)
+                .inputItems(CustomTags.ZPM_CIRCUITS, 1)
+                .inputItems(CustomTags.ZPM_CIRCUITS, 1)
+                .inputItems(CustomTags.ZPM_CIRCUITS, 1)
+                .inputItems(CustomTags.ZPM_CIRCUITS, 1)
+                .inputItems(ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT_WAFER, 32)
+                .inputItems(VOLTAGE_COIL_ZPM, 16)
+                .inputItems(NEUTRON_REFLECTOR, 4)
+                .inputItems(CustomTags.ZPM_CIRCUITS, 8)
+                .inputItems(FIELD_GENERATOR_ZPM, 8)
+                .inputItems(gearSmall, ArtheriumSn, 32)
+                .inputFluids(MARCEM200.getFluid(2304))
+                .inputFluids(HSLASteel.getFluid(1152))
+                .inputFluids(ArtheriumSn.getFluid(288))
+                .outputItems(COMPACT_FUSION[ZPM])
+                .duration(6000).EUt(VA[ZPM])
                 .save(provider);
     }
 

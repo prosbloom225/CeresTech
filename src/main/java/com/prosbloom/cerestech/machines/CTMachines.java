@@ -19,6 +19,7 @@ import com.gregtechceu.gtceu.api.pattern.Predicates;
 import com.gregtechceu.gtceu.api.pattern.util.RelativeDirection;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
+import com.gregtechceu.gtceu.client.renderer.machine.FusionReactorRenderer;
 import com.gregtechceu.gtceu.client.renderer.machine.MachineRenderer;
 import com.gregtechceu.gtceu.common.data.*;
 import com.gregtechceu.gtceu.common.registry.GTRegistration;
@@ -688,5 +689,6 @@ public class CTMachines {
                             .build())
                     .workableCasingRenderer(CTMod.id("block/casings/solid/machine_casing_enriched_naquadah"),
                             CTMod.id("block/multiblock/bio_reactor"), false)
+                    .hasTESR(true)
                     .register(), LuV, ZPM, UV, UHV, UEV);
 }

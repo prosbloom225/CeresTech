@@ -365,6 +365,7 @@ public class CTMaterials {
             .dust()
             //.ore()
             .color(0xFFFFFF).iconSet(BRIGHT)
+            .appendFlags(EXT_METAL, GENERATE_FRAME)
             .buildAndRegister();
 
     public static Material AttunedTengam = new Material.Builder(CTMod.id("attuned_tengam"))
@@ -530,6 +531,7 @@ public class CTMaterials {
         Neutronium.addFlags(GENERATE_FOIL);
         MolybdenumDisilicide.addFlags(GENERATE_BOLT_SCREW);
         IncoloyMA956.addFlags(GENERATE_BOLT_SCREW);
+        Duranium.addFlags(GENERATE_FRAME);
 
 
     }

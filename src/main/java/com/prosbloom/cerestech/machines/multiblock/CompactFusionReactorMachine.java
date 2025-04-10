@@ -1,12 +1,43 @@
 package com.prosbloom.cerestech.machines.multiblock;
 
+import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
+import com.gregtechceu.gtceu.common.block.FusionCasingBlock;
+import com.gregtechceu.gtceu.common.data.GTBlocks;
+import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.gregtechceu.gtceu.common.machine.multiblock.electric.FusionReactorMachine;
+import com.prosbloom.cerestech.data.CTMaterials;
+import net.minecraft.world.level.block.Block;
+
+import static com.gregtechceu.gtceu.api.GTValues.*;
+import static com.gregtechceu.gtceu.api.pattern.Predicates.frames;
+import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 
 public class CompactFusionReactorMachine extends FusionReactorMachine {
-    public CompactFusionReactorMachine(IMachineBlockEntity holder) {
-        super(holder, 6);
+    public CompactFusionReactorMachine(IMachineBlockEntity holder, int tier) {
+        super(holder, tier);
     }
+
+    public static Block getCasingState(int tier) {
+        return switch (tier) {
+            case LuV -> MACHINE_CASING_LuV.get();
+            case ZPM -> MACHINE_CASING_ZPM.get();
+            case UV -> MACHINE_CASING_UV.get();
+            case UHV -> MACHINE_CASING_UHV.get();
+            default -> MACHINE_CASING_UEV.get();
+        };
+    }
+
+    public static Material getFrameState(int tier) {
+        return switch (tier) {
+            case LuV -> GTMaterials.NaquadahAlloy;
+            case ZPM -> GTMaterials.Duranium;
+            case UV -> GTMaterials.Neutronium;
+            case UHV -> CTMaterials.InfinityCatalyst;
+            default -> CTMaterials.Infinity;
+        };
+    }
+
 
     public static final String[] L0 = {
             "                                               ",

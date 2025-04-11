@@ -402,6 +402,7 @@ public class CTRecipes {
                 .save(provider);
 
         ASSEMBLER_RECIPES.recipeBuilder("neutron_activator")
+                .inputItems(HI_COMPUTATION_STATION_MK2, 2)
                 .inputItems(EMITTER_EV, 2)
                 .inputItems(plateDense, Steel, 4)
                 .inputItems(fuelPure, Uranium238, 1)

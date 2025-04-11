@@ -365,6 +365,7 @@ public class CTMaterials {
             .dust()
             //.ore()
             .color(0xFFFFFF).iconSet(BRIGHT)
+            .appendFlags(EXT_METAL, GENERATE_FRAME)
             .buildAndRegister();
 
     public static Material AttunedTengam = new Material.Builder(CTMod.id("attuned_tengam"))
@@ -431,6 +432,32 @@ public class CTMaterials {
             .color(0xFFFFFF).iconSet(BRIGHT)
             .components(Stellite100, 3, MysteriousCrystal, 1, Silicon, 1, Gallium, 1, Americium, 1, Palladium, 1, Bismuth, 1, Germanium, 1)
             .blastTemp(9000, BlastProperty.GasTier.HIGH, VA[UEV], 1080)
+            .appendFlags(EXT_METAL)
+            .buildAndRegister();
+
+    public static Material MARCEM200 = new Material.Builder(CTMod.id("mar-ce-m200"))
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x302929).iconSet(BRIGHT)
+            .components(Niobium, 2, Chromium, 9, Aluminium, 5, Titanium, 2, Cobalt, 10, Tungsten, 13, Nickel, 18, Cerium, 1)
+            .blastTemp(5000, BlastProperty.GasTier.MID, VA[MV], 7500)
+            .appendFlags(EXT_METAL)
+            .buildAndRegister();
+
+    public static Material TanmolyiumBetaC = new Material.Builder(CTMod.id("tanmolyium_beta_c"))
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0XDB95DD).iconSet(BRIGHT)
+            .components(Titanium, 5, Molybdenum, 5, Vanadium, 2, Chromium, 3, Aluminium, 1)
+            .blastTemp(5300, BlastProperty.GasTier.MID, VA[IV], 266)
+            .appendFlags(EXT_METAL)
+            .buildAndRegister();
+    public static Material Dalisenite = new Material.Builder(CTMod.id("dalisenite"))
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0X9BA210).iconSet(BRIGHT)
+            .components(TanmolyiumBetaC, 14, Tungsten, 10, Niobium, 9, Titanium, 9, Rhodium, 8, Quantum, 7, Erbium, 3)
+            .blastTemp(8700, BlastProperty.GasTier.MID, VA[UV], 266)
             .appendFlags(EXT_METAL)
             .buildAndRegister();
 
@@ -530,6 +557,7 @@ public class CTMaterials {
         Neutronium.addFlags(GENERATE_FOIL);
         MolybdenumDisilicide.addFlags(GENERATE_BOLT_SCREW);
         IncoloyMA956.addFlags(GENERATE_BOLT_SCREW);
+        Duranium.addFlags(GENERATE_FRAME);
 
 
     }

@@ -19,6 +19,7 @@ import com.gregtechceu.gtceu.api.pattern.Predicates;
 import com.gregtechceu.gtceu.api.pattern.util.RelativeDirection;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
+import com.gregtechceu.gtceu.client.renderer.machine.FusionReactorRenderer;
 import com.gregtechceu.gtceu.client.renderer.machine.MachineRenderer;
 import com.gregtechceu.gtceu.common.data.*;
 import com.gregtechceu.gtceu.common.registry.GTRegistration;
@@ -49,6 +50,7 @@ import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.PYROLYSE_RECIPES;
 import static com.gregtechceu.gtceu.common.data.machines.GTMachineUtils.HIGH_TIERS;
 import static com.gregtechceu.gtceu.common.data.machines.GTMachineUtils.defaultTankSizeFunction;
+import static com.gregtechceu.gtceu.utils.FormattingUtil.toRomanNumeral;
 import static com.prosbloom.cerestech.machines.BlockHelper.*;
 import static com.prosbloom.cerestech.registry.CTRegistries.REGISTRATE;
 import static com.prosbloom.cerestech.data.CTBlocks.*;
@@ -627,4 +629,66 @@ public class CTMachines {
             .workableCasingRenderer(CTMod.id("block/casings/solid/machine_casing_enriched_naquadah"),
                     CTMod.id("block/multiblock/bio_reactor"), false)
             .register();
+
+    /*
+    public static MultiblockMachineDefinition COMPACT_FUSION_MK1 = REGISTRATE.multiblock("compact_fusion_mk1", holder -> new CompactFusionReactorMachine(holder, 1))
+            .langValue("Compact Fusion (MK1)")
+            .rotationState(RotationState.ALL)
+            .recipeType(GTRecipeTypes.FUSION_RECIPES)
+            .recipeModifier(GTRecipeModifiers.PARALLEL_HATCH)
+            .appearanceBlock(CASING_BIOLOGICALLY_STERILE)
+            .pattern(definition -> FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.BACK, RelativeDirection.UP)
+                    .aisle(CompactFusionReactorMachine.L0)
+                    .aisle(CompactFusionReactorMachine.L1)
+                    .aisle(CompactFusionReactorMachine.L2)
+                    .aisle(CompactFusionReactorMachine.L3)
+                    .aisle(CompactFusionReactorMachine.L4)
+                    .aisle(CompactFusionReactorMachine.L5)
+                    .aisle(CompactFusionReactorMachine.L6)
+                    .where('H', blocks(FUSION_COIL.get())) // coils
+                    .where('C', blocks(MACHINE_CASING_LuV.get())) // casing
+                    .where('B', blocks(CASING_TEMPERED_GLASS.get()))// glass
+                    .where('I', blocks(CASING_TEMPERED_GLASS.get())
+                            .or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                            .or(Predicates.autoAbilities(false, false, true)))
+                    .where('E', abilities(PartAbility.INPUT_ENERGY))
+                    .where('F', frames(GTMaterials.NaquadahAlloy))
+                    .where('S', controller(blocks(definition.getBlock())))
+                    //.where(' ', Predicates.air())
+                    .build())
+            .workableCasingRenderer(CTMod.id("block/casings/solid/machine_casing_enriched_naquadah"),
+                    CTMod.id("block/multiblock/bio_reactor"), false)
+            .register();
+    */
+
+
+    public static MultiblockMachineDefinition[] COMPACT_FUSION = registerTieredMultis("compact_fusion", CompactFusionReactorMachine::new,
+            (tier, builder) -> builder
+                    .langValue("Compact Fusion Computer MK %s".formatted(toRomanNumeral(tier - 5)))
+                    .rotationState(RotationState.ALL)
+                    .recipeType(GTRecipeTypes.FUSION_RECIPES)
+                    .recipeModifier(GTRecipeModifiers.PARALLEL_HATCH)
+                    .appearanceBlock(() -> CompactFusionReactorMachine.getCasingState(tier))
+                    .pattern(definition -> FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.BACK, RelativeDirection.UP)
+                            .aisle(CompactFusionReactorMachine.L0)
+                            .aisle(CompactFusionReactorMachine.L1)
+                            .aisle(CompactFusionReactorMachine.L2)
+                            .aisle(CompactFusionReactorMachine.L3)
+                            .aisle(CompactFusionReactorMachine.L2)
+                            .aisle(CompactFusionReactorMachine.L1)
+                            .aisle(CompactFusionReactorMachine.L0)
+                            .where('H', blocks(FUSION_COIL.get())) // coils
+                            .where('C', blocks(CompactFusionReactorMachine.getCasingState(tier))) // casing
+                            .where('B', blocks(FUSION_GLASS.get()))// glass
+                            .where('I', blocks(FUSION_GLASS.get())
+                                    .or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                                    .or(Predicates.autoAbilities(false, false, true)))
+                            .where('E', abilities(PartAbility.INPUT_ENERGY))
+                            .where('F', frames(CompactFusionReactorMachine.getFrameState(tier)))
+                            .where('S', controller(blocks(definition.getBlock())))
+                            .build())
+                    .workableCasingRenderer(CTMod.id("block/casings/solid/machine_casing_enriched_naquadah"),
+                            CTMod.id("block/multiblock/bio_reactor"), false)
+                    .hasTESR(true)
+                    .register(), LuV, ZPM, UV, UHV, UEV);
 }

@@ -36,6 +36,12 @@ public class CTItems {
     public static ItemEntry<Item> KEVLAR_FIBER = REGISTRATE.item("kevlar_fiber", Item::new).lang("Kevlar Fiber").register();
     public static ItemEntry<Item> WOVEN_KEVLAR = REGISTRATE.item("woven_kevlar", Item::new).lang("Woven Kevlar").register();
     public static ItemEntry<Item> SPINNERET = REGISTRATE.item("spinneret", Item::new).lang("Spinneret").register();
+    public static ItemEntry<Item> HI_COMPUTATION_STATION_MK1 = REGISTRATE.item("hi_computation_station_mk1", Item::new).lang("Hi-Computation Station MK1").register();
+    public static ItemEntry<Item> HI_COMPUTATION_STATION_MK2 = REGISTRATE.item("hi_computation_station_mk2", Item::new).lang("Hi-Computation Station MK2").register();
+    public static ItemEntry<Item> HI_COMPUTATION_STATION_MK3 = REGISTRATE.item("hi_computation_station_mk3", Item::new).lang("Hi-Computation Station MK3").register();
+    public static ItemEntry<Item> HI_COMPUTATION_STATION_MK4 = REGISTRATE.item("hi_computation_station_mk4", Item::new).lang("Hi-Computation Station MK4").register();
+    public static ItemEntry<Item> HI_COMPUTATION_STATION_MK5 = REGISTRATE.item("hi_computation_station_mk5", Item::new).lang("Hi-Computation Station MK5").register();
+
     // Stone
     public static ItemEntry<Item> STONE_MOON = REGISTRATE.item("stone_moon", Item::new).lang("Moon Stone").register();
     public static ItemEntry<Item> STONE_DEIMOS = REGISTRATE.item("stone_deimos", Item::new).lang("Deimos Stone").register();

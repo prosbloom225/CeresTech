@@ -438,9 +438,26 @@ public class CTMaterials {
     public static Material MARCEM200 = new Material.Builder(CTMod.id("mar-ce-m200"))
             .ingot(3)
             .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
-            .color(0xFFFFFF).iconSet(BRIGHT)
+            .color(0x302929).iconSet(BRIGHT)
             .components(Niobium, 2, Chromium, 9, Aluminium, 5, Titanium, 2, Cobalt, 10, Tungsten, 13, Nickel, 18, Cerium, 1)
             .blastTemp(5000, BlastProperty.GasTier.MID, VA[MV], 7500)
+            .appendFlags(EXT_METAL)
+            .buildAndRegister();
+
+    public static Material TanmolyiumBetaC = new Material.Builder(CTMod.id("tanmolyium_beta_c"))
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0XDB95DD).iconSet(BRIGHT)
+            .components(Titanium, 5, Molybdenum, 5, Vanadium, 2, Chromium, 3, Aluminium, 1)
+            .blastTemp(5300, BlastProperty.GasTier.MID, VA[IV], 266)
+            .appendFlags(EXT_METAL)
+            .buildAndRegister();
+    public static Material Dalisenite = new Material.Builder(CTMod.id("dalisenite"))
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0X9BA210).iconSet(BRIGHT)
+            .components(TanmolyiumBetaC, 14, Tungsten, 10, Niobium, 9, Titanium, 9, Rhodium, 8, Quantum, 7, Erbium, 3)
+            .blastTemp(8700, BlastProperty.GasTier.MID, VA[UV], 266)
             .appendFlags(EXT_METAL)
             .buildAndRegister();
 

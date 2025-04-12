@@ -109,7 +109,8 @@ public class ReactorMachine extends LargeBoilerMachine {
 
     @Override
     public boolean onWorking() {
-        generateCoolant();
+        // TODO - fix reactor coolant generation
+        //generateCoolant();
         return true;
     }
 

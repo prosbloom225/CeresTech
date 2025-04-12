@@ -661,6 +661,28 @@ public class CTMachines {
             .register();
     */
 
+    public static MultiblockMachineDefinition LARGE_DEHYDRATOR = REGISTRATE.multiblock("large_dehydrator", WorkableElectricMultiblockMachine::new)
+            .langValue("Large Dehydrator")
+            .rotationState(RotationState.NON_Y_AXIS)
+            .recipeType(CTRecipeTypes.DEHYDRATOR_RECIPES)
+            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .appearanceBlock(CASING_BIOLOGICALLY_STERILE)
+            .pattern(definition -> FactoryBlockPattern.start()
+                    .aisle("CCC", "CCC", "CCC", "CCC", "CCC")
+                    .aisle("CCC", "C#C", "C#C", "C#C", "CCC")
+                    .aisle("CSC", "CGC", "CGC", "CGC", "CCC")
+                    .where('S', controller(blocks(definition.getBlock())))
+                    .where('G', blocks(CASING_TEMPERED_GLASS.get()))
+                    .where('#', Predicates.air())
+                    .where('C', blocks(CASING_BIOLOGICALLY_STERILE.get()).setMinGlobalLimited(14)
+                            .or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                            .or(Predicates.autoAbilities(true, false, false)))
+                    .where('#', Predicates.air())
+                    .build())
+            .workableCasingRenderer(CTMod.id("block/casings/solid/machine_casing_enriched_naquadah"),
+                    CTMod.id("block/multiblock/bio_reactor"), false)
+            .register();
+
 
     public static MultiblockMachineDefinition[] COMPACT_FUSION = registerTieredMultis("compact_fusion", CompactFusionReactorMachine::new,
             (tier, builder) -> builder

@@ -162,6 +162,14 @@ public class CTRecipes {
                 'W', new UnificationEntry(wireGtOctal, Silver),
                 'H', HULL[HV].asStack());
 
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "large_dehydrator", LARGE_DEHYDRATOR.asStack(),
+                "PCP", "WHW", "RCR",
+                'P', ELECTRIC_PUMP_IV,
+                'C', CustomTags.IV_CIRCUITS,
+                'W', new UnificationEntry(wireGtOctal, Silver),
+                'R', ROBOT_ARM_IV,
+                'H', HULL[IV].asStack());
+
 
         registerMachineRecipe(provider, DEHYDRATOR, "WCW", "WMW", "PRP", 'M', CraftingComponent.HULL, 'R', ROBOT_ARM, 'P', PLATE, 'C', CIRCUIT, 'W', CABLE);
         registerMachineRecipe(provider, DECAY_CHAMBER, "RCR", "EHE", "WCW", 'R', STICK_RADIOACTIVE, 'E', EMITTER, 'H', CraftingComponent.HULL, 'C', CIRCUIT, 'W', CABLE);

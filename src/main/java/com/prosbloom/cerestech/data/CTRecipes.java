@@ -2,8 +2,10 @@ package com.prosbloom.cerestech.data;
 
 import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEItems;
+import com.gregtechceu.gtceu.api.data.chemical.material.MarkerMaterials;
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.UnificationEntry;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
+import com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType;
 import com.gregtechceu.gtceu.common.machine.multiblock.electric.FusionReactorMachine;
 import com.gregtechceu.gtceu.data.recipe.CraftingComponent;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
@@ -28,6 +30,7 @@ import static com.gregtechceu.gtceu.common.data.GTMachines.HULL;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
+import static com.gregtechceu.gtceu.common.data.machines.GCYMMachines.BLAST_ALLOY_SMELTER;
 import static com.gregtechceu.gtceu.common.data.machines.GTAEMachines.STOCKING_IMPORT_BUS_ME;
 import static com.gregtechceu.gtceu.common.data.machines.GTMultiMachines.*;
 import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.*;
@@ -52,6 +55,8 @@ public class CTRecipes {
         registerAssemblerRecipes(provider);
         registerCircuitAssemblerRecipes(provider);
         registerFormingPressRecipes(provider);
+        registerLaserEngraverRecipes(provider);
+        registerCutterRecipes(provider);
         registerChemicalReactorRecipes(provider);
         registerHotCoolantTurbineRecipes(provider);
         registerCentrifugeRecipes(provider);
@@ -907,6 +912,13 @@ public class CTRecipes {
                 .outputFluids(Phosgene.getFluid(1000))
                 .duration(50).EUt(VA[HV])
                 .save(provider);
+        CHEMICAL_RECIPES.recipeBuilder("ppic_wafer")
+                .inputItems(NPIC_WAFER, 1)
+                .inputItems(dust, IndiumGalliumPhosphide, 64)
+                .inputFluids(FluxedElectrum.getFluid( 1440))
+                .outputItems(PPIC_WAFER)
+                .duration(1200).EUt(VA[ZPM])
+                .save(provider);
     }
     private static void registerCentrifugeRecipes(Consumer<FinishedRecipe> provider) {
         CENTRIFUGE_RECIPES.recipeBuilder("pahoehoe_small")
@@ -1087,6 +1099,54 @@ public class CTRecipes {
                 .notConsumable(AEItems.CALCULATION_PROCESSOR_PRESS.stack())
                 .outputItems(AEItems.CALCULATION_PROCESSOR_PRINT.asItem())
                 .duration(200).EUt(VA[LV])
+                .save(provider);
+    }
+
+    private static void registerLaserEngraverRecipes(Consumer<FinishedRecipe> provider) {
+        LASER_ENGRAVER_RECIPES.recipeBuilder("engrave_npic_wafer")
+                .inputItems(NEUTRONIUM_WAFER, 1)
+                .notConsumable(lens, MarkerMaterials.Color.Red)
+                .outputItems(NPIC_WAFER)
+                .duration(1800).EUt(VA[LuV])
+                .cleanroom(CleanroomType.CLEANROOM)
+                .save(provider);
+    }
+    private static void registerCutterRecipes(Consumer<FinishedRecipe> provider) {
+        CUTTER_RECIPES.recipeBuilder("nano_power_integrated_circuit_lubricant")
+                .inputItems(NPIC_WAFER, 1)
+                .inputFluids(Lubricant.getFluid(250))
+                .outputItems(NANO_POWER_IC, 2)
+                .duration(900).EUt(VA[ZPM])
+                .save(provider);
+        CUTTER_RECIPES.recipeBuilder("nano_power_integrated_circuit_water")
+                .inputItems(NPIC_WAFER, 1)
+                .inputFluids(Water.getFluid(1000))
+                .outputItems(NANO_POWER_IC, 2)
+                .duration(1800).EUt(VA[ZPM])
+                .save(provider);
+        CUTTER_RECIPES.recipeBuilder("nano_power_integrated_circuit_distilled")
+                .inputItems(NPIC_WAFER, 1)
+                .inputFluids(DistilledWater.getFluid(750))
+                .outputItems(NANO_POWER_IC, 2)
+                .duration(1800).EUt(VA[ZPM])
+                .save(provider);
+        CUTTER_RECIPES.recipeBuilder("piko_power_integrated_circuit_lubricant")
+                .inputItems(PPIC_WAFER, 1)
+                .inputFluids(Lubricant.getFluid(250))
+                .outputItems(PIKO_POWER_IC, 2)
+                .duration(900).EUt(VA[UV])
+                .save(provider);
+        CUTTER_RECIPES.recipeBuilder("piko_power_integrated_circuit_water")
+                .inputItems(PPIC_WAFER, 1)
+                .inputFluids(Water.getFluid(1000))
+                .outputItems(PIKO_POWER_IC, 2)
+                .duration(1800).EUt(VA[UV])
+                .save(provider);
+        CUTTER_RECIPES.recipeBuilder("piko_power_integrated_circuit_distilled")
+                .inputItems(PPIC_WAFER, 1)
+                .inputFluids(DistilledWater.getFluid(750))
+                .outputItems(PIKO_POWER_IC, 2)
+                .duration(1800).EUt(VA[UV])
                 .save(provider);
     }
 
@@ -1491,7 +1551,7 @@ public class CTRecipes {
                 .inputItems(CustomTags.UV_CIRCUITS, 1)
                 .inputItems(CustomTags.UV_CIRCUITS, 1)
                 .inputItems(CustomTags.UV_CIRCUITS, 1)
-                .inputItems(ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT_WAFER, 32)
+                .inputItems(NPIC_WAFER, 32)
                 .inputItems(VOLTAGE_COIL_UV, 16)
                 .inputItems(NEUTRON_REFLECTOR, 4)
                 .inputItems(HI_COMPUTATION_STATION_MK3, 8)
@@ -1502,6 +1562,25 @@ public class CTRecipes {
                 .inputFluids(Americium.getFluid(288))
                 .outputItems(COMPACT_FUSION[UV])
                 .duration(6000).EUt(VA[ZPM])
+                .save(provider);
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("mega_blast_smelter")
+                .inputItems(BLAST_ALLOY_SMELTER, 64)
+                .inputItems(BLAST_ALLOY_SMELTER, 64)
+                .inputItems(BLAST_ALLOY_SMELTER, 64)
+                .inputItems(BLAST_ALLOY_SMELTER, 64)
+                .inputItems(VOLTAGE_COIL_UV, 16)
+                .inputItems(CONVEYOR_MODULE_UV, 4)
+                .inputItems(CustomTags.UV_CIRCUITS, 8)
+                .inputItems(CustomTags.ZPM_CIRCUITS, 16)
+                .inputItems(PIKO_POWER_IC, 16)
+                .inputItems(plate, Pikyonium64B, 16)
+                .inputItems(screw, CinobyteA243, 32)
+                .inputFluids(Pikyonium64B.getFluid(2304))
+                .inputFluids(FluxedElectrum.getFluid(1296))
+                .inputFluids(SolderingAlloy.getFluid(1440))
+                .outputItems(MEGA_BLAST_SMELTER, 1)
+                .duration(1200).EUt(VA[UHV])
                 .save(provider);
     }
 

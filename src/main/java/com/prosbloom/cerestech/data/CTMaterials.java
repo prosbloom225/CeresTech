@@ -460,6 +460,22 @@ public class CTMaterials {
             .blastTemp(8700, BlastProperty.GasTier.MID, VA[UV], 266)
             .appendFlags(EXT_METAL)
             .buildAndRegister();
+    public static Material Pikyonium64B = new Material.Builder(CTMod.id("pikyonium_64b"))
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x305795).iconSet(BRIGHT)
+            .components(NaquadahEnriched, 4, Cerium, 3, Antimony, 2, Platinum, 2, Ytterbium, 1, Tungsten, 4, Niobium, 4)
+            .blastTemp(7125, BlastProperty.GasTier.HIGH, VA[ZPM], 8750)
+            .appendFlags(EXT2_METAL)
+            .buildAndRegister();
+    public static Material CinobyteA243 = new Material.Builder(CTMod.id("cinobyte_a243"))
+            .ingot(3)
+            .fluid(FluidStorageKeys.LIQUID, new FluidBuilder())
+            .color(0x305795).iconSet(BRIGHT)
+            .components(Zeron100, 16, Naquadria, 7, Gadolinium, 5, Aluminium, 3, Tin, 2, Titanium, 12, Osmiridium, 6)
+            .blastTemp(7125, BlastProperty.GasTier.HIGH, VA[ZPM], 6400)
+            .appendFlags(EXT2_METAL)
+            .buildAndRegister();
 
 
     public static Material ParaPhenylenediamine = new Material.Builder(CTMod.id("para_phenylenediamine"))

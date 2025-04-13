@@ -42,6 +42,12 @@ public class CTItems {
     public static ItemEntry<Item> HI_COMPUTATION_STATION_MK4 = REGISTRATE.item("hi_computation_station_mk4", Item::new).lang("Hi-Computation Station MK4").register();
     public static ItemEntry<Item> HI_COMPUTATION_STATION_MK5 = REGISTRATE.item("hi_computation_station_mk5", Item::new).lang("Hi-Computation Station MK5").register();
 
+    public static ItemEntry<Item> NPIC_WAFER = REGISTRATE.item("npic_wafer", Item::new).lang("NPIC Wafer").register();
+    public static ItemEntry<Item> NANO_POWER_IC = REGISTRATE.item("nano_power_ic", Item::new).lang("Nano Power IC").register();
+    public static ItemEntry<Item> PPIC_WAFER = REGISTRATE.item("ppic_wafer", Item::new).lang("PPIC Wafer").register();
+    public static ItemEntry<Item> PIKO_POWER_IC = REGISTRATE.item("piko_power_ic", Item::new).lang("Piko Power IC").register();
+
+
     // Stone
     public static ItemEntry<Item> STONE_MOON = REGISTRATE.item("stone_moon", Item::new).lang("Moon Stone").register();
     public static ItemEntry<Item> STONE_DEIMOS = REGISTRATE.item("stone_deimos", Item::new).lang("Deimos Stone").register();

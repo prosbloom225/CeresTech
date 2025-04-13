@@ -43,8 +43,7 @@ import java.util.List;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
-import static com.gregtechceu.gtceu.common.data.GCYMBlocks.CASING_REACTION_SAFE;
-import static com.gregtechceu.gtceu.common.data.GCYMBlocks.HEAT_VENT;
+import static com.gregtechceu.gtceu.common.data.GCYMBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.PYROLYSE_RECIPES;
@@ -681,6 +680,63 @@ public class CTMachines {
                     .build())
             .workableCasingRenderer(CTMod.id("block/casings/solid/machine_casing_enriched_naquadah"),
                     CTMod.id("block/multiblock/bio_reactor"), false)
+            .register();
+
+    public static MultiblockMachineDefinition MEGA_BLAST_SMELTER = REGISTRATE.multiblock("mega_blast_smelter", CoilWorkableElectricMultiblockMachine::new)
+            .langValue("Mega Blast Smelter")
+            .tooltips(Component.translatable("gtceu.machine.available_recipe_map_1.tooltip",
+                    Component.translatable("gtceu.alloy_blast_smelter")))
+            .tooltips(Component.translatable("gtceu.machine.electric_blast_furnace.tooltip.0"),
+                    Component.translatable("gtceu.machine.electric_blast_furnace.tooltip.1"),
+                    Component.translatable("gtceu.machine.electric_blast_furnace.tooltip.2"))
+            .rotationState(RotationState.NON_Y_AXIS)
+            .recipeType(GCYMRecipeTypes.ALLOY_BLAST_RECIPES)
+            .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers::ebfOverclock)
+            .appearanceBlock(CASING_HIGH_TEMPERATURE_SMELTING)
+            .pattern(definition -> FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.BACK, RelativeDirection.UP)
+                    .aisle("   CCCCC   ", "  CCCCCCC  ", " CCCCCCCCC ", "CCCCCCCCCCC", "CCCCCCCCCCC", "CCCCCCCCCCC", "CCCCCCCCCCC", "CCCCCCCCCCC", " CCCCCCCCC ", "  CCCCCCC  ", "   CCCCC   ")
+                    .aisle("   HHHHH   ", "  H#####H  ", " H#LLLLL#H ", "H#L#####L#H", "H#L#####L#H", "H#L#####L#H", "H#L#####L#H", "H#L#####L#H", " H#LLLLL#H ", "  H#####H  ", "   HHHHH   ")
+                    .aisle("   GCCCG   ", "  G#####G  ", " G#LLLLL#G ", "G#L#####L#G", "G#L#####L#G", "G#L#####L#G", "G#L#####L#G", "G#L#####L#G", " G#LLLLL#G ", "  G#####G  ", "   GGGGG   ")
+                    .aisle("   GCSCG   ", "  G#####G  ", " G#LLLLL#G ", "G#L#####L#G", "G#L#####L#G", "G#L#####L#G", "G#L#####L#G", "G#L#####L#G", " G#LLLLL#G ", "  G#####G  ", "   GGGGG   ")
+                    .aisle("   GCCCG   ", "  G#####G  ", " G#LLLLL#G ", "G#L#####L#G", "G#L#####L#G", "G#L#####L#G", "G#L#####L#G", "G#L#####L#G", " G#LLLLL#G ", "  G#####G  ", "   GGGGG   ")
+                    .aisle("   HHHHH   ", "  H#####H  ", " H#LLLLL#H ", "H#L#####L#H", "H#L#####L#H", "H#L#####L#H", "H#L#####L#H", "H#L#####L#H", " H#LLLLL#H ", "  H#####H  ", "   HHHHH   ")
+                    .aisle("   CCCCC   ", "  C#####C  ", " C#LLLLL#C ", "C#L#####L#C", "C#L#####L#C", "C#L#####L#C", "C#L#####L#C", "C#L#####L#C", " C#LLLLL#C ", "  C#####C  ", "   CCCCC   ")
+                    .aisle("           ", "   CCCCC   ", "  CLLLLLC  ", "#CL#####LC#", "#CL#####LC#", "#CL#####LC#", "#CL#####LC#", "#CL#####LC#", "  CLLLLLC  ", "   CCCCC   ", "           ")
+                    .aisle("           ", "   GGGGG   ", "  GLLLLLG  ", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "  GLLLLLG  ", "   GGGGG   ", "           ")
+                    .aisle("           ", "   GGGGG   ", "  GLLLLLG  ", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "  GLLLLLG  ", "   GGGGG   ", "           ")
+                    .aisle("           ", "   GGGGG   ", "  GLLLLLG  ", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "  GLLLLLG  ", "   GGGGG   ", "           ")
+                    .aisle("           ", "   GGGGG   ", "  GLLLLLG  ", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "  GLLLLLG  ", "   GGGGG   ", "           ")
+                    .aisle("           ", "   GGGGG   ", "  GLLLLLG  ", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "  GLLLLLG  ", "   GGGGG   ", "           ")
+                    .aisle("           ", "   GGGGG   ", "  GLLLLLG  ", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "  GLLLLLG  ", "   GGGGG   ", "           ")
+                    .aisle("           ", "   GGGGG   ", "  GLLLLLG  ", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "  GLLLLLG  ", "   GGGGG   ", "           ")
+                    .aisle("           ", "   GGGGG   ", "  GLLLLLG  ", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "  GLLLLLG  ", "   GGGGG   ", "           ")
+                    .aisle("           ", "   GGGGG   ", "  GLLLLLG  ", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "  GLLLLLG  ", "   GGGGG   ", "           ")
+                    .aisle("           ", "   GGGGG   ", "  GLLLLLG  ", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "  GLLLLLG  ", "   GGGGG   ", "           ")
+                    .aisle("           ", "   GGGGG   ", "  GLLLLLG  ", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "#GL#####LG#", "  GLLLLLG  ", "   GGGGG   ", "           ")
+                    .aisle("   CCCCC   ", "  CCCCCCC  ", " CCCCCCCCC ", "CCCCCCCCCCC", "CCCCCCCCCCC", "CCCCCCCCCCC", "CCCCCCCCCCC", "CCCCCCCCCCC", " CCCCCCCCC ", "  CCCCCCC  ", "   CCCCC   ")
+                    .where('S', controller(blocks(definition.getBlock())))
+                    .where('L', heatingCoils())
+                    .where('C', blocks(CASING_HIGH_TEMPERATURE_SMELTING.get())
+                            .or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                            .or(Predicates.autoAbilities(true, false, true)))
+                    .where('H', blocks(HEAT_VENT.get())) // casing
+                    .where('G', blocks(CASING_TEMPERED_GLASS.get())) // casing
+                    .where('#', Predicates.air())
+                    .build())
+            .workableCasingRenderer(GTCEu.id("block/casings/gcym/high_temperature_smelting_casing"),
+                    GTCEu.id("block/multiblock/gcym/blast_alloy_smelter"))
+            .additionalDisplay((controller, components) -> {
+                if (controller instanceof CoilWorkableElectricMultiblockMachine coilMachine && controller.isFormed()) {
+                    components.add(Component.translatable("gtceu.multiblock.blast_furnace.max_temperature",
+                            Component
+                                    .translatable(
+                                            FormattingUtil
+                                                    .formatNumbers(coilMachine.getCoilType().getCoilTemperature() +
+                                                            100L * Math.max(0, coilMachine.getTier() - GTValues.MV)) +
+                                                    "K")
+                                    .setStyle(Style.EMPTY.withColor(ChatFormatting.RED))));
+                }
+            })
             .register();
 
 

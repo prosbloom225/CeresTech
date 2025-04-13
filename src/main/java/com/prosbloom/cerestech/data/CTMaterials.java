@@ -287,7 +287,7 @@ public class CTMaterials {
             .color(0x5D34EE).iconSet(METALLIC)
             .blastTemp(6500, BlastProperty.GasTier.HIGH, VA[GTValues.ZPM], 500)
             .components(Adamantium, 12, Tin, 8, Arsenic, 7, Caesium, 4, Osmiridium, 3)
-            .appendFlags(EXT_METAL)
+            .appendFlags(EXT_METAL, GENERATE_BOLT_SCREW)
             .buildAndRegister();
 
     public static Material Lafium = new Material.Builder(CTMod.id("lafium"))

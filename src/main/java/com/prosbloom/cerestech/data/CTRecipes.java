@@ -498,7 +498,7 @@ public class CTRecipes {
                 .save(provider);
         ASSEMBLER_RECIPES.recipeBuilder("biologically_sterile_casing")
                 .inputItems(plate, NaquadahAlloy, 4)
-                .inputItems(screw, Dubnium, 4)
+                .inputItems(screw, ArtheriumSn, 4)
                 .inputItems(frameGt, HSSS, 1)
                 .inputFluids(SolderingAlloy.getFluid(144))
                 .outputItems(CASING_BIOLOGICALLY_STERILE, 2)
